@@ -199,11 +199,6 @@ Route::get('/', function () {
 // 
 //
 //
-
 // feina addicional
-
-
 // mes proves
-
-
 // suares
