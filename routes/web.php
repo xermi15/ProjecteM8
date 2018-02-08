@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 // CU01
-// asdfasfasdfdasfdasf
+//
 //
 //
 // CU02
@@ -200,8 +200,6 @@ Route::get('/', function () {
 //
 //
 // feina addicional
+
+
 // mes proves
-// suares
-
-
-// lines que esborrarem
