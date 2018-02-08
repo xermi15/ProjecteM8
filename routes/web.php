@@ -204,3 +204,5 @@ Route::get('/', function () {
 
 
 // mes proves
+
+// modificacio ES
