@@ -202,3 +202,6 @@ Route::get('/', function () {
 // feina addicional
 // mes proves
 // suares
+
+
+// lines que esborrarem
