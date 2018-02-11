@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,15 +40,15 @@ Route::get('/', function () {
 //
 //
 // CU07
-// 
+//
 //
 //
 // CU08
-// 
+//
 //
 //
 // CU09
-// 
+//
 //
 //
 // CU11
@@ -76,15 +76,15 @@ Route::get('/', function () {
 //
 //
 // CU17
-// 
+//
 //
 //
 // CU18
-// 
+//
 //
 //
 // CU19
-// 
+//
 //
 //
 // CU21
@@ -112,15 +112,15 @@ Route::get('/', function () {
 //
 //
 // CU27
-// 
+//
 //
 //
 // CU28
-// 
+//
 //
 //
 // CU29
-// 
+//
 //
 //
 // CU31
@@ -148,15 +148,15 @@ Route::get('/', function () {
 //
 //
 // CU37
-// 
+//
 //
 //
 // CU38
-// 
+//
 //
 //
 // CU39
-// 
+//
 //
 //
 // CU41
@@ -188,16 +188,20 @@ Route::get('/', function () {
 //
 //
 // CU48
-// 
+//
 //
 //
 // CU49
-// 
+//
 //
 //
 // CU50
-// 
 //
+//
+//
+// CU52
+// Gloria Taboada
+// prova push
 //
 // feina addicional
 
