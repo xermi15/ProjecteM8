@@ -20,7 +20,7 @@ Route::get('/', function () {
 //
 //
 // CU02
-// Comentari D.Roig
+// Comentari D.Roig 2
 //
 //
 // CU03
