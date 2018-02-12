@@ -144,7 +144,7 @@ Route::get('/', function () {
 //
 //
 // CU36
-//
+//Oscar y Carlos
 //
 //
 // CU37
@@ -157,6 +157,10 @@ Route::get('/', function () {
 //
 // CU39
 // 
+//
+//
+// CU40
+// Oscar y Carlos
 //
 //
 // CU41
