@@ -167,7 +167,7 @@ Route::get('/', function () {
 //
 //
 //
-// CU42
+// CU42 Aleix Prat
 //
 //
 //
