@@ -37,7 +37,7 @@ Route::get('/', function () {
 //
 // CU06
 //Comentario Javi Millon
-//Comentario Sergio Plaza
+//Comentario Sergio Plaza 
 //
 // CU07
 //
