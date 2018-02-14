@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 // CU01
 //
+Route::get('/login', function () {
+    return view('CU01_login');
+});
+
+
+
 //
 //
 // CU02
@@ -149,6 +155,11 @@ Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 // CU36
 //Oscar y Carlos
+   /*Route::get('CU_36', function(){
+    return view('CU_36');
+    });*/
+    
+    Route::get('CU_36', 'CU_36Controller@getIndex');
 //
 //
 // CU37
@@ -165,7 +176,7 @@ Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 // CU40
 // Oscar y Carlos
-Route::get('CU40_CrearGrup', 'Controller@getCrearGrupo');
+Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU41

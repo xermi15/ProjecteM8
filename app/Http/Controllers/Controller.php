@@ -11,7 +11,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-    public function getCrearGrupo(){
-        return view('CU40_CrearGrupo');
-    }
 }
