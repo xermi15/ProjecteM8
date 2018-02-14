@@ -20,9 +20,9 @@ Route::get('/', function () {
 //
 //
 // CU02
-// Comentari D.Roig 2
-//
-//
+Route::get('/CU_2', function () {
+    return view('CU_2');
+});
 // CU03
 //
 //
