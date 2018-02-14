@@ -84,7 +84,9 @@ Route::get('/', function () {
 //
 //
 // CU19
-//
+// 
+// CU20
+// Carlos Gomez y Oscar Robles
 //
 //
 // CU21
