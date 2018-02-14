@@ -13,6 +13,7 @@
         <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ url('/css/CU_42.css') }}" rel="stylesheet">
        
+        
 
     </head>
     <body>
