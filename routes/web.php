@@ -24,9 +24,9 @@ Route::get('/login', function () {
 //
 //
 // CU02
-// Comentari D.Roig 2
-//
-//
+Route::get('/CU_2', function () {
+    return view('CU_2');
+});
 // CU03
 //
 //
@@ -40,11 +40,13 @@ Route::get('/login', function () {
 //
 //
 // CU06
-//Comentario Javi Millon
+//Comentario Javi Millan
 //Comentario Sergio Plaza 
+Route::get("/editarPerfil/{id}", "CU06Controller@editarPerfilShow");
+Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
-//
+Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 //
 // CU08
@@ -88,7 +90,9 @@ Route::get('/login', function () {
 //
 //
 // CU19
-//
+// 
+// CU20
+// Carlos Gomez y Oscar Robles
 //
 //
 // CU21
@@ -149,6 +153,11 @@ Route::get('/login', function () {
 //
 // CU36
 //Oscar y Carlos
+   /*Route::get('CU_36', function(){
+    return view('CU_36');
+    });*/
+    
+    Route::get('CU_36', 'CU_36Controller@getIndex');
 //
 //
 // CU37
@@ -165,6 +174,7 @@ Route::get('/login', function () {
 //
 // CU40
 // Oscar y Carlos
+Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU41
@@ -172,8 +182,7 @@ Route::get('/login', function () {
 //
 //
 // CU42 Aleix_Prat
-//
-//
+Route::get('/CU_42','m14Controller@getIndex');
 //
 // CU43
 //
@@ -208,8 +217,7 @@ Route::get('/login', function () {
 //
 //
 // CU52
-// Gloria Taboada
-// prova push i comit
+Route::get('/CU_52', 'CU_52Controller@getIndex');
 //
 // feina addicional
 
