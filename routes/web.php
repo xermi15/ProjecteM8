@@ -147,6 +147,11 @@ Route::get('/', function () {
 //
 // CU36
 //Oscar y Carlos
+   /*Route::get('CU_36', function(){
+    return view('CU_36');
+    });*/
+    
+    Route::get('CU_36', 'CU_36Controller@getIndex');
 //
 //
 // CU37
