@@ -36,8 +36,8 @@ Route::get('/', function () {
 //
 //
 // CU06
-//
-//
+//Comentario Javi Millon
+//Comentario Sergio Plaza 
 //
 // CU07
 //
@@ -84,7 +84,9 @@ Route::get('/', function () {
 //
 //
 // CU19
-//
+// 
+// CU20
+// Carlos Gomez y Oscar Robles
 //
 //
 // CU21
@@ -167,7 +169,7 @@ Route::get('/', function () {
 //
 //
 //
-// CU42
+// CU42 Aleix_Prat
 //
 //
 //
