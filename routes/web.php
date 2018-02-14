@@ -36,8 +36,10 @@ Route::get('/CU_2', function () {
 //
 //
 // CU06
-//Comentario Javi Millon
+//Comentario Javi Millan
 //Comentario Sergio Plaza 
+Route::get("/editarPerfil/{id}", "CU06Controller@editarPerfilShow");
+Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
 Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
