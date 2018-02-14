@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,19 +36,19 @@ Route::get('/', function () {
 //
 //
 // CU06
-//
-//
+//Comentario Javi Millon
+//Comentario Sergio Plaza 
 //
 // CU07
-// 
+//
 //
 //
 // CU08
-// 
+//
 //
 //
 // CU09
-// 
+//
 //
 //
 // CU11
@@ -76,15 +76,17 @@ Route::get('/', function () {
 //
 //
 // CU17
-// 
+//
 //
 //
 // CU18
-// 
+//
 //
 //
 // CU19
 // 
+// CU20
+// Carlos Gomez y Oscar Robles
 //
 //
 // CU21
@@ -112,15 +114,15 @@ Route::get('/', function () {
 //
 //
 // CU27
-// 
+//
 //
 //
 // CU28
-// 
+//
 //
 //
 // CU29
-// 
+//
 //
 //
 // CU31
@@ -148,15 +150,15 @@ Route::get('/', function () {
 //
 //
 // CU37
-// 
+//
 //
 //
 // CU38
-// 
+//
 //
 //
 // CU39
-// 
+//
 //
 //
 // CU40
@@ -168,9 +170,8 @@ Route::get('CU40_CrearGrup', 'Controller@getCrearGrupo');
 //
 //
 //
-// CU42
-//
-//
+// CU42 Aleix_Prat
+Route::get('/CU_42','m14Controller@getIndex');
 //
 // CU43
 //
@@ -189,20 +190,23 @@ Route::get('CU40_CrearGrup', 'Controller@getCrearGrupo');
 //
 //
 // CU47
-// 
+//
 //
 //
 // CU48
-// 
+//
 //
 //
 // CU49
-// 
+//
 //
 //
 // CU50
-// 
 //
+//
+//
+// CU52
+Route::get('/CU_52', 'CU_52Controller@getIndex');
 //
 // feina addicional
 
