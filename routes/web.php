@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 // CU01
 //
+Route::get('/login', function () {
+    return view('CU01_login');
+});
+
 //
 //
 // CU02
