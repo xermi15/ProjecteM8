@@ -1,12 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+
     <link href="{{ url('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
- </head>
- <body>
+
+
+  </head>
+  <body>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -37,6 +41,9 @@
             </div>
         </div>
     </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   
     <script src="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+	
   </body>
 </html>
