@@ -163,7 +163,7 @@ Route::get('/', function () {
 //
 // CU40
 // Oscar y Carlos
-Route::get('CU40_CrearGrup', 'Controller@getCrearGrupo');
+Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU41
