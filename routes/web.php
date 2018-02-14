@@ -168,8 +168,7 @@ Route::get('/', function () {
 //
 //
 // CU42 Aleix_Prat
-//
-//
+Route::get('/CU_42','m14Controller@getIndex');
 //
 // CU43
 //
