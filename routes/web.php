@@ -204,8 +204,7 @@ Route::get('/', function () {
 //
 //
 // CU52
-// Gloria Taboada
-// prova push i comit
+Route::get('/CU_52', 'CU_52Controller@getIndex');
 //
 // feina addicional
 
