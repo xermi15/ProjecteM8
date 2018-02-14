@@ -10,69 +10,53 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Bootstrap and my style-->
-        <link href="{{ url('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ url('/css/CU_42.css') }}" rel="stylesheet">
+       
 
     </head>
     <body>
-
-        <div id="container">
-            <div id="header">
-                <label>Gestionar Usuarios</label>
-                <div>
-                    <label>Notificaciones</label>
-                    <input type="text" name="search" id="search" />
-                </div>
-            </div>
-            <div id="navLeft">
-                <div>
-                    <img src="{{ url('/images/user-default.png') }}" id="photoUser" />
-                    <label>Nombre Apellido</label>
-                    <button id="close">Cerrar Sesión</button>
-                    <label id="line"></label>
-                </div>
-                <div>
-                    <i></i>
-                    <label>Mi Carpeta</label>
-                    <i></i>
-                </div>
-                <div>
-                    
-                </div>
-            </div>
-            <div id="center">
-                <div class="darkColor" id="header2">Gestionar Usuarios</div>
-                <nav class="navbar navbar-inverse">
-                    <div class="container-fluid">
-                      <ul class="nav navbar-nav">
+        <div id="ola">asdasdasdsd</div>
+        <div id="containerr">
+           
+          <!--
+                <div>Gestionar Usuarios</div>
+               
+                
+                <ul >
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Crear Usuari</a></li>
                         <li><a href="#">Mostrar Usuari</a></li>
                         <li><a href="#">Alta Usuari</a></li>
                         <li><a href="#">Modificar Usuari</a></li>
                         <li><a href="#">Eliminar Usuari</a></li>
+                        <li><a href="#">Donar de Baixa</a></li>
                       </ul>
-                    </div>
-              </nav>
-                <div id="cuerpo">
-                    <div class="darkColor">Crear nuevo usuario</div>
-                    <div>
-                        <input type="text" name="" id="" placeholder="Nombre">
-                        <input type="text" name="" id="" placeholder="Apellidos">
-                        <input type="text" name="" id="" placeholder="Contraseña">
-                        <input type="text" name="" id="" placeholder="Email">
-                    </div>
-                    <div class="darkColor">
-                        <button>Crear</button>
-                    </div>
-                </div>
-            </div>
+            
+               -->
+              
+                <table >
+                    
+                    <td>Mostrar Usuaris</td>
+                    <tr></tr>
+                    <td>Usuri1</td>  <td>Usu1</td>
+                    <tr></tr>
+                    <td>Usuri2</td>  <td>Usu2</td>
+                    <tr></tr>
+                    <td>Usuri3</td>  <td>Usu3</td>
+                    <tr></tr>
+                    <td>Usuri4</td>  <td>Usu4</td>
+                    <tr></tr>
+                    <td>Usuri5</td>  <td>Usu5</td>
+                   
+                </table>
+                
+      
 
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ url('/assets/js/m14.js') }}"></script>
+        <script src="{{ url('/js/jquery.min.js') }}"></script>
+         Include all compiled plugins (below), or include individual files as needed 
+        <script src="{{ url('/js/bootstrap.min.js') }}"></script>
     </body>
 </html>
