@@ -40,7 +40,7 @@ Route::get('/', function () {
 //Comentario Sergio Plaza 
 //
 // CU07
-//
+Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 //
 // CU08
