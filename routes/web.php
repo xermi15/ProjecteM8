@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 // CU01
 //
+Route::get('/login', function () {
+    return view('CU01_login');
+});
+
+
+
 //
 //
 // CU02
@@ -38,7 +44,7 @@ Route::get('/CU_2', function () {
 // CU06
 //Comentario Javi Millan
 //Comentario Sergio Plaza 
-Route::get("/editarPerfil/{id}", "CU06Controller@editarPerfilShow");
+Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
