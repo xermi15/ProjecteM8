@@ -21,6 +21,10 @@ Route::get('/login', function () {
     return view('CU01_login');
 });
 
+Route::post('/CU01_login', "CU01_loginController@login");
+    //return "comprovant usuari";//view('CU01_login');
+//});
+
 
 
 //
