@@ -48,11 +48,11 @@ Route::get('/CU_2', function () {
 // CU06
 //Comentario Javi Millan
 //Comentario Sergio Plaza 
-Route::get("/editarPerfil/{id}", "CU06Controller@editarPerfilShow");
+Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
-Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
+Route::get('/CU07_OpenFolder','CU_07Controller@openFolder');
 //
 //
 // CU08
@@ -157,13 +157,9 @@ Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 //
 //
-// CU36
+// CU36 (incluye CU_40)
 //Oscar y Carlos
-   /*Route::get('CU_36', function(){
-    return view('CU_36');
-    });*/
-    
-    Route::get('CU_36', 'CU_36Controller@getIndex');
+    Route::get('CU_36', 'CU_36Controller@getCU_36');
 //
 //
 // CU37

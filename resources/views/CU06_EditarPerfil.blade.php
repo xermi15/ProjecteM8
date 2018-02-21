@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 
         <title>Laravel</title>
 
@@ -14,8 +15,9 @@
     <body>{{$id =1}}
         <div class="container">
             <h2>Editar Perfil</h2>
-        <form action="/DAW2M14/public/editarPerfil/edit/{{$id}}" method="POST">
+        <form action="edit/{{$id}}" method="POST">
             {{csrf_field()}}
+            
             <div class="form-group">
               <label for="nomUsuari">Nom usuari:</label>
               <input type="text" class="form-control" name="nomUsuari" id="nomUsuari" value="{{$usuari->nomUsuari}}">
@@ -23,6 +25,10 @@
             <div class="form-group">
               <label for="contrasenya">Nova contrasenya:</label>
               <input type="password" class="form-control" name="contrasenya" id="contrasenya" placeholder="(Opcional)">
+            </div>
+            <div class="form-group">
+              <label for="cognoms">Nom:</label>
+              <input type="text" class="form-control" name="nom" id="nom" value="{{$usuari->nom}}">
             </div>
             <div class="form-group">
               <label for="cognoms">Cognoms:</label>

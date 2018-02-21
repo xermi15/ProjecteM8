@@ -25,7 +25,7 @@ class CU_36Controller extends Controller
       )
   );
     
-    public function getIndex(){
+    public function getCU_36(){
      return view('CU_36', array('arrayGrupos'=>$this->arrayGrupos));
   }
 }
