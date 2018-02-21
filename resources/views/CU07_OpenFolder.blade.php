@@ -4,30 +4,64 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 
         <title>Carpeta ID</title>
 
-        <style>
-            table, th, td{
-                border: 1px solid black;
-            }
-        </style>
-
     </head>
     <body>
-
-        <h1>Carpeta ID</h1>
-        <h2>Contenido</h2>
-        <table>
+        
+        <table class="table">
             <tr>
-                <td><b>Nom</b></td>
-                <td><b>Descripcio</b></td>
-                <td><b>Data Creacio</b></td>
-                <td><b>Data Modificacio</b></td>
+                <td class="col-md-6"><span class="glyphicon glyphicon-plus"></span>Crear Carpeta</td>
+                <td class="col-md-6"><span class="glyphicon glyphicon-circle-arrow-up"></span>Subir Documento</td>
             </tr>
-            
-            
+            <tr>
+                <td class="col-md-6">
+                    <select class="form-control">
+                        <option>Acció en masa</option>
+                    </select>
+                </td>
+                <td class="col-md-6">
+                    <select class="form-control">
+                        <option>Ordena per</option>
+                    </select>
+                </td>
+            </tr>       
         </table>
 
+        
+        <table class="table">
+            @foreach( $carpetes as $key => $carpeta)
+            <tr>
+                <td class="col-md-1"><input type="checkbox" class="form-check-input"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-folder-open"></span></td>
+                <td class="col-md-3"><b>{{$carpeta->nom}}</b><br>{{$carpeta->dataModificacio}}</td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
+                <td class="col-md-1"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-lock"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-wrench"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-trash"></td>
+            </tr>
+            @endforeach
+            @foreach( $arxius as $key => $document)
+            <tr>
+                <td class="col-md-1"><input type="checkbox" class="form-check-input"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
+                <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-link"></span></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-paperclip"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
+                <td class="col-md-1"><span class="glyphicon glyphicon-trash"></td>
+            </tr>
+            @endforeach
+        </table>
+            
+        
     </body>
 </html>
