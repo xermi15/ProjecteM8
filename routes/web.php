@@ -48,7 +48,7 @@ Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
-Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
+Route::get('/CU07_OpenFolder','CU_07Controller@openFolder');
 //
 //
 // CU08
