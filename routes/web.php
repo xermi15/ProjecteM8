@@ -52,7 +52,7 @@ Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
 //
 // CU07
-Route::get('/CU07_OpenFolder','CU_07Controller@openFolder');
+Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
