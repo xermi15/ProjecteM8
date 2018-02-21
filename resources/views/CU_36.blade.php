@@ -28,7 +28,7 @@
                                     </tr>
                                     </thead>
                                 </table>
-
+ola
                             </div>
                             <h4>Nombre</h4>
                             <label for="nombre_grupo" class="ui-hidden-accessible"></label>
