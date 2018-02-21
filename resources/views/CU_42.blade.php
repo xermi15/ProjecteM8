@@ -36,21 +36,25 @@
             
                -->
               
-                <table >
+                <div class="text-center">
                     
-                    <td>Mostrar Usuaris</td>
-                    <tr></tr>
-                    <td>Usuri1</td>  <td>Usu1</td>
-                    <tr></tr>
-                    <td>Usuri2</td>  <td>Usu2</td>
-                    <tr></tr>
-                    <td>Usuri3</td>  <td>Usu3</td>
-                    <tr></tr>
-                    <td>Usuri4</td>  <td>Usu4</td>
-                    <tr></tr>
-                    <td>Usuri5</td>  <td>Usu5</td>
+                    <div class="text-center darkColor">Mostrar Usuaris</div>
                    
-                </table>
+                    <div>
+                        <label class="llista text-center">Usuri1</label> <label class="llista2 text-center">Usu1</label>
+                    </div>  
+                    <div>
+                        <label class="llista text-center">Usuri2</label> <label class="llista2 text-center">Usu2</label>
+                    </div> 
+                    <div>
+                        <label class="llista text-center">Usuri3</label> <label class="llista2 text-center">Usu1</label>
+                    </div> 
+                    <div>
+                        <label class="llista text-center">Usuri4</label> <label class="llista2 text-center">Usu1</label>
+                    </div> 
+                    
+                   
+                </div>
                 
       
 
