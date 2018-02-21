@@ -110,7 +110,10 @@ Route::get('/', function () {
 //
 //
 // CU26
-// Jorge & Issam
+// Jorge & Issam 
+// Route::get('/CU_26', function () {
+//   return view('CU_26');
+//});
 //
 //
 // CU27
