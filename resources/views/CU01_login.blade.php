@@ -24,23 +24,18 @@
                         
                         <div class="panel-heading col-md-offset-1"><h1>Iniciar Sesión</h1></div>
 
-                        <div class="form-group">
+                        <div class="form-group{{isset($invalido) ? ' has-error' : '' }}">
                             <div class="col-md-8 col-md-offset-2">
                                 <input id="user" type="user" class="form-control" name="user" placeholder="Username"  required autofocus>
-                                   @if ($errors->has('email'))
-                                       <span class="help-block">
-                                           <strong>{{ $errors->first('email') }}</strong>
-                                       </span>
-                                   @endif
                             </div>  
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{isset($invalido) ? ' has-error' : '' }}">
                             <div class="col-md-8 col-md-offset-2">
                                 <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
-                                   @if ($errors->has('password'))
+                                   @if (isset($invalido))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
+                                            <strong>{{$invalido}}</strong>
                                         </span>
                                     @endif
                             </div>
