@@ -5,10 +5,11 @@
     <!--    <link rel="icon" href="https://getbootstrap.com/favicon.ico">-->
     
     
-    <!-- Bootstrap core CSS  -->
+    <!-- Bootstrap core CSS  <link href="css/app.css" rel="stylesheet">-->
     
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
+    <!-- Faig servir un altre bootstrap perquè funcioni la navbar -->
+    <link href="css/bootstrap2.css" rel="stylesheet">
+    
     <link href="css/CU_2.css" rel="stylesheet" type="text/css"/>
     
     <title>Gestor de continguts</title>   
@@ -18,7 +19,6 @@
 
       @include('partials.navbar')
     <div  class="container main">
-        <p>Test</p>
       @yield('content')
     </div>
       
