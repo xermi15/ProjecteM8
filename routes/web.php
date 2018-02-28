@@ -56,9 +56,9 @@ Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
-Route::get('/CU_08',function () {
-    return view('CU_08');
-});
+Route::get('/CU_08', 'CU_08Controller@getPujarDoc');
+
+Route::post('/CU_08','CU_08Controller@postPujarDoc');
 // CU09
 //
 //
