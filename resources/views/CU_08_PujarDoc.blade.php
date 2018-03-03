@@ -9,7 +9,7 @@
 			<div class="panel-heading">
 				<h3 class="panel-title text-center">
 					<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-					Subir documento
+					Pujar document
 				</h3>
 			</div>
 
@@ -18,27 +18,25 @@
 				<form method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                        <label for="title">Nombre del archivo</label>
-                                        <input type="text" name="title" id="title" class="form-control">
+                                        <label for="title">Nom del arxiu</label>
+                                        <input type="text" name="nom" id="nom" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
-                                            {{-- TODO: Completa el input para el poster --}}
-                                            <label for="title">Ruta</label>
-                                            <input type="file" name="poster" id="poster" class="form-control">
+                                            <label for="title">Ruta de l'arxiu</label>
+                                            <input type="file" name="arxiu" id="arxiu" class="form-control">
                                     </div>
 
                                     <div class="form-group">
-                                            <label for="synopsis">Descripción</label>
-                                    <textarea name="synopsis" id="synopsis" class="form-control" rows="3"></textarea>
+                                            <label for="synopsis">Descripció (Opcional)</label>
+                                    <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
                                     </div>
 
                                     <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                                                    Subir archivo 
+                                                    Pujar arxiu 
                                             </button>
                                     </div>
-
 				<form>
 			</div>
 		</div>
