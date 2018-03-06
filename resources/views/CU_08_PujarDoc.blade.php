@@ -12,10 +12,18 @@
 					Pujar document
 				</h3>
 			</div>
-
+                        <div>
+                            @if (count($errors) > 0)
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
 			<div class="panel-body" style="padding:30px">
 			
-				<form method="POST">
+				<form method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="title">Nom del arxiu</label>
@@ -24,7 +32,7 @@
 
                                     <div class="form-group">
                                             <label for="title">Ruta de l'arxiu</label>
-                                            <input type="file" name="arxiu" id="arxiu" class="form-control">
+                                            <input type="file" name="arxiu" id="arxiu" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
