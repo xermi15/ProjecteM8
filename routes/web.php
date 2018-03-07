@@ -38,7 +38,7 @@ Route::get('/CU_2', function () {
 //
 //
 // CU04
-//
+//Laia i Joy
 //
 //
 // CU05
@@ -122,9 +122,8 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 //
 //
 // CU26
-// Jorge & Issam 
-// Route::get('/CU_26', function () {
-//   return view('CU_26');
+//Jorge & Issam 
+ Route::get('/CU_26', 'CU_26Controller@getIndex');
 //});
 //
 //
