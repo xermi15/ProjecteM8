@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // CU01
 //
-Route::get('/login', function () {
+Route::get('/CU01_login', function () {
     return view('CU01_login');
 });
 
