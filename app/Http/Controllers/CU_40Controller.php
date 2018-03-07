@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class CU_40Controller extends Controller {
 
-    public function getCrearGrupo(){
-        return view('CU_40_CrearGrupo');
+    public function getCU_40(){
+        return view('CU40_CrearGrupo');
     }
 
 }
