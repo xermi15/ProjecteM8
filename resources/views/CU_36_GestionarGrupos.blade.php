@@ -3,7 +3,12 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-@extends('layouts.CU_02')
+
+<!--                 FALTA INCLUIR CU_41 - MOSTRAR GRUPOS                     -->
+
+
+
+@extends('layouts.master')
 
 @section('content')
 <div class="container" style="padding: 30px;">
@@ -36,7 +41,7 @@
                     <td>{{$grupo['miembros']}}</td>
                     <td>
                         <a class="glyphicon glyphicon-pencil" href="" ></a> 
-                        <a class="glyphicon glyphicon-trash" href="" ></a>
+                        @include('CU_37_EliminarGrupo')
                         <a class="glyphicon glyphicon-circle-arrow-right" href="" ></a>
                     </td>
                 </tr>

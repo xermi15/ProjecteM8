@@ -26,6 +26,6 @@ class CU_36Controller extends Controller
   );
     
     public function getCU_36(){
-     return view('CU_36', array('arrayGrupos'=>$this->arrayGrupos));
+     return view('CU_36_GestionarGrupos', array('arrayGrupos'=>$this->arrayGrupos));
   }
 }
