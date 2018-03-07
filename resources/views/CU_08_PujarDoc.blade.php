@@ -1,4 +1,4 @@
-@extends('layouts.CU_02')
+@extends('layouts.master')
 
 @section('content')
 <div class="row" style="margin-top:20px">

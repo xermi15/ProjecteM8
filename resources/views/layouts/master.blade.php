@@ -10,7 +10,7 @@
     <!-- Faig servir un altre bootstrap perquè funcioni la navbar -->
     <link href="css/bootstrap2.css" rel="stylesheet">
     
-    <link href="css/CU_2.css" rel="stylesheet" type="text/css"/>
+    <link href="css/CU_02.css" rel="stylesheet" type="text/css"/>
     
     <title>Gestor de continguts</title>   
   </head>
