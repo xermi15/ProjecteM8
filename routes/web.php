@@ -166,16 +166,16 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
-// CU37
+// CU37 Eliminar Grupo (Oscar y Carlos)
 Route::get('CU_37_EliminarGrupo', 'CU_37Controller@getCU_37');
 //
 //
-// CU38
+// CU38 Modificar Grupo (Oscar y Carlos)
+Route::get('CU_38_ModificarGrupo', 'CU_38Controller@getCU_38');
 //
 //
-//
-// CU39
-//
+// CU39 Modificar Membres (Oscar y Carlos)
+//Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
