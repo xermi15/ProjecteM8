@@ -163,11 +163,11 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 //
 //
 // CU36 Gestionar Grupos (Oscar y Carlos)
-Route::get('CU_36', 'CU_36Controller@getCU_36');
+Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
 // CU37
-//
+Route::get('CU_37_EliminarGrupo', 'CU_37Controller@getCU_37');
 //
 //
 // CU38
@@ -179,7 +179,7 @@ Route::get('CU_36', 'CU_36Controller@getCU_36');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
-Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
+Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 //
 //
 // CU41
