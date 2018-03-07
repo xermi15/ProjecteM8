@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 // CU01
 //
-/*Route::get('/CU01_login', function () {
+Route::get('/CU01_login', function () {
     return view('CU01_login');
-});*/
+});
 
 Route::post('/CU01_login', "CU01_loginController@login");
     //return "comprovant usuari";//view('CU01_login');
