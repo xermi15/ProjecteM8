@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CU_40Controller extends Controller {
 
     public function getCU_40(){
-        return view('CU40_CrearGrupo');
+        return view('CU_40_CrearGrupo');
     }
 
 }

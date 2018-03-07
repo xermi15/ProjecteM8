@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
-<!--                 FALTA INCLUIR CU_41 - MOSTRAR GRUPOS                     -->
+<!--------------------         FALTA INCLUIR CU_41 - MOSTRAR GRUPOS   --------------------------->
 
 
 
@@ -40,7 +40,7 @@
                     <td>{{$grupo['nombre']}}</td>
                     <td>{{$grupo['miembros']}}</td>
                     <td>
-                        <a class="glyphicon glyphicon-pencil" href="" ></a> 
+                        @include('CU_38_ModificarGrupo')
                         @include('CU_37_EliminarGrupo')
                         <a class="glyphicon glyphicon-circle-arrow-right" href="" ></a>
                     </td>
