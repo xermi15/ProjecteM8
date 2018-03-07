@@ -16,8 +16,10 @@ class CU01_loginController extends Controller
         //return $resultat;
         if (count($resultat)==1){
             
+           $_SESSION['idUsuari']=$resultat[0]->idUsuari;
+         
             
-            return view('CU07_OpenFolder',array('carpetes'=>Carpeta::where('idCarpetaPare', '=1')->get()),array('arxius'=>Document::where('idCarpeta', '=1')->get()));
+            return redirect(url('/abrirCarpeta/root'));
         }else return view('CU01_login',['invalido'=>'Los datos no son validos']);
         
     }
