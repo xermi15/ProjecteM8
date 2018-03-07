@@ -43,12 +43,12 @@ Route::get('/CU_2', function () {
 //
 // CU06
 //Comentario Javi Millan
-//Comentario Sergio Plaza 
+//Comentario Sergio Plaza
 Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
-Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
+Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
 //
 // CU07
-Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
+Route::get('/CU07_OpenFolder', 'OpenFolderController@openFolder');
 //
 //
 // CU08
@@ -92,7 +92,7 @@ Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 //
 // CU19
-// 
+//
 // CU20
 // Carlos Gomez y Oscar Robles
 //
@@ -155,11 +155,11 @@ Route::get('/CU07_OpenFolder','OpenFolderController@openFolder');
 //
 // CU36
 //Oscar y Carlos
-   /*Route::get('CU_36', function(){
-    return view('CU_36');
-    });*/
-    
-    Route::get('CU_36', 'CU_36Controller@getIndex');
+/* Route::get('CU_36', function(){
+  return view('CU_36');
+  }); */
+
+Route::get('CU_36', 'CU_36Controller@getIndex');
 //
 //
 // CU37
@@ -184,7 +184,7 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU42 Aleix_Prat
-Route::get('/CU_42','m14Controller@getIndex');
+Route::get('/CU_42', 'm14Controller@getIndex');
 //
 // CU43
 //
@@ -220,6 +220,10 @@ Route::get('/CU_42','m14Controller@getIndex');
 //
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');
+Route::get('/CU_45', 'CU_45Controller@mostraUsuari');
+Route::post('/newUser', 'CU_52Controller@afegirUsuari');
+Route::post('/modUser/{id}', 'CU_45Controller@modificarUsuari');
+
 //
 // feina addicional
 
