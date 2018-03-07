@@ -38,7 +38,7 @@ Route::get('/CU_2', function () {
 //
 //
 // CU04
-//
+//Laia i Joy
 //
 //
 // CU05
