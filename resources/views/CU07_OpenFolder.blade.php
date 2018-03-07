@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="{{ url('/css/CU_07.css') }}" rel="stylesheet">
 
         <title>Carpeta ID</title>
 
@@ -35,8 +37,8 @@
             @foreach( $carpetes as $key => $carpeta)
             <tr>
                 <td class="col-md-1"><input type="checkbox" class="form-check-input"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-folder-open"></span></td>
-                <td class="col-md-3"><b>{{$carpeta->nom}}</b><br>{{$carpeta->dataModificacio}}</td>
+                <td class="col-md-1"><a href="{{url('/abrirCarpeta/'.$carpeta->idCarpeta)}}"><span class="glyphicon glyphicon-folder-open"></span></a></td>
+                <td class="col-md-3"><a href="{{url('/abrirCarpeta/'.$carpeta->idCarpeta)}}"><b>{{$carpeta->nom}}</b><br>{{$carpeta->dataModificacio}}</a></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
