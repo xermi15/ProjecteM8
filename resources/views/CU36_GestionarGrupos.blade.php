@@ -1,20 +1,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+@extends('layouts.CU_02')
+
+@section('content')
 <div class="container" style="padding: 30px;">
     <div class="row">
-          <div class="form-group">
-              <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th style="text-align: center;">Gestionar grupos</th> 
-                </tr>
-            </thead>
-        </table>
-              
-          </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-default" style="border-color: black;"><b>Crear grupo</b></button>
+            <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th style="text-align: center;">Gestionar grupos</th> 
+                </tr>
+                </thead>
+            </table>
+              
         </div>
+            @include('CU_40_CrearGrupo')
        
           <table style="text-align: center;" class="table table-condensed table-striped table-bordered">
               <thead>
@@ -40,5 +44,6 @@
             </tbody>
             @endforeach
         </table>
- </div>
+    </div>
 </div>
+@stop

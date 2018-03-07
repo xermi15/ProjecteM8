@@ -21,6 +21,10 @@ Route::get('/login', function () {
     return view('CU01_login');
 });
 
+Route::post('/CU01_login', "CU01_loginController@login");
+    //return "comprovant usuari";//view('CU01_login');
+//});
+
 
 
 //
@@ -34,7 +38,7 @@ Route::get('/CU_2', function () {
 //
 //
 // CU04
-//
+//Laia i Joy
 //
 //
 // CU05
@@ -48,13 +52,13 @@ Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
 //
 // CU07
-Route::get('/CU07_OpenFolder', 'OpenFolderController@openFolder');
+Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
-//
-//
-//
+Route::get('/CU_08', 'CU_08Controller@getPujarDoc');
+
+Route::post('/CU_08','CU_08Controller@postPujarDoc');
 // CU09
 //
 //
@@ -118,6 +122,11 @@ Route::get('/CU07_OpenFolder', 'OpenFolderController@openFolder');
 //
 //
 // CU26
+//Jorge & Issam 
+ Route::get('/CU_26', 'CU_26Controller@getIndex');
+//});
+//
+//
 //
 //
 //
@@ -153,13 +162,8 @@ Route::get('/CU07_OpenFolder', 'OpenFolderController@openFolder');
 //
 //
 //
-// CU36
-//Oscar y Carlos
-/* Route::get('CU_36', function(){
-  return view('CU_36');
-  }); */
-
-Route::get('CU_36', 'CU_36Controller@getIndex');
+// CU36 Gestionar Grupos (Oscar y Carlos)
+Route::get('CU_36', 'CU_36Controller@getCU_36');
 //
 //
 // CU37
@@ -174,8 +178,7 @@ Route::get('CU_36', 'CU_36Controller@getIndex');
 //
 //
 //
-// CU40
-// Oscar y Carlos
+// CU40 Crear Grupo (Oscar y Carlos)
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
@@ -184,7 +187,11 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU42 Aleix_Prat
-Route::get('/CU_42', 'm14Controller@getIndex');
+Route::get('/CU_42','CU42Controller@getIndex');
+//  Route::get('/', function(){
+//      return view("CU_42");
+//  });
+//  Route::post('/CU42Controller',"CU42Controller@getIndex")
 //
 // CU43
 //
@@ -206,7 +213,8 @@ Route::get('/CU_42', 'm14Controller@getIndex');
 //
 //
 //
-// CU48
+// CU48 Aleix Prat
+Route::get('/CU_48','CU48Controller@getIndex');
 //
 //
 //
@@ -215,8 +223,8 @@ Route::get('/CU_42', 'm14Controller@getIndex');
 //
 //
 // CU50
-//
-//
+//Jorge & Issam
+Route::get('/CU_50','CU_50Controller@getIndex');
 //
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');

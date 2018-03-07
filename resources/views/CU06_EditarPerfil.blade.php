@@ -14,7 +14,7 @@
     </head>
     <body>{{$id =1}}
         <div class="container">
-            <h2>Editar Perfil</h2>
+            <h2>Mi perfil</h2>
         <form action="edit/{{$id}}" method="POST">
             {{csrf_field()}}
             
@@ -42,7 +42,7 @@
               <label for="dadesPostals">Dades postals:</label>
               <input type="text" class="form-control" name="dadesPostals" id="dadesPostals" value="{{$usuari->dadesPostals}}">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-success">Modificar</button>
           </form>
         </div>
     </body>
