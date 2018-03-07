@@ -1,6 +1,7 @@
 span{
     color:#006666;
     margin: 1%;
+    font-size: 20px;
 }
 
 a{
@@ -8,3 +9,8 @@ a{
    text-decoration: none; 
    background-color: none;
 }
+
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
+
