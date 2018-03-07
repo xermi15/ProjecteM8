@@ -220,8 +220,8 @@ Route::get('/CU_42','m14Controller@getIndex');
 //
 //
 // CU50
-//
-//
+//Jorge & Issam
+Route::get('/CU_50','CU_50Controller@getIndex');
 //
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');
