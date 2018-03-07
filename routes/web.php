@@ -47,9 +47,9 @@ Route::get('/CU_2', function () {
 //
 // CU06
 //Comentario Javi Millan
-//Comentario Sergio Plaza 
+//Comentario Sergio Plaza
 Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
-Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit");//->middleware('auth');
+Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
 //
 // CU07
 Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
@@ -96,7 +96,7 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 //
 //
 // CU19
-// 
+//
 // CU20
 // Carlos Gomez y Oscar Robles
 //
@@ -228,6 +228,10 @@ Route::get('/CU_50','CU_50Controller@getIndex');
 //
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');
+Route::get('/CU_45', 'CU_45Controller@mostraUsuari');
+Route::post('/newUser', 'CU_52Controller@afegirUsuari');
+Route::post('/modUser/{id}', 'CU_45Controller@modificarUsuari');
+
 //
 // feina addicional
 

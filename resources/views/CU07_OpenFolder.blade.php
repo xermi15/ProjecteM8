@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet"> -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="{{ url('/css/CU_07.css') }}" rel="stylesheet">
+@extends('layouts.master')
 
-        <title>Carpeta ID</title>
-
-    </head>
-    <body>
-        
+@section('content')
         <table class="table">
             <tr>
                 <td class="col-md-6"><span class="glyphicon glyphicon-plus"></span>Crear Carpeta</td>
@@ -63,7 +51,4 @@
             </tr>
             @endforeach
         </table>
-            
-        
-    </body>
-</html>
+@stop
