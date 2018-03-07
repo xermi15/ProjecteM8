@@ -162,9 +162,8 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 //
 //
 //
-// CU36 (incluye CU_40)
-//Oscar y Carlos
-    Route::get('CU_36', 'CU_36Controller@getCU_36');
+// CU36 Gestionar Grupos (Oscar y Carlos)
+Route::get('CU_36', 'CU_36Controller@getCU_36');
 //
 //
 // CU37
@@ -179,8 +178,7 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 //
 //
 //
-// CU40
-// Oscar y Carlos
+// CU40 Crear Grupo (Oscar y Carlos)
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
@@ -189,7 +187,11 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCrearGrupo');
 //
 //
 // CU42 Aleix_Prat
-Route::get('/CU_42','m14Controller@getIndex');
+Route::get('/CU_42','CU42Controller@getIndex');
+//  Route::get('/', function(){
+//      return view("CU_42");
+//  });
+//  Route::post('/CU42Controller',"CU42Controller@getIndex")
 //
 // CU43
 //
@@ -211,7 +213,8 @@ Route::get('/CU_42','m14Controller@getIndex');
 //
 //
 //
-// CU48
+// CU48 Aleix Prat
+Route::get('/CU_48','CU48Controller@getIndex');
 //
 //
 //
