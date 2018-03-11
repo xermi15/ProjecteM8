@@ -39,7 +39,7 @@ Route::get('/CU_2', function () {
 //
 // CU04
 //Laia i Joy
-//
+Route::get('/consultarLogs','CU_04Controller@consultarLogs');
 //
 // CU05
 //
@@ -219,7 +219,7 @@ Route::get('/CU_48','CU48Controller@getIndex');
 //
 //
 // CU49
-//
+Route::get('/filtraLogs','CU_49Controller@filtraLogs');
 //
 //
 // CU50
