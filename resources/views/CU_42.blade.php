@@ -17,51 +17,63 @@
 
     </head>
     <body>
-        <div id="ola">asdasdasdsd</div>
         <div id="containerr">
-           
-          <!--
-                <div>Gestionar Usuarios</div>
-               
-                
-                <ul >
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Crear Usuari</a></li>
-                        <li><a href="#">Mostrar Usuari</a></li>
-                        <li><a href="#">Alta Usuari</a></li>
-                        <li><a href="#">Modificar Usuari</a></li>
-                        <li><a href="#">Eliminar Usuari</a></li>
-                        <li><a href="#">Donar de Baixa</a></li>
-                      </ul>
             
-               -->
-              
-                <div class="text-center">
-                    
-                    <div class="text-center darkColor">Mostrar Usuaris</div>
-                   
-                    <div>
-                        <label class="llista text-center">Usuri1</label> <label class="llista2 text-center">Usu1</label>
-                    </div>  
-                    <div>
-                        <label class="llista text-center">Usuri2</label> <label class="llista2 text-center">Usu2</label>
-                    </div> 
-                    <div>
-                        <label class="llista text-center">Usuri3</label> <label class="llista2 text-center">Usu1</label>
-                    </div> 
-                    <div>
-                        <label class="llista text-center">Usuri4</label> <label class="llista2 text-center">Usu1</label>
-                    </div> 
-                    
-                   
-                </div>
+                <div class="text-center darkColor" style="padding: 7px">Gestionar Usuarios</div>
+                <br>  
                 
-      
-
+         </div>      
+        <div class="text-center" id="containerr2">
+            <div style="float: left;" class="   ">
+                    
+                    <div class="text-center darkColor" style="padding: 7px">Mostrar Usuaris</div>
+                   
+                    
+                    @foreach( $arrayUsuaris as $usuaris )
+                    <div>
+                        <label class="llista text-center">{{$usuaris->nomUsuari}}</label>
+                        <label class="llista2 text-center">{{$usuaris->nom}}</label>
+                          <label class="butons text-center">
+                            <button type="button" class="btn btn-default btn-sm">
+                                M
+                             <span class="glyphicon glyphicon-asterisk"></span>
+                            </button>
+                        </label>
+                        <label class="butons text-center">
+                            <button type="button" class="btn btn-default btn-sm">
+                                DB
+                              <span class="glyphicon glyphicon-minus"></span> 
+                            </button>
+                        </label>
+                        <label class="butons text-center">
+                            <a href="{{ url('/CU_47/' . ($usuaris->idUsuari) ) }}">
+                               <button type="button" class="btn btn-default btn-sm">
+                                   DA
+                                <span class="glyphicon glyphicon-remove"></span> 
+                               </button>
+                            </a>
+                        </label>
+                    </div>
+                    
+                    
+                    @endforeach
+                    
+                    
+            </div>
         </div>
+         
+        </div>
+        <div class="text-center" id="containerr2">
+            <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-plus-sign"></span> Crear Usuari
+        </a>
+        </div>
+               
+        
+       
 
         <script src="{{ url('/js/jquery.min.js') }}"></script>
-         Include all compiled plugins (below), or include individual files as needed 
+         <!--Include all compiled plugins (below), or include individual files as needed--> 
         <script src="{{ url('/js/bootstrap.min.js') }}"></script>
     </body>
 </html>
