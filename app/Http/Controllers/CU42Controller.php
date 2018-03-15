@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 
 class CU42Controller extends Controller {
         public function getIndex(){
-            $usuari = Usuari::All();
-             return redirect('CU42');
+//             $usuari = Usuari::All();
+//             return redirect('CU_42');
+//          return view('CU_42');
+             return view('CU_42', array('arrayUsuaris'=>Usuari::all()));
 
 
         }
 }
-
-
-
