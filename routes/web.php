@@ -209,11 +209,11 @@ Route::get('/CU_42','CU42Controller@getIndex');
 //
 //
 //
-// CU47
+// CU47 Aleix Prat i Gloria Taboada
+Route::get('/CU_47/{id}','CU47Controller@getIndex');
 //
 //
-//
-// CU48 Aleix Prat
+// CU48 Aleix Prat i Gloria Taboada
 Route::get('/CU_48','CU48Controller@getIndex');
 //
 //
