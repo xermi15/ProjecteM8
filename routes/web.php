@@ -42,8 +42,9 @@ Route::get('/CU_2', function () {
 Route::get('/consultarLogs','CU_04Controller@consultarLogs');
 //
 // CU05
-//
-//
+//Laia
+Route::get('/buscarDocumentos','CU_05Controller@buscador');
+Route::get('/resultadoBusqueda','CU_05Controller@buscarDocuments');
 //
 // CU06
 //Comentario Javi Millan
