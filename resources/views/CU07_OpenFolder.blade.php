@@ -33,7 +33,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-lock"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-wrench"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
-                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$carpeta->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-name="{{$carpeta->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
             @foreach( $arxius as $key => $document)
@@ -47,7 +47,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-paperclip"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
-                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->idDocument." documento"}}" data-book-name="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
         </table>
@@ -67,7 +67,10 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary btn-danger">Eliminar</button>
+                <form id="modalForm" action="" method="POST" style="display:inline">
+                {{ csrf_field() }}
+                    <button type="button" class="btn btn-primary btn-danger">Eliminar</button>
+                </form>                
               </div>
             </div>
           </div>
@@ -76,7 +79,17 @@
         <script>
             $('#borrarModal').on('show.bs.modal', function(e) {
                 var bookId = $(e.relatedTarget).data('book-id');
-                $('#bookId').text(bookId);
+                var id = bookId.split(" ");
+                var bookName = $(e.relatedTarget).data('book-name');
+                $('#bookId').text(bookName);
+                if(id[1] == "carpeta"){
+                    $('#modalForm').attr('action', 'borrarCarpeta/'+id[0]);
+                }else{
+                    $('#modalForm').attr('action', 'borrarDocumento/'+id[0]);
+                }
+                
             });
+            
+            
         </script>
 @stop
