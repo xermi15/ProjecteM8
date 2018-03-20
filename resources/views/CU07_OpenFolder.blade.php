@@ -69,7 +69,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <form id="modalForm" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
-                    <button type="button" class="btn btn-primary btn-danger">Eliminar</button>
+                <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
                 </form>                
               </div>
             </div>
@@ -83,9 +83,9 @@
                 var bookName = $(e.relatedTarget).data('book-name');
                 $('#bookId').text(bookName);
                 if(id[1] == "carpeta"){
-                    $('#modalForm').attr('action', 'borrarCarpeta/'+id[0]);
+                    $('#modalForm').attr('action', '../borrarCarpeta/'+id[0]);
                 }else{
-                    $('#modalForm').attr('action', 'borrarDocumento/'+id[0]);
+                    $('#modalForm').attr('action', '../borrarDocumento/'+id[0]);
                 }
                 
             });

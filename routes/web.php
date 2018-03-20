@@ -99,7 +99,8 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 // CU19
 //
 // CU20
-// Carlos Gomez y Oscar Robles
+Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
+Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU21
