@@ -16,7 +16,7 @@
                 <div style="text-align: center;">
                     <h5>¿Seguro que desea eliminar este grupo?</h5>
                     
-                    <label for="password">Contraseña: </label>
+                    <label for="password">Contraseña:</label>
                     <input type="password" name="password" id="password" placeholder="Introduzca su contraseña">
                 </div>
 

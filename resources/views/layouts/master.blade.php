@@ -7,7 +7,8 @@
     <script src="{{ url('js/jquery.min.js')}}"></script>
 
     <link href="{{ url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    
+    <!-- ¿En el include de CSS no deberia ser dinamico con el nombre del controlador, 
+    para que cada uno pudiera aplicar cambios de diseño? -->
     <link href="{{ url('css/CU_02.css')}}" rel="stylesheet" type="text/css"/>
     
     <script src="{{ url('js/bootstrap.min.js')}}"></script>

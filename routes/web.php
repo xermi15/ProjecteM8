@@ -39,11 +39,12 @@ Route::get('/CU_2', function () {
 //
 // CU04
 //Laia i Joy
-//
+Route::get('/consultarLogs','CU_04Controller@consultarLogs');
 //
 // CU05
-//
-//
+//Laia
+Route::get('/buscarDocumentos','CU_05Controller@buscador');
+Route::get('/resultadoBusqueda','CU_05Controller@buscarDocuments');
 //
 // CU06
 //Comentario Javi Millan
@@ -98,7 +99,8 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 // CU19
 //
 // CU20
-// Carlos Gomez y Oscar Robles
+Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
+Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU21
@@ -166,16 +168,16 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
-// CU37
+// CU37 Eliminar Grupo (Oscar y Carlos)
 Route::get('CU_37_EliminarGrupo', 'CU_37Controller@getCU_37');
 //
 //
-// CU38
+// CU38 Modificar Grupo (Oscar y Carlos)
+Route::get('CU_38_ModificarGrupo', 'CU_38Controller@getCU_38');
 //
 //
-//
-// CU39
-//
+// CU39 Modificar Membres (Oscar y Carlos)
+//Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
@@ -209,17 +211,17 @@ Route::get('/CU_42','CU42Controller@getIndex');
 //
 //
 //
-// CU47
+// CU47 Aleix Prat i Gloria Taboada
+Route::get('/CU_47/{id}','CU47Controller@getIndex');
 //
 //
-//
-// CU48 Aleix Prat
+// CU48 Aleix Prat i Gloria Taboada
 Route::get('/CU_48','CU48Controller@getIndex');
 //
 //
 //
 // CU49
-//
+Route::get('/filtraLogs','CU_49Controller@filtraLogs');
 //
 //
 // CU50
