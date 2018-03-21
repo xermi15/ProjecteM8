@@ -12,7 +12,17 @@ class CU_07Controller extends Controller {
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
         $arxius = Document::where('idCarpeta', '=', $id)->get();
-        $totesCarpetes = Carpeta::all();
+        //$totesCarpetes = Carpeta::all();
+        $carpetesAll = Carpeta::all();
+        
+        $totesCarpetes = "<ul>";
+        
+        foreach($carpetesAll as $key => $carpeta){
+            $totesCarpetes .= "<li>".$carpeta->nom."</li>";
+        }
+        $totesCarpetes .= "</ul>";
+        
+        
         
         return view('CU07_OpenFolder', compact('carpetes','arxius','totesCarpetes'))->withTitle($id);
     }

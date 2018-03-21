@@ -32,7 +32,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-lock"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-ultimamod="{{$carpeta->dataModificacio}}" data-book-nombre="{{$carpeta->nom}}" data-book-descripcion="{{$carpeta->descripcio}}"><span class="glyphicon glyphicon-wrench"></button></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureCarpetaModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-name="{{$carpeta->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
@@ -135,11 +135,12 @@
                     <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
                   </div>
                   <div class="modal-body">
-                      {{$totesCarpetes}}
+                      <h4>Carpetes:</h4>
+                      <div id="listaCarpeta"></div>
+                      <b>Nom de la carpeta destinatari: </b><input id="nombreMovCarpeta" name="nombreMovCarpeta" type="text" class="form-control">
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-primary btn-success">Crear</button>
 
@@ -180,6 +181,15 @@
                 $('#ultimaModificacio').text(ultimaModificacio);
                 
                 $('#modalFormModificar').attr('action', '../modificarCarpeta/'+id);
+            });
+            
+            $('#moureCarpetaModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var html = $(e.relatedTarget).data('book-name');
+                $('#listaCarpeta').text("");
+                $('#listaCarpeta').append(html);
+                
+                $('#modalFormMoure').attr('action', '../moureCarpeta/'+id);
             });
             
         </script>
