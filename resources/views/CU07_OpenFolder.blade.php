@@ -74,25 +74,28 @@
         </div>
         
         <!-- Modal Crear-->
-        <div class="modal fade" id="crearCarpetaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
-              </div>
-              <div class="modal-body">
-                  Nom<input type="text">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="modalForm" action="" method="POST" style="display:inline">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary btn-success">Crear</button>
-                </form>                
+        <form id="modalFormCrear" action="" method="POST" style="display:inline">
+            <div class="modal fade" id="crearCarpetaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
+                  </div>
+                  <div class="modal-body">
+                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" class="form-control">
+                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" class="form-control"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-success">Crear</button>
+
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+        </form>
         
         <script>
             $('#borrarModal').on('show.bs.modal', function(e) {
@@ -110,7 +113,8 @@
             
             $('#crearCarpetaModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
-                $('#modalForm').attr('action', '../crearCarpeta/'+id);   
+                $('#modalFormCrear').attr('action', '../crearCarpeta/'+id);
             });
+            
         </script>
 @stop
