@@ -21,24 +21,21 @@
         <h5> Email: {{$DadesUsuari->email}}</h5>
         <h5> Dades Postals: {{$DadesUsuari->dadesPostals}}</h5>
         <h5> Data Alta: {{$DadesUsuari->dataAlta}}</h5>
-        <h5> Estat: {{$DadesUsuari->estat}}</h5>
+        <!--<h5> Estat: {{$DadesUsuari->estat}}</h5>-->
         
-        <?php
-        if (($DadesUsuari->estat)==1) {
-            echo "<p> <label>Donat d'alta: </label>Si<p>";
-            echo " ";
-            echo ("<button type='button' class='btn btn-warning'>Cancelar</button>");
-        }
-        elseif (($DadesUsuari->estat)==0) {
-            echo "<p> <label>Donat d'alta: </label>No<p>";
-            echo " ";
-            echo ("<button type='button' class='btn btn-warning'>Donar d'Alta a l'usuari</button>");
-            echo " ";
-            echo ("<button type='button' class='btn btn-warning'>Cancelar</button>");
-        }
-        ?>
-        
-        
+        @if( ($DadesUsuari->estat)==1 )
+             <p> <label>Donat d'alta: </label> Si<p>
+             <p><i>Aquest usuari ja esta donat d'altax</i></p>
+              <a href="{{ url('/CU_42/') }}">
+                  <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
+              </a>
+        @elseif ( ($DadesUsuari->estat)==0 )
+              <p> <label>Donat d'alta: </label> No<p>
+              <button type='button' class='btn btn-info'>Donar d'alta</button>    
+              <a href="{{ url('/CU_42/') }}">
+               <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
+              </a>
+        @endif
             
         </div>
   @stop            
