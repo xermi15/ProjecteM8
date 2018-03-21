@@ -1,22 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Gestionar Usuaris</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <!-- Bootstrap and my style-->
-        <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
+@section('content')
         <link href="{{ url('/css/CU_42.css') }}" rel="stylesheet">
-       
-        
-
-    </head>
-    <body>
         <div id="containerr">
             
                 <div class="text-center darkColor" style="padding: 7px">Gestionar Usuarios</div>
@@ -69,11 +55,5 @@
         </a>
         </div>
                
-        
+@stop    
        
-
-        <script src="{{ url('/js/jquery.min.js') }}"></script>
-         <!--Include all compiled plugins (below), or include individual files as needed--> 
-        <script src="{{ url('/js/bootstrap.min.js') }}"></script>
-    </body>
-</html>

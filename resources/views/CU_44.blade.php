@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 @extends('layouts.master')
 
 @section('content')
@@ -25,14 +25,14 @@
         
         <?php
         if (($DadesUsuari->estat)==1) {
-            echo "<p> <label>Donat d'alta: </label>Si<p>";
+            echo "<p> <label>Donat de baixa: </label>No<p>";
+            echo " ";
+            echo ("<button type='button' class='btn btn-warning'>Donar de baixa a l'usuari</button>");
             echo " ";
             echo ("<button type='button' class='btn btn-warning'>Cancelar</button>");
         }
         elseif (($DadesUsuari->estat)==0) {
-            echo "<p> <label>Donat d'alta: </label>No<p>";
-            echo " ";
-            echo ("<button type='button' class='btn btn-warning'>Donar d'Alta a l'usuari</button>");
+            echo "<p> <label>Donat de baixa </label>Si<p>";
             echo " ";
             echo ("<button type='button' class='btn btn-warning'>Cancelar</button>");
         }
@@ -43,5 +43,6 @@
         </div>
   @stop            
     
-
-      
+               
+        
+       
