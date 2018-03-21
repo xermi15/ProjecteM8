@@ -200,8 +200,8 @@ Route::get('/CU_42','CU42Controller@getIndex');
 //
 //
 //
-// CU44
-//
+// CU44 Gloria Taboada i Aleix Prat
+Route::get('/CU_44/{id}','CU_44Controller@getIndex');
 //
 //
 // CU45
@@ -213,7 +213,7 @@ Route::get('/CU_42','CU42Controller@getIndex');
 //
 //
 // CU47 Aleix Prat i Gloria Taboada
-Route::get('/CU_47/{id}','CU47Controller@getIndex');
+Route::get('/CU_47/{id}','CU_47Controller@getIndex');
 //
 //
 // CU48  Mostrar Usuaris (Oscar y Carlos) 
