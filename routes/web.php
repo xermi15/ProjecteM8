@@ -105,7 +105,7 @@ Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU21
-//
+Route::Post('/moureCarpeta/{id}','CU_21Controller@moverCarpeta');
 //
 //
 // CU22
@@ -190,7 +190,7 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 //
 //
 // CU42 Aleix_Prat
-Route::get('/CU_42','CU42Controller@getIndex');
+Route::get('CU_42','CU42Controller@getIndex');
 //  Route::get('/', function(){
 //      return view("CU_42");
 //  });
