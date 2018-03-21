@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 @extends('layouts.master')
 
 @section('content')
@@ -52,7 +51,7 @@
             </div>
         </div>
          
-        </div>
+        
         <div class="text-center" id="containerr2">
             <a href="#" class="btn btn-info btn-lg">
           <span class="glyphicon glyphicon-plus-sign"></span> Crear Usuari

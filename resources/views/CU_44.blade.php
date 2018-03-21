@@ -31,6 +31,7 @@
               </a>
         @elseif ( ($DadesUsuari->estat)==0 )
               <p> <label>Donat de baixa: </label> Si<p>
+              <p><i>Aquest usuari ja estat donat de baixa</i></p>
               <a href="{{ url('/CU_42/') }}">
                <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>

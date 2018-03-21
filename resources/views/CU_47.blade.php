@@ -25,7 +25,7 @@
         
         @if( ($DadesUsuari->estat)==1 )
              <p> <label>Donat d'alta: </label> Si<p>
-             <p><i>Aquest usuari ja esta donat d'alta</i></p>
+             <p><i>Aquest usuari ja esta donat d'altax</i></p>
               <a href="{{ url('/CU_42/') }}">
                   <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>
