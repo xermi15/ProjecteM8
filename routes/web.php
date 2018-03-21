@@ -109,7 +109,7 @@ Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU22
-//
+Route::Post('/modificarCarpeta/{id}', 'CU_22Controller@modificarCarpeta');
 //
 //
 // CU23
@@ -216,8 +216,8 @@ Route::get('/CU_42','CU42Controller@getIndex');
 Route::get('/CU_47/{id}','CU47Controller@getIndex');
 //
 //
-// CU48 Aleix Prat i Gloria Taboada
-Route::get('/CU_48','CU48Controller@getIndex');
+// CU48  Mostrar Usuaris (Oscar y Carlos) 
+Route::get('/CU_48_MostrarUsuaris','CU_48Controller@getIndex');
 //
 //
 //
