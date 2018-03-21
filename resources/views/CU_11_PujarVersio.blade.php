@@ -13,12 +13,11 @@
 				</h3>
 			</div>
 			<div class="panel-body" style="padding:30px">
-				<form method="POST" enctype="multipart/form-data"
-                                      action="{{url('/pujarVersio')}}">
+				<form method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     
                                     <input hidden name="id" value="{{$document->idDocument}}">
-                                    <input hidden name="versioOld" value="{{$document->versioInterna}}">
+                                    <!-- <input hidden name="versioOld" value="{{$document->versioInterna}}"> -->
                                     
                                     <div class="form-group">
                                         <label for="title">Nom del arxiu</label>
@@ -36,8 +35,8 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                            <label for="synopsis">Versió (Deshabilitat)</label>
-                                    <textarea name="ver" id="ver" class="form-control" disabled></textarea>
+                                            <label for="synopsis">Versió</label>
+                                            <input pattern="^[0-9]*(\.[0-9]+)*$" type="text" name="ver" id="ver" class="form-control">
                                     </div>
                                     
                                     <div class="form-group text-center">
