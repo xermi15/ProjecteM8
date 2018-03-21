@@ -39,11 +39,12 @@ Route::get('/CU_2', function () {
 //
 // CU04
 //Laia i Joy
-//
+Route::get('/consultarLogs','CU_04Controller@consultarLogs');
 //
 // CU05
-//
-//
+//Laia
+Route::get('/buscarDocumentos','CU_05Controller@buscador');
+Route::get('/resultadoBusqueda','CU_05Controller@buscarDocuments');
 //
 // CU06
 //Comentario Javi Millan
@@ -56,20 +57,21 @@ Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
-Route::get('/CU_08', 'CU_08Controller@getPujarDoc');
+Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
-Route::post('/CU_08','CU_08Controller@postPujarDoc');
+Route::post('/pujarDocument','CU_08Controller@postPujarDoc');
 // CU09
 //
 //
 //
 // CU11
-//
-//
-//
+Route::get('/pujarVersio/{id}/{versio}','CU_11Controller@getPujarVersio');
+
+Route::post('/pujarVersio','CU_11Controller@postPujarVersio');
 // CU12
 //
-//
+Route::get('/CU12_URL', 'CU12_urlController@generaURL');
+
 //
 // CU13
 //
@@ -98,19 +100,20 @@ Route::post('/CU_08','CU_08Controller@postPujarDoc');
 // CU19
 //
 // CU20
-// Carlos Gomez y Oscar Robles
+Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
+Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU21
-//
+Route::Post('/moureCarpeta/{id}','CU_21Controller@moverCarpeta');
 //
 //
 // CU22
-//
+Route::Post('/modificarCarpeta/{id}', 'CU_22Controller@modificarCarpeta');
 //
 //
 // CU23
-//
+Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 // CU24
@@ -197,8 +200,8 @@ Route::get('CU_42','CU42Controller@getIndex');
 //
 //
 //
-// CU44
-//
+// CU44 Gloria Taboada i Aleix Prat
+Route::get('/CU_44/{id}','CU_44Controller@getIndex');
 //
 //
 // CU45
@@ -209,17 +212,17 @@ Route::get('CU_42','CU42Controller@getIndex');
 //
 //
 //
-// CU47
+// CU47 Aleix Prat i Gloria Taboada
+Route::get('/CU_47/{id}','CU_47Controller@getIndex');
 //
 //
-//
-// CU48 Aleix Prat
-Route::get('/CU_48','CU48Controller@getIndex');
+// CU48  Mostrar Usuaris (Oscar y Carlos) 
+Route::get('/CU_48_MostrarUsuaris','CU_48Controller@getIndex');
 //
 //
 //
 // CU49
-//
+Route::get('/filtraLogs','CU_49Controller@filtraLogs');
 //
 //
 // CU50

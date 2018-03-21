@@ -20,7 +20,10 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li>
-              <a href="#">Link</a>
+              <a href="#">Editar perfil</a>
+            </li>
+            <li>
+              <a href="#">Logout</a>
             </li>
           </ul>
             <!--
@@ -38,9 +41,9 @@
         </div>
     </nav>
     <div id="mySidenav" class="sidenav">
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
+        <a href="#">Personal</a>
+        <a href="#">Workflows</a>
+        <a href="#">Notificacions</a>
         <a href="#">Contact</a>
     </div>
     <script>
