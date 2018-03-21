@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CU42Controller extends Controller {
         public function getIndex(){
             $usuari = Usuari::All();
-             return redirect('CU42');
+             return redirect('CU_42');
 
 
         }
