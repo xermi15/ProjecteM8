@@ -97,33 +97,56 @@
             </div>
         </form>
         
-        <!-- Modal Eliminar-->
+        <!-- Modal Modificar-->
         <form id="modalFormModificar" action="" method="POST" style="display:inline">
-        <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Eliminar</h4>
-              </div>
-              <div class="modal-body">
-                  <b>Nombre: </b></br>
-                  <input id="nombreInput" name="nombreInput" type="text" class="form-control"> </br>
-                  <b>Descripció: </b></br>
-                  <textarea id="descripcionInput" name="descripcioInput" class="form-control" rows="4"></textarea></br>
-                  <b>Propietari: </b></br>
-                  <p id="propietari">Ningú</p>
-                  <b>Modificat per: </b></br>
-                  <p id="modificatPer">Ningú</p>
-                  <b>Ultima modificacio: </b></br>
-                  <p id="ultimaModificacio">No s'ha modificat</p>
-              </div>
-              <div class="modal-footer" style="text-align: center">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary btn-success">Guardar</button>
+            <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Eliminar</h4>
+                  </div>
+                  <div class="modal-body">
+                      <b>Nombre: </b></br>
+                      <input id="nombreInput" name="nombreInput" type="text" class="form-control"> </br>
+                      <b>Descripció: </b></br>
+                      <textarea id="descripcionInput" name="descripcioInput" class="form-control" rows="4"></textarea></br>
+                      <b>Propietari: </b></br>
+                      <p id="propietari">Ningú</p>
+                      <b>Modificat per: </b></br>
+                      <p id="modificatPer">Ningú</p>
+                      <b>Ultima modificacio: </b></br>
+                      <p id="ultimaModificacio">No s'ha modificat</p>
+                  </div>
+                  <div class="modal-footer" style="text-align: center">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-success">Guardar</button>
+                  </div>
+                </div>
+              </div>    
+            </div>
+        </form>
+        
+        <!-- Modal Moure-->
+        <form id="modalFormMoure" action="" method="POST" style="display:inline">
+            <div class="modal fade" id="moureCarpetaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
+                  </div>
+                  <div class="modal-body">
+                      {{$totesCarpetes}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-success">Crear</button>
+
+                  </div>
+                </div>
               </div>
             </div>
-          </div>    
-        </div>
         </form>
         
         <script>
