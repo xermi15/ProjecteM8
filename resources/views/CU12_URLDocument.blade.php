@@ -14,7 +14,7 @@
     <body>
         <div id="newURL">
             <div class="text-center darkColor">URL</div>
-            <form id="URL" name="URL" class="form-horizontal" method="POST" action="">
+            <form id="URL" name="URL" class="form-horizontal" method="GET" action="">
                 <div class="controls">
                     {{ csrf_field() }}                 
                         <div class="col-sm-9">
