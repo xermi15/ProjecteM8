@@ -26,15 +26,17 @@
                             </button>
                         </label>
                         <label class="butons text-center">
-                            <button type="button" class="btn btn-default btn-sm">
-                                DB
-                              <span class="glyphicon glyphicon-minus"></span> 
-                            </button>
+                            <a href="{{ url('/CU_44/' . ($usuaris->idUsuari) ) }}">
+                               <button type="button" class="btn btn-default btn-sm">
+                                   B
+                                <span class="glyphicon glyphicon-minus"></span> 
+                               </button>
+                            </a>
                         </label>
                         <label class="butons text-center">
                             <a href="{{ url('/CU_47/' . ($usuaris->idUsuari) ) }}">
                                <button type="button" class="btn btn-default btn-sm">
-                                   DA
+                                   A
                                 <span class="glyphicon glyphicon-remove"></span> 
                                </button>
                             </a>

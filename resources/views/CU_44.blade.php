@@ -22,8 +22,9 @@
         <h5> Dades Postals: {{$DadesUsuari->dadesPostals}}</h5>
         <h5> Data Alta: {{$DadesUsuari->dataAlta}}</h5>
         <h5> Estat: {{$DadesUsuari->estat}}</h5>
-        
+        @if( ($DadesUsuari->estat)==false )
         <?php
+        
         if (($DadesUsuari->estat)==1) {
             echo "<p> <label>Donat de baixa: </label>No<p>";
             echo " ";
