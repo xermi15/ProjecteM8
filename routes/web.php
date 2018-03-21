@@ -57,17 +57,17 @@ Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
-Route::get('/CU_08', 'CU_08Controller@getPujarDoc');
+Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
-Route::post('/CU_08','CU_08Controller@postPujarDoc');
+Route::post('/pujarDocument','CU_08Controller@postPujarDoc');
 // CU09
 //
 //
 //
 // CU11
-//
-//
-//
+Route::get('/pujarVersio/{id}/{versio}','CU_11Controller@getPujarVersio');
+
+Route::post('/pujarVersio','CU_11Controller@postPujarVersio');
 // CU12
 //
 //
