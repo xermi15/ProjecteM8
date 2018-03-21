@@ -108,7 +108,7 @@ Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU22
-//
+Route::Post('/modificarCarpeta/{id}', 'CU_22Controller@modificarCarpeta');
 //
 //
 // CU23
