@@ -112,7 +112,7 @@ Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU23
-//
+Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 // CU24

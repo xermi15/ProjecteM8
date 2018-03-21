@@ -3,8 +3,8 @@
 @section('content')
         <table class="table">
             <tr>
-                <td class="col-md-6"><span class="glyphicon glyphicon-plus"></span>Crear Carpeta</td>
-                <td class="col-md-6"><span class="glyphicon glyphicon-circle-arrow-up"></span>Subir Documento</td>
+                <td class="col-md-6"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearCarpetaModal" data-book-id="{{$title}}"><span class="glyphicon glyphicon-plus"></span><p style="display:inline; margin-left: 5px">Crear Carpeta</p></button></td>
+                <td class="col-md-6"><span class="glyphicon glyphicon-circle-arrow-up"></span>Pujar Document</td>
             </tr>
             <tr>
                 <td class="col-md-6">
@@ -52,15 +52,12 @@
             @endforeach
         </table>
 
-        <!-- Modal -->
+        <!-- Modal Eliminar-->
         <div class="modal fade" id="borrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Eliminar</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
               <div class="modal-body">
                   Seguro que desea eliminar <b><p id="bookId" style="display: inline-block"></p></b>?
@@ -70,6 +67,27 @@
                 <form id="modalForm" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
+                </form>                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal Crear-->
+        <div class="modal fade" id="crearCarpetaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
+              </div>
+              <div class="modal-body">
+                  Nom<input type="text">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="modalForm" action="" method="POST" style="display:inline">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-primary btn-success">Crear</button>
                 </form>                
               </div>
             </div>
@@ -90,6 +108,9 @@
                 
             });
             
-            
+            $('#crearCarpetaModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                $('#modalForm').attr('action', '../crearCarpeta/'+id);   
+            });
         </script>
 @stop
