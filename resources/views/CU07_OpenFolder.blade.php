@@ -103,7 +103,7 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Eliminar</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Modificar Carpeta</h4>
                   </div>
                   <div class="modal-body">
                       <b>Nombre: </b></br>
@@ -132,7 +132,7 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Moure Carpeta</h4>
                   </div>
                   <div class="modal-body">
                       <h4>Carpetes:</h4>
@@ -142,7 +142,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     {{ csrf_field() }}
-                    <button type="submit" class="btn btn-primary btn-success">Crear</button>
+                    <button type="submit" class="btn btn-primary btn-info">Mover</button>
 
                   </div>
                 </div>
