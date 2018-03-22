@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@notification()
         <table class="table">
             <tr>
                 <td class="col-md-6"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearCarpetaModal" data-book-id="{{$title}}"><span class="glyphicon glyphicon-plus"></span><p style="display:inline; margin-left: 5px">Crear Carpeta</p></button></td>
