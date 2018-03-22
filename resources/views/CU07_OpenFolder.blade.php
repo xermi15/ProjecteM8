@@ -33,7 +33,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-lock"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-ultimamod="{{$carpeta->dataModificacio}}" data-book-nombre="{{$carpeta->nom}}" data-book-descripcion="{{$carpeta->descripcio}}"><span class="glyphicon glyphicon-wrench"></button></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureCarpetaModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-name="{{$carpeta->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
@@ -98,33 +98,57 @@
             </div>
         </form>
         
-        <!-- Modal Eliminar-->
+        <!-- Modal Modificar-->
         <form id="modalFormModificar" action="" method="POST" style="display:inline">
-        <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Eliminar</h4>
-              </div>
-              <div class="modal-body">
-                  <b>Nombre: </b></br>
-                  <input id="nombreInput" name="nombreInput" type="text" class="form-control"> </br>
-                  <b>Descripció: </b></br>
-                  <textarea id="descripcionInput" name="descripcioInput" class="form-control" rows="4"></textarea></br>
-                  <b>Propietari: </b></br>
-                  <p id="propietari">Ningú</p>
-                  <b>Modificat per: </b></br>
-                  <p id="modificatPer">Ningú</p>
-                  <b>Ultima modificacio: </b></br>
-                  <p id="ultimaModificacio">No s'ha modificat</p>
-              </div>
-              <div class="modal-footer" style="text-align: center">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary btn-success">Guardar</button>
+            <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Modificar Carpeta</h4>
+                  </div>
+                  <div class="modal-body">
+                      <b>Nombre: </b></br>
+                      <input id="nombreInput" name="nombreInput" type="text" class="form-control"> </br>
+                      <b>Descripció: </b></br>
+                      <textarea id="descripcionInput" name="descripcioInput" class="form-control" rows="4"></textarea></br>
+                      <b>Propietari: </b></br>
+                      <p id="propietari">Ningú</p>
+                      <b>Modificat per: </b></br>
+                      <p id="modificatPer">Ningú</p>
+                      <b>Ultima modificacio: </b></br>
+                      <p id="ultimaModificacio">No s'ha modificat</p>
+                  </div>
+                  <div class="modal-footer" style="text-align: center">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-success">Guardar</button>
+                  </div>
+                </div>
+              </div>    
+            </div>
+        </form>
+        
+        <!-- Modal Moure-->
+        <form id="modalFormMoure" action="" method="POST" style="display:inline">
+            <div class="modal fade" id="moureCarpetaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Moure Carpeta</h4>
+                  </div>
+                  <div class="modal-body">
+                      <h4>Carpetes:</h4>
+                      <div id="listaCarpeta"></div>
+                      <b>Nom de la carpeta destinatari: </b><input id="nombreMovCarpeta" name="nombreMovCarpeta" type="text" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-info">Mover</button>
+
+                  </div>
+                </div>
               </div>
             </div>
-          </div>    
-        </div>
         </form>
         
         <script>
@@ -158,6 +182,15 @@
                 $('#ultimaModificacio').text(ultimaModificacio);
                 
                 $('#modalFormModificar').attr('action', '../modificarCarpeta/'+id);
+            });
+            
+            $('#moureCarpetaModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var html = $(e.relatedTarget).data('book-name');
+                $('#listaCarpeta').text("");
+                $('#listaCarpeta').append(html);
+                
+                $('#modalFormMoure').attr('action', '../moureCarpeta/'+id);
             });
             
         </script>
