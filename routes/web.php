@@ -194,16 +194,18 @@ Route::get('CU_42', 'CU42Controller@getIndex');
 //  Route::post('/CU42Controller',"CU42Controller@getIndex")
 //
 // CU43
-//
-//
+Route::get('/CU_43', 'CU_43Controller@mostraUsuari');
+//Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
+Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44 Gloria Taboada i Aleix Prat
 Route::get('/CU_44/{id}', 'CU_44Controller@getIndex');
 //
 //
 // CU45
-//
-//
+Route::get('/CU_45', 'CU_45Controller@mostraUsuari');
+//Route::post('/modUser/{id}', 'CU_45Controller@modificarUsuari');
+Route::post('/modUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
 //
