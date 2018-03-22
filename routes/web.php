@@ -22,11 +22,8 @@ Route::get('/CU01_login', function () {
 });
 
 Route::post('/CU01_login', "CU01_loginController@login");
-    //return "comprovant usuari";//view('CU01_login');
+//return "comprovant usuari";//view('CU01_login');
 //});
-
-
-
 //
 //
 // CU02
@@ -39,12 +36,12 @@ Route::get('/CU_2', function () {
 //
 // CU04
 //Laia i Joy
-Route::get('/consultarLogs','CU_04Controller@consultarLogs');
+Route::get('/consultarLogs', 'CU_04Controller@consultarLogs');
 //
 // CU05
 //Laia
-Route::get('/buscarDocumentos','CU_05Controller@buscador');
-Route::get('/resultadoBusqueda','CU_05Controller@buscarDocuments');
+Route::get('/buscarDocumentos', 'CU_05Controller@buscador');
+Route::get('/resultadoBusqueda', 'CU_05Controller@buscarDocuments');
 //
 // CU06
 //Comentario Javi Millan
@@ -53,21 +50,21 @@ Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
 Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
 //
 // CU07
-Route::get('/abrirCarpeta/{id}','CU_07Controller@abrirCarpeta');
+Route::get('/abrirCarpeta/{id}', 'CU_07Controller@abrirCarpeta');
 //
 //
 // CU08
 Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
-Route::post('/pujarDocument','CU_08Controller@postPujarDoc');
+Route::post('/pujarDocument', 'CU_08Controller@postPujarDoc');
 // CU09
 //
 //
 //
 // CU11
-Route::get('/pujarVersio/{id}','CU_11Controller@getPujarVersio');
+Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 
-Route::post('/pujarVersio/{id}','CU_11Controller@postPujarVersio');
+Route::post('/pujarVersio/{id}', 'CU_11Controller@postPujarVersio');
 // CU12
 //
 Route::get('/CU12_URL', 'CU12_urlController@generaURL');
@@ -105,7 +102,7 @@ Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
 //
 //
 // CU21
-Route::Post('/moureCarpeta/{id}','CU_21Controller@moverCarpeta');
+Route::Post('/moureCarpeta/{id}', 'CU_21Controller@moverCarpeta');
 //
 //
 // CU22
@@ -125,8 +122,8 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 // CU26
-//Jorge & Issam 
- Route::get('/CU_26', 'CU_26Controller@getIndex');
+//Jorge & Issam
+Route::get('/CU_26', 'CU_26Controller@getIndex');
 //});
 //
 //
@@ -190,7 +187,7 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 //
 //
 // CU42 Aleix_Prat
-Route::get('CU_42','CU42Controller@getIndex');
+Route::get('CU_42', 'CU42Controller@getIndex');
 //  Route::get('/', function(){
 //      return view("CU_42");
 //  });
@@ -201,7 +198,7 @@ Route::get('CU_42','CU42Controller@getIndex');
 //
 //
 // CU44 Gloria Taboada i Aleix Prat
-Route::get('/CU_44/{id}','CU_44Controller@getIndex');
+Route::get('/CU_44/{id}', 'CU_44Controller@getIndex');
 //
 //
 // CU45
@@ -213,27 +210,25 @@ Route::get('/CU_44/{id}','CU_44Controller@getIndex');
 //
 //
 // CU47 Aleix Prat i Gloria Taboada
-Route::get('/CU_47/{id}','CU_47Controller@getIndex');
+Route::get('/CU_47/{id}', 'CU_47Controller@getIndex');
 //
 //
-// CU48  Mostrar Usuaris (Oscar y Carlos) 
-Route::get('/CU_48_MostrarUsuaris','CU_48Controller@getIndex');
+// CU48  Mostrar Usuaris (Oscar y Carlos)
+Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 //
 //
 // CU49
-Route::get('/filtraLogs','CU_49Controller@filtraLogs');
+Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
 //
 //
 // CU50
 //Jorge & Issam
-Route::get('/CU_50','CU_50Controller@getIndex');
+Route::get('/CU_50', 'CU_50Controller@getIndex');
 //
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');
-Route::get('/CU_45', 'CU_45Controller@mostraUsuari');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
-Route::post('/modUser/{id}', 'CU_45Controller@modificarUsuari');
 
 //
 // feina addicional
