@@ -12,7 +12,7 @@
             
         </style>
     </head>
-    <body>{{$id =1}}
+    <body>{{$id =$_SESSION['idUsuari']}}
         <div class="container">
             <h2>Mi perfil</h2>
         <form action="edit/{{$id}}" method="POST">
