@@ -12,7 +12,8 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');   //comentat per Fede 23/03/2018
+    return view('CU01_login');  //afegit per Fede 23/03/2018
 });
 
 // CU01
