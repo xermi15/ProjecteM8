@@ -7,14 +7,17 @@ use App\Usuari;
 
 class CU06Controller extends Controller
 {
-    public function getEditarPerfil($id)
+    
+    public function getEditarPerfil()
     {
-        return view('CU06_EditarPerfil',array('usuari'=> Usuari::find($id)));
+        session_start();
+        return view('CU06_EditarPerfil',array('usuari'=> Usuari::find($_SESSION['idUsuari'])));
     }
     
-    public function editarPerfilEdit(Request $request,$id)
+    public function editarPerfilEdit(Request $request)
     {   
-        $user = Usuari::find($id);
+        session_start();
+        $user = Usuari::find($_SESSION['idUsuari']);
         $user->nomUsuari = $request->nomUsuari;
         if (strlen($request->contrasenya)>0):
             $user->contrasenya = $request->contrasenya;
@@ -24,6 +27,6 @@ class CU06Controller extends Controller
         $user->email = $request->email;
         $user->dadesPostals = $request->dadesPostals;
         $user->save();
-        return redirect('editarPerfil/'.$id);
+        return redirect(url('/abrirCarpeta/root'));
     }
 }
