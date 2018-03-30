@@ -182,8 +182,8 @@ Route::get('CU_38_ModificarGrupo', 'CU_38Controller@getCU_38');
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 //
 //
-// CU41
-//
+// CU41 Motrar Grups (Oscar y Carlos)
+Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 // CU42 Aleix_Prat

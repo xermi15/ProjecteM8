@@ -4,10 +4,6 @@
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
-<!--------------------         FALTA INCLUIR CU_41 - MOSTRAR GRUPOS   --------------------------->
-
-
-
 @extends('layouts.master')
 
 @section('content')
@@ -16,39 +12,16 @@
         <div class="form-group">
             <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
                 <thead>
-                <tr>
-                    <th style="text-align: center;">Gestionar grupos</th> 
-                </tr>
+                    <tr>
+                        <th style="text-align: center;">Gestionar grups</th> 
+                    </tr>
                 </thead>
             </table>
               
         </div>
             @include('CU_40_CrearGrupo')
        
-          <table style="text-align: center;" class="table table-condensed table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th style="text-align: center;">Nombre</th>
-                  <th style="text-align: center;">Miembros</th>
-                  <th style="text-align: center;">Opciones</th>  
- 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach( $arrayGrupos as $key => $grupo )
-                <tr>
-                    <td>{{$grupo['nombre']}}</td>
-                    <td>{{$grupo['miembros']}}</td>
-                    <td>
-                        @include('CU_38_ModificarGrupo')
-                        @include('CU_37_EliminarGrupo')
-                        <a class="glyphicon glyphicon-circle-arrow-right" href="" ></a>
-                    </td>
-                </tr>
-                
-            </tbody>
-            @endforeach
-        </table>
+            @include('CU_41_MostrarGrups')
     </div>
 </div>
 @stop
