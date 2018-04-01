@@ -29,9 +29,9 @@
                                 <div class="form-group">
                                     <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
                                         <thead>
-                                        <tr>
-                                            <th style="text-align: center;">Selecciona els usuaris</th> 
-                                        </tr>
+                                            <tr>
+                                                <th style="text-align: center;">Selecciona els usuaris</th> 
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
@@ -43,17 +43,8 @@
                                 <label for="usuarios_grupo" class="ui-hidden-accessible"></label>
                                 <input type="text" name="usuarios_grupo" id="usuarios_grupo" placeholder="Usuaris del grup">
                                 
-                                <div>
-                                    
-                                    
-                                    
-                                    
-                                    <!-- array recorre usuarios -->
-                                
-                                
-                                
-                                
-                                </div>    
+                                @include('CU_39_ModificarMembres')
+                                   
                             </div>
                         </form>
                     </div>

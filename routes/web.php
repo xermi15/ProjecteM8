@@ -175,7 +175,7 @@ Route::get('CU_38_ModificarGrupo', 'CU_38Controller@getCU_38');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
-//Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
+Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)

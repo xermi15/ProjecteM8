@@ -35,17 +35,7 @@
                                     </table>
 
                                 </div>
-                                <div>
-                                    
-                                    
-                                    
-                                    
-                                    <!-- array recorre usuarios -->
-                                
-                                
-                                
-                                
-                                </div>    
+                                @include('CU_39_ModificarMembres')  
                             </div>
                         </form>
                     </div>
