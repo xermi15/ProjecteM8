@@ -11,6 +11,16 @@
   |
  */
 
+/*
+ * Para poder ejecutar el metodo que se encarga de mostrar si existen notificaciones, sea cual sea la vista
+ * Incluyolas class Workflow, la declaro y llamo al metodo correspondiente.
+ * Lo hice en este archivo ya que es comun para todos.
+ */
+use App\Workflow;
+$Workflow = new Workflow();
+$Workflow->NotificacionWorkflow();
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -235,5 +245,3 @@ Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 //
 // feina addicional
 
-
-// mes proves
