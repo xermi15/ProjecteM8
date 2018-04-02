@@ -79,7 +79,7 @@ Route::get('/CU12_URL', 'CU12_urlController@generaURL');
 //
 //
 // CU15
-//
+Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromocionarVersio');
 //
 //
 // CU16
