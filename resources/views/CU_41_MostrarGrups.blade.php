@@ -11,19 +11,24 @@
             <!--recorre grupos-->
             @foreach( $grups as $grup )
                 <tr>
-                    <td>{{ $grup->idGrup }}</td>
+                    <td>{{ $grup->nom }}</td>
                     <!-- recorre usuarisGrup -->
+                    <td>
                     @foreach( $usuariGrups as $usuariGrup )
                         <!-- recorre usuaris -->
+                        
                         @foreach( $usuaris as $usuari )
                             <!-- si idGrups = idGrups(usuariGrups) y idUsuari = idUsuari(usuariGrups) imprime el id de ese usuario-->
-                            @if({{ $grup->idGrup }}==={{ $usuariGrup->idGrup }})
-                                @if({{ $usuari->idUsuari }}==={{ $usuariGrup->idUsuari }})
-                                    <td>{{ $usuari->idUsuari }}</td>
+                            @if( $grup->idGrup === $usuariGrup->idGrup )
+                            
+                                @if( $usuari->idUsuari === $usuariGrup->idUsuari )
+                                    {{ $usuari->nomUsuari }}
                                 @endif
                             @endif
                         @endforeach
+                        
                     @endforeach
+                    </td>
                     <td>
                         @include('CU_38_ModificarGrupo')
                         @include('CU_37_EliminarGrupo')

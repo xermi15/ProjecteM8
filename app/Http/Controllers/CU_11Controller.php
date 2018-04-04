@@ -58,8 +58,12 @@ class CU_11Controller extends Controller
         $novaVersio->path = $savePath;
         
         $novaVersio->save();
-
-        return 'Pujada de versió exitosa';
+        
+        $carpeta = 1; //Valor per defecte
+        if(isset($_SESSION['carpetaActual'])){
+            $carpeta = $_SESSION['carpetaActual'];
+        }
+        return redirect('abrirCarpeta/'.$carpeta);
         //return view("welcome");
     }
 }
