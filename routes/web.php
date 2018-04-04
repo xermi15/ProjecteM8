@@ -16,9 +16,9 @@
  * Incluyolas class Workflow, la declaro y llamo al metodo correspondiente.
  * Lo hice en este archivo ya que es comun para todos.
  */
-use App\Workflow;
-$Workflow = new Workflow();
-$Workflow->NotificacionWorkflow();
+// fede 04/04/2018 use App\Workflow;
+// fede 04/04/2018 $Workflow = new Workflow();
+// fede 04/04/2018 $Workflow->NotificacionWorkflow();
 
 
 Route::get('/', function () {
