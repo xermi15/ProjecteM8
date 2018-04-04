@@ -4,10 +4,6 @@
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
-<!--------------------         FALTA INCLUIR CU_41 - MOSTRAR GRUPOS   --------------------------->
-
-
-
 @extends('layouts.master')
 
 @section('content')
@@ -24,29 +20,39 @@
               
         </div>
        
-          <table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nom de Usuari</th>
-				<th>Nom</th>
-				<th>Cognoms</th>
-			</tr>
-		</thead>
-			<tbody>
-				@foreach($users as $user)
-					<tr>
-						<td>{{ $user->idUsuari }}</td>
-						<td>{{ $user->nomUsuari }}</td>
-						<td>{{ $user->nom }}</td>
-						<td>{{ $user->cognoms }}</td>
-						</td>
-					</tr>
-				@endforeach
+        <!-- SOLO DEBERIA INCLUIR LA TABLA, el resto es el CU_42 -->
+        
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de Usuari</th>
+                    <th>Nom</th>
+                    <th>Cognoms</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->idUsuari }}</td>
+                        <td>{{ $user->nomUsuari }}</td>
+                        <td>{{ $user->nom }}</td>
+                        <td>{{ $user->cognoms }}</td>
+                    </tr>
+                @endforeach
 
-			</tbody>
+            </tbody>
 
-	</table>
+        </table>
+        
+        <!--                                      -->
+        
+        
+        
+        
+        
+        
     </div>
 </div>
 @stop

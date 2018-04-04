@@ -11,6 +11,7 @@ class CU01_loginController extends Controller
 {
     //
     function login(Request $request){
+        session_start();
         //return $request->input('user') . "----" . $request->input('password');
         $resultat = Usuari::where('nomUsuari', '=', $request->input('user'))->where('contrasenya', '=', $request->input('password'))->get();
         //return $resultat;

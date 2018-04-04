@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-inverse navbar-static-top" id="topNavBar">
+<nav class="navbar navbar-inverse navbar-static-top" id="topNavBar">
         
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li>
-              <a href="#">Editar perfil</a>
+              <a href="{{url('/editarPerfil/')}}">Editar perfil</a>
             </li>
             <li>
               <a href="#">Logout</a>
