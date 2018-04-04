@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 <div data-role="main" class="ui-content">
     <a href="#myPopup3" data-rel="popup" class="glyphicon glyphicon-trash"></a>
     
@@ -24,6 +29,9 @@
                     <div style="width: 50%; display: flex; justify-content: center; float: left;">
                         <input type="submit" data-inline="true" value="Acceptar">
                     </div>
+                    s
+                    $grup->delete();
+                    
                     <div style="width: 50%; display: flex; justify-content: center; float: right;">
                         <input type="submit" data-inline="true" value="Cancelar">
                     </div>
