@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <label for="title">Nombre</label>
-                        <input type="text" name="nomPlantilla" id="año">
+                        <input type="text" name="nomPlantilla" id="nom">
                     </div>
 
                     <div class="form-group">
