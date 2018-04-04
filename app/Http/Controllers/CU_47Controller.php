@@ -10,7 +10,7 @@ class CU_47Controller extends Controller {
              return view('CU_47', array('DadesUsuari'=>Usuari::findOrFail($id)));
         }
         
-        public function putRent($id) {
+        public function putSi($id) {
             echo $id;
             $retu = Usuari::findOrFail($id);
             $retu->estat = 1;
@@ -18,7 +18,7 @@ class CU_47Controller extends Controller {
            // Notification::success("sa modificat correctament");
             return redirect()->action('CU42Controller@getIndex');
          } 
-
-
+         
+         
         
 }
