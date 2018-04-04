@@ -210,6 +210,7 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44 Gloria Taboada i Aleix Prat
 Route::get('/CU_44/{id}', 'CU_44Controller@getIndex');
+Route::put('/CU_44/{id}', 'CU_44Controller@putNo');
 //
 //
 // CU45
