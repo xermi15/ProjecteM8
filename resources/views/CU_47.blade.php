@@ -31,7 +31,16 @@
               </a>
         @elseif ( ($DadesUsuari->estat)==0 )
               <p> <label>Donat d'alta: </label> No<p>
-              <button type='button' class='btn btn-info'>Donar d'alta</button>    
+              
+              <form action="{{action('CU_47Controller@putRent', $DadesUsuari->id)}}" 
+                method="POST" style="display:inline">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-info" style="display:inline">
+                    Donar d'alta
+                </button>
+               </form>
+              
               <a href="{{ url('/CU_42/') }}">
                <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>
