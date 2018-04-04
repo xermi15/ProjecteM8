@@ -32,7 +32,7 @@
         @elseif ( ($DadesUsuari->estat)==0 )
               <p> <label>Donat d'alta: </label> No<p>
               
-              <form action="{{action('CU_47Controller@putRent', $DadesUsuari->id)}}" 
+              <form action="{{action('CU_47Controller@putRent', $DadesUsuari->idUsuari)}}" 
                 method="POST" style="display:inline">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
