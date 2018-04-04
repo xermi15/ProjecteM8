@@ -167,7 +167,7 @@ Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrupo', 'CU_37Controller@getCU_37');
+Route::get('CU_37_EliminarGrupo{id}', 'CU_37Controller@getCU_37');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
