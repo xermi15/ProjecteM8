@@ -25,7 +25,16 @@
         
         @if( ($DadesUsuari->estat)==1 )
              <p> <label>Donat de baixa: </label> No<p>
-              <button type='button' class='btn btn-info'>Donar de baixa</button>
+              
+            <form action="{{action('CU_44Controller@putNo', $DadesUsuari->idUsuari)}}" 
+                method="POST" style="display:inline">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-info" style="display:inline">
+                    Donar de baixa
+                </button>
+            </form>
+              
               <a href="{{ url('/CU_42/') }}">
                   <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>
