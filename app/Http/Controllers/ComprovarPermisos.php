@@ -9,8 +9,9 @@ use App\UsuariGrup;
 
 class ComprovarPermisos extends Controller {
 
-    public function comprovarPermis($idCarpeta) {
+    public function comprovarPermis($idCarpeta){
         session_start();
+        if ($idCarpeta=="root") return 'w';
         $grupos = UsuariGrup::where('idUsuari', $_SESSION['idUsuari'])->get();
         $permisoMAX='-';
         foreach ($grupos as $valor) {
