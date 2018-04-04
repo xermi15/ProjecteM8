@@ -31,6 +31,7 @@ class CU_11Controller extends Controller
         
         foreach ($ultimaVersio as $doc) {
             $doc->vigent = false;
+            $doc->save();
         }
         
         $ultimaVersio = $ultimaVersio->first()->versioInterna;
