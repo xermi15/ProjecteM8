@@ -29,19 +29,20 @@ class CU_08Controller extends Controller
         
         //$tmp = str_split($request->input('arxiu'));
         
-        $tmp = $_SESSION['idUsuari'];
-        if(isset($tmp)){
-            $nouDoc->idusuariCreacio = $tmp;
+        
+        if(isset($_SESSION['idUsuari'])){
+            $nouDoc->idusuariCreacio = $_SESSION['idUsuari'];
         }
-        $tmp = $_SESSION['carpetaActual'];
-        if(isset($tmp)){
-            $nouDoc->idCarpeta = $tmp;
+        $carpeta = 1; //Valor per defecte
+        if(isset($_SESSION['carpetaActual'])){
+            $carpeta = $_SESSION['carpetaActual'];
+            $nouDoc->idCarpeta = $_SESSION['carpetaActual'];
         }
             
         
         $nouDoc->save();
         
-        return redirect('abrirCarpeta/'.tmp);
+        return redirect('abrirCarpeta/'.$carpeta);
         
         //$nouDoc->
         //return redirect()('/CU_07');
