@@ -10,9 +10,9 @@ use App\Carpeta;
 
 class CU_11Controller extends Controller
 {
-    public function getPujarVersio($id,$versio){
+    public function getPujarVersio($id){
         $tmp = Document::where('idDocument','=',$id)
-                        ->where('versioInterna','=',$versio)
+                        ->where('vigent','=',true)
                         ->first();
         if($tmp == null){
             echo "No s'ha trobat un document amb aquest ID o aquesta versió.";
@@ -22,12 +22,20 @@ class CU_11Controller extends Controller
         }
     }
     
-    public function postPujarVersio(UploadRequest $request){
+    public function postPujarVersio($id,UploadRequest $request){
         
         $savePath = $request->arxiu->store('documents');
         
-        /* Falta cambiar la versió vigent
-         */ 
+        $ultimaVersio = Document::where('idDocument','=',$request->id)
+                                        ->orderBy('versioInterna','desc');
+        
+        foreach ($ultimaVersio as $doc) {
+            $doc->vigent = false;
+            $doc->save();
+        }
+        
+        $ultimaVersio = $ultimaVersio->first()->versioInterna;
+        
         $novaVersio = new Document();
         
         $novaVersio->nom = $request->nom;
@@ -35,13 +43,22 @@ class CU_11Controller extends Controller
         $novaVersio->descripcio = $request->desc;
        
         
-        $novaVersio->versioInterna = (($request->versioOld) + 1);
-        $novaVersio->versioUsuari = $novaVersio->versioInterna;
+        $novaVersio->versioInterna = (($ultimaVersio) + 1);
+        
+        if(isset($request->ver)){
+            
+            $novaVersio->versioUsuari = $request->ver;
+        }
+        else{
+            $novaVersio->versioUsuari = $novaVersio->versioInterna;
+        }
+        
         $novaVersio->vigent = true;
         
         $novaVersio->path = $savePath;
         
         $novaVersio->save();
+
         return 'Pujada de versió exitosa';
         //return view("welcome");
     }

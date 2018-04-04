@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Usuari;
 use Illuminate\Http\Request;
 
-class CU47Controller extends Controller {
+class CU_47Controller extends Controller {
         public function getIndex($id){
 //             $usuari = Usuari::All();
 //             return redirect('CU_42');

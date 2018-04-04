@@ -7,10 +7,9 @@ use App\Usuari;
 
 class CU_48Controller extends Controller
 {
-
-    public function getIndex()
-    {
-        $users = \App\Usuari::all();
+    public function getIndex(){
+        
+        $users = Usuari::all();
         return view('CU_48_MostrarUsuaris', compact('users'));
     }
 

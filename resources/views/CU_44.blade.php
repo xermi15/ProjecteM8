@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 @extends('layouts.master')
 
 @section('content')
@@ -10,7 +10,7 @@
                 
          </div>      
         <div class="text-center" id="containerr2">
-            <div class="text-center darkColor" style="padding: 7px">Donar d'alta</div>
+            <div class="text-center darkColor" style="padding: 7px">Donar de baixa</div>
           
 
         {{-- Totes les dades de l`usuari --}}
@@ -24,21 +24,23 @@
         <!--<h5> Estat: {{$DadesUsuari->estat}}</h5>-->
         
         @if( ($DadesUsuari->estat)==1 )
-             <p> <label>Donat d'alta: </label> Si<p>
-             <p><i>Aquest usuari ja esta donat d'altax</i></p>
+             <p> <label>Donat de baixa: </label> No<p>
+              <button type='button' class='btn btn-info'>Donar de baixa</button>
               <a href="{{ url('/CU_42/') }}">
                   <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>
         @elseif ( ($DadesUsuari->estat)==0 )
-              <p> <label>Donat d'alta: </label> No<p>
-              <button type='button' class='btn btn-info'>Donar d'alta</button>    
+              <p> <label>Donat de baixa: </label> Si<p>
+              <p><i>Aquest usuari ja estat donat de baixa</i></p>
               <a href="{{ url('/CU_42/') }}">
                <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
               </a>
         @endif
+        
             
         </div>
   @stop            
     
-
-      
+               
+        
+       
