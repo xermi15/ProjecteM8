@@ -101,7 +101,7 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU18
-//
+Route::Post('/gestionarPermisos/{id}', 'CU_18Controller@gestionarPermisos');
 //
 //
 // CU19
