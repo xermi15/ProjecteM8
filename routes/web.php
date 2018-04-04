@@ -222,6 +222,7 @@ Route::post('/modUser', 'CU_45Controller@modificarUsuari');
 //
 //
 // CU47 Aleix Prat i Gloria Taboada
+Route::put('/CU_47/{id}', 'CU_47Controller@putRent');
 Route::get('/CU_47/{id}', 'CU_47Controller@getIndex');
 //
 //

@@ -28,19 +28,21 @@ class CU_08Controller extends Controller
         $nouDoc->path = $savePath;
         
         //$tmp = str_split($request->input('arxiu'));
-        /*
-        $tmp = $_SESSION['carpetaActual'];
-        if(isset($tmp)){
+        
+        
+        if(isset($_SESSION['idUsuari'])){
+            $nouDoc->idusuariCreacio = $_SESSION['idUsuari'];
+        }
+        $carpeta = 1; //Valor per defecte
+        if(isset($_SESSION['carpetaActual'])){
+            $carpeta = $_SESSION['carpetaActual'];
             $nouDoc->idCarpeta = $_SESSION['carpetaActual'];
         }
-        $tmp = $_SESSION['idUsuari'];
-        if(isset($tmp)){
-            $nouDoc->idusuariCreacio();
-        }
-        */
+            
+        
         $nouDoc->save();
-       
-        return 'Upload successful!';
+        
+        return redirect('abrirCarpeta/'.$carpeta);
         
         //$nouDoc->
         //return redirect()('/CU_07');
