@@ -9,16 +9,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <div class=""> <!-- panel-heading -->
-                    <h3 class="panel-title  text-center">
+                <div>
+                    <h3 class="panel-title text-center">
                         <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                         Pujar document
                     </h3>
                 </div>
             </div>
-            <form method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <div class="modal-body">
                     <div>
                         @if (count($errors) > 0)
                             <ul>
@@ -43,19 +43,21 @@
                                 <label for="synopsis">Descripció (Opcional)</label>
                         <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="text-center">
+
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary" > <!-- style="padding:8px 100px;margin-top:25px;" form-group  -->
                                     Pujar arxiu 
                             </button>
+                        </div>
                     </div>
-                </div>
-            <form>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
     </div>
 </div>
+<!--
 <div class="row" style="margin-top:20px" hidden>
 
 	<div class="col-md-offset-3 col-md-6">
@@ -105,4 +107,5 @@
 		</div>
 	</div>
 </div>
+-->
 @stop
