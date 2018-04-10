@@ -48,13 +48,13 @@
                                 <label for="usuarios_grupo" class="ui-hidden-accessible"></label>
                                 <input type="text" name="usuarios_grupo" id="usuarios_grupo" placeholder="Usuaris del grup">
                                 
-                                @include('CU_39_ModificarMembres')
+                                
                                    
                             </div>
                         </form>
                     </div>
                 </div>
-
+                @include('CU_39_ModificarMembres')
                 <div>
                     <div style="width: 50%; display: flex; justify-content: center; float: left;">
                         <input type="submit" data-inline="true" value="Aceptar">
