@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Logs extends Model
+class Grup extends Model
 {
-    protected $table = 'logs';
-    protected $primaryKey = 'idLog';
+    protected $table = 'grups';
+    protected $primaryKey = 'idGrup';
     public $timestamps = false;
 }

@@ -11,6 +11,16 @@
   |
  */
 
+/*
+ * Para poder ejecutar el metodo que se encarga de mostrar si existen notificaciones, sea cual sea la vista
+ * Incluyolas class Workflow, la declaro y llamo al metodo correspondiente.
+ * Lo hice en este archivo ya que es comun para todos.
+ */
+// fede 04/04/2018 use App\Workflow;
+// fede 04/04/2018 $Workflow = new Workflow();
+// fede 04/04/2018 $Workflow->NotificacionWorkflow();
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -46,8 +56,8 @@ Route::get('/resultadoBusqueda', 'CU_05Controller@buscarDocuments');
 // CU06
 //Comentario Javi Millan
 //Comentario Sergio Plaza
-Route::get("/editarPerfil/{id}", "CU06Controller@getEditarPerfil");
-Route::post("/editarPerfil/edit/{id}", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
+Route::get("/editarPerfil", "CU06Controller@getEditarPerfil");
+Route::post("/editarPerfil/edit", "CU06Controller@editarPerfilEdit"); //->middleware('auth');
 //
 // CU07
 Route::get('/abrirCarpeta/{id}', 'CU_07Controller@abrirCarpeta');
@@ -79,7 +89,7 @@ Route::get('/CU12_URL', 'CU12_urlController@generaURL');
 //
 //
 // CU15
-//
+Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromocionarVersio');
 //
 //
 // CU16
@@ -91,8 +101,13 @@ Route::get('/CU12_URL', 'CU12_urlController@generaURL');
 //
 //
 // CU18
-//
-//
+Route::get('/getDatos/{id}', 'CU_18Controller@getDatos');
+Route::Post('/cambiarPermisUsuari/{id}', 'CU_18Controller@cambiarPermisUsuari');
+Route::Post('/afegirPermisUsuari/{id}', 'CU_18Controller@afegirPermisUsuari');
+Route::Post('/borrarPermisUsuari/{id}', 'CU_18Controller@borrarPermisUsuari');
+Route::Post('/cambiarPermisGrup/{id}', 'CU_18Controller@cambiarPermisGrup');
+Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
+Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
 //
@@ -117,7 +132,8 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 //
-// CU25
+// CU25 Gloria Taboada i Aleix Prat
+Route::get('/CU_25', 'CU_25Controller@getIndex');
 //
 //
 //
@@ -169,7 +185,7 @@ Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrupo', 'CU_37Controller@getCU_37');
+Route::get('CU_37_EliminarGrupo{id}', 'CU_37Controller@getCU_37');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
@@ -177,15 +193,15 @@ Route::get('CU_38_ModificarGrupo', 'CU_38Controller@getCU_38');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
-//Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
+Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 //
 //
-// CU41
-//
+// CU41 Motrar Grups (Oscar y Carlos)
+Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 // CU42 Aleix_Prat
@@ -202,6 +218,7 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44 Gloria Taboada i Aleix Prat
 Route::get('/CU_44/{id}', 'CU_44Controller@getIndex');
+Route::put('/CU_44/{id}', 'CU_44Controller@putNo');
 //
 //
 // CU45
@@ -214,6 +231,7 @@ Route::post('/modUser', 'CU_45Controller@modificarUsuari');
 //
 //
 // CU47 Aleix Prat i Gloria Taboada
+Route::put('/CU_47/{id}', 'CU_47Controller@putSi');
 Route::get('/CU_47/{id}', 'CU_47Controller@getIndex');
 //
 //
@@ -237,5 +255,3 @@ Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 //
 // feina addicional
 
-
-// mes proves

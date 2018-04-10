@@ -31,7 +31,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-lock"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gestionarPermisosModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-nombre="{{$carpeta->nom}}"><span class="glyphicon glyphicon-lock"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-ultimamod="{{$carpeta->dataModificacio}}" data-book-nombre="{{$carpeta->nom}}" data-book-descripcion="{{$carpeta->descripcio}}"><span class="glyphicon glyphicon-wrench"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureCarpetaModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-name="{{$carpeta->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
@@ -151,7 +151,160 @@
             </div>
         </form>
         
+        <!-- Modal Gestionar Permisos-->
+        <div class="modal fade" id="gestionarPermisosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document" style="width:730px;">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Permisos de la carpeta <b><p id="carpetaPermisosTexto" style="display: inline-block"></p></b></h3>
+              </div>
+              <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#cu">Cambiar usuari </a></li>
+                      <li><a data-toggle="tab" href="#au">Afegir Usuari</a></li>
+                      <li><a data-toggle="tab" href="#bu">Borrar usuari</a></li>
+                      <li><a data-toggle="tab" href="#cg">Cambiar grup </a></li>
+                      <li><a data-toggle="tab" href="#ag">Afegir grup</a></li>
+                      <li><a data-toggle="tab" href="#bg">Borrar grup</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                      <div id="cu" class="tab-pane fade in active">
+                        <h3>Cambiar permís d'un usuari</h3>
+                            <div class="form-group">
+                          <label>Usuaris: </label>
+                          <select class="form-control" id="listaUsuariosCambiar" style="min-width:120px;"></select>
+                        </div>
+                        <div class="form-group">
+                          <label>Selecciona un permís: </label>
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                        </div>
+                        <div style="text-align: right">
+                            <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
+                            </form> 
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                      <div id="au" class="tab-pane fade">
+                        <h3>Afegir nou usuari</h3>
+                        <div class="form-group">
+                            <label>Afegir permís Usuari: </label>
+                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
+                            <div class="form-group">
+                                <label>Selecciona un permís: </label>
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
+                            </div>
+                            <div style="text-align: right">
+                            <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary btn-success">Afegir usuari</button>
+                            </form> 
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                      <div id="bu" class="tab-pane fade">
+                        <h3>Borrar permís d'un usuari</h3>
+                        <div class="form-group">
+                            <label>Borrar permís Usuari: </label>
+                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
+                        <div style="text-align: right">
+                            <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
+                            </form> 
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                      <div id="cg" class="tab-pane fade">
+                        <h3>Cambiar permís d'un grup</h3>
+                            <div class="form-group">
+                          <label>Grups: </label>
+                          <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
+                        <div class="form-group">
+                          <label>Selecciona un permís: </label>
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                        </div>
+                        <div style="text-align: right">
+                            <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
+                            </form> 
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                      <div id="ag" class="tab-pane fade">
+                        <h3>Afegir nou grup</h3>
+                        <div class="form-group">
+                            <label>Afegir permís grup: </label>
+                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
+                            <div class="form-group">
+                                <label>Selecciona un permís: </label>
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura
+                                <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
+                            </div>
+                            <div style="text-align: right">
+                                <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
+                                {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-primary btn-success">Afegir grup</button>
+                                </form> 
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                      </div>
+                      <div id="bg" class="tab-pane fade">
+                        <h3>Borrar permís d'un grup</h3>
+                        <div class="form-group">
+                            <label>Borrar permís grup: </label>
+                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
+                        <div style="text-align: right">
+                            <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
+                            </form> 
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                    </div>      
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <script>
+            $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var nombre = $(e.relatedTarget).data('book-nombre');
+                $('#carpetaPermisosTexto').text(nombre);
+                //establecemos las rutas de los forms
+                $('#formcambiarPermisUsuari').attr('action', '../cambiarPermisUsuari/'+id);
+                $('#formafegirPermisUsuari').attr('action', '../afegirPermisUsuari/'+id);
+                $('#formborrarPermisUsuari').attr('action', '../borrarPermisUsuari/'+id);
+                $('#formformcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
+                $('#formafegirPermisGrup').attr('action', '../afegirPermisGrup/'+id);
+                $('#formborrarPermisGrup').attr('action', '../borrarPermisGrup/'+id);
+                //hacemos una consulta al servidor para rellenar los datos de los formularios
+                $.get('../getDatos/'+id, function(response) {
+                    $("#listaUsuariosCambiar").append(response["cambiarUsuari"]);
+                })
+            });
+            
             $('#borrarModal').on('show.bs.modal', function(e) {
                 var bookId = $(e.relatedTarget).data('book-id');
                 var id = bookId.split(" ");
