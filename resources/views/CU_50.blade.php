@@ -15,11 +15,17 @@
           <div class="col-sm-10">
           <!--<input type="file" name="revisor" id="revisor" class="form-control" required>-->
                 <select class="form-control col-sm-10">
-                        <option selected></option>
-                        <option>Jorge</option>
-                        <option>Issam</option>
-                        <option>Fede</option>
-                        <option>Esther</option>
+                        <option value="0">Selección:</option>
+        <?php
+										
+          $query = $mysqli -> query ("SELECT * FROM usuaris");
+											
+          while ($valores = mysqli_fetch_array($query)) {
+												
+            echo '<option value="'.$valores[id].'">'.$valores[nombre].'</option>';
+													
+          }
+        ?>
                 </select>
           </div>
     </div>

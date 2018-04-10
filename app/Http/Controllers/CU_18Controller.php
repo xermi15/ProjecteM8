@@ -4,48 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carpeta;
+use App\PermisUsuari;
+use App\Usuari;
 use Notification;
 
 class CU_18Controller extends Controller {
-
-    public function modificarCarpeta(Request $request, $id) {
-        $carpeta = Carpeta::find($id);
-        $permiso=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($id);
-        if (($permiso=='w')||($permiso=='s')){
-            $carpeta->nom = $request->nombreInput;
-            $carpeta->descripcio = $request->descripcioInput;
-            $carpeta->dataModificacio = date('Y-m-d');
-            $carpeta->save();
-            return redirect('abrirCarpeta/'.$carpeta->idCarpetaPare);
-        }else{
-            Notification::error("No tens permisos per realitzar aquesta acció.");
-            return redirect('abrirCarpeta/'.$carpeta->idCarpetaPare);
+    
+    public function getDatos($id){
+        session_start();
+        $ar=[];
+        $cambiarUsuari = PermisUsuari::where('idCarpeta', $id)->get();
+        /*$articles = PermisUsuari::select('idUsuari.id as id_usuari')
+            ->join('categories', 'articles.categories_id', '=', 'categories.id')
+            ->where('idCarpeta', $id)
+            ->get();*/
+        foreach ($cambiarUsuari as $valor) {
+            
         }
+        $ar["cambiarUsuari"]="<option>aaa</option>";
+        $ar["afegirUsuari"]="";
+        $ar["borrarUsuari"]="";
+        $ar["cambiarGrup"]="";
+        $ar["afegirGrup"]="";
+        $ar["borrarGrup"]="";
+        
+        
+        return $ar;
     }
     
-    public function gestionarPermisos(Request $request, $id){
+    public function cambiarPermisUsuari(Request $request, $id){
+        dd("aaaa");
+    }
+    
+    public function afegirPermisUsuari(Request $request, $id){
         
     }
     
-    public function devuelveGrupos(Request $request, $id){
+    public function borrarPermisUsuari(Request $request, $id){
         
     }
     
-    public function devuelveUsuarios(Request $request, $id){
-        $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
-        $arxius = Document::where('idCarpeta', '=', $id)->get();
-        //$totesCarpetes = Carpeta::all();
-        $carpetesAll = Carpeta::all();
+    public function cambiarPermisGrup(Request $request, $id){
         
-        $totesCarpetes = "<ul>";
-        
-        foreach($carpetesAll as $key => $carpeta){
-            $totesCarpetes .= "<li>".$carpeta->nom."</li>";
-        }
-        $totesCarpetes .= "</ul>";
-
-        
-        return view('CU07_OpenFolder', compact('carpetes','arxius','totesCarpetes'))->withTitle($id);
     }
-
+    
+    public function afegirPermisGrup(Request $request, $id){
+        
+    }
+    
+    public function borrarPermisGrup(Request $request, $id){
+        
+    }
 }
