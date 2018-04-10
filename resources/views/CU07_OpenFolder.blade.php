@@ -173,7 +173,7 @@
                         <h3>Cambiar permís d'un usuari</h3>
                             <div class="form-group">
                           <label>Usuaris: </label>
-                          <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaUsuariosCambiar" style="min-width:120px;"></select>
                         </div>
                         <div class="form-group">
                           <label>Selecciona un permís: </label>
@@ -183,7 +183,7 @@
                           <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                            <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -195,6 +195,7 @@
                         <div class="form-group">
                             <label>Afegir permís Usuari: </label>
                             <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super
@@ -203,12 +204,11 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                            <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                            <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Afegir usuari</button>
                             </form> 
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        </div>
                         </div>
                       </div>
                       <div id="bu" class="tab-pane fade">
@@ -218,7 +218,7 @@
                             <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                            <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -239,7 +239,7 @@
                           <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                            <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -251,6 +251,7 @@
                         <div class="form-group">
                             <label>Afegir permís grup: </label>
                             <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                        </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super
@@ -259,13 +260,12 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                                <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                                <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
                                 {{ csrf_field() }}
                                     <button type="submit" class="btn btn-primary btn-success">Afegir grup</button>
                                 </form> 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             </div>
-                        </div>
                       </div>
                       <div id="bg" class="tab-pane fade">
                         <h3>Borrar permís d'un grup</h3>
@@ -274,7 +274,7 @@
                             <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="gestionarPermisosForm" action="" method="POST" style="display:inline">
+                            <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -292,8 +292,17 @@
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 $('#carpetaPermisosTexto').text(nombre);
-                
-                $('#gestionarPermisosForm').attr('action', '../gestionarPermisos/'+id);
+                //establecemos las rutas de los forms
+                $('#formcambiarPermisUsuari').attr('action', '../cambiarPermisUsuari/'+id);
+                $('#formafegirPermisUsuari').attr('action', '../afegirPermisUsuari/'+id);
+                $('#formborrarPermisUsuari').attr('action', '../borrarPermisUsuari/'+id);
+                $('#formformcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
+                $('#formafegirPermisGrup').attr('action', '../afegirPermisGrup/'+id);
+                $('#formborrarPermisGrup').attr('action', '../borrarPermisGrup/'+id);
+                //hacemos una consulta al servidor para rellenar los datos de los formularios
+                $.get('../getDatos/'+id, function(response) {
+                    $("#listaUsuariosCambiar").append(response["cambiarUsuari"]);
+                })
             });
             
             $('#borrarModal').on('show.bs.modal', function(e) {
