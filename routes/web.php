@@ -124,6 +124,8 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 // CU26
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
+Route::post('/CU_26', 'CU_26Controller@postCreate');
+
 //});
 //
 //
