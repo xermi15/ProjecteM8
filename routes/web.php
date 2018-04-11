@@ -26,7 +26,8 @@ Route::get('/', function () {
 });
 
 // CU01
-//
+
+// Eugenio
 Route::get('/CU01_login', function () {
     return view('CU01_login');
 });
@@ -248,6 +249,9 @@ Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
 //
+//
+//CU51
+Route::get('/CU_51', 'CU_51Controller@tancarSessio');
 // CU52
 Route::get('/CU_52', 'CU_52Controller@getIndex');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
