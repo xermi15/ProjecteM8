@@ -17,7 +17,7 @@
           <ul class="nav navbar-nav">
             <li>
                 <!-- class="active" -->
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{url('/abrirCarpeta/public')}}">Public<span class="sr-only">(current)</span></a>
             </li>
             <li>
               <a href="{{url('/editarPerfil/')}}">Editar perfil</a>
@@ -41,7 +41,7 @@
         </div>
     </nav>
     <div id="mySidenav" class="sidenav">
-        <a href="#">Personal</a>
+        <a href="{{url('/abrirCarpeta/personal')}}">Personal</a>
         <a href="#">Workflows</a>
         <a href="#">Notificacions</a>
         <a href="#">Contact</a>

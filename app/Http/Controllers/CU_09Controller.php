@@ -4,21 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carpeta;
+use App\Document;
 use Notification;
 
-class CU_21Controller extends Controller {
+class CU_09Controller extends Controller {
 
-    public function moverCarpeta(Request $request, $id) {
+    public function moverDocumento(Request $request, $id) {
         
-        $carpeta = Carpeta::find($id);
+        $documento = Document::find($id);
+        $carpeta = Carpeta::find($documento->idCarpeta);
         $carpetaPadre = Carpeta::where('nom', $request->nombreMovCarpeta)->first();
 
-        $permiso=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($id);
+        $permiso=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($carpeta->idCarpeta);
         $permisoMover=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($carpetaPadre->idCarpeta);
         
         if(($permiso=='w')||($permiso=='s') && ($permisoMover=='w')||($permisoMover=='s')){
-            $carpeta->idCarpetaPare = $carpetaPadre->idCarpeta;
-            $carpeta->save();
+            $documento->idCarpeta = $carpetaPadre->idCarpeta;
+            $documento->save();
         }else{
             Notification::error("No tens permisos per realitzar aquesta acció.");
         }

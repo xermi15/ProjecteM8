@@ -6,6 +6,7 @@
                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
                 <form method="POST">
 
+                    
                     {{-- TODO: Protección contra CSRF --}}
 
                     {{ csrf_field() }}
@@ -17,11 +18,11 @@
 
                     <div class="form-group">
                         {{-- TODO: Completa el input para el año --}}
-                        <label for="año">Aprovador/es</label>
-                        <select class="form-control col-sm-10" multiple size="3" name="aprov">
+                        <label for="Aprovador">Aprovador/es</label>
+                        <select class="form-control col-sm-10" name="aprov">
                             @foreach($users as $user)
                                
-                                <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari }}</option>
+                            <option value="{{ $user->idUsuari }}"> {{ $user->nomUsuari }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -29,10 +30,11 @@
                     <div class="form-group">
                         {{-- TODO: Completa el input para el año --}}
                         <label for="año">Revisor</label>
-                        <select class="form-control col-sm-10" name="revi">
+                        
+                        <select class="form-control col-sm-10" multiple size="3" name="revi">
                             @foreach($users as $user)
                                
-                            <option value="{{ $user->idUsuari }}"> {{ $user->nomUsuari }}</option>
+                                <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari }}</option>
                             @endforeach
                         </select>
                     </div>

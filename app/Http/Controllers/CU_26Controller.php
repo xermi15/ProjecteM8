@@ -15,12 +15,26 @@ class CU_26Controller extends Controller
        return view('CU_26', compact('users'));
     }
     
+    
     public function postCreate(Request $request) {
+       session_start();
        $plantilla = new crearPlantilla;
        $plantilla->nomPlantilla= $request->nomPlantilla;
        $plantilla->idUsuariAprovador= $request->aprov;
-       #$plantilla->idUsuariCreador= $request->revi;
-        $plantilla->save();
+       $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
+       $plantilla->save();
+          
+       $plantirevisors = new plantillaRevisor;
+       
+       $plantirevisors->idUsuariRevisor= $request->revi;
+       $plantirevisors->idPlantilla=$plantilla->idPlantilla;
+       $plantirevisors->save();
+       
+      
+       return redirect ('/CU_26');
+
+    }
+    /*public function postCreate2(Request $request) {
        $plantirevisors = new plantillaRevisor;
        $plantirevisors->idUsuariRevisor= $request->revi;
        $plantirevisors->save();
@@ -28,6 +42,9 @@ class CU_26Controller extends Controller
       
        return redirect ('/CU_26');
 
-    }
+    }*/
+    
+    
+    
     
 }
