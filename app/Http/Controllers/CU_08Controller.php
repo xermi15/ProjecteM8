@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UploadRequest;
 use App\Document;
 
@@ -12,7 +11,7 @@ class CU_08Controller extends Controller
         return view('CU_08_PujarDoc');
     }
     
-    public function postPujarDoc(UploadRequest $request){        
+    public function postPujarDoc(UploadRequest $request, $idCarpeta){        
         //Storage::disk('local')->put($request->input('arxiu'), $request->input('arxiu'));
         
         $savePath = $request->arxiu->store('documents');
@@ -33,16 +32,12 @@ class CU_08Controller extends Controller
         if(isset($_SESSION['idUsuari'])){
             $nouDoc->idusuariCreacio = $_SESSION['idUsuari'];
         }
-        $carpeta = 1; //Valor per defecte
-        if(isset($_SESSION['carpetaActual'])){
-            $carpeta = $_SESSION['carpetaActual'];
-            $nouDoc->idCarpeta = $_SESSION['carpetaActual'];
-        }
-            
+        
+        $nouDoc->idCarpeta = $idCarpeta;
         
         $nouDoc->save();
         
-        return redirect('abrirCarpeta/'.$carpeta);
+        return redirect('abrirCarpeta/'.$idCarpeta);
         
         //$nouDoc->
         //return redirect()('/CU_07');
