@@ -10,4 +10,5 @@ class plantillaRevisor extends Model
     protected $primaryKey  = ['idPlantilla','idUsuariRevisor'];
     public $timestamps = false;
     //public $incrementing = false;
+    
 }

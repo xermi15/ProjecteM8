@@ -15,6 +15,7 @@ class CU_26Controller extends Controller
        return view('CU_26', compact('users'));
     }
     
+    
     public function postCreate(Request $request) {
        $plantilla = new crearPlantilla;
        $plantilla->nomPlantilla= $request->nomPlantilla;

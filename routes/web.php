@@ -246,6 +246,7 @@ Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
 // CU50
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
+
 //
 //
 //CU51

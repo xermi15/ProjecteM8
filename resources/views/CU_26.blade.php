@@ -6,6 +6,7 @@
                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
                 <form method="POST">
 
+                    
                     {{-- TODO: Protección contra CSRF --}}
 
                     {{ csrf_field() }}

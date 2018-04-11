@@ -13,6 +13,7 @@ class CU_50Controller extends Controller
        return view('CU_50', compact('plantilla'));
      // return view('CU_50');
     }
+    
     /*public function MostraUsuari() {
       $users = Usuari::all(); 
      
