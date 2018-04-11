@@ -41,7 +41,7 @@
         </div>
     </nav>
     <div id="mySidenav" class="sidenav">
-        <a href="#">Personal</a>
+        <a href="{{url('/abrirCarpeta/personal')}}">Personal</a>
         <a href="#">Workflows</a>
         <a href="#">Notificacions</a>
         <a href="#">Contact</a>

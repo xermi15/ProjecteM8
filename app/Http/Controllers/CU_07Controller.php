@@ -9,9 +9,24 @@ use App\Document;
 class CU_07Controller extends Controller {
 
     public function abrirCarpeta($id) {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         
-        if($id == "root"){
-            $id = 1;
+        if($id == "personal"){
+            $personal = Carpeta::where('nom', $_SESSION['nomUsuari'])->first();
+            if($personal==null){
+                $carpeta = new Carpeta;
+                $carpeta->nom = $_SESSION['nomUsuari'];
+                $carpeta->descripcio = "Personal".$_SESSION['nomUsuari'];
+                $carpeta->dataCreacio = date('Y-m-d');
+                $carpeta->dataModificacio = date('Y-m-d');
+                $carpeta->path = "privadas/".$_SESSION['nomUsuari'];
+                $carpeta->save();
+            }else{
+                $id=$personal->idCarpeta;   
+            }
+
         }
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
