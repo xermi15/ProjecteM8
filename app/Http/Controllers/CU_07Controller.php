@@ -25,21 +25,10 @@ class CU_07Controller extends Controller {
             }else{
                 $id=$personal->idCarpeta;   
             }
-        }
-        
+        }        
         if($id == "public"){
-            $public = Carpeta::where('nom', 'public')->first();
-            if($public==null){
-                $carpeta = new Carpeta;
-                $carpeta->nom = "public";
-                $carpeta->descripcio = "public";
-                $carpeta->dataCreacio = date('Y-m-d');
-                $carpeta->dataModificacio = date('Y-m-d');
-                $carpeta->path = "";
-                $carpeta->save();
-            }else{
-                $id=$public->idCarpeta;   
-            }
+            $raiz = Carpeta::where('nom', 'raiz')->first();
+            $id=$raiz->idCarpeta;   
         }
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
@@ -67,10 +56,10 @@ class CU_07Controller extends Controller {
         
         $resultado = "<ul>";
         foreach($carpetes as $key => $carpeta){
-                $resultado .= "<li><span style='margin-right:5px;' class='glyphicon glyphicon-folder-open'></span>".$carpeta->nom."</li>";
                 foreach($arxius as $key => $arxiu){
                     $resultado .= "<li><span style='margin-right:5px;' class='glyphicon glyphicon-file'></span>".$arxiu->nom."</li>";
                 }
+                $resultado .= "<li><span style='margin-right:5px;' class='glyphicon glyphicon-folder-open'></span>".$carpeta->nom."</li>";
                 $resultado .= CU_07Controller::misHijos($carpeta->idCarpeta);
         }
         $resultado .= "</ul>";

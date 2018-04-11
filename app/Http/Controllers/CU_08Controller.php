@@ -13,6 +13,9 @@ class CU_08Controller extends Controller
     
     public function postPujarDoc(UploadRequest $request, $idCarpeta){        
         //Storage::disk('local')->put($request->input('arxiu'), $request->input('arxiu'));
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         
         $savePath = $request->arxiu->store('documents');
        

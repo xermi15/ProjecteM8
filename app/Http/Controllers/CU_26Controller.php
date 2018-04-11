@@ -17,13 +17,17 @@ class CU_26Controller extends Controller
     
     
     public function postCreate(Request $request) {
+       session_start();
        $plantilla = new crearPlantilla;
        $plantilla->nomPlantilla= $request->nomPlantilla;
        $plantilla->idUsuariAprovador= $request->aprov;
-       #$plantilla->idUsuariCreador= $request->revi;
-        $plantilla->save();
+       $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
+       $plantilla->save();
+          
        $plantirevisors = new plantillaRevisor;
+       
        $plantirevisors->idUsuariRevisor= $request->revi;
+       $plantirevisors->idPlantilla=$plantilla->idPlantilla;
        $plantirevisors->save();
        
       
