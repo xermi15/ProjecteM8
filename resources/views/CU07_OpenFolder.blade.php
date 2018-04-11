@@ -6,12 +6,14 @@
             <tr>
                 <td class="col-md-6"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearCarpetaModal" data-book-id="{{$title}}"><span class="glyphicon glyphicon-plus"></span><p style="display:inline; margin-left: 5px">Crear Carpeta</p></button></td>
                 <td class="col-md-6">
-                    <a data-toggle="modal" data-target="#modalPujarArxiu">
+                    <button type="button" class="btn btn-primary"
+                            data-toggle="modal" data-target="#modalPujarArxiu">
                         <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                        Pujar Document
-                    </a>
+                        <p style="display:inline; margin-left: 5px">
+                            Pujar Document
+                        </p>
+                    </button>
                 </td>
-                <!--  type="button" class="btn btn-info btn-lg" modalPujarArxiu-->
             </tr>
             <tr>
                 <td class="col-md-6">
