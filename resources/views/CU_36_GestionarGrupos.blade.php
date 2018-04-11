@@ -19,7 +19,7 @@
             </table>
               
         </div>
-            @include('CU_40_CrearGrupo')H
+            @include('CU_40_CrearGrupo')
        
             @include('CU_41_MostrarGrups')
     </div>
