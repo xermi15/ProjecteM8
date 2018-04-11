@@ -12,7 +12,6 @@ class CU_07Controller extends Controller {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        
         if($id == "personal"){
             $personal = Carpeta::where('nom', $_SESSION['nomUsuari'])->first();
             if($personal==null){
@@ -26,7 +25,21 @@ class CU_07Controller extends Controller {
             }else{
                 $id=$personal->idCarpeta;   
             }
-
+        }
+        
+        if($id == "public"){
+            $public = Carpeta::where('nom', 'public')->first();
+            if($public==null){
+                $carpeta = new Carpeta;
+                $carpeta->nom = "public";
+                $carpeta->descripcio = "public";
+                $carpeta->dataCreacio = date('Y-m-d');
+                $carpeta->dataModificacio = date('Y-m-d');
+                $carpeta->path = "";
+                $carpeta->save();
+            }else{
+                $id=$public->idCarpeta;   
+            }
         }
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
