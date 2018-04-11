@@ -23,7 +23,7 @@
               <a href="{{url('/editarPerfil/')}}">Editar perfil</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <a href="{{url('/CU_51/')}}">Logout</a>
             </li>
           </ul>
             <!--
