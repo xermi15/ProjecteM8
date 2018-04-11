@@ -66,7 +66,7 @@ Route::get('/abrirCarpeta/{id}', 'CU_07Controller@abrirCarpeta');
 // CU08
 Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
-Route::post('/pujarDocument', 'CU_08Controller@postPujarDoc');
+Route::post('/pujarDocument/{idCarpeta}', 'CU_08Controller@postPujarDoc');
 // CU09
 Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 //
@@ -211,7 +211,7 @@ Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
 //  Route::post('/CU42Controller',"CU42Controller@getIndex")
 //
 // CU43
-Route::get('/CU_43', 'CU_43Controller@mostraUsuari');
+Route::get('/CU_43_EliminarUsuari', 'CU_43Controller@mostraUsuari');
 //Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
 Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //

@@ -5,7 +5,15 @@
         <table class="table">
             <tr>
                 <td class="col-md-6"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearCarpetaModal" data-book-id="{{$title}}"><span class="glyphicon glyphicon-plus"></span><p style="display:inline; margin-left: 5px">Crear Carpeta</p></button></td>
-                <td class="col-md-6"><span class="glyphicon glyphicon-circle-arrow-up"></span>Pujar Document</td>
+                <td class="col-md-6">
+                    <button type="button" class="btn btn-primary"
+                            data-toggle="modal" data-target="#modalPujarArxiu">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                        <p style="display:inline; margin-left: 5px">
+                            Pujar Document
+                        </p>
+                    </button>
+                </td>
             </tr>
             <tr>
                 <td class="col-md-6">
@@ -309,7 +317,51 @@
             </div>
           </div>
         </div>
-        
+        <!-- Pujar document -->
+        <div id="modalPujarArxiu" class="modal fade" role="dialog" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div>
+                            <h3 class="panel-title text-center">
+                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                Pujar document
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" enctype="multipart/form-data" action="{{action('CU_08Controller@postPujarDoc',$title)}}">
+                        {{ csrf_field() }}
+                            <div class="" > <!--panel-body style="padding:20px"-->
+                                <div class="form-group">
+                                    <label for="title">Nom del arxiu</label>
+                                    <input type="text" name="nom" id="nom" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="title">Ruta de l'arxiu</label>
+                                        <input type="file" name="arxiu" id="arxiu" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="synopsis">Descripció (Opcional)</label>
+                                <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary" > <!-- style="padding:8px 100px;margin-top:25px;" form-group  -->
+                                            Pujar arxiu 
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');

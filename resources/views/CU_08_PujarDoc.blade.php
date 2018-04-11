@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" action="/pujarDocument">
                 {{ csrf_field() }}
                     <div>
                         @if (count($errors) > 0)

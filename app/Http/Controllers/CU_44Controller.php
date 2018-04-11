@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CU_44Controller extends Controller {
         public function getIndex($id){
-             return view('CU_44', array('DadesUsuari'=>Usuari::findOrFail($id)));
+             return view('CU_44_DonarBaixaUsuari', array('DadesUsuari'=>Usuari::findOrFail($id)));
         }
         
         public function putNo($id) {
@@ -15,7 +15,7 @@ class CU_44Controller extends Controller {
             $retu->estat = 0;
             $retu->save();
            // Notification::success("sa modificat correctament");
-            return redirect()->action('CU42Controller@getIndex');
+            return redirect()->action('CU_42Controller@getIndex');
          } 
 
 }

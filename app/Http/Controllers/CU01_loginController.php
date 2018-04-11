@@ -25,7 +25,7 @@ class CU01_loginController extends Controller
            $_SESSION['carpetaActual']=$resultat[0]->carpetaActual;
  
            
-            return redirect(url('/abrirCarpeta/root'));
+            return redirect(url('/abrirCarpeta/personal'));
         }else return view('CU01_login',['invalido'=>'Los datos no son validos']);
         
     }

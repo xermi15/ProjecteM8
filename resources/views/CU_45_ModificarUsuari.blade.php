@@ -92,15 +92,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="grup" class="col-sm-3 control-label">Grups:</label>
-                                <div class="col-sm-9">
-                                    <!--<input type="text" name="grup" id="grup" class="form-control" placeholder="grup" value="" />-->
+                                <div class="col-sm-5">
                                     @foreach($usuari_grup as $u)
-                                    <div>{{ $u->idGrup }}</div>
+                                    <div>{{ $u->nom }}</div>
                                     @endforeach
-
-                                    {{ $nom_grup }}
                                 </div>
-
+                                <div class="col-sm-4">
+                                    <!--<a href="{{ url('/catalog/edit/' . ($u->idGrup)) }}">-->
+                                    <button type="submit" class="btn btn-primary" disabled>Modificar Grups</button>
+                                    <!--</a>-->
+                                </div>
                             </div>
                         </div>
 

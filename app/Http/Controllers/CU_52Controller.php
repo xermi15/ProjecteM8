@@ -10,13 +10,13 @@ use Krucas\Notification\Facades\Notification;
 class CU_52Controller extends Controller {
 
     public function getIndex() {
-        return view('CU_52');
+        return view('CU_52_CrearUsuari');
     }
 
     public function afegirUsuari(Request $request) {
 
         $date = Carbon::now();
-        //$date = $date->format('d-m-Y');
+        //$date = $date->format('d-m-Y'); // no funciona donarli format a la data
 
         $usuari = Usuari::where('email', $request->email)
                         ->orwhere('nomUsuari', $request->nomUsuari)->first();
@@ -25,6 +25,7 @@ class CU_52Controller extends Controller {
             $usuari = new Usuari;
             $usuari->nomUsuari = $request->nomUsuari;
             $usuari->contrasenya = bcrypt($request->contrasenya);
+            //$usuari->contrasenya = $request->contrasenya;
             $usuari->nom = $request->nom;
             $usuari->cognoms = $request->cognoms;
             $usuari->email = $request->email;
@@ -34,11 +35,11 @@ class CU_52Controller extends Controller {
             $usuari->tipus = $request->tipus;
             $usuari->save();
 
-            Notification::success("L'usuari s'ha creat correctament.");
-            return redirect('CU_52');
+            Notification::success("L'usuari " + $usuari->nomUsuari + " s'ha creat correctament.");
+            return redirect('CU_42_GestionarUsuaris');
         } else {
             Notification::error("Error!!! Aquest usuari ja existeix.");
-            return back()->withInput();
+            return redirect('CU_42_GestionarUsuaris');
         }
     }
 
