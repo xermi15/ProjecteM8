@@ -30,7 +30,7 @@
                 <td class="col-md-3"><a href="{{url('/abrirCarpeta/'.$carpeta->idCarpeta)}}"><b>{{$carpeta->nom}}</b><br>{{$carpeta->dataModificacio}}</a></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descargarModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-nombre="{{$carpeta->nom}}" data-book-path="{{$carpeta->path}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gestionarPermisosModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-nombre="{{$carpeta->nom}}"><span class="glyphicon glyphicon-lock"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-ultimamod="{{$carpeta->dataModificacio}}" data-book-nombre="{{$carpeta->nom}}" data-book-descripcion="{{$carpeta->descripcio}}"><span class="glyphicon glyphicon-wrench"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureCarpetaModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
@@ -52,6 +52,27 @@
             </tr>
             @endforeach
         </table>
+
+        <!-- Modal Descargar-->
+        <div class="modal fade" id="descargarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Descargar</h4>
+              </div>
+              <div class="modal-body">
+                  ¿Esta seguro que desea descargar la carpeta <b><p id="bookId" style="display: inline-block"></p></b>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="modalForm" action="" method="POST" style="display:inline">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-primary btn-success">Descargar</button>
+                </form>                
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Modal Eliminar-->
         <div class="modal fade" id="borrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -288,6 +309,12 @@
         </div>
         
         <script>
+            $('#descargarModal').on('show.bs.modal', function (e) {
+               var id = $(e.relatedTarget).data('book-id');
+               var nombre = $(e.relatedTarget).data('book-nombre');
+               var path = $(e.relatedTarget).data('book-path');
+            });
+            
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
