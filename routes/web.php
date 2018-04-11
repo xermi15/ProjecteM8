@@ -68,7 +68,7 @@ Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
 Route::post('/pujarDocument', 'CU_08Controller@postPujarDoc');
 // CU09
-//
+Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 //
 //
 // CU11
@@ -132,8 +132,7 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 //
-// CU25 Gloria Taboada i Aleix Prat
-Route::get('/CU_25', 'CU_25Controller@getIndex');
+//
 //
 //
 //
