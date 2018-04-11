@@ -47,7 +47,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-paperclip"></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-new-window"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureDocumentModal" data-book-id="{{$document->idDocument}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->idDocument." documento"}}" data-book-name="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
@@ -138,6 +138,29 @@
                   <div class="modal-body">
                       <h4>Carpetes:</h4>
                       <div id="listaCarpeta"></div>
+                      <b>Nom de la carpeta destinatari: </b><input id="nombreMovCarpeta" name="nombreMovCarpeta" type="text" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary btn-info">Mover</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        
+        <form id="modalFormMoureDocument" action="" method="POST" style="display:inline">
+            <div class="modal fade" id="moureDocumentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Moure Document</h4>
+                  </div>
+                  <div class="modal-body">
+                      <h4>Carpetes:</h4>
+                      <div id="listaCarpetaD"></div>
                       <b>Nom de la carpeta destinatari: </b><input id="nombreMovCarpeta" name="nombreMovCarpeta" type="text" class="form-control">
                   </div>
                   <div class="modal-footer">
@@ -344,6 +367,15 @@
                 $('#listaCarpeta').append(html);
                 
                 $('#modalFormMoure').attr('action', '../moureCarpeta/'+id);
+            });
+            
+            $('#moureDocumentModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var html = $(e.relatedTarget).data('book-name');
+                $('#listaCarpetaD').text("");
+                $('#listaCarpetaD').append(html);
+                
+                $('#modalFormMoureDocument').attr('action', '../moureDocument/'+id);
             });
             
         </script>

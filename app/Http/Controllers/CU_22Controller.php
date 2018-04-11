@@ -16,11 +16,10 @@ class CU_22Controller extends Controller {
             $carpeta->descripcio = $request->descripcioInput;
             $carpeta->dataModificacio = date('Y-m-d');
             $carpeta->save();
-            return redirect('abrirCarpeta/'.$carpeta->idCarpetaPare);
         }else{
             Notification::error("No tens permisos per realitzar aquesta acció.");
-            return redirect('abrirCarpeta/'.$carpeta->idCarpetaPare);
         }
+        return redirect('abrirCarpeta/'.$carpeta->idCarpetaPare);
     }
 
 }
