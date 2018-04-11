@@ -24,7 +24,7 @@ class CU_09Controller extends Controller {
         }else{
             Notification::error("No tens permisos per realitzar aquesta acció.");
         }
-        return redirect('abrirCarpeta/'.$carpetaPadre->idCarpeta);
+        return back();
     }
 
 }
