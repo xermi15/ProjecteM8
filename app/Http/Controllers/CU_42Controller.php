@@ -13,4 +13,13 @@ class CU_42Controller extends Controller {
 
 
         }
+        
+        public function putNo($id) {
+            echo $id;
+            $retu = Usuari::findOrFail($id);
+            $retu->estat = 0;
+            $retu->save();
+           // Notification::success("sa modificat correctament");
+            return redirect()->action('CU_42Controller@getIndex');
+         } 
 }
