@@ -29,5 +29,17 @@ class CU_26Controller extends Controller
        return redirect ('/CU_26');
 
     }
+    /*public function postCreate2(Request $request) {
+       $plantirevisors = new plantillaRevisor;
+       $plantirevisors->idUsuariRevisor= $request->revi;
+       $plantirevisors->save();
+       
+      
+       return redirect ('/CU_26');
+
+    }*/
+    
+    
+    
     
 }

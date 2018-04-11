@@ -17,7 +17,7 @@
 
                     <div class="form-group">
                         {{-- TODO: Completa el input para el año --}}
-                        <label for="año">Aprovador/es</label>
+                        <label for="Aprovador">Aprovador/es</label>
                         <select class="form-control col-sm-10" multiple size="3" name="aprov">
                             @foreach($users as $user)
                                
