@@ -133,7 +133,7 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 // CU25 Gloria Taboada i Aleix Prat
-Route::get('/CU_25', 'CU_25Controller@getIndex');
+Route::get('/CU_25_GestionarWorkflows', 'CU_25Controller@getIndex');
 //
 //
 //
