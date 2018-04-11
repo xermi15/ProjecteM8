@@ -211,7 +211,7 @@ Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
 //  Route::post('/CU42Controller',"CU42Controller@getIndex")
 //
 // CU43
-Route::get('/CU_43', 'CU_43Controller@mostraUsuari');
+Route::get('/CU_43_EliminarUsuari', 'CU_43Controller@mostraUsuari');
 //Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
 Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
