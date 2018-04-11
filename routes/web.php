@@ -102,8 +102,13 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU18
-Route::Post('/gestionarPermisos/{id}', 'CU_18Controller@gestionarPermisos');
-//
+Route::get('/getDatos/{id}', 'CU_18Controller@getDatos');
+Route::Post('/cambiarPermisUsuari/{id}', 'CU_18Controller@cambiarPermisUsuari');
+Route::Post('/afegirPermisUsuari/{id}', 'CU_18Controller@afegirPermisUsuari');
+Route::Post('/borrarPermisUsuari/{id}', 'CU_18Controller@borrarPermisUsuari');
+Route::Post('/cambiarPermisGrup/{id}', 'CU_18Controller@cambiarPermisGrup');
+Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
+Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
 //
@@ -128,13 +133,16 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 //
-// CU25
+// CU25 Gloria Taboada i Aleix Prat
+Route::get('/CU_25', 'CU_25Controller@getIndex');
 //
 //
 //
 // CU26
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
+Route::post('/CU_26', 'CU_26Controller@postCreate');
+
 //});
 //
 //
