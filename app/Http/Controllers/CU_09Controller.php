@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carpeta;
+use App\Document;
 use Notification;
 
 class CU_09Controller extends Controller {
 
     public function moverDocumento(Request $request, $id) {
         
-        $documento = Documento::find($id);
+        $documento = Document::find($id);
         $carpeta = Carpeta::find($documento->idCarpeta);
         $carpetaPadre = Carpeta::where('nom', $request->nombreMovCarpeta)->first();
 

@@ -69,7 +69,7 @@ Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
 Route::post('/pujarDocument', 'CU_08Controller@postPujarDoc');
 // CU09
-Route::Post('/moureDocument/{id}', 'CU_21Controller@moverDocumento');
+Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 //
 //
 // CU11
