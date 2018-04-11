@@ -36,6 +36,7 @@ class ComprovarPermisos extends Controller {
                 $permisoMAX='r';
             }
         }
-        return $permisoMAX;
+        return  's';
+        //return $permisoMAX;
     }
 }
