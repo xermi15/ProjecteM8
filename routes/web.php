@@ -26,7 +26,6 @@ Route::get('/', function () {
 });
 
 // CU01
-
 // Eugenio
 Route::get('/CU01_login', function () {
     return view('CU01_login');
@@ -222,9 +221,9 @@ Route::put('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@putNo');
 //
 //
 // CU45
-Route::get('/CU_45', 'CU_45Controller@mostraUsuari');
-//Route::post('/modUser/{id}', 'CU_45Controller@modificarUsuari');
-Route::post('/modUser', 'CU_45Controller@modificarUsuari');
+Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
+//Route::post('/editUser/{id}', 'CU_45Controller@modificarUsuari');
+Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
 //
@@ -252,7 +251,7 @@ Route::get('/CU_50', 'CU_50Controller@getIndex');
 //CU51
 Route::get('/CU_51', 'CU_51Controller@tancarSessio');
 // CU52
-Route::get('/CU_52', 'CU_52Controller@getIndex');
+Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 
 //
