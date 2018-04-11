@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class plantillaRevisor extends Model
 {
     protected $table = 'plantillarevisors';
-    protected $primaryKey  = ['idPlantilla', 'idUsuariRevisor'];
+    protected $primaryKey  = ['idPlantilla','idUsuariRevisor'];
     public $timestamps = false;
+    //public $incrementing = false;
+    
 }

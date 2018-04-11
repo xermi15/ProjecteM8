@@ -66,7 +66,7 @@ Route::get('/abrirCarpeta/{id}', 'CU_07Controller@abrirCarpeta');
 // CU08
 Route::get('/pujarDocument', 'CU_08Controller@getPujarDoc');
 
-Route::post('/pujarDocument', 'CU_08Controller@postPujarDoc');
+Route::post('/pujarDocument/{idCarpeta}', 'CU_08Controller@postPujarDoc');
 // CU09
 Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 //
@@ -246,6 +246,7 @@ Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
 // CU50
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
+
 //
 //
 //CU51
