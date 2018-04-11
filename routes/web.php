@@ -205,7 +205,7 @@ Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 // CU42 Aleix_Prat
-Route::get('CU_42', 'CU42Controller@getIndex');
+Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
 //  Route::get('/', function(){
 //      return view("CU_42");
 //  });
@@ -216,9 +216,9 @@ Route::get('/CU_43', 'CU_43Controller@mostraUsuari');
 //Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
 Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
-// CU44 Gloria Taboada i Aleix Prat
-Route::get('/CU_44/{id}', 'CU_44Controller@getIndex');
-Route::put('/CU_44/{id}', 'CU_44Controller@putNo');
+// CU_44_DonarBaixaUsuari Gloria Taboada i Aleix Prat
+Route::get('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@getIndex');
+Route::put('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@putNo');
 //
 //
 // CU45
@@ -231,8 +231,8 @@ Route::post('/modUser', 'CU_45Controller@modificarUsuari');
 //
 //
 // CU47 Aleix Prat i Gloria Taboada
-Route::put('/CU_47/{id}', 'CU_47Controller@putSi');
-Route::get('/CU_47/{id}', 'CU_47Controller@getIndex');
+Route::put('/CU_47_AltaUsuari/{id}', 'CU_47Controller@putSi');
+Route::get('/CU_47_AltaUsuari/{id}', 'CU_47Controller@getIndex');
 //
 //
 // CU48  Mostrar Usuaris (Oscar y Carlos)
