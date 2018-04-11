@@ -27,8 +27,8 @@ class CU_07Controller extends Controller {
             }
         }        
         if($id == "public"){
-            $public = Carpeta::where('nom', 'public')->first();
-            $id=$public->idCarpeta;   
+            $raiz = Carpeta::where('nom', 'raiz')->first();
+            $id=$raiz->idCarpeta;   
         }
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
