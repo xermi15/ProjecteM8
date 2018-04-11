@@ -45,14 +45,14 @@
                             </a>
                         </label>
                         @endif
-<!--                        <label class="butons text-center">
-                            <a href="{{ url('/CU_47_AltaUsuari/' . ($usuaris->idUsuari) ) }}">
-                               <button type="button" class="btn btn-default btn-sm">
-                                   A
+                    <label class="butons text-center">
+                            <a href="{{ url('/CU_43_EliminarUsuari/' . ($usuaris->idUsuari) ) }}">
+                               <button type="button" class="btn btn-default btn-sm btn btn-danger">
+                                   Eliminar
                                 <span class="glyphicon glyphicon-plus"></span> 
                                </button>
                             </a>
-                        </label>-->
+                        </label>
                     </div>
                     
                     
