@@ -42,6 +42,7 @@
     </nav>
     <div id="mySidenav" class="sidenav">
         <a href="{{url('/abrirCarpeta/personal')}}">Personal</a>
+        <a href="{{url('/CU_36_GestionarGrupos')}}">Gestionar Grup</a>
         <a href="#">Workflows</a>
         <a href="#">Notificacions</a>
         <a href="#">Contact</a>

@@ -32,7 +32,7 @@
                     <td>
                         @include('CU_38_ModificarGrupo')
                         @include('CU_37_EliminarGrupo')
-                        <a class="glyphicon glyphicon-circle-arrow-right" href="" ></a>
+                        <a class="glyphicon glyphicon-circle-arrow-right" href=""></a>
                     </td>
                 </tr>
             @endforeach
