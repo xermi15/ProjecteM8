@@ -6,7 +6,7 @@
     padding: 10px;
 }
 
-#containerNewUser {
+#containerUser {
     width: 580px;
     margin: 50px auto;
     border: 2px solid #666;
@@ -22,7 +22,7 @@ input, select {
     margin-bottom: 10px;
 }
 
-button {
+#guardar {
     width: 100px;
 }
 
