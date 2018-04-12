@@ -1,4 +1,3 @@
-
 <button id="editBtn" type="button" onclick="idGrup({{$grup->idGrup}});" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
     <i class="glyphicon glyphicon-pencil"></i> 
 </button>

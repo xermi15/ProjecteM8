@@ -1,4 +1,3 @@
-
 <button id="editBtn" type="button" class="btn" onclick="nouGrup();" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; width: 25%; border: solid #000000 2px;">
     Crear grup
 </button>
