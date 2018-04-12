@@ -1,5 +1,5 @@
 <button id="deleteBtn" type="button" onclick="idGrup({{$grup->idGrup}});" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
-    <i class="glyphicon glyphicon-trash"></i> 
+    <i class="glyphicon glyphicon-trash"></i>
 </button>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal_3">
@@ -11,11 +11,11 @@
                     <span aria-hidden="true" style="font-size: 30px;">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body-eliminarGrup">
                 <h4>Segur que desitja eliminar el grup "<b>{{ $grup->nom }}</b>"?</h4>
                 <label for="password">Contrasenya:</label>
                 <input type="password" name="password" id="password" size="35" placeholder="Introdueixi la seva contrasenya">
-                
+
             </div>
             <div class="modal-footer" style="text-align: center;">
                 <button type="button" onclick="eliminar();"class="btn btn-danger" id="modalGuardar" style="margin-right: 25%;">Eliminar</button>
@@ -24,16 +24,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var idGrupo;
-    function eliminar(){
-    //guarda datos grupo
-    alert(idGrupo);
-    }
-
-    function idGrup(id){
-    //coge id de pelicula seleccionada
-    idGrupo = id;
-    }
-</script>

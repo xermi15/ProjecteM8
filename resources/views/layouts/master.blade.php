@@ -5,7 +5,7 @@
         <!-- <link rel="icon" href="https://getbootstrap.com/favicon.ico"> -->
 
         <script src="{{ url('js/jquery.min.js')}}"></script>
-
+        <script src="{{ url('js/CU_36.js')}}"></script>
         <link href="{{ url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
         <!-- ¿En el include de CSS no deberia ser dinamico con el nombre del controlador, 
         para que cada uno pudiera aplicar cambios de diseño? -->

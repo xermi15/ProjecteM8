@@ -17,6 +17,73 @@
     vertical-align: middle;
 }
 
-.modal-body{
-    text-align: center;                                                          
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.columnUsuaris,.columnUsuarisGrup,.columnButons {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+#buscaUsuari{
+    width: 100%;
+}
+
+#buscaUsuariGrup{
+    width: 100%;
+}
+
+.columnButons {
+    min-height: 80px;
+}
+
+.afegirBtn{
+    border: 1px solid;
+    margin-right: 40%;
+    margin-left: 10px;
+}
+
+.eliminarBtn{
+    margin-top: 20px;
+    border: 1px solid;
+    margin-right: 10px;
+    margin-left: 40%;
+}
+
+.afegirEliminarBtn{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.columnUsuaris {
+    border: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}
+
+.columnUsuarisGrup {
+    border: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: black;
+}
+
+.containerModificaMembres:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.containerModificaMembres {
+    margin-top: 10px;
+}
+
+.modal-body-eliminarGrup{
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
 }
