@@ -204,7 +204,7 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
-// CU42 Aleix_Prat
+// CU42
 Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
 // CU43
@@ -214,6 +214,9 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 // CU_44_DonarBaixaUsuari Gloria Taboada i Aleix Prat
 Route::get('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@getIndex');
 Route::put('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@putNo');
+
+Route::get('/CU_44_prueba', 'CU_44_pruebaController@mostraUsuari');
+Route::post('/baixaUser', 'CU_44_pruebaController@baixaUsuari');
 //
 //
 // CU45
@@ -227,6 +230,9 @@ Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 // CU47 Aleix Prat i Gloria Taboada
 Route::put('/CU_47_AltaUsuari/{id}', 'CU_47Controller@putSi');
 Route::get('/CU_47_AltaUsuari/{id}', 'CU_47Controller@getIndex');
+
+Route::get('/CU_47_prueba', 'CU_47_pruebaController@mostraUsuari');
+Route::put('/altaUser', 'CU_47_pruebaController@altaUsuari');
 //
 //
 // CU48  Mostrar Usuaris (Oscar y Carlos)

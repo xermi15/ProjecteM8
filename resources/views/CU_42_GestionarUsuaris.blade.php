@@ -5,6 +5,9 @@
 @include('CU_52_CrearUsuari')
 @include('CU_45_ModificarUsuari')
 @include('CU_43_EliminarUsuari')
+@include('CU_47_prueba')
+@include('CU_44_prueba')
+
 <!-- Bootstrap and my style-->
 <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ url('/css/CU_42_GestionarUsuaris.css') }}" rel="stylesheet">
@@ -47,6 +50,8 @@
 var urlNew = "http://localhost/DAW2M14/public/CU_52_CrearUsuari";
 var url = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
 var url2 = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
+var urlAlta = "http://localhost/DAW2M14/public/CU_47_prueba?id=";
+var urlBaixa = "http://localhost/DAW2M14/public/CU_44_prueba?id=";
 var iduser;
 
 $("button[name='modalButtonEdit']").click(function() {
@@ -131,6 +136,64 @@ $('#modalButtonNew').click(function() {
             .done(function(data) {
                 $('#modalButtonNew').modal('toggle');
                 $('#miModalNew').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonAlta']").click(function() {
+    iduser = this.value;
+    $.get(urlAlta + iduser)
+            .done(function(data) {
+                $('#cu47_idUsuari').html(data[0][0].idUsuari);
+                $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
+                $('#cu47_contrasenya').html(data[0][0].contrasenya);
+                $('#cu47_nom').html(data[0][0].nom);
+                $('#cu47_cognoms').html(data[0][0].cognoms);
+                $('#cu47_email').html(data[0][0].email);
+                $('#cu47_dadesPostals').html(data[0][0].dadesPostals);
+                $('#cu47_tipus').html(data[0][0].tipus);
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu47_grups').html(nomgrups);
+                $('#modalButtonAlta').modal('toggle');
+                $('#miModalAlta').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonBaixa']").click(function() {
+    iduser = this.value;
+    $.get(urlBaixa + iduser)
+            .done(function(data) {
+                $('#cu44_idUsuari').html(data[0][0].idUsuari);
+                $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
+                $('#cu44_contrasenya').html(data[0][0].contrasenya);
+                $('#cu44_nom').html(data[0][0].nom);
+                $('#cu44_cognoms').html(data[0][0].cognoms);
+                $('#cu44_email').html(data[0][0].email);
+                $('#cu44_dadesPostals').html(data[0][0].dadesPostals);
+                $('#cu44_tipus').html(data[0][0].tipus);
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu44_grups').html(nomgrups);
+                $('#modalButtonBaixa').modal('toggle');
+                $('#miModalBaixa').modal('show');
             })
             .fail(function() {
                 alert('Error.....');
