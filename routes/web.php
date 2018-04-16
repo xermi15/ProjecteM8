@@ -213,7 +213,6 @@ Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
 //
 // CU43
 Route::get('/CU_43_EliminarUsuari', 'CU_43Controller@mostraUsuari');
-//Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
 Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU_44_DonarBaixaUsuari Gloria Taboada i Aleix Prat
@@ -223,7 +222,6 @@ Route::put('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@putNo');
 //
 // CU45
 Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
-//Route::post('/editUser/{id}', 'CU_45Controller@modificarUsuari');
 Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
@@ -259,3 +257,5 @@ Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 //
 // feina addicional
 
+Route::get('/CU_42_prueba', 'CU_42_pruebaController@mostrarUsuaris');
+//Route::get('/CU_42_prueba', 'CU_45Controller@mostraUsuari');
