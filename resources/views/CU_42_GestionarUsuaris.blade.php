@@ -60,18 +60,16 @@ $("button[name='modalButtonEdit']").click(function() {
                 $('#cu45_cognoms').val(data[0][0].cognoms);
                 $('#cu45_email').val(data[0][0].email);
                 $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
-
-                /*var radioButton = data[0][0].estat;
-                 if (radioButton == 0) {
-                 $('#cu45_estat0').attr('checked', true);
-                 $('#cu45_estat1').attr('checked', false);
-                 } else {
-                 $('#cu45_estat1').attr('checked', true);
-                 $('#cu45_estat0').attr('checked', false);
-                 }*/
-
-                $('#cu45_estat').val(data[0][0].estat);
                 $('#cu45_tipus').val(data[0][0].tipus);
+
+                var radioButton = data[0][0].estat;
+                if (radioButton == 0) {
+                    $("#cu45_estat0").prop("checked", true);
+                    $('#cu45_estat1').prop('checked', false);
+                } else {
+                    $('#cu45_estat1').prop('checked', true);
+                    $('#cu45_estat0').prop('checked', false);
+                }
 
                 var nomgrups = "<div>";
                 for (i = 0; i < data[1].length; i++) {
@@ -100,11 +98,17 @@ $("button[name='modalButtonDelete']").click(function() {
                 $('#cu43_cognoms').val(data[0][0].cognoms);
                 $('#cu43_email').val(data[0][0].email);
                 $('#cu43_dadesPostals').val(data[0][0].dadesPostals);
-
-                //$('#cu45_estat:checked').val(data[0].estat
-                //$("input:radio[name='cu45_estat']:checked").val();
-
+                ;
                 $('#cu43_tipus').val(data[0][0].tipus);
+
+                var radioButton = data[0][0].estat;
+                if (radioButton == 0) {
+                    $("#cu43_estat0").prop("checked", true);
+                    $('#cu43_estat1').prop('checked', false);
+                } else {
+                    $('#cu43_estat1').prop('checked', true);
+                    $('#cu43_estat0').prop('checked', false);
+                }
 
                 var nomgrups = "<div>";
                 for (i = 0; i < data[1].length; i++) {

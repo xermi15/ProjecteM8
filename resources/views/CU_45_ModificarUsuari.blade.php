@@ -52,10 +52,10 @@
                         <label class="col-sm-3 control-label">Estat:</label>
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" id="cu45_estat" name="cu45_estat" value=1 required /> Alta
+                                <input type="radio" id="cu45_estat1" name="cu45_estat" value="1" required /> Alta
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" id="cu45_estat" name="cu45_estat" value=0 required /> Baixa
+                                <input type="radio" id="cu45_estat0" name="cu45_estat" value="0" required /> Baixa
                             </label>
                         </div>
                         <div class="col-sm-5">
