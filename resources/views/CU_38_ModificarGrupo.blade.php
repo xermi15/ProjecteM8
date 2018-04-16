@@ -11,9 +11,8 @@
                     <span aria-hidden="true" style="font-size: 30px;">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <h4>Nom</h4>
-                <label for="nombre_grupo" class="ui-hidden-accessible"></label>
+            <div class="modal-body">
+                <label for="nombre_grupo" class="ui-hidden-accessible">Nom: </label>
                 <input type="text" name="nombre_grupo" id="nombre_grupo" placeholder="Nom del grup" value="{{ $grup->nom }}" disabled >
                 @include('CU_39_ModificarMembres')
                 
@@ -26,16 +25,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var idGrupo;
-    function guardar(){
-    //guarda datos grupo
-    
-    }
-
-    function idGrup(id){
-    //coge id de pelicula seleccionada
-    idGrupo = id;
-    }
-</script>
