@@ -205,11 +205,7 @@ Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 // CU42 Aleix_Prat
-Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
-//  Route::get('/', function(){
-//      return view("CU_42");
-//  });
-//  Route::post('/CU42Controller',"CU42Controller@getIndex")
+Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
 // CU43
 Route::get('/CU_43_EliminarUsuari', 'CU_43Controller@mostraUsuari');
@@ -257,5 +253,3 @@ Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 //
 // feina addicional
 
-Route::get('/CU_42_prueba', 'CU_42_pruebaController@mostrarUsuaris');
-//Route::get('/CU_42_prueba', 'CU_45Controller@mostraUsuari');
