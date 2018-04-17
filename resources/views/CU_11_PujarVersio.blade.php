@@ -52,7 +52,7 @@
             <div class="modal-footer">
             </div>
         </div>
-    </div>
+     </div>
 </div>
 
 <div class="row" style="margin-top:20px" hidden>

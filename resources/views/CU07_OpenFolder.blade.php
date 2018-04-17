@@ -398,23 +398,23 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data" action="{{action('CU_11Controller@postPujarVersio',$title)}}">
                         {{ csrf_field() }}
                             <input hidden name="id" value="{{$document->idDocument}}">
                             <!-- <input hidden name="versioOld" value="{{$document->versioInterna}}"> -->
 
                             <div class="form-group">
                                 <label for="title">Nom del arxiu</label>
-                                <input type="text" name="nom" id="nom" class="form-control" required value="{{$document->nom}}">
+                                <input type="text" name="nom" id="nom" class="form-control" value="{{$document->nom}}">
                             </div>
 
                             <div class="form-group">
                                     <label for="title">Ruta de l'arxiu</label>
-                                    <input type="file" name="arxiu" id="arxiu" class="form-control" required>
+                                    <input type="file" name="arxiu" id="arxiu" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                    <label for="synopsis">Descripció (Opcional)</label>
+                                    <label for="synopsis">Descripció</label>
                             <textarea name="desc" id="desc" class="form-control" rows="3" value="{{$document->descripcio}}"></textarea>
                             </div>
 
@@ -431,9 +431,10 @@
                         </form>
                     </div>
                     <div class="modal-footer">
+                        <i>*Tots els camps són opcionals</i>
                     </div>
                 </div>
-            </div>
+             </div>
         </div>
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
