@@ -18,7 +18,15 @@
 
             </div>
             <div class="modal-footer" style="text-align: center;">
-                <button type="button" onclick="eliminar();"class="btn btn-danger" id="modalGuardar" style="margin-right: 25%;">Eliminar</button>
+            <form method="POST" action="{{ action('CU_37Controller@eliminarGrup', $grup->id) }}">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                 <button type="submit" class="btn btn-danger" id="modalGuardar" style="margin-right: 25%;">
+		         Eliminar
+                 </button>
+                </form>
+              
+           
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
