@@ -50,7 +50,7 @@ Route::get('/consultarLogs', 'CU_04Controller@consultarLogs');
 //
 // CU05
 //Laia
-Route::get('/buscarDocumentos', 'CU_05Controller@buscador');
+//Route::get('/buscarDocumentos', 'CU_05Controller@buscador');  // Se ha añadido la funcionalidad al Buscar de la cabecera.
 Route::get('/resultadoBusqueda', 'CU_05Controller@buscarDocuments');
 //
 // CU06
@@ -241,7 +241,7 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 //
 // CU49
-Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
+//Route::get('/filtraLogs', 'CU_49Controller@filtraLogs'); Se ha juntado con el CU_04 Consultar Logs
 //
 //
 // CU50

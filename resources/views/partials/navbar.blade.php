@@ -32,11 +32,11 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
         -->
-        <form class="navbar-form navbar-right" role="search" style="margin-right: 0px;">
+        <form class="navbar-form navbar-right" method="GET" action="/resultadoBusqueda" style="margin-right: 0px;">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text"  name="cadena" id="cadena"  class="form-control" placeholder="Buscar Documents">
             </div>
-            <button type="button" class="btn btn-default">Search</button>
+            <button class="btn btn-default">Buscar</button>
         </form>
     </div>
 </nav>
