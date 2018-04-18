@@ -10,7 +10,8 @@ class CU_50Controller extends Controller
 {
    public function getIndex() {
       $plantilla = crearPlantilla::all();
-       return view('CU_50', compact('plantilla'));
+      $users = Usuari::all();
+       return view('CU_50', compact('plantilla', 'users'));
      // return view('CU_50');
     }
     
@@ -18,8 +19,8 @@ class CU_50Controller extends Controller
       $users = Usuari::all(); 
      
         return view('CU_50', compact('users'));
-    }*/
-    
+    }
+    */
     
     
 }
