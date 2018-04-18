@@ -9,6 +9,7 @@
                     <th>Nom Plantilla</th>
                     <th>ID UsuariCreador</th>
                     <th>ID UsuariAprovador</th>
+                    <th>ID UsuariRevisor</th>
                 </tr>
             </thead>
             <tbody>
