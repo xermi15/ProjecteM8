@@ -14,15 +14,16 @@
             </thead>
             <tbody>
                 
+                
                 @foreach($plantilla as $plantillas)
                     <tr>
                         <td>{{ $plantillas->idPlantilla }}</td>
                         <td>{{ $plantillas->nomPlantilla }}</td>
-                        <td>{{ $plantillas->idUsuariCreador }} </td>
+                        <td>{{ $plantillas->idUsuariCreador }}</td>
                         <td>{{ $plantillas->idUsuariAprovador }}</td>
                     </tr>
                 @endforeach
-
+              
             </tbody>
 
         </table>
