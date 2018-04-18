@@ -435,6 +435,28 @@
                 </div>
              </div>
         </div>
+        
+        
+        <!-- Modal GeneraURL-->
+  
+            <div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">URL</h4>
+                  </div>
+                  <div class="modal-body">
+                      <input id="URL" name="URL" type="text" class="form-control"> </br>
+                  </div>
+                  <div class="modal-footer" style="text-align: center">
+                  <form id="copiarURL" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                   </form> 
+                  </div>
+                </div>
+              </div>    
+            </div>
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
                var id = $(e.relatedTarget).data('book-id');
