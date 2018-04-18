@@ -5,8 +5,8 @@
 @include('CU_52_CrearUsuari')
 @include('CU_45_ModificarUsuari')
 @include('CU_43_EliminarUsuari')
-@include('CU_47_prueba')
-@include('CU_44_prueba')
+@include('CU_47_AltaUsuari')
+@include('CU_44_BaixaUsuari')
 
 <!-- Bootstrap and my style-->
 <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -50,8 +50,8 @@
 var urlNew = "http://localhost/DAW2M14/public/CU_52_CrearUsuari";
 var url = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
 var url2 = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
-var urlAlta = "http://localhost/DAW2M14/public/CU_47_prueba?id=";
-var urlBaixa = "http://localhost/DAW2M14/public/CU_44_prueba?id=";
+var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
+var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var iduser;
 
 $("button[name='modalButtonEdit']").click(function() {

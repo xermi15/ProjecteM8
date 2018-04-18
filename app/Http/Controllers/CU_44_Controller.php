@@ -7,7 +7,7 @@ use App\Usuari;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
-class CU_44_pruebaController extends Controller {
+class CU_44_Controller extends Controller {
 
     public function mostraUsuari() {
 
