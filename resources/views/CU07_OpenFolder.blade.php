@@ -51,7 +51,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-link"></span></td>
+                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-toggle="modal" data-target="#URL" data-book-id="{{$document->idDocument." documento"}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
