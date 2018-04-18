@@ -53,7 +53,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-link"></span></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
-                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersio"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureDocumentModal" data-book-id="{{$document->idDocument}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->idDocument." documento"}}" data-book-name="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
@@ -384,7 +384,7 @@
             </div>
         </div>
         <!-- Pujar Versió -->
-        <div class="modal fade" id="pujarVersio" role="dialog">
+        <div class="modal fade" id="pujarVersioModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -398,14 +398,13 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" enctype="multipart/form-data" action="{{action('CU_11Controller@postPujarVersio',$title)}}">
+                        <form id="modalFormPujarVersio" method="POST" enctype="multipart/form-data" action="">
                         {{ csrf_field() }}
-                            <input hidden name="id" value="{{$document->idDocument}}">
-                            <!-- <input hidden name="versioOld" value="{{$document->versioInterna}}"> -->
+                            <input id="pujarVersioID" hidden name="id" value="">
 
                             <div class="form-group">
                                 <label for="title">Nom del arxiu</label>
-                                <input type="text" name="nom" id="nom" class="form-control" value="{{$document->nom}}">
+                                <input type="text" name="nom" id="nom" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -415,7 +414,7 @@
 
                             <div class="form-group">
                                     <label for="synopsis">Descripció</label>
-                            <textarea name="desc" id="desc" class="form-control" rows="3" value="{{$document->descripcio}}"></textarea>
+                            <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -510,5 +509,13 @@
                 $('#modalFormMoureDocument').attr('action', '../moureDocument/'+id);
             });
             
+            //Pujar Versió
+            $('#pujarVersioModal').on('show.bs.modal', function(e){
+                var id = $(e.relatedTarget).data('book-id');
+                //postPujarVersio
+                $("#pujarVersioID").val(id);
+                
+                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+            });
         </script>
 @stop
