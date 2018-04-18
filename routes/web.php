@@ -150,10 +150,14 @@ Route::post('/CU_26', 'CU_26Controller@postCreate');
 //
 // CU27
 //
+//Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
+Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/edit', 'CU_27Controller@EditarPlantilla');
+//
 //
 //
 // CU28
-//
+Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU29
@@ -248,6 +252,7 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 // CU50
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
+//Route::get('/CU_50', 'CU_50Controller@MostrarUsuari');
 
 //
 //
