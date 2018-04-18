@@ -7,7 +7,7 @@ use App\Usuari;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
-class CU_44_pruebaController extends Controller {
+class CU_44_Controller extends Controller {
 
     public function mostraUsuari() {
 
@@ -27,7 +27,7 @@ class CU_44_pruebaController extends Controller {
 
         $id = $request->cu44_idUsuari;
         $user1 = Usuari::findOrFail($id);
-
+        //$user1 = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);
         $user1->estat = 0;
         $user1->save();
 

@@ -17,12 +17,12 @@ class CU12_urlController extends Controller
         $doc = new URL_Document;
         $doc->idDocument=$request->idDocument;
         $doc->versioInterna=$request->versioInterna;
-        $doc->url="localhost/DAW2M14/public/document?id=".$request->idDocument."/";
+        $doc->url="localhost/DAW2M14/public/document?id=".$request->idDocument."&versio=".$request->versioInterna."/";
         $doc->actiu=true;
         $doc->save();
 
         }
-         return view('CU12_URLDocument'); 
+         return view($doc->url); 
         
     }
 }
