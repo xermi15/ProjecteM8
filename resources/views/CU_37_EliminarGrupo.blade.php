@@ -1,4 +1,4 @@
-<button id="deleteBtn" type="button" onclick="idGrup({{$grup->idGrup}});" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
+<button id="deleteBtn" type="button" onclick="idGrup({{$grup->idGrup}});nomGrup({{$grup->nom}});" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
     <i class="glyphicon glyphicon-trash"></i>
 </button>
 
@@ -12,21 +12,17 @@
                 </button>
             </div>
             <div class="modal-body-eliminarGrup">
-                <h4>Segur que desitja eliminar el grup "<b>{{ $grup->nom }}</b>"?</h4>
-                <label for="password">Contrasenya:</label>
-                <input type="password" name="password" id="password" size="35" placeholder="Introdueixi la seva contrasenya">
+                <h4>Segur que desitja eliminar el grup?</h4>
+                <!--<label for="password">Contrasenya:</label>
+                <input type="password" name="password" id="password" size="35" placeholder="Contrasenya del administrador del grup">-->
 
             </div>
             <div class="modal-footer" style="text-align: center;">
-            <form method="POST" action="{{ action('CU_37Controller@eliminarGrup', $grup->id) }}">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
-                 <button type="submit" class="btn btn-danger" id="modalGuardar" style="margin-right: 25%;">
-		         Eliminar
-                 </button>
-                </form>
-              
-           
+                <button type="button" onclick="eliminarGrup();" class="btn btn-danger" id="modalEliminar" style="margin-right: 25%;">
+                    Eliminar
+                </button>
+
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
         </div>

@@ -1,31 +1,38 @@
-var idGrupo;
+var idGrup;
+var nomGrup;
 
 //modificar y eliminar grupo
 function idGrup(id) {
-    idGrupo = id;
+    idGrup = id;
+}
+
+function nomGrup(nom) {
+    nomGrup = nom;
 }
 
 //crear grupo
 function nouGrup(id) {
     //recorre bbdd y asigna id a nuevo grupo
     id++;
-    idGrupo = id;
+    idGrup = id;
 }
 
 //crear grupo
 function crear() {
     //crea grupo con idGroup nuevo
-    alert('crear nuevo grupo con id '+idGrupo);
+    window.location.replace("http://localhost/DAW2M14/public/CU_40_CrearGrupo/"+idGrup);
 }
 
 //modificar grupo
 function guardar() {
     //guarda datos grupo
-    alert('guardar ' + idGrupo);
+    alert('guardar ' + idGrup);
 }
 
 //eliminar grupo
-function eliminar() {
+function eliminarGrup() {
     //eliminar grupo
-    alert('eliminar ' + idGrupo);
+    window.location.replace("http://localhost/DAW2M14/public/CU_37_EliminarGrupo/"+idGrup);
+    
+    $("#myModal_3").modal("hide");
 }
