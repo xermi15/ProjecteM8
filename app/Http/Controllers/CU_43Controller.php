@@ -11,7 +11,7 @@ class CU_43Controller extends Controller {
 
     public function mostraUsuari() {
 
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET, 'id');
         //$usuari = Usuari::findOrFail($id);// no funciona este metodo aqui
         //$usuari = Usuari::where('idUsuari', $id)->first();// tampoco funciona este metodo aqui
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);

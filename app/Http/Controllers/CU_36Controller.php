@@ -15,6 +15,6 @@ class CU_36Controller extends Controller
         $usuaris = Usuari::all();
         $usuariGrups = UsuariGrup::all();
         
-     return view('CU_36_GestionarGrupos', compact('grups','usuaris','usuariGrups'));
+     return view('CU_36_GestionarGrups', compact('grups','usuaris','usuariGrups'));
   }
 }

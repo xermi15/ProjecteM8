@@ -12,7 +12,7 @@
             </table>
 
         </div>
-        @include('CU_40_CrearGrupo')
+        @include('CU_40_CrearGrup')
 
         @include('CU_41_MostrarGrups')
     </div>
