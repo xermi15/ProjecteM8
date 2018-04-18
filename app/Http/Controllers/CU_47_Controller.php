@@ -27,7 +27,7 @@ class CU_47_Controller extends Controller {
 
         $id = $request->cu47_idUsuari;
         $user1 = Usuari::findOrFail($id);
-
+        //$user1 = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);
         $user1->estat = 1;
         $user1->save();
 

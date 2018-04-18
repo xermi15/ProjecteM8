@@ -10,6 +10,7 @@
             </div>
             <form id="formBaixaUser" name="formBaixaUser" class="form-horizontal" method="POST" action="{{ url('/baixaUser') }}">
                 <div class="altaBaixa">
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <div>
                         <input type="text" name="cu44_idUsuari" id="cu44_idUsuari" value="" hidden />

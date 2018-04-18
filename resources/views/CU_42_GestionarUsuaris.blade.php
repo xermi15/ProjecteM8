@@ -149,7 +149,7 @@ $("button[name='modalButtonAlta']").click(function() {
     iduser = this.value;
     $.get(urlAlta + iduser)
             .done(function(data) {
-                $('#cu47_idUsuari').html(data[0][0].idUsuari);
+                $('#cu47_idUsuari').val(data[0][0].idUsuari);
                 $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu47_contrasenya').html(data[0][0].contrasenya);
                 $('#cu47_nom').html(data[0][0].nom);
@@ -178,7 +178,7 @@ $("button[name='modalButtonBaixa']").click(function() {
     iduser = this.value;
     $.get(urlBaixa + iduser)
             .done(function(data) {
-                $('#cu44_idUsuari').html(data[0][0].idUsuari);
+                $('#cu44_idUsuari').val(data[0][0].idUsuari);
                 $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu44_contrasenya').html(data[0][0].contrasenya);
                 $('#cu44_nom').html(data[0][0].nom);

@@ -10,9 +10,10 @@
             </div>
             <form id="formAltaUser" name="formAltaUser" class="form-horizontal" method="POST" action="{{ url('/altaUser') }}">
                 <div class="altaBaixa">
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <div>
-                        <input type="text" name="cu47_idUsuari" id="cu47_idUsuari" value="" hidden />
+                        <input type="text" name="cu47_idUsuari" id="cu47_idUsuari" value="" hidden/>
                     </div>
                     <div>
                         <label class="col-sm-5">Nom Usuari: </label>

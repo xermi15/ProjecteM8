@@ -218,7 +218,8 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44
 Route::get('/CU_44_BaixaUsuari', 'CU_44_Controller@mostraUsuari');
-Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
+//Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
+Route::put('/baixaUser', 'CU_44_Controller@baixaUsuari');
 //
 // CU45
 Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
@@ -230,7 +231,7 @@ Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU47
 Route::get('/CU_47_AltaUsuari', 'CU_47_Controller@mostraUsuari');
-Route::post('/altaUser', 'CU_47_Controller@altaUsuari');
+Route::put('/altaUser', 'CU_47_Controller@altaUsuari');
 //
 //
 // CU48  Mostrar Usuaris (Oscar y Carlos)
@@ -246,7 +247,6 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
 //Route::get('/CU_50', 'CU_50Controller@MostrarUsuari');
-
 //
 //
 //CU51
