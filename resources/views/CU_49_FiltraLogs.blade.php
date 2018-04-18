@@ -6,7 +6,7 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Filtro de Logs</h1>   
-           <form method="GET" action="/filtraLogs/">
+           <form method="GET" action="/consultarLogs/">
                <select name="filtro">
                     <option value="dataLog" >Fecha</option>
                     <option value="nomUsuari">Usuario</option>
@@ -16,6 +16,9 @@
                 <button>Filtrar</button>
            </form>
             <div class="table-responsive">
+                <?php 
+            if(  count($logs) > 0){
+              ?>
                 <table class="table table-striped table-sm">
                   <thead>
                     <tr>
@@ -36,6 +39,10 @@
                     @endforeach
                   </tbody>
                 </table>
+                
+      <?php }else{
+                  echo "No se han encontrado coincidencias"; 
+            } ?>
           </div>
 	</div>
 </div>

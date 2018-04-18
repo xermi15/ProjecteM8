@@ -11,7 +11,7 @@
                 <button>Buscar</button>
            </form>
            <?php 
-            if(count($resultado) > 0){
+            if( ( count($resultado['carpetas']) + count($resultado['documentos']) ) > 0){
               ?>
                 <div class="table-responsive">
                         <table class="table table-striped table-sm">
@@ -44,7 +44,10 @@
                           </tbody>
                         </table>
                   </div>
-             <?php } ?>
+             <?php }else{
+                 
+                 echo "No se han encontrado documentos con el termino <strong> ".$_GET['cadena']." </strong>";
+             } ?>
             
 	</div>
 </div>

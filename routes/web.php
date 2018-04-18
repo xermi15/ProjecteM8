@@ -50,7 +50,7 @@ Route::get('/consultarLogs', 'CU_04Controller@consultarLogs');
 //
 // CU05
 //Laia
-Route::get('/buscarDocumentos', 'CU_05Controller@buscador');
+//Route::get('/buscarDocumentos', 'CU_05Controller@buscador');  // Se ha añadido la funcionalidad al Buscar de la cabecera.
 Route::get('/resultadoBusqueda', 'CU_05Controller@buscarDocuments');
 //
 // CU06
@@ -150,10 +150,14 @@ Route::post('/CU_26', 'CU_26Controller@postCreate');
 //
 // CU27
 //
+//Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
+Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/edit', 'CU_27Controller@EditarPlantilla');
+//
 //
 //
 // CU28
-//
+Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU29
@@ -185,7 +189,7 @@ Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrupo{id}', 'CU_37Controller@getCU_37');
+Route::get('CU_37_EliminarGrupo/{id}', 'CU_37Controller@getCU_37');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
@@ -198,6 +202,7 @@ Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 // CU40 Crear Grupo (Oscar y Carlos)
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
+//Route::post('grupo/create', 'CU_37Controller@postCreate');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
@@ -234,12 +239,13 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 //
 // CU49
-Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
+//Route::get('/filtraLogs', 'CU_49Controller@filtraLogs'); Se ha juntado con el CU_04 Consultar Logs
 //
 //
 // CU50
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
+//Route::get('/CU_50', 'CU_50Controller@MostrarUsuari');
 
 //
 //
