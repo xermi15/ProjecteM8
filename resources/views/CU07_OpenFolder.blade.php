@@ -51,7 +51,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-toggle="modal" data-target="#URL" data-book-id="{{$document->idDocument." documento"}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
+                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#URL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -533,6 +533,27 @@
             
             //Pujar Versió
             $('#pujarVersioModal').on('show.bs.modal', function(e){
+                var id = $(e.relatedTarget).data('book-id');
+                //postPujarVersio
+                $("#pujarVersioID").val(id);
+                
+                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+            });
+            
+            //Genera Url
+            $('#generaURL').click(function(e){
+                peticioAjax("/CU12_URL");
+                
+                function peticioAjax(url){
+                    var jqxhr = $.get(url,
+                                        { nom: document.getElementById("nom").value,
+                                          cognom: document.getElementById("cognom").value
+                                        }   
+                    )
+                     .done(function(data){alert(data);})
+                     .fail(function(){alert("Error");})
+                     .always(function(){alert("Fi");});
+                }
                 var id = $(e.relatedTarget).data('book-id');
                 //postPujarVersio
                 $("#pujarVersioID").val(id);
