@@ -1,53 +1,59 @@
-<!DOCTYPE html>
-@extends('layouts.master')
 
-@section('content')
-        <link href="{{ url('/css/CU_47.css') }}" rel="stylesheet">
-        <div id="containerr">
-            
-                <div class="text-center darkColor" style="padding: 7px">Gestionar Usuarios</div>
-                <br>  
-                
-         </div>      
-        <div class="text-center" id="containerr2">
-            <div class="text-center darkColor" style="padding: 7px">Donar d'alta</div>
-          
-
-        {{-- Totes les dades de l`usuari --}}
-
-        <h5> Nom Usuari: {{$DadesUsuari->nomUsuari}}</h5>
-        <h5> Nom: {{$DadesUsuari->nom}}</h5>
-        <h5> Cognom: {{$DadesUsuari->cognoms}}</h5>
-        <h5> Email: {{$DadesUsuari->email}}</h5>
-        <h5> Dades Postals: {{$DadesUsuari->dadesPostals}}</h5>
-        <h5> Data Alta: {{$DadesUsuari->dataAlta}}</h5>
-        <!--<h5> Estat: {{$DadesUsuari->estat}}</h5>-->
-        
-        @if( ($DadesUsuari->estat)==1 )
-             <p> <label>Donat d'alta: </label> Si<p>
-             <p><i>Aquest usuari ja esta donat d'altax</i></p>
-              <a href="{{ url('/CU_42_GestionarUsuaris/') }}">
-                  <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
-              </a>
-        @elseif ( ($DadesUsuari->estat)==0 )
-              <p> <label>Donat d'alta: </label> No<p>
-              
-              <form action="{{action('CU_47Controller@putSi', $DadesUsuari->idUsuari)}}" 
-                method="POST" style="display:inline">
-                {{ method_field('PUT') }}
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-info" style="display:inline">
-                    Donar d'alta
+<div class="modal fade" id="miModalAlta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div id="containerUser" class="modal-content">
+            <div class="text-center darkColor">
+                Alta usuari
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-               </form>
-              
-              <a href="{{ url('/CU_42_GestionarUsuaris/') }}">
-               <button type='button' class='btn btn-warning'>Tornar al gestionar usuaris</button>
-              </a>
-        @endif
-            
-        </div>
-  @stop            
-    
+            </div>
+            <form id="formAltaUser" name="formAltaUser" class="form-horizontal" method="POST" action="{{ url('/altaUser') }}">
+                <div class="altaBaixa">
+                    {{ csrf_field() }}
+                    <div>
+                        <input type="text" name="cu47_idUsuari" id="cu47_idUsuari" value="" hidden />
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Nom Usuari: </label>
+                        <label id="cu47_nomUsuari" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Contrasenya: </label>
+                        <label id="cu47_contrasenya" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Nom: </label>
+                        <label id="cu47_nom" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Cognoms: </label>
+                        <label id="cu47_cognoms" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Email: </label>
+                        <label id="cu47_email" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Dades Postals: </label>
+                        <label id="cu47_dadesPostals" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Tipus: </label>
+                        <label id="cu47_tipus" class="col-sm-7"></label>
+                    </div>
+                    <div>
+                        <label class="col-sm-5">Grups: </label>
+                        <label id="cu47_grups" class="col-sm-7"></label>
+                    </div>
 
-      
+                </div>
+
+                <div class="text-right darkColor">
+                    <button id="donarAlta" class="btn btn-success" type="submit">Donar d'Alta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
