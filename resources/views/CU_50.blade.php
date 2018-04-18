@@ -14,6 +14,7 @@
             </thead>
             <tbody>
                 
+                
                 @foreach($plantilla as $plantillas)
                     <tr>
                         <td>{{ $plantillas->idPlantilla }}</td>
@@ -29,7 +30,5 @@
             </tbody>
 
         </table>
-          
-
 </div>
 @stop
