@@ -24,11 +24,10 @@ class CU_11Controller extends Controller
     
     public function postPujarVersio($id,UploadRequest $request){
         
-        $savePath = $request->arxiu->store('documents');
-        
+       
+        //Utilitzem la variable pel bucle i després la sobreescribim
         $ultimaVersio = Document::where('idDocument','=',$request->id)
-                                        ->orderBy('versioInterna','desc');
-        
+                                        ->orderBy('versioInterna','desc');  
         foreach ($ultimaVersio as $doc) {
             $doc->vigent = false;
             $doc->save();
@@ -38,9 +37,8 @@ class CU_11Controller extends Controller
         
         $novaVersio = new Document();
         
-        $novaVersio->nom = $request->nom;
         $novaVersio->idDocument = $request->id;
-        $novaVersio->descripcio = $request->desc;
+        
        
         
         $novaVersio->versioInterna = (($ultimaVersio) + 1);
@@ -53,10 +51,14 @@ class CU_11Controller extends Controller
             $novaVersio->versioUsuari = $novaVersio->versioInterna;
         }
         
+        if(isset($request->nom))
+            $novaVersio->nom = $request->nom;
+        if(isset($request->desc))
+            $novaVersio->descripcio = $request->desc;
+        if(isset($request->arxiu))
+            $novaVersio->path = $request->arxiu->store('documents');
+        
         $novaVersio->vigent = true;
-        
-        $novaVersio->path = $savePath;
-        
         $novaVersio->save();
         
         $carpeta = 1; //Valor per defecte

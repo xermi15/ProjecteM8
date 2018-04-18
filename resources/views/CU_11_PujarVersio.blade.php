@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#pujarVersio">Open Modal</button>
 
-<div class="modal fade" id="myModal2" role="dialog">
+<div class="modal fade" id="pujarVersio" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -52,7 +52,7 @@
             <div class="modal-footer">
             </div>
         </div>
-  </div>
+     </div>
 </div>
 
 <div class="row" style="margin-top:20px" hidden>
