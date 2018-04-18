@@ -31,7 +31,7 @@
                         {{-- TODO: Completa el input para el año --}}
                         <label for="año">Revisor</label>
                         
-                        <select class="form-control col-sm-10" multiple size="3" name="revi">
+                        <select class="form-control col-sm-10" multiple size="3" name="revi[]">
                             @foreach($users as $user)
                                
                                 <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari }}</option>
