@@ -6,7 +6,7 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Registro de Logs</h1>   
-           <form method="GET" action="/filtraLogs">
+           <form method="GET" action="/consultarLogs">
                <select name="filtro">
                     <option value="dataLog" >Fecha</option>
                     <option value="nomUsuari">Usuario</option>

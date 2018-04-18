@@ -1,73 +1,208 @@
 @extends('layouts.master')
 
 @section('content')
-        <link href="{{ url('/css/CU_42.css') }}" rel="stylesheet">
-        <div id="containerr">
-            
-                <div class="text-center darkColor" style="padding: 7px">Gestionar Usuarios</div>
-                <br>  
-                
-         </div>      
-        <div class="text-center" id="containerr2">
-            <div style="float: left;" class="   ">
-                    
-                    <div class="text-center darkColor" style="padding: 7px">Mostrar Usuaris</div>
-                   
-                    
-                    @foreach( $arrayUsuaris as $usuaris )
-                    <div>
-                        <label class="llista text-center">{{$usuaris->nomUsuari}}</label>
-                        <label class="llista2 text-center">{{$usuaris->nom}}</label>
-                          <label class="butons text-center">
-                            <a href="{{ url('/CU_45_ModificarUsuari/' . ($usuaris->idUsuari) ) }}">
-                              <button type="button" class="btn btn-default btn-sm btn btn-success">
-                                    Modificar
-                                 <span class="glyphicon glyphicon-asterisk"></span>
-                              </button>
-                            </a>
-                        </label>
-                        @if( ($usuaris->estat)==1 )
-                        <label class="butons text-center">
-                            <a href="{{ url('/CU_44_DonarBaixaUsuari/' . ($usuaris->idUsuari) ) }}">
-                               <button type="button" class="btn btn-default btn-sm btn btn-warning">
-                                   Baixa
-                                <span class="glyphicon glyphicon-minus"></span> 
-                               </button>
-                            </a>
-                        </label>
-                        @elseif ( ($usuaris->estat)==0 )
-                        <label class="butons text-center">
-                            <a href="{{ url('/CU_47_AltaUsuari/' . ($usuaris->idUsuari) ) }}">
-                               <button type="button" class="btn btn-default btn-sm btn btn-primary">
-                                   Alta
-                                <span class="glyphicon glyphicon-plus"></span> 
-                               </button>
-                            </a>
-                        </label>
-                        @endif
-                    <label class="butons text-center">
-                            <a href="{{ url('/CU_43_EliminarUsuari/' . ($usuaris->idUsuari) ) }}">
-                               <button type="button" class="btn btn-default btn-sm btn btn-danger">
-                                   Eliminar
-                                <span class="glyphicon glyphicon-plus"></span> 
-                               </button>
-                            </a>
-                        </label>
-                    </div>
-                    
-                    
-                    @endforeach
-                    
-                    
-            </div>
+
+@include('CU_52_CrearUsuari')
+@include('CU_45_ModificarUsuari')
+@include('CU_43_EliminarUsuari')
+@include('CU_47_AltaUsuari')
+@include('CU_44_BaixaUsuari')
+
+<!-- Bootstrap and my style-->
+<link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url('/css/CU_42_GestionarUsuaris.css') }}" rel="stylesheet">
+
+<div>{!! Notification::showAll() !!}</div>
+
+<div id="containerUsuarios">
+    <div class="rowTitulo">
+        <label class="col-md-4">Nom i cognoms</label>
+        <label class="col-md-3">Nom usuari</label>
+        <label class="col-md-5">Accions</label>
+    </div>
+
+    @foreach( $usuaris as $usuari )
+    <div class="rowRegistro">
+        <label class="col-md-4">{{ $usuari->nom }} {{ $usuari->cognoms }}</label>
+        <label class="col-md-3">{{ $usuari->nomUsuari }}</label>
+        <div class="col-md-5 divAccions">
+            <button name="modalButtonEdit" class="btn btn-warning" value="{{$usuari->idUsuari}}"><span class="glyphicon glyphicon-pencil"></span> Editar </button>
+            @if ($usuari->estat == 0)
+            <button name="modalButtonAlta" class="btn btn-success botoAltaBaixa" value="{{$usuari->idUsuari}}"><span class="glyphicon glyphicon-arrow-up"></span> Alta </button>
+            @elseif($usuari->estat == 1)
+            <button name="modalButtonBaixa" class="btn btn-info botoAltaBaixa" value="{{$usuari->idUsuari}}"><span class="glyphicon glyphicon-arrow-down"></span> Baixa </button>
+            @endif
+            <button name="modalButtonDelete" class="btn btn-danger" value="{{$usuari->idUsuari}}"><span class="glyphicon glyphicon-trash"></span> Eliminar </button>
         </div>
-         
-        
-        <div class="text-center" id="containerr2">
-            <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-plus-sign"></span> Crear Usuari
-        </a>
-        </div>
-               
-@stop    
-       
+    </div>
+    @endforeach
+
+    <div class="divBotoCrear">
+        <button id="modalButtonNew" class="btn btn-primary botoAltaBaixa"><span class="glyphicon glyphicon-plus-sign"></span> Crear nou usuari </button>
+    </div>
+</div>
+
+
+
+<script src="{{ url('/js/jquery.min.js') }}"></script>
+<script src="{{ url('/js/bootstrap.min.js') }}"></script>
+<script>
+var urlNew = "http://localhost/DAW2M14/public/CU_52_CrearUsuari";
+var url = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
+var url2 = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
+var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
+var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
+var iduser;
+
+$("button[name='modalButtonEdit']").click(function() {
+    iduser = this.value;
+    $.get(url + iduser)
+            .done(function(data) {
+                $('#cu45_idUsuari').val(data[0][0].idUsuari);
+                $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
+                $('#cu45_contrasenya').val(data[0][0].contrasenya);
+                $('#cu45_nom').val(data[0][0].nom);
+                $('#cu45_cognoms').val(data[0][0].cognoms);
+                $('#cu45_email').val(data[0][0].email);
+                $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
+                $('#cu45_tipus').val(data[0][0].tipus);
+
+                var radioButton = data[0][0].estat;
+                if (radioButton == 0) {
+                    $("#cu45_estat0").prop("checked", true);
+                    $('#cu45_estat1').prop('checked', false);
+                } else {
+                    $('#cu45_estat1').prop('checked', true);
+                    $('#cu45_estat0').prop('checked', false);
+                }
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu45_grup').html(nomgrups);
+                $('#modalButtonEdit').modal('toggle');
+                $('#miModalEdit').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonDelete']").click(function() {
+    iduser = this.value;
+    $.get(url2 + iduser)
+            .done(function(data) {
+                $('#cu43_idUsuari').val(data[0][0].idUsuari);
+                $('#cu43_nomUsuari').val(data[0][0].nomUsuari);
+                $('#cu43_contrasenya').val(data[0][0].contrasenya);
+                $('#cu43_nom').val(data[0][0].nom);
+                $('#cu43_cognoms').val(data[0][0].cognoms);
+                $('#cu43_email').val(data[0][0].email);
+                $('#cu43_dadesPostals').val(data[0][0].dadesPostals);
+                ;
+                $('#cu43_tipus').val(data[0][0].tipus);
+
+                var radioButton = data[0][0].estat;
+                if (radioButton == 0) {
+                    $("#cu43_estat0").prop("checked", true);
+                    $('#cu43_estat1').prop('checked', false);
+                } else {
+                    $('#cu43_estat1').prop('checked', true);
+                    $('#cu43_estat0').prop('checked', false);
+                }
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu43_grup').html(nomgrups);
+                $('#modalButtonDelete').modal('toggle');
+                $('#miModalDelete').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$('#modalButtonNew').click(function() {
+    $.get(urlNew)
+            .done(function(data) {
+                $('#modalButtonNew').modal('toggle');
+                $('#miModalNew').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonAlta']").click(function() {
+    iduser = this.value;
+    $.get(urlAlta + iduser)
+            .done(function(data) {
+                $('#cu47_idUsuari').val(data[0][0].idUsuari);
+                $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
+                $('#cu47_contrasenya').html(data[0][0].contrasenya);
+                $('#cu47_nom').html(data[0][0].nom);
+                $('#cu47_cognoms').html(data[0][0].cognoms);
+                $('#cu47_email').html(data[0][0].email);
+                $('#cu47_dadesPostals').html(data[0][0].dadesPostals);
+                $('#cu47_tipus').html(data[0][0].tipus);
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu47_grups').html(nomgrups);
+                $('#modalButtonAlta').modal('toggle');
+                $('#miModalAlta').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonBaixa']").click(function() {
+    iduser = this.value;
+    $.get(urlBaixa + iduser)
+            .done(function(data) {
+                $('#cu44_idUsuari').val(data[0][0].idUsuari);
+                $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
+                $('#cu44_contrasenya').html(data[0][0].contrasenya);
+                $('#cu44_nom').html(data[0][0].nom);
+                $('#cu44_cognoms').html(data[0][0].cognoms);
+                $('#cu44_email').html(data[0][0].email);
+                $('#cu44_dadesPostals').html(data[0][0].dadesPostals);
+                $('#cu44_tipus').html(data[0][0].tipus);
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu44_grups').html(nomgrups);
+                $('#modalButtonBaixa').modal('toggle');
+                $('#miModalBaixa').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+</script>
+@endsection
+

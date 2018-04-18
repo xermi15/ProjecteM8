@@ -38,7 +38,7 @@
                 <td class="col-md-3"><a href="{{url('/abrirCarpeta/'.$carpeta->idCarpeta)}}"><b>{{$carpeta->nom}}</b><br>{{$carpeta->dataModificacio}}</a></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descargarModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-nombre="{{$carpeta->nom}}" data-book-path="{{$carpeta->path}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gestionarPermisosModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-nombre="{{$carpeta->nom}}"><span class="glyphicon glyphicon-lock"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-book-id="{{$carpeta->idCarpeta." carpeta"}}" data-book-ultimamod="{{$carpeta->dataModificacio}}" data-book-nombre="{{$carpeta->nom}}" data-book-descripcion="{{$carpeta->descripcio}}"><span class="glyphicon glyphicon-wrench"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureCarpetaModal" data-book-id="{{$carpeta->idCarpeta}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
@@ -51,15 +51,36 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-link"></span></td>
+                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#URL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-paperclip"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureDocumentModal" data-book-id="{{$document->idDocument}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->idDocument." documento"}}" data-book-name="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
             @endforeach
         </table>
+
+        <!-- Modal Descargar-->
+        <div class="modal fade" id="descargarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Descargar</h4>
+              </div>
+              <div class="modal-body">
+                  ¿Esta seguro que desea descargar la carpeta <b><p id="bookId" style="display: inline-block"></p></b>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="modalForm" action="" method="POST" style="display:inline">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-primary btn-success">Descargar</button>
+                </form>                
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Modal Eliminar-->
         <div class="modal fade" id="borrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -362,7 +383,87 @@
                 </div>
             </div>
         </div>
+        <!-- Pujar Versió -->
+        <div class="modal fade" id="pujarVersioModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div>
+                            <h3 class="panel-title text-center">
+                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                Pujar Versió
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form id="modalFormPujarVersio" method="POST" enctype="multipart/form-data" action="">
+                        {{ csrf_field() }}
+                            <input id="pujarVersioID" hidden name="id" value="">
+
+                            <div class="form-group">
+                                <label for="title">Nom del arxiu</label>
+                                <input type="text" name="nom" id="nom" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="title">Ruta de l'arxiu</label>
+                                    <input type="file" name="arxiu" id="arxiu" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="synopsis">Descripció</label>
+                            <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="synopsis">Versió</label>
+                                    <input pattern="^[0-9]*(\.[0-9]+)*$" type="text" name="ver" id="ver" class="form-control">
+                            </div>
+
+                            <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                            Pujar arxiu 
+                                    </button>
+                            </div> 
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <i>*Tots els camps són opcionals</i>
+                    </div>
+                </div>
+             </div>
+        </div>
+        
+        
+        <!-- Modal GeneraURL-->
+  
+            <div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">URL</h4>
+                  </div>
+                  <div class="modal-body">
+                      <input id="URL" name="URL" type="text" class="form-control"> </br>
+                  </div>
+                  <div class="modal-footer" style="text-align: center">
+                  <form id="copiarURL" action="" method="POST" style="display:inline">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                   </form> 
+                  </div>
+                </div>
+              </div>    
+            </div>
         <script>
+            $('#descargarModal').on('show.bs.modal', function (e) {
+               var id = $(e.relatedTarget).data('book-id');
+               var nombre = $(e.relatedTarget).data('book-nombre');
+               var path = $(e.relatedTarget).data('book-path');
+            });
+            
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
@@ -430,5 +531,34 @@
                 $('#modalFormMoureDocument').attr('action', '../moureDocument/'+id);
             });
             
+            //Pujar Versió
+            $('#pujarVersioModal').on('show.bs.modal', function(e){
+                var id = $(e.relatedTarget).data('book-id');
+                //postPujarVersio
+                $("#pujarVersioID").val(id);
+                
+                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+            });
+            
+            //Genera Url
+            $('#generaURL').click(function(e){
+                peticioAjax("/CU12_URL");
+                
+                function peticioAjax(url){
+                    var jqxhr = $.get(url,
+                                        { nom: document.getElementById("nom").value,
+                                          cognom: document.getElementById("cognom").value
+                                        }   
+                    )
+                     .done(function(data){alert(data);})
+                     .fail(function(){alert("Error");})
+                     .always(function(){alert("Fi");});
+                }
+                var id = $(e.relatedTarget).data('book-id');
+                //postPujarVersio
+                $("#pujarVersioID").val(id);
+                
+                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+            });
         </script>
 @stop

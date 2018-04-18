@@ -50,7 +50,7 @@ Route::get('/consultarLogs', 'CU_04Controller@consultarLogs');
 //
 // CU05
 //Laia
-Route::get('/buscarDocumentos', 'CU_05Controller@buscador');
+//Route::get('/buscarDocumentos', 'CU_05Controller@buscador');  // Se ha añadido la funcionalidad al Buscar de la cabecera.
 Route::get('/resultadoBusqueda', 'CU_05Controller@buscarDocuments');
 //
 // CU06
@@ -110,7 +110,8 @@ Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
 Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
-//
+Route::get('/CU_19', 'CU_19Controller@index');
+////
 // CU20
 Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
 Route::Post('/borrarDocumento/{id}', 'CU_20Controller@eliminarDocumento');
@@ -149,10 +150,14 @@ Route::post('/CU_26', 'CU_26Controller@postCreate');
 //
 // CU27
 //
+//Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
+Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/edit', 'CU_27Controller@EditarPlantilla');
+//
 //
 //
 // CU28
-//
+Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU29
@@ -184,7 +189,7 @@ Route::get('CU_36_GestionarGrupos', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrupo{id}', 'CU_37Controller@getCU_37');
+Route::get('CU_37_EliminarGrupo/{id}', 'CU_37Controller@getCU_37');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
@@ -197,41 +202,36 @@ Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
 //
 // CU40 Crear Grupo (Oscar y Carlos)
 Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
+//Route::post('grupo/create', 'CU_37Controller@postCreate');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
-// CU42 Aleix_Prat
-Route::get('CU_42_GestionarUsuaris', 'CU_42Controller@getIndex');
-//  Route::get('/', function(){
-//      return view("CU_42");
-//  });
-//  Route::post('/CU42Controller',"CU42Controller@getIndex")
+// CU42
+Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
 // CU43
 Route::get('/CU_43_EliminarUsuari', 'CU_43Controller@mostraUsuari');
-//Route::post('/delUser/{id}', 'CU_43Controller@eliminarUsuari');
 Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
-// CU_44_DonarBaixaUsuari Gloria Taboada i Aleix Prat
-Route::get('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@getIndex');
-Route::put('/CU_44_DonarBaixaUsuari/{id}', 'CU_44Controller@putNo');
-//
+// CU44
+Route::get('/CU_44_BaixaUsuari', 'CU_44_Controller@mostraUsuari');
+//Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
+Route::put('/baixaUser', 'CU_44_Controller@baixaUsuari');
 //
 // CU45
 Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
-//Route::post('/editUser/{id}', 'CU_45Controller@modificarUsuari');
 Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
 //
 //
 //
-// CU47 Aleix Prat i Gloria Taboada
-Route::put('/CU_47_AltaUsuari/{id}', 'CU_47Controller@putSi');
-Route::get('/CU_47_AltaUsuari/{id}', 'CU_47Controller@getIndex');
+// CU47
+Route::get('/CU_47_AltaUsuari', 'CU_47_Controller@mostraUsuari');
+Route::put('/altaUser', 'CU_47_Controller@altaUsuari');
 //
 //
 // CU48  Mostrar Usuaris (Oscar y Carlos)
@@ -240,17 +240,18 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 //
 // CU49
-Route::get('/filtraLogs', 'CU_49Controller@filtraLogs');
+//Route::get('/filtraLogs', 'CU_49Controller@filtraLogs'); Se ha juntado con el CU_04 Consultar Logs
 //
 //
 // CU50
 //Jorge & Issam
 Route::get('/CU_50', 'CU_50Controller@getIndex');
-
+//Route::get('/CU_50', 'CU_50Controller@MostrarUsuari');
 //
 //
 //CU51
 Route::get('/CU_51', 'CU_51Controller@tancarSessio');
+//
 // CU52
 Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
