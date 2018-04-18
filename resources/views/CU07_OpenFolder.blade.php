@@ -541,7 +541,7 @@
             });
             
             //Genera Url
-            $("generaURL").click(function() {
+            $("generaURL").click(function() {               
                 idDoc = $(e.relatedTarget).data('data-book-id');
                 idVer = $(e.relatedTarget).data('data-book-idversio');
                 var url = "http://localhost/DAW2M14/public/CU12_URL?id="+idDoc+"&idVer="+idVer;
@@ -549,13 +549,11 @@
                         .done(function(data) {
                             $('#inputURL').val(data[0][0].url);
                             $('#URL').modal('toggle');
-
                         })
                         .fail(function() {
                             alert('Error.....');
                         })
                         .always(function() {
-                            //alert('Fi');
                         });
             });
         </script>
