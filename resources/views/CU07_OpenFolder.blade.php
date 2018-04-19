@@ -446,7 +446,7 @@
                     <h4 class="modal-title" id="exampleModalLabel">URL</h4>
                   </div>
                   <div class="modal-body">
-                      <input id="URL" name="URL" type="text" class="form-control"> </br>
+                      <input id="inputURL" name="URL" type="text" class="form-control"> </br>
                   </div>
                   <div class="modal-footer" style="text-align: center">
                   <form id="copiarURL" action="" method="POST" style="display:inline">
@@ -541,24 +541,22 @@
             });
             
             //Genera Url
-            $('#generaURL').click(function(e){
-                peticioAjax("/CU12_URL");
-                
-                function peticioAjax(url){
-                    var jqxhr = $.get(url,
-                                        { nom: document.getElementById("nom").value,
-                                          cognom: document.getElementById("cognom").value
-                                        }   
-                    )
-                     .done(function(data){alert(data);})
-                     .fail(function(){alert("Error");})
-                     .always(function(){alert("Fi");});
-                }
-                var id = $(e.relatedTarget).data('book-id');
-                //postPujarVersio
-                $("#pujarVersioID").val(id);
-                
-                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+            $("generaURL").click(function() {
+                idDoc = $(e.relatedTarget).data('data-book-id');
+                idVer = $(e.relatedTarget).data('data-book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL?id="+idDoc+"&idVer="+idVer;
+                $.get(url)
+                        .done(function(data) {
+                            $('#inputURL').val(data[0][0].url);
+                            $('#URL').modal('toggle');
+
+                        })
+                        .fail(function() {
+                            alert('Error.....');
+                        })
+                        .always(function() {
+                            //alert('Fi');
+                        });
             });
         </script>
 @stop
