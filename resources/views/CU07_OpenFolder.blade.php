@@ -112,8 +112,8 @@
                     <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
                   </div>
                   <div class="modal-body">
-                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" class="form-control">
-                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" class="form-control"></textarea>
+                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" maxlength="15" class="form-control">
+                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" rows="8" maxlength="200" class="form-control"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
