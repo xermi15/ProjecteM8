@@ -77,7 +77,7 @@ Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 Route::post('/pujarVersio/{id}', 'CU_11Controller@postPujarVersio');
 // CU12
 //
-Route::get('/CU12_URL/{idDocument}/{versioInterna}', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
 
 //
 // CU13
@@ -216,6 +216,8 @@ Route::post('/newGrup', 'CU_40Controller@afegirGrup');
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
+//prova
+Route::get('prova', 'provaController@getIndex');
 // CU42
 Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //

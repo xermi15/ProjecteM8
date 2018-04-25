@@ -31,7 +31,8 @@
       <label for="dadesPostals">Dades postals:</label>
       <input type="text" class="form-control" name="dadesPostals" id="dadesPostals" value="{{$usuari->dadesPostals}}">
     </div>
-    <button type="submit" class="btn btn-success">Modificar</button>
+    <button type="submit" class="btn btn-success">Modifica</button>
+    <button class="btn btn-danger" href="{{url('/abrirCarpeta/personal')}}">Cancel·la</button>
   </form>
 </div>
 @stop
