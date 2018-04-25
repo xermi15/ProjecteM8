@@ -366,8 +366,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="synopsis">Descripció (Opcional)</label>
-                                <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
+                                        <label for="synopsis">Descripció (Opcional) Límit 255 caràcters (BBDD)</label>
+                                        <textarea name="desc" id="desc" class="form-control" rows="3" maxlength="254"></textarea>
                                 </div>
 
                                 <div class="form-group text-center">
@@ -413,8 +413,8 @@
                             </div>
 
                             <div class="form-group">
-                                    <label for="synopsis">Descripció</label>
-                            <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
+                                    <label for="synopsis">Descripció (Opcional) Límit 255 caràcters (BBDD)</label>
+                                    <textarea name="desc" id="desc" class="form-control" rows="3" maxlength="254"></textarea>
                             </div>
 
                             <div class="form-group">
