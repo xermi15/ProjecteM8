@@ -95,7 +95,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="modalForm" action="" method="POST" style="display:inline">
+                <form id="modalFormElim" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
                 </form>                
@@ -113,8 +113,8 @@
                     <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
                   </div>
                   <div class="modal-body">
-                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" class="form-control">
-                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" class="form-control"></textarea>
+                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" maxlength="15" class="form-control">
+                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" rows="8" maxlength="200" class="form-control"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -224,9 +224,10 @@
                     <div class="tab-content">
                       <div id="cu" class="tab-pane fade in active">
                         <h3>Cambiar permís d'un usuari</h3>
+                        <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
                             <div class="form-group">
                           <label>Usuaris: </label>
-                          <select class="form-control" id="listaUsuariosCambiar" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaUsuariosCambiar" name="listaUsuariosCambiar" style="min-width:120px;"></select>
                         </div>
                         <div id="cambiarPermisCheckboxs" class="form-group">
                           <label>Selecciona un permís: </label>
@@ -236,7 +237,7 @@
                           <input id="cambiarPermisUsuari-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -245,9 +246,10 @@
                       </div>
                       <div id="au" class="tab-pane fade">
                         <h3>Afegir nou usuari</h3>
+                        <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Afegir permís Usuari: </label>
-                            <select class="form-control" id="listaUsuariosAgregar" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosAgregar" name="listaUsuariosAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -257,7 +259,7 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                            <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Afegir usuari</button>
                             </form> 
@@ -266,12 +268,13 @@
                       </div>
                       <div id="bu" class="tab-pane fade">
                         <h3>Borrar permís d'un usuari</h3>
+                        <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Borrar permís Usuari: </label>
-                            <select class="form-control" id="listaUsuariosBorrar" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosBorrar" name="listaUsuariosBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -280,9 +283,10 @@
                       </div>
                       <div id="cg" class="tab-pane fade">
                         <h3>Cambiar permís d'un grup</h3>
+                        <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
                             <div class="form-group">
                           <label>Grups: </label>
-                          <select class="form-control" id="listaGruposCambiar" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaGruposCambiar" name="listaGruposCambiar" style="min-width:120px;"></select>
                         </div>
                         <div class="form-group">
                           <label>Selecciona un permís: </label>
@@ -292,7 +296,7 @@
                           <input id="cambiarPermisoGrupo-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -301,9 +305,10 @@
                       </div>
                       <div id="ag" class="tab-pane fade">
                         <h3>Afegir nou grup</h3>
+                        <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Afegir permís grup: </label>
-                            <select class="form-control" id="listaGruposAgregar" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposAgregar" name="listaGruposAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -313,7 +318,7 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                                <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
+                                
                                 {{ csrf_field() }}
                                     <button type="submit" class="btn btn-primary btn-success">Afegir grup</button>
                                 </form> 
@@ -322,12 +327,13 @@
                       </div>
                       <div id="bg" class="tab-pane fade">
                         <h3>Borrar permís d'un grup</h3>
+                        <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Borrar permís grup: </label>
-                            <select class="form-control" id="listaGruposBorrar" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposBorrar" name="listaGruposBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -508,7 +514,7 @@
                 $('#formcambiarPermisUsuari').attr('action', '../cambiarPermisUsuari/'+id);
                 $('#formafegirPermisUsuari').attr('action', '../afegirPermisUsuari/'+id);
                 $('#formborrarPermisUsuari').attr('action', '../borrarPermisUsuari/'+id);
-                $('#formformcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
+                $('#formcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
                 $('#formafegirPermisGrup').attr('action', '../afegirPermisGrup/'+id);
                 $('#formborrarPermisGrup').attr('action', '../borrarPermisGrup/'+id);
                 //hacemos una consulta al servidor para rellenar los datos de los formularios
@@ -564,9 +570,9 @@
                 var bookName = $(e.relatedTarget).data('book-name');
                 $('#bookId').text(bookName);
                 if(id[1] == "carpeta"){
-                    $('#modalForm').attr('action', '../borrarCarpeta/'+id[0]);
+                    $('#modalFormElim').attr('action', '../borrarCarpeta/'+id[0]);
                 }else{
-                    $('#modalForm').attr('action', '../borrarDocumento/'+id[0]);
+                    $('#modalFormElim').attr('action', '../borrarDocumento/'+id[0]);
                 }
                 
             });
