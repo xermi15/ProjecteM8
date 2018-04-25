@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Carpeta;
 use Illuminate\Http\Request;
-use ZipArchive;
+//use ZipArchive;
 
 class CU_19Controller extends Controller
 {
@@ -14,7 +14,8 @@ class CU_19Controller extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('download')) {
+        echo $request->id."-".$request->nombre."-".$request->path;
+        /*if($request->has('download')) {
             // Definimos la ruta
             $public_dir=$request->path;
             // Le damos el nombre al archivo
@@ -34,10 +35,11 @@ class CU_19Controller extends Controller
             );
             $filetopath=$public_dir.'/'.$zipFileName;
             // Creamos una solicitud de descarga
-            if(file_exists($filetopath)){
+            /*if(file_exists($filetopath)){
                 return response()->download($filetopath,$zipFileName,$headers);
-            }
-        }
-        return view('createZip');
+            }*/
+            return view($filepath);
+        
+        
     }
 }
