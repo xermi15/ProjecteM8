@@ -24,12 +24,16 @@ class CU_26Controller extends Controller
        $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
        $plantilla->save();
           
-       $plantirevisors = new plantillaRevisor;
-       
-       $plantirevisors->idUsuariRevisor= $request->revi;
-       $plantirevisors->idPlantilla=$plantilla->idPlantilla;
-       $plantirevisors->save();
-       
+//       $plantirevisors = new plantillaRevisor;
+//       $plantirevisors->idUsuariRevisor= $request->revi;
+     
+        foreach ($request->revi as $revi):
+            $plantirevisors = new plantillaRevisor;
+            $plantirevisors->idUsuariRevisor= $revi;
+            $plantirevisors->idPlantilla=$plantilla->idPlantilla;
+            $plantirevisors->save();
+        endforeach;
+    
       
        return redirect ('/CU_26');
 

@@ -22,7 +22,7 @@ class CU12_urlController extends Controller
         $doc->save();
 
         }
-         return view('CU12_URLDocument'); 
+         return view($doc); 
         
     }
 }

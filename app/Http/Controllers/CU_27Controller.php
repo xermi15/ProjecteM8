@@ -11,10 +11,9 @@ class CU_27Controller extends Controller
 {
 
 public function getIndex(){
-     $users = Usuari::all();
-     $plantilla=  crearPlantilla::all();
-     
-       return view('CU_27_EditarPlantilla', compact('users','plantilla'));
+    $plantilla = crearPlantilla::all();
+      $users = Usuari::all();
+       return view('CU_27_EditarPlantilla', compact('plantilla', 'users'));
 }
 
 
