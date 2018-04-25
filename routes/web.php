@@ -112,7 +112,7 @@ Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
 Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
-Route::get('/CU_19', 'CU_19Controller@index');
+Route::Post('/CU_19/{id}/{path}/{nombre}', 'CU_19Controller@index');
 ////
 // CU20
 Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');

@@ -73,7 +73,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="modalForm" action="" method="POST" style="display:inline">
+                <form id="modalFormDescargar" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
                 <button type="submit" id="download" class="btn btn-primary btn-success">Descargar</button>
                 </form>                
@@ -462,11 +462,12 @@
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
+                $('#modalFormDescargar').attr('action', '../CU_19/'+id+'/'+path+'/'+nombre);
                 //alert(id+path+nombre);
                 $('#download').click(function(e){
                     var url = "http://localhost/DAW2M14/public/CU_19";
                     
-                    $.get(url,{
+                    $.post(url,{
                             id: id,
                             nombre: nombre,
                             path: path})
