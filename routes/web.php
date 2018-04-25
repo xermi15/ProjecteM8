@@ -93,11 +93,11 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU16
-//
+Route::Post('/veureVersioDocument/{id}', 'CU_17Controller@veureVersioDocument');
 //
 //
 // CU17
-//
+Route::Post('/eliminarVerio/{id}', 'CU_17Controller@eliminarVerio');
 //
 //
 // CU18
@@ -198,6 +198,7 @@ Route::get('CU_38_ModificarGrup', 'CU_38Controller@getCU_38');
 //
 // CU39 Modificar Membres (Oscar y Carlos)
 Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
+Route::post('/modGrup', 'CU_39Controller@modificarGrup');
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
