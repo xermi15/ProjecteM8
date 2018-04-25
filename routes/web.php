@@ -181,7 +181,7 @@ Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU35
-//
+Route::get('/mostar_workflows', 'CU_35Controller@mostrar');
 //
 //
 // CU36 Gestionar Grupos (Oscar y Carlos)
