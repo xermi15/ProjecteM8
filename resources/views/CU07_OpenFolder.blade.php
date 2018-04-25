@@ -51,7 +51,8 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
+                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
+                <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -439,7 +440,7 @@
         
         <!-- Modal GeneraURL-->
   
-            <div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!--<div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -456,7 +457,27 @@
                   </div>
                 </div>
               </div>    
-            </div>
+            </div>-->
+        
+            <form id="modalFormURL" action="" method="POST" style="display:inline">
+                <div class="modal fade" id="generaURLModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">URL</h4>
+                      </div>
+                      <div class="modal-body">
+                          <input id="nombreURL" name="nombreInput" type="text" class="form-control"> </br>
+                      </div>
+                      <div class="modal-footer" style="text-align: center">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                      </div>
+                    </div>
+                  </div>    
+                </div>
+            </form>
+        
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('book-id');
@@ -597,7 +618,7 @@
             });
             
             //Genera Url
-            $("#generaURL").click(function(e) { 
+           /* $("#generaURL").click(function(e) { 
                 var idDoc = $(this).attr('data-book-id');
                 var idVer = $(this).attr('data-book-idversio');
                 var url = "http://localhost/DAW2M14/public/CU12_URL/";
@@ -616,6 +637,17 @@
                         })
                         .always(function() {
                         });
+            });*/
+            
+            
+            $('#generaURLModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var idVer = $(e.relatedTarget).data('book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL/"+id+"/"+idVer;
+               
+                $('#nombreURL').val(url);
+                
+                $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
             });
             
    
