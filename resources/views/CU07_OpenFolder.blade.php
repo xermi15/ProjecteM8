@@ -462,18 +462,20 @@
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
-                alert(path);
-                
-                $('#download').click(function(e){var url = "http://localhost/DAW2M14/public/CU_19";
-                $.get({  url: url,
-                        id: id,
-                        nombre: nombre,
-                        path: path})
-                    .done(function(data) {  
-                          alert(data);
-                    })
-                    .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                    .always(function(x) { console.log( "Fí")});});
+                //alert(id+path+nombre);
+                $('#download').click(function(e){
+                    var url = "http://localhost/DAW2M14/public/CU_19";
+                    
+                    $.get(url,{
+                            id: id,
+                            nombre: nombre,
+                            path: path})
+                        .done(function(data) {  
+                            alert(data);
+                        })
+                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
+                        .always(function(x) { console.log( "Fí")});
+                });
                
             });
             
