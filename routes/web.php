@@ -102,6 +102,8 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 // CU18
 Route::get('/getDatos/{id}', 'CU_18Controller@getDatos');
+Route::Post('/permisUsuari', 'CU_18Controller@permisUsuari');
+Route::Post('/permisGrup', 'CU_18Controller@permisGrup');
 Route::Post('/cambiarPermisUsuari/{id}', 'CU_18Controller@cambiarPermisUsuari');
 Route::Post('/afegirPermisUsuari/{id}', 'CU_18Controller@afegirPermisUsuari');
 Route::Post('/borrarPermisUsuari/{id}', 'CU_18Controller@borrarPermisUsuari');

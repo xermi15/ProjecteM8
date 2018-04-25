@@ -227,12 +227,12 @@
                           <label>Usuaris: </label>
                           <select class="form-control" id="listaUsuariosCambiar" style="min-width:120px;"></select>
                         </div>
-                        <div class="form-group">
+                        <div id="cambiarPermisCheckboxs" class="form-group">
                           <label>Selecciona un permís: </label>
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                          <input id="cambiarPermisUsuaris" class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input id="cambiarPermisUsuariw" class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input id="cambiarPermisUsuarir" class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input id="cambiarPermisUsuari-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
                             <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
@@ -246,7 +246,7 @@
                         <h3>Afegir nou usuari</h3>
                         <div class="form-group">
                             <label>Afegir permís Usuari: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -267,7 +267,7 @@
                         <h3>Borrar permís d'un usuari</h3>
                         <div class="form-group">
                             <label>Borrar permís Usuari: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
                             <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
@@ -281,14 +281,14 @@
                         <h3>Cambiar permís d'un grup</h3>
                             <div class="form-group">
                           <label>Grups: </label>
-                          <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaGruposCambiar" style="min-width:120px;"></select>
                         </div>
                         <div class="form-group">
                           <label>Selecciona un permís: </label>
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                          <input id="cambiarPermisoGrupos" class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input id="cambiarPermisoGrupow" class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input id="cambiarPermisoGrupor" class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input id="cambiarPermisoGrupo-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
                             <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
@@ -302,7 +302,7 @@
                         <h3>Afegir nou grup</h3>
                         <div class="form-group">
                             <label>Afegir permís grup: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -323,7 +323,7 @@
                         <h3>Borrar permís d'un grup</h3>
                         <div class="form-group">
                             <label>Borrar permís grup: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
                             <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
@@ -383,59 +383,6 @@
                 </div>
             </div>
         </div>
-        <!-- Pujar Versió -->
-        <div class="modal fade" id="pujarVersio" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <div>
-                            <h3 class="panel-title text-center">
-                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                                Pujar Versió
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" enctype="multipart/form-data" action="{{action('CU_11Controller@postPujarVersio',$title)}}">
-                        {{ csrf_field() }}
-                            <input hidden name="id" value="{{$document->idDocument}}">
-                            <!-- <input hidden name="versioOld" value="{{$document->versioInterna}}"> -->
-
-                            <div class="form-group">
-                                <label for="title">Nom del arxiu</label>
-                                <input type="text" name="nom" id="nom" class="form-control" value="{{$document->nom}}">
-                            </div>
-
-                            <div class="form-group">
-                                    <label for="title">Ruta de l'arxiu</label>
-                                    <input type="file" name="arxiu" id="arxiu" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                    <label for="synopsis">Descripció</label>
-                            <textarea name="desc" id="desc" class="form-control" rows="3" value="{{$document->descripcio}}"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                    <label for="synopsis">Versió</label>
-                                    <input pattern="^[0-9]*(\.[0-9]+)*$" type="text" name="ver" id="ver" class="form-control">
-                            </div>
-
-                            <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary">
-                                            Pujar arxiu 
-                                    </button>
-                            </div> 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <i>*Tots els camps són opcionals</i>
-                    </div>
-                </div>
-             </div>
-        </div>
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
                var id = $(e.relatedTarget).data('book-id');
@@ -457,7 +404,48 @@
                 //hacemos una consulta al servidor para rellenar los datos de los formularios
                 $.get('../getDatos/'+id, function(response) {
                     $("#listaUsuariosCambiar").append(response["cambiarUsuari"]);
+                    $("#listaUsuariosAgregar").append(response["afegirUsuari"]);
+                    $("#listaUsuariosBorrar").append(response["borrarUsuari"]);
+                    $("#listaGruposCambiar").append(response["cambiarGrup"]);
+                    $("#listaGruposAgregar").append(response["afegirGrup"]);
+                    $("#listaGruposBorrar").append(response["borrarGrup"]);
                 })
+                
+                $("#listaUsuariosCambiar").change(function() {
+                    var idusuari=$('option:selected', this).attr('id');
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        dataType:"text",
+                        data: {
+                            idUsuari:idusuari,
+                            idCarpeta:id
+                        },
+                        url: '../permisUsuari', 
+                        success: function(result){
+                            $("#cambiarPermisUsuari"+result).prop("checked",true);
+                        }});
+                });
+                
+                $("#listaGruposCambiar").change(function() {
+                    var idgrup=$('option:selected', this).attr('id');
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        dataType:"text",
+                        data: {
+                            idGrup:idgrup,
+                            idCarpeta:id
+                        },
+                        url: '../permisGrup', 
+                        success: function(result){
+                            $("#cambiarPermisoGrupo"+result).prop("checked",true);
+                        }});
+                });
             });
             
             $('#borrarModal').on('show.bs.modal', function(e) {
