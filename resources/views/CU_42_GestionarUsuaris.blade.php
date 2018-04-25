@@ -130,10 +130,12 @@ $("button[name='modalButtonDelete']").click(function() {
                 //alert('Fi');
             });
 });
-
+//$('#modalButtonNew').click(function() {
 $('#modalButtonNew').click(function() {
-    $.get(urlNew)
+    iduser = this.value;
+    $.get(urlNew + iduser)
             .done(function(data) {
+                $('#cu52_idUsuari').val(data[0][0].idUsuari);
                 $('#modalButtonNew').modal('toggle');
                 $('#miModalNew').modal('show');
             })

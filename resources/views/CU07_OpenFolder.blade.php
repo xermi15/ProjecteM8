@@ -51,7 +51,8 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#URL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
+                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
+                <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -73,9 +74,9 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="modalForm" action="" method="POST" style="display:inline">
+                <form id="modalFormDescargar" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary btn-success">Descargar</button>
+                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar</button>
                 </form>                
               </div>
             </div>
@@ -94,7 +95,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="modalForm" action="" method="POST" style="display:inline">
+                <form id="modalFormElim" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
                 </form>                
@@ -112,8 +113,8 @@
                     <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
                   </div>
                   <div class="modal-body">
-                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" class="form-control">
-                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" class="form-control"></textarea>
+                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" maxlength="15" class="form-control">
+                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" rows="8" maxlength="200" class="form-control"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -223,19 +224,20 @@
                     <div class="tab-content">
                       <div id="cu" class="tab-pane fade in active">
                         <h3>Cambiar permís d'un usuari</h3>
+                        <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
                             <div class="form-group">
                           <label>Usuaris: </label>
-                          <select class="form-control" id="listaUsuariosCambiar" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaUsuariosCambiar" name="listaUsuariosCambiar" style="min-width:120px;"></select>
                         </div>
-                        <div class="form-group">
+                        <div id="cambiarPermisCheckboxs" class="form-group">
                           <label>Selecciona un permís: </label>
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                          <input id="cambiarPermisUsuaris" class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input id="cambiarPermisUsuariw" class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input id="cambiarPermisUsuarir" class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input id="cambiarPermisUsuari-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="formcambiarPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -244,9 +246,10 @@
                       </div>
                       <div id="au" class="tab-pane fade">
                         <h3>Afegir nou usuari</h3>
+                        <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Afegir permís Usuari: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosAgregar" name="listaUsuariosAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -256,7 +259,7 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                            <form id="formafegirPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Afegir usuari</button>
                             </form> 
@@ -265,12 +268,13 @@
                       </div>
                       <div id="bu" class="tab-pane fade">
                         <h3>Borrar permís d'un usuari</h3>
+                        <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Borrar permís Usuari: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaUsuariosBorrar" name="listaUsuariosBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="formborrarPermisUsuari" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -279,19 +283,20 @@
                       </div>
                       <div id="cg" class="tab-pane fade">
                         <h3>Cambiar permís d'un grup</h3>
+                        <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
                             <div class="form-group">
                           <label>Grups: </label>
-                          <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                          <select class="form-control" id="listaGruposCambiar" name="listaGruposCambiar" style="min-width:120px;"></select>
                         </div>
                         <div class="form-group">
                           <label>Selecciona un permís: </label>
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
-                          <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
+                          <input id="cambiarPermisoGrupos" class="form-check-input" type="radio" name="permisosUsuarios" value="s"> Super 
+                          <input id="cambiarPermisoGrupow" class="form-check-input" type="radio" name="permisosUsuarios" value="w"> Escritura 
+                          <input id="cambiarPermisoGrupor" class="form-check-input" type="radio" name="permisosUsuarios" value="r"> Lectura 
+                          <input id="cambiarPermisoGrupo-" class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís 
                         </div>
                         <div style="text-align: right">
-                            <form id="formcambiarPermisGrup" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Cambiar</button>
                             </form> 
@@ -300,9 +305,10 @@
                       </div>
                       <div id="ag" class="tab-pane fade">
                         <h3>Afegir nou grup</h3>
+                        <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Afegir permís grup: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposAgregar" name="listaGruposAgregar" style="min-width:120px;"></select>
                         </div>
                             <div class="form-group">
                                 <label>Selecciona un permís: </label>
@@ -312,7 +318,7 @@
                                 <input class="form-check-input" type="radio" name="permisosUsuarios" value="-"> Cap permís
                             </div>
                             <div style="text-align: right">
-                                <form id="formafegirPermisGrup" action="" method="POST" style="display:inline">
+                                
                                 {{ csrf_field() }}
                                     <button type="submit" class="btn btn-primary btn-success">Afegir grup</button>
                                 </form> 
@@ -321,12 +327,13 @@
                       </div>
                       <div id="bg" class="tab-pane fade">
                         <h3>Borrar permís d'un grup</h3>
+                        <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
                         <div class="form-group">
                             <label>Borrar permís grup: </label>
-                            <select class="form-control" id="listaUsuarios" style="min-width:120px;"></select>
+                            <select class="form-control" id="listaGruposBorrar" name="listaGruposBorrar" style="min-width:120px;"></select>
                         </div>
                         <div style="text-align: right">
-                            <form id="formborrarPermisGrup" action="" method="POST" style="display:inline">
+                            
                             {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary btn-success">Borrar permís</button>
                             </form> 
@@ -439,7 +446,7 @@
         
         <!-- Modal GeneraURL-->
   
-            <div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!--<div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -456,12 +463,48 @@
                   </div>
                 </div>
               </div>    
-            </div>
+            </div>-->
+        
+            <form id="modalFormURL" action="" method="POST" style="display:inline">
+                <div class="modal fade" id="generaURLModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">URL</h4>
+                      </div>
+                      <div class="modal-body">
+                          <input id="nombreURL" name="nombreInput" type="text" class="form-control"> </br>
+                      </div>
+                      <div class="modal-footer" style="text-align: center">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                      </div>
+                    </div>
+                  </div>    
+                </div>
+            </form>
+        
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
-               var id = $(e.relatedTarget).data('book-id');
-               var nombre = $(e.relatedTarget).data('book-nombre');
-               var path = $(e.relatedTarget).data('book-path');
+                var id = $(e.relatedTarget).data('book-id');
+                var nombre = $(e.relatedTarget).data('book-nombre');
+                var path = $(e.relatedTarget).data('book-path');
+                $('#modalFormDescargar').attr('action', '../CU_19/'+id+'/'+path+'/'+nombre);
+                //alert(id+path+nombre);
+                $('#download').click(function(e){
+                    var url = "http://localhost/DAW2M14/public/CU_19";
+                    
+                    $.post(url,{
+                            id: id,
+                            nombre: nombre,
+                            path: path})
+                        .done(function(data) {  
+                            alert(data);
+                        })
+                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
+                        .always(function(x) { console.log( "Fí")});
+                });
+               
             });
             
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
@@ -472,13 +515,54 @@
                 $('#formcambiarPermisUsuari').attr('action', '../cambiarPermisUsuari/'+id);
                 $('#formafegirPermisUsuari').attr('action', '../afegirPermisUsuari/'+id);
                 $('#formborrarPermisUsuari').attr('action', '../borrarPermisUsuari/'+id);
-                $('#formformcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
+                $('#formcambiarPermisGrup').attr('action', '../cambiarPermisGrup/'+id);
                 $('#formafegirPermisGrup').attr('action', '../afegirPermisGrup/'+id);
                 $('#formborrarPermisGrup').attr('action', '../borrarPermisGrup/'+id);
                 //hacemos una consulta al servidor para rellenar los datos de los formularios
                 $.get('../getDatos/'+id, function(response) {
                     $("#listaUsuariosCambiar").append(response["cambiarUsuari"]);
+                    $("#listaUsuariosAgregar").append(response["afegirUsuari"]);
+                    $("#listaUsuariosBorrar").append(response["borrarUsuari"]);
+                    $("#listaGruposCambiar").append(response["cambiarGrup"]);
+                    $("#listaGruposAgregar").append(response["afegirGrup"]);
+                    $("#listaGruposBorrar").append(response["borrarGrup"]);
                 })
+                
+                $("#listaUsuariosCambiar").change(function() {
+                    var idusuari=$('option:selected', this).attr('id');
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        dataType:"text",
+                        data: {
+                            idUsuari:idusuari,
+                            idCarpeta:id
+                        },
+                        url: '../permisUsuari', 
+                        success: function(result){
+                            $("#cambiarPermisUsuari"+result).prop("checked",true);
+                        }});
+                });
+                
+                $("#listaGruposCambiar").change(function() {
+                    var idgrup=$('option:selected', this).attr('id');
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        dataType:"text",
+                        data: {
+                            idGrup:idgrup,
+                            idCarpeta:id
+                        },
+                        url: '../permisGrup', 
+                        success: function(result){
+                            $("#cambiarPermisoGrupo"+result).prop("checked",true);
+                        }});
+                });
             });
             
             $('#borrarModal').on('show.bs.modal', function(e) {
@@ -487,9 +571,9 @@
                 var bookName = $(e.relatedTarget).data('book-name');
                 $('#bookId').text(bookName);
                 if(id[1] == "carpeta"){
-                    $('#modalForm').attr('action', '../borrarCarpeta/'+id[0]);
+                    $('#modalFormElim').attr('action', '../borrarCarpeta/'+id[0]);
                 }else{
-                    $('#modalForm').attr('action', '../borrarDocumento/'+id[0]);
+                    $('#modalFormElim').attr('action', '../borrarDocumento/'+id[0]);
                 }
                 
             });
@@ -541,22 +625,39 @@
             });
             
             //Genera Url
-            $("generaURL").click(function() {
-                idDoc = $(e.relatedTarget).data('data-book-id');
-                idVer = $(e.relatedTarget).data('data-book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL?id="+idDoc+"&idVer="+idVer;
-                $.get(url)
+           /* $("#generaURL").click(function(e) { 
+                var idDoc = $(this).attr('data-book-id');
+                var idVer = $(this).attr('data-book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL/";
+                
+                $.get(url,
+                        {idDocument:idDoc,
+                         versioInterna:idVer
+                        }
+                      )
                         .done(function(data) {
                             $('#inputURL').val(data[0][0].url);
                             $('#URL').modal('toggle');
-
                         })
                         .fail(function() {
-                            alert('Error.....');
+                           
                         })
                         .always(function() {
-                            //alert('Fi');
                         });
+            });*/
+            
+            
+            $('#generaURLModal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var idVer = $(e.relatedTarget).data('book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL/"+id+"/"+idVer;
+               
+                $('#nombreURL').val(url);
+                
+                $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
             });
+            
+   
         </script>
 @stop
+

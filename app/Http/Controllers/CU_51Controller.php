@@ -10,6 +10,6 @@ class CU_51Controller extends Controller
     public function tancarSessio()
     {
         Session::flush();
-        return view('CU01_login');
+        return redirect('CU01_login');
     }
 }

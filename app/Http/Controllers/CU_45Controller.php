@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuari;
+use App\Logs;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
@@ -27,10 +28,10 @@ class CU_45Controller extends Controller {
 
         $id = $request->cu45_idUsuari;
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari <> " . $id . " AND (nomUsuari = '" . $request->nomUsuari . "' OR email = '" . $request->email . "')");
-
         $user1 = Usuari::findOrFail($id);
-
-        if ($usuari == null) {
+        $nlog = Logs::where('idLog', $request->cu45_idLog)->first();
+        
+        if ($usuari == null && $nlog == null) {
             $user1->nomUsuari = $request->cu45_nomUsuari;
             //$user1->contrasenya = bcrypt($request->cu45_contrasenya);
             $user1->contrasenya = $request->cu45_contrasenya;
@@ -42,6 +43,15 @@ class CU_45Controller extends Controller {
             $user1->estat = $request->cu45_estat;
             $user1->tipus = $request->cu45_tipus;
             $user1->save();
+            
+             //Registrar Log
+            $nlog = new Logs;
+            $nlog->idUsuari =$id; 
+            $nlog->descripcio = "Modificar Usuari";  
+            $nlog->dataLog = date('Y-m-d');
+            $nlog->hora = date('H:i:s');
+            $nlog->path = "";
+            $nlog->save();
 
             Notification::success("L'usuari s'ha modificat correctament.");
             return redirect('CU_42_GestionarUsuaris');
