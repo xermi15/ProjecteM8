@@ -11,7 +11,7 @@
             <form id="formEditUser" name="formEditUser" class="form-horizontal" method="POST" action="{{ url('/editUser') }}">
                 <div class="controls">
                     {{ csrf_field() }}
-                    <div><input type="text" name="cu45_idUsuari" id="cu45_idUsuari" value="" hidden /></div>
+                    <div><input type="text" name="cu45_idUsuari" id="cu45_idUsuari" value="" /></div>
                     <div class="form-group">
                         <label for="nomUsuari" class="col-sm-3 control-label">Nom Usuari:</label>
                         <div class="col-sm-9">

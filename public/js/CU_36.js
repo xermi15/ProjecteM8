@@ -20,7 +20,7 @@ function nouGrup(id) {
 //crear grupo
 function crear() {
     //crea grupo con idGroup nuevo
-    window.location.replace("http://localhost/DAW2M14/public/CU_40_CrearGrupo/"+idGrup);
+    alert('crear nuevo grupo con id '+idGrup);
 }
 
 //modificar grupo
@@ -32,7 +32,7 @@ function guardar() {
 //eliminar grupo
 function eliminarGrup() {
     //eliminar grupo
-    window.location.replace("http://localhost/DAW2M14/public/CU_37_EliminarGrupo/"+idGrup);
+    window.location.replace("http://localhost/DAW2M14/public/CU_37_EliminarGrup/"+idGrup);
     
     $("#myModal_3").modal("hide");
 }

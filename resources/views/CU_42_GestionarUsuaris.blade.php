@@ -5,8 +5,8 @@
 @include('CU_52_CrearUsuari')
 @include('CU_45_ModificarUsuari')
 @include('CU_43_EliminarUsuari')
-@include('CU_47_prueba')
-@include('CU_44_prueba')
+@include('CU_47_AltaUsuari')
+@include('CU_44_BaixaUsuari')
 
 <!-- Bootstrap and my style-->
 <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -50,8 +50,8 @@
 var urlNew = "http://localhost/DAW2M14/public/CU_52_CrearUsuari";
 var url = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
 var url2 = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
-var urlAlta = "http://localhost/DAW2M14/public/CU_47_prueba?id=";
-var urlBaixa = "http://localhost/DAW2M14/public/CU_44_prueba?id=";
+var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
+var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var iduser;
 
 $("button[name='modalButtonEdit']").click(function() {
@@ -149,7 +149,7 @@ $("button[name='modalButtonAlta']").click(function() {
     iduser = this.value;
     $.get(urlAlta + iduser)
             .done(function(data) {
-                $('#cu47_idUsuari').html(data[0][0].idUsuari);
+                $('#cu47_idUsuari').val(data[0][0].idUsuari);
                 $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu47_contrasenya').html(data[0][0].contrasenya);
                 $('#cu47_nom').html(data[0][0].nom);
@@ -178,7 +178,7 @@ $("button[name='modalButtonBaixa']").click(function() {
     iduser = this.value;
     $.get(urlBaixa + iduser)
             .done(function(data) {
-                $('#cu44_idUsuari').html(data[0][0].idUsuari);
+                $('#cu44_idUsuari').val(data[0][0].idUsuari);
                 $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu44_contrasenya').html(data[0][0].contrasenya);
                 $('#cu44_nom').html(data[0][0].nom);

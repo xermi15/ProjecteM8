@@ -25,7 +25,7 @@ class UploadRequest extends FormRequest
     {
         return [
             'nom' => 'required',
-            'arxiu' => 'image|mimes:jpeg,bmp,png,jpg|required'
+            'arxiu' => 'required'
         ];
     }
 }
