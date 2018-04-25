@@ -29,8 +29,8 @@
                 @endforeach
             </td>
             <td>
-                @include('CU_38_ModificarGrupo')
-                @include('CU_37_EliminarGrupo')
+                @include('CU_38_ModificarGrup')
+                @include('CU_37_EliminarGrup')
                 <a class="glyphicon glyphicon-circle-arrow-right" href=""></a>
             </td>
         </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuari;
+use App\Logs;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,7 @@ class CU_43Controller extends Controller {
 
     public function mostraUsuari() {
 
-        $id = $_GET['id'];
+        $id = filter_input(INPUT_GET, 'id');
         //$usuari = Usuari::findOrFail($id);// no funciona este metodo aqui
         //$usuari = Usuari::where('idUsuari', $id)->first();// tampoco funciona este metodo aqui
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);
@@ -27,10 +28,21 @@ class CU_43Controller extends Controller {
 
         $id = $request->cu43_idUsuari;
         $user = Usuari::findOrFail($id);
+        $nlog = Logs::where('idLog', $request->cu43_idLog)->first();
 
-        if ($user != null) {
+        if ($user != null && $nlog == null) {
+            
+            //Registrar Log
+            $nlog = new Logs;
+            $nlog->idUsuari =$id; 
+            $nlog->descripcio = "Eliminar Usuari";  
+            $nlog->dataLog = date('Y-m-d');
+            $nlog->hora = date('H:i:s');
+            $nlog->path = "";
+            $nlog->save();
+            
             $user->delete();
-
+            
             Notification::success("L'usuari s'ha eliminat correctament.");
             return redirect('CU_42_GestionarUsuaris');
         } else {

@@ -1,6 +1,8 @@
 <div class="containerModificaMembres">
     <div class="columnUsuaris">
+        <p type="text" id="idgrup">Id: {{$grup->idGrup}}</p>
         <input type="text" id="buscaUsuari" placeholder="Buscar usuari" onkeyup="buscaUsuari()">
+        
 
         <div id="usuaris">
 
@@ -9,7 +11,7 @@
 
 
             <input type="checkbox" style="cursor:default;" name="usuari" value="usuari">{{ $usuari->nomUsuari }}<br>
-
+            <p type="text" id="idusuari">Id: {{$usuari->idUsuari}}</p>
 
             @endforeach
 
@@ -27,7 +29,9 @@
             </button>
         </div>
     </div>
+    <form>
     <div class="columnUsuarisGrup">
+        {{ csrf_field() }}
         <input type="text" id="buscaUsuariGrup" placeholder="Buscar usuari">
         <div id="usuarisGrup">
 
@@ -35,11 +39,12 @@
             @foreach( $usuaris as $usuari )
             @if( $usuari->idUsuari === $usuariGrup->idUsuari )
 
-            <input type="checkbox" style="cursor:default;" name="usuari" value="usuari">{{ $usuari->nomUsuari }}<br>
-
+            <input type="checkbox" id="cu_39nomUsuari" style="cursor:default;" name="usuari" value="usuari">{{ $usuari->nomUsuari }}<br>
+            
             @endif
             @endforeach
             @endforeach
         </div>
     </div>
+        </form>
 </div> 
