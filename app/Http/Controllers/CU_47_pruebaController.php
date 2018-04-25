@@ -7,7 +7,7 @@ use App\Usuari;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
-class CU_47_Controller extends Controller {
+class CU_47_pruebaController extends Controller {
 
     public function mostraUsuari() {
 
@@ -27,28 +27,12 @@ class CU_47_Controller extends Controller {
 
         $id = $request->cu47_idUsuari;
         $user1 = Usuari::findOrFail($id);
-        //$user1 = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);
-        $user1->estat = 1;
-        $user1->save();
-        
-        $textDescripcio = "Alta usuari";
-        $textPath = "Alta usuari";
-//        $date = new DateTime();
-//        $hora = new time();
-        $date = "02-02-02";
-        $date = "02-02-02";
-        
-        $nlog = new Log;
-        
-        $nlog->idUsuari = $request->$id; 
-        $nlog->descripcio = $request->$textDescripcio;  
-        $nlog->dataLog = $request->$date;
-        $nlog->hora = $request->$hora;
-        $nlog->path = $request->$textPath;
-        $nlog->save();
+
+        //$user1->estat = 1;
+        //$user1->save();
 
         Notification::success("L'usuari s'ha donat d'alta correctament.");
         return redirect('CU_42_GestionarUsuaris');
     }
-    
+
 }

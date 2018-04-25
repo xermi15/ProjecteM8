@@ -209,6 +209,8 @@ Route::get('CU_40_CrearGrupo', 'CU_40Controller@getCU_40');
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
+//prova
+Route::get('prova', 'provaController@getIndex');
 // CU42
 Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
