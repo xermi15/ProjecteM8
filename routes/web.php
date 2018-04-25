@@ -180,7 +180,7 @@ Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 //
-// CU35
+// CU35 Laia
 Route::get('/mostar_workflows', 'CU_35Controller@mostrar');
 //
 //
