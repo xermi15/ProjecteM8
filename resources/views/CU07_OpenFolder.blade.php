@@ -75,7 +75,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <form id="modalForm" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
-                <button type="submit" id="downlaod" class="btn btn-primary btn-success">Descargar</button>
+                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar</button>
                 </form>                
               </div>
             </div>
@@ -459,21 +459,24 @@
             </div>
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
-               var id = $(e.relatedTarget).data('book-id');
-               var nombre = $(e.relatedTarget).data('book-nombre');
-               var path = $(e.relatedTarget).data('book-path');
-               $.ajax({ url: 'http://barcelonaapi.marcpous.com/fgc/stations.json',
+                var id = $(e.relatedTarget).data('book-id');
+                var nombre = $(e.relatedTarget).data('book-nombre');
+                var path = $(e.relatedTarget).data('book-path');
+                alert(path);
+                
+                $('#download').click(function(e){var url = "http://localhost/DAW2M14/public/CU_19";
+                $.get({  url: url,
                         id: id,
                         nombre: nombre,
                         path: path})
                     .done(function(data) {  
-                          alert("oh yeah");
+                          alert(data);
                     })
                     .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                    .always(function(x) { console.log( "Fí")});
-                $('#download').attr('action', '../CU_19/');
+                    .always(function(x) { console.log( "Fí")});});
+               
             });
-                       
+            
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
@@ -572,3 +575,4 @@
             });
         </script>
 @stop
+
