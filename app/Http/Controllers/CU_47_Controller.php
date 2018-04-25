@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuari;
+use App\Logs;
 use Krucas\Notification\Facades\Notification;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,7 @@ class CU_47_Controller extends Controller {
 
         return [$usuari, $grups];
     }
-
+    
     public function altaUsuari(Request $request) {
 
         $id = $request->cu47_idUsuari;
@@ -31,24 +32,24 @@ class CU_47_Controller extends Controller {
         $user1->estat = 1;
         $user1->save();
         
-        $textDescripcio = "Alta usuari";
-        $textPath = "Alta usuari";
-//        $date = new DateTime();
-//        $hora = new time();
-        $date = "02-02-02";
-        $date = "02-02-02";
+        //Registrar Log
+        $nlog = Logs::where('idLog', $request->cu47_idLog)->first();
         
-        $nlog = new Log;
-        
-        $nlog->idUsuari = $request->$id; 
-        $nlog->descripcio = $request->$textDescripcio;  
-        $nlog->dataLog = $request->$date;
-        $nlog->hora = $request->$hora;
-        $nlog->path = $request->$textPath;
+        if ($nlog == null) {                
+        $nlog = new Logs;
+        $nlog->idUsuari =$id; 
+        $nlog->descripcio = "Alta Usuari";  
+        $nlog->dataLog = date('Y-m-d');
+        $nlog->hora = date('H:i:s');
+        $nlog->path = "";
         $nlog->save();
-
         Notification::success("L'usuari s'ha donat d'alta correctament.");
         return redirect('CU_42_GestionarUsuaris');
+        
+        } else {
+            Notification::error("Error!!!");
+            return redirect('CU_42_GestionarUsuaris');
+        }
     }
     
 }

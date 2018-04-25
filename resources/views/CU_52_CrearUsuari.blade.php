@@ -11,6 +11,9 @@
             <form id="formNewUser" name="formNewUser" class="form-horizontal" method="POST" action="{{ url('/newUser') }}">
                 <div class="controls">
                     {{ csrf_field() }}
+                    <div>
+                        <input type="text" name="cu52_idUsuari" id="cu52_idUsuari" value="" hidden/>
+                    </div>
                     <div class="form-group">
                         <label for="nomUsuari" class="col-sm-3 control-label">Nom Usuari:</label>
                         <div class="col-sm-9">
