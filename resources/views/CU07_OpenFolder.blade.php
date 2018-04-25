@@ -51,7 +51,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#URL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
+                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -75,7 +75,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <form id="modalForm" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary btn-success">Descargar</button>
+                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar</button>
                 </form>                
               </div>
             </div>
@@ -112,8 +112,8 @@
                     <h4 class="modal-title" id="exampleModalLabel">Crear Carpeta</h4>
                   </div>
                   <div class="modal-body">
-                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" class="form-control">
-                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" class="form-control"></textarea>
+                      <h4>Nom:<h4><input type="text" name="nomCarpeta" id="nomCarpeta" maxlength="15" class="form-control">
+                      <h4>Descripció:<h4><textarea name="descripcioCarpeta" id="descripcioCarpeta" rows="8" maxlength="200" class="form-control"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -465,9 +465,24 @@
             </div>
         <script>
             $('#descargarModal').on('show.bs.modal', function (e) {
-               var id = $(e.relatedTarget).data('book-id');
-               var nombre = $(e.relatedTarget).data('book-nombre');
-               var path = $(e.relatedTarget).data('book-path');
+                var id = $(e.relatedTarget).data('book-id');
+                var nombre = $(e.relatedTarget).data('book-nombre');
+                var path = $(e.relatedTarget).data('book-path');
+                //alert(id+path+nombre);
+                $('#download').click(function(e){
+                    var url = "http://localhost/DAW2M14/public/CU_19";
+                    
+                    $.get(url,{
+                            id: id,
+                            nombre: nombre,
+                            path: path})
+                        .done(function(data) {  
+                            alert(data);
+                        })
+                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
+                        .always(function(x) { console.log( "Fí")});
+                });
+               
             });
             
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
@@ -588,22 +603,28 @@
             });
             
             //Genera Url
-            $("generaURL").click(function() {
-                idDoc = $(e.relatedTarget).data('data-book-id');
-                idVer = $(e.relatedTarget).data('data-book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL?id="+idDoc+"&idVer="+idVer;
-                $.get(url)
+            $("#generaURL").click(function(e) { 
+                var idDoc = $(this).attr('data-book-id');
+                var idVer = $(this).attr('data-book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL/";
+                
+                $.get(url,
+                        {idDocument:idDoc,
+                         versioInterna:idVer
+                        }
+                      )
                         .done(function(data) {
                             $('#inputURL').val(data[0][0].url);
                             $('#URL').modal('toggle');
-
                         })
                         .fail(function() {
-                            alert('Error.....');
+                           
                         })
                         .always(function() {
-                            //alert('Fi');
                         });
             });
+            
+   
         </script>
 @stop
+
