@@ -51,7 +51,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#URL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button>
+                <td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -597,23 +597,28 @@
             });
             
             //Genera Url
-            $("generaURL").click(function() {
-                idDoc = $(e.relatedTarget).data('data-book-id');
-                idVer = $(e.relatedTarget).data('data-book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL?id="+idDoc+"&idVer="+idVer;
-                $.get(url)
+            $("#generaURL").click(function(e) { 
+                var idDoc = $(this).attr('data-book-id');
+                var idVer = $(this).attr('data-book-idversio');
+                var url = "http://localhost/DAW2M14/public/CU12_URL/";
+                
+                $.get(url,
+                        {idDocument:idDoc,
+                         versioInterna:idVer
+                        }
+                      )
                         .done(function(data) {
                             $('#inputURL').val(data[0][0].url);
                             $('#URL').modal('toggle');
-
                         })
                         .fail(function() {
-                            alert('Error.....');
+                           
                         })
                         .always(function() {
-                            //alert('Fi');
                         });
             });
+            
+   
         </script>
 @stop
 
