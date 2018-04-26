@@ -51,9 +51,9 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
                 <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
-                <td class="col-md-1"><span class="glyphicon glyphicon-cloud-download"></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaPDF" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureDocumentModal" data-book-id="{{$document->idDocument}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
@@ -62,7 +62,7 @@
             @endforeach
         </table>
 
-        <!-- Modal Descargar-->
+        <!-- Modal Descargar ZIP-->
         <div class="modal fade" id="descargarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -76,7 +76,28 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <form id="modalFormDescargar" action="" method="POST" style="display:inline">
                 {{ csrf_field() }}
-                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar</button>
+                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar ZIP</button>
+                </form>                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal Descargar PDF-->
+        <div class="modal fade" id="generaPDF" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Descargar</h4>
+              </div>
+              <div class="modal-body">
+                  ¿Esta seguro que desea descargar un PDF del archivo {{$document->nom}}<b><p id="bookId" style="display: inline-block"></p></b>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="modalFormDescargar" action="" method="POST" style="display:inline">
+                {{ csrf_field() }}
+                <button type="submit" id="download" class="btn btn-primary btn-success">Descargar PDF</button>
                 </form>                
               </div>
             </div>
@@ -504,6 +525,14 @@
                         .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
                         .always(function(x) { console.log( "Fí")});
                 });
+               
+            });
+            
+            $('#generaPDF').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('book-id');
+                var idVer = $(e.relatedTarget).data('book-idversio');
+                $('#modalFormDescargar').attr('action', '../CU_13/'+id+'/'+idVer);
+                
                
             });
             
