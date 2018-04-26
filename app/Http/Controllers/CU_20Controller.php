@@ -9,7 +9,7 @@ use Notification;
 
 class CU_20Controller extends Controller {
 
-    public function eliminarCarpeta($id) {
+    public function eliminarCarpeta(Request $request, $id) {
         $permiso=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($id);
         $carpeta = Carpeta::find($id);
         $idCarpeta = $carpeta->idCarpetaPare;
@@ -22,7 +22,7 @@ class CU_20Controller extends Controller {
         }
     }
     
-    public function eliminarDocumento($id) {
+    public function eliminarDocumento(Request $request, $id) {
         $document = Document::find($id);
         $idDocument = $document->idCarpeta;
         $permiso=app('App\Http\Controllers\ComprovarPermisos')->comprovarPermis($idDocument);//miramos permisos carpeta padre???nose

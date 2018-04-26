@@ -77,7 +77,7 @@ Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 Route::post('/pujarVersio/{id}', 'CU_11Controller@postPujarVersio');
 // CU12
 //
-Route::get('/CU12_URL', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
 
 //
 // CU13
@@ -102,6 +102,8 @@ Route::Post('/eliminarVerio/{id}', 'CU_17Controller@eliminarVerio');
 //
 // CU18
 Route::get('/getDatos/{id}', 'CU_18Controller@getDatos');
+Route::Post('/permisUsuari', 'CU_18Controller@permisUsuari');
+Route::Post('/permisGrup', 'CU_18Controller@permisGrup');
 Route::Post('/cambiarPermisUsuari/{id}', 'CU_18Controller@cambiarPermisUsuari');
 Route::Post('/afegirPermisUsuari/{id}', 'CU_18Controller@afegirPermisUsuari');
 Route::Post('/borrarPermisUsuari/{id}', 'CU_18Controller@borrarPermisUsuari');
@@ -110,7 +112,7 @@ Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
 Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
-Route::get('/CU_19', 'CU_19Controller@index');
+Route::Post('/CU_19/{id}/{path}/{nombre}', 'CU_19Controller@index');
 ////
 // CU20
 Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
@@ -180,7 +182,8 @@ Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 //
-// CU35
+// CU35 Laia
+Route::get('/mostar_workflows', 'CU_35Controller@mostrar');
 //
 //
 //
@@ -214,6 +217,8 @@ Route::post('/newGrup', 'CU_40Controller@afegirGrup');
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
+//prova
+Route::get('prova', 'provaController@getIndex');
 // CU42
 Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
