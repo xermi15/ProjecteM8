@@ -46,7 +46,7 @@ function eliminarGrup() {
 }
 
 function afegirUsuari() {
-    
+
     var i = 0;
     var j;
     var s;
@@ -66,7 +66,7 @@ function afegirUsuari() {
     var encontrado;
 
 
-    if (cont5 === 0){
+    if (cont5 === 0) {
         $(".columnUsuarisGrup label").each(function () {
             idLabel3 = this.id;
             if (firstId2 === idLabel3) {
@@ -80,10 +80,6 @@ function afegirUsuari() {
         });
     }
     cont5++;
-    for (var f in arrayUsuarisGrup) {
-        //alert('1  ' + arrayUsuarisGrup[f]);
-    }
-
     //recorrer los checkbox y si estan seleccionados anyade a un array
     $(".columnUsuaris label").each(function () {
         if (firstId === $(this).attr('id')) {
@@ -108,16 +104,12 @@ function afegirUsuari() {
                                 }
                             }
                             if (encontrado !== 1) {
-                                //alert('entra '+idLabel.id);
                                 cont4 = 0;
                                 for (n in arrayUsuarisGrup) {
 
                                     cont4++;
                                     if (idLabel.id !== arrayUsuarisGrup[n]) {
-                                        //alert('bucle '+arrayUsuarisGrup[n]);
-                                        //alert('bucle '+idLabel.id);
                                         if (cont4 === arrayUsuarisGrup.length) {
-                                            //alert('entra');
                                             idUsuarisGrup.push(idLabel.id);
                                             nomUsuarisGrup.push(idLabel.textContent);
                                             arrayUsuarisGrup.push(idLabel.id);
@@ -143,10 +135,6 @@ function afegirUsuari() {
     for (i = 0; i < idUsuarisGrup.length; i++) {
         input = jQuery('<label id="' + idUsuarisGrup[i] + '"><input type="checkbox" id="' + idUsuarisGrup[i] + '" style="cursor:default;" name="usuari" value="usuari">' + nomUsuarisGrup[i] + '</label><br>');
         $(".columnUsuarisGrup").append(input);
-    }
-
-    for (var x in arrayUsuarisGrup) {
-       // alert('2  ' + arrayUsuarisGrup[x]);
     }
 }
 
@@ -183,8 +171,4 @@ function eliminarUsuari() {
         }
         cont++;
     });
-
-    for (j in arrayUsuarisGrup) {
-        alert(arrayUsuarisGrup[j]);
-    }
 }
