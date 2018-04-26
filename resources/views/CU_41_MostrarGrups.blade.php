@@ -10,7 +10,7 @@
         <!--recorre grupos-->
         @foreach( $grups as $grup )
         <tr>
-            <td>{{ $grup->nom }}</td>
+            <td id="nombreGrupo">{{ $grup->nom }}</td>
             <!-- recorre usuarisGrup -->
             <td>
                 @foreach( $usuariGrups as $usuariGrup )

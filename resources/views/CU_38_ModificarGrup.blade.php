@@ -13,7 +13,7 @@
             </div>
             <div class="modal-body">
                 <label for="nombre_grupo" class="ui-hidden-accessible">Nom: </label>
-                <input type="text" name="nombre_grupo" id="nombre_grupo" placeholder="Nom del grup" value="{{ $grup->nom }}" disabled >
+                <input type="text" name="nombre_grupo" id="nombre_grupo" style="cursor: default;" disabled >
                 @include('CU_39_ModificarMembres')
                 
             </div>
