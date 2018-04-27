@@ -91,7 +91,7 @@
                 <h4 class="modal-title" id="exampleModalLabel">Descargar</h4>
               </div>
               <div class="modal-body">
-                  ¿Esta seguro que desea descargar un PDF del archivo {{$document->nom}}<b><p id="bookId" style="display: inline-block"></p></b>?
+                  ¿Esta seguro que desea descargar un PDF del archivo?<b><p id="bookId" style="display: inline-block"></p></b>?
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
