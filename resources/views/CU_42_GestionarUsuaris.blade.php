@@ -54,10 +54,10 @@ var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
 var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var iduser;
 
-$("button[name='modalButtonEdit']").click(function() {
+$("button[name='modalButtonEdit']").click(function () {
     iduser = this.value;
     $.get(url + iduser)
-            .done(function(data) {
+            .done(function (data) {
                 $('#cu45_idUsuari').val(data[0][0].idUsuari);
                 $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
                 $('#cu45_contrasenya').val(data[0][0].contrasenya);
@@ -84,18 +84,18 @@ $("button[name='modalButtonEdit']").click(function() {
                 $('#modalButtonEdit').modal('toggle');
                 $('#miModalEdit').modal('show');
             })
-            .fail(function() {
+            .fail(function () {
                 alert('Error.....');
             })
-            .always(function() {
+            .always(function () {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonDelete']").click(function() {
+$("button[name='modalButtonDelete']").click(function () {
     iduser = this.value;
     $.get(url2 + iduser)
-            .done(function(data) {
+            .done(function (data) {
                 $('#cu43_idUsuari').val(data[0][0].idUsuari);
                 $('#cu43_nomUsuari').val(data[0][0].nomUsuari);
                 $('#cu43_contrasenya').val(data[0][0].contrasenya);
@@ -123,10 +123,10 @@ $("button[name='modalButtonDelete']").click(function() {
                 $('#modalButtonDelete').modal('toggle');
                 $('#miModalDelete').modal('show');
             })
-            .fail(function() {
+            .fail(function () {
                 alert('Error.....');
             })
-            .always(function() {
+            .always(function () {
                 //alert('Fi');
             });
 });
@@ -139,18 +139,18 @@ $('#modalButtonNew').click(function() {
                 $('#modalButtonNew').modal('toggle');
                 $('#miModalNew').modal('show');
             })
-            .fail(function() {
+            .fail(function () {
                 alert('Error.....');
             })
-            .always(function() {
+            .always(function () {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonAlta']").click(function() {
+$("button[name='modalButtonAlta']").click(function () {
     iduser = this.value;
     $.get(urlAlta + iduser)
-            .done(function(data) {
+            .done(function (data) {
                 $('#cu47_idUsuari').val(data[0][0].idUsuari);
                 $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu47_contrasenya').html(data[0][0].contrasenya);
@@ -168,18 +168,18 @@ $("button[name='modalButtonAlta']").click(function() {
                 $('#modalButtonAlta').modal('toggle');
                 $('#miModalAlta').modal('show');
             })
-            .fail(function() {
+            .fail(function () {
                 alert('Error.....');
             })
-            .always(function() {
+            .always(function () {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonBaixa']").click(function() {
+$("button[name='modalButtonBaixa']").click(function () {
     iduser = this.value;
     $.get(urlBaixa + iduser)
-            .done(function(data) {
+            .done(function (data) {
                 $('#cu44_idUsuari').val(data[0][0].idUsuari);
                 $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu44_contrasenya').html(data[0][0].contrasenya);
@@ -197,10 +197,10 @@ $("button[name='modalButtonBaixa']").click(function() {
                 $('#modalButtonBaixa').modal('toggle');
                 $('#miModalBaixa').modal('show');
             })
-            .fail(function() {
+            .fail(function () {
                 alert('Error.....');
             })
-            .always(function() {
+            .always(function () {
                 //alert('Fi');
             });
 });
