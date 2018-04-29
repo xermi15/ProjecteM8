@@ -32,7 +32,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
         -->
-        <form class="navbar-form navbar-right" method="GET" action="/resultadoBusqueda" style="margin-right: 0px;">
+        <form class="navbar-form navbar-right" method="GET" action="{{url('/resultadoBusqueda/')}}" style="margin-right: 0px;">
             <div class="form-group">
                 <input type="text"  name="cadena" id="cadena"  class="form-control" placeholder="Buscar Documents">
             </div>
@@ -43,8 +43,8 @@
 <div id="mySidenav" class="sidenav">
     <a href="{{url('/abrirCarpeta/personal')}}">Personal</a>
     <a href="{{url('/CU_36_GestionarGrups')}}">Gestionar Grups</a>
-    <a href="/mostar_workflows">Workflows</a>
-    <a href="/consultarLogs">Consultar Logs</a>
+    <a href="{{url('/mostar_workflows')}}">Workflows</a>
+    <a href="{{url('/consultarLogs')}}">Consultar Logs</a>
     <a href="#">Notificacions</a>
     <a href="#">Contact</a>
 </div>

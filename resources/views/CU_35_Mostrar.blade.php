@@ -6,8 +6,8 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Workflows</h1>   
-           <a class="btn btn-success" href="/crearWorkflow">Crear Workflow</a>
-           <a class="btn btn-info" href="/historialWorkflow">Ver historial</a>
+           <a class="btn btn-success" href="{{url('/crearWorkflow')}}">Crear Workflow</a>
+           <a class="btn btn-info" href="{{url('/historialWorkflow')}}">Ver historial</a>
             <div class="table-responsive">
                 <?php 
             if(  count($workflows) > 0){
@@ -34,10 +34,10 @@
                         <td>{{ $workf->nom }}</td>
                         <td>{{ $workf->estat }}</td>
                         <td>
-                            <a class="btn btn-success" href="/aprovarWorkflow">Aprovar</a>
-                            <a class="btn btn-info" href="/revisarWorkflow">Revisar</a>
-                            <a class="btn btn-default" href="/forcarWorkflow">Completar</a>
-                            <a class="btn btn-danger" href="/eliminarWorkflow">Eliminar</a>
+                            <a class="btn btn-success" href="{{url('/aprovarWorkflow')}}">Aprovar</a>
+                            <a class="btn btn-info" href="{{url('/revisarWorkflow')}}">Revisar</a>
+                            <a class="btn btn-default" href="{{url('/forcarWorkflow')}}">Completar</a>
+                            <a class="btn btn-danger" href="{{url('/eliminarWorkflow')}}">Eliminar</a>
                             
                         </td>
                       </tr>
