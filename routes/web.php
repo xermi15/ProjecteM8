@@ -74,7 +74,7 @@ Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 // CU11
 Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 
-Route::post('/pujarVersio/{id}', 'CU_11Controller@postPujarVersio');
+Route::post('/pujarVersio', 'CU_11Controller@postPujarVersio');
 // CU12
 //
 Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
