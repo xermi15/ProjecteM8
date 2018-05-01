@@ -6,7 +6,7 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Buscar Documents</h1>   
-           <form method="GET" action="/resultadoBusqueda">
+           <form method="GET" action="{{url('/resultadoBusqueda')}}">
                 <input name="cadena" id="cadena" type="text" placeholder="Nombre del documento o carpeta...">
                 <button>Buscar</button>
            </form>
@@ -29,7 +29,7 @@
                                 <td>{{ $res->nom }}</td>
                                 <td>{{ $res->descripcio }}</td>
                                 <td>{{ $res->dataCreacio }}</td>
-                                 <td><a href="/abrirCarpeta/{{ $res->idCarpeta }}">Ver Carpeta</a></td>
+                                 <td><a href="{{url('/abrirCarpeta')}}/{{ $res->idCarpeta }}">Ver Carpeta</a></td>
                                 
                               </tr>
                             @endforeach
@@ -38,7 +38,7 @@
                                 <td>{{ $res->nom }}</td>
                                 <td>{{ $res->descripcio }}</td>
                                 <td>{{ $res->dataCreacio }}</td>
-                                <td><a href="/abrirCarpeta/{{ $res->idCarpeta }}/?idDocument={{ $res->idDocument }}">Ver Documento</a></td>
+                                <td><a href="{{url('/abrirCarpeta')}}/{{ $res->idCarpeta }}/?idDocument={{ $res->idDocument }}">Ver Documento</a></td>
                               </tr>
                             @endforeach
                           </tbody>

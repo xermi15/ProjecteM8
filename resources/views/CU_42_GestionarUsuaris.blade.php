@@ -57,6 +57,7 @@ var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
 var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups";
 var iduser;
+
 $("button[name='modalButtonEdit']").click(function() {
     iduser = this.value;
     $.get(urlEdit + iduser)
@@ -93,6 +94,7 @@ $("button[name='modalButtonEdit']").click(function() {
                 //alert('Fi');
             });
 });
+
 $("button[name='modalButtonDelete']").click(function() {
     iduser = this.value;
     $.get(urlDelete + iduser)
@@ -104,7 +106,6 @@ $("button[name='modalButtonDelete']").click(function() {
                 $('#cu43_cognoms').val(data[0][0].cognoms);
                 $('#cu43_email').val(data[0][0].email);
                 $('#cu43_dadesPostals').val(data[0][0].dadesPostals);
-                ;
                 $('#cu43_tipus').val(data[0][0].tipus);
                 var radioButton = data[0][0].estat;
                 if (radioButton == 0) {
@@ -130,9 +131,12 @@ $("button[name='modalButtonDelete']").click(function() {
                 //alert('Fi');
             });
 });
+
 $('#modalButtonNew').click(function() {
+    //iduser = this.value;
     $.get(urlNew)
             .done(function(data) {
+                $('#cu52_idUsuari').val(data[0][0].idUsuari);
                 $('#modalButtonNew').modal('toggle');
                 $('#miModalNew').modal('show');
             })
@@ -143,7 +147,9 @@ $('#modalButtonNew').click(function() {
                 //alert('Fi');
             });
 });
+
 $("button[name='modalButtonAlta']").click(function() {
+
     iduser = this.value;
     $.get(urlAlta + iduser)
             .done(function(data) {
@@ -170,6 +176,7 @@ $("button[name='modalButtonAlta']").click(function() {
                 //alert('Fi');
             });
 });
+
 $("button[name='modalButtonBaixa']").click(function() {
     iduser = this.value;
     $.get(urlBaixa + iduser)

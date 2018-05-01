@@ -6,7 +6,7 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Filtro de Logs</h1>   
-           <form method="GET" action="/consultarLogs/">
+           <form method="GET" action="{{url('/consultarLogs')}}">
                <select name="filtro">
                     <option value="dataLog" >Fecha</option>
                     <option value="nomUsuari">Usuario</option>

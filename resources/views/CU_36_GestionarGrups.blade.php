@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<?php echo "<script>document.title = 'Gestionar Grups';</script>"; ?>
 <div class="container" style="width: 100%;">
     <div class="row">
         <div class="form-group">
@@ -12,7 +13,7 @@
             </table>
 
         </div>
-        @include('CU_40_CrearGrupo')
+        @include('CU_40_CrearGrup')
 
         @include('CU_41_MostrarGrups')
     </div>
