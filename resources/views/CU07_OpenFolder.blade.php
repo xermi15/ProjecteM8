@@ -61,6 +61,14 @@
             </tr>
             @endforeach
         </table>
+        <div>
+        <button type="button" id="enrere" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-level-up"></span>
+                        <p style="display:inline; margin-left: 5px">
+                            Enrere
+                        </p>
+                    </button>               
+        </div>
 
         <!-- Modal Descargar ZIP-->
         <div class="modal fade" id="descargarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,9 +167,9 @@
                   </div>
                   <div class="modal-body">
                       <b>Nombre: </b></br>
-                      <input id="nombreInput" name="nombreInput" type="text" class="form-control"> </br>
+                      <input id="nombreInput" name="nombreInput" maxlength="15" type="text" class="form-control"> </br>
                       <b>Descripció: </b></br>
-                      <textarea id="descripcionInput" name="descripcioInput" class="form-control" rows="4"></textarea></br>
+                      <textarea id="descripcionInput" name="descripcioInput" maxlength="200" class="form-control" rows="4"></textarea></br>
                       <b>Propietari: </b></br>
                       <p id="propietari">Ningú</p>
                       <b>Modificat per: </b></br>
@@ -212,7 +220,7 @@
                   <div class="modal-body">
                       <h4>Carpetes:</h4>
                       <div id="listaCarpetaD"></div>
-                      <b>Nom de la carpeta destinatari: </b><input id="nombreMovCarpeta" name="nombreMovCarpeta" type="text" class="form-control">
+                      <b>Nom de la carpeta destinatari: </b><input id="nombreMovDocumento" name="nombreMovDocumento" type="text" class="form-control">
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -506,6 +514,9 @@
             </form>
         
         <script>
+            
+            $("#enrere").click(function(e){window.history.back();});
+            
             $('#descargarModal').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
@@ -631,15 +642,18 @@
                 var html = $(e.relatedTarget).data('book-name');
                 $('#listaCarpeta').text("");
                 $('#listaCarpeta').append(html);
+                $(".arbol").click(function(e){$("#nombreMovCarpeta").val($(this).prop("id"));});
                 
                 $('#modalFormMoure').attr('action', '../moureCarpeta/'+id);
             });
             
             $('#moureDocumentModal').on('show.bs.modal', function(e) {
+                
                 var id = $(e.relatedTarget).data('book-id');
                 var html = $(e.relatedTarget).data('book-name');
                 $('#listaCarpetaD').text("");
                 $('#listaCarpetaD').append(html);
+                $(".arbol").click(function(e){$("#nombreMovDocumento").val($(this).prop("id"));});
                 
                 $('#modalFormMoureDocument').attr('action', '../moureDocument/'+id);
             });

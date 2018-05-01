@@ -43,7 +43,7 @@ class CU_07Controller extends Controller {
         $carpetaPareList = Carpeta::whereNull('idCarpetaPare')->get();
         $carpetaPare = $carpetaPareList[0];
         
-        $resultado = "<b>".$carpetaPare->nom."</b>";
+        $resultado = "<a class='arbol' id='".$carpetaPare->nom."'><b>".$carpetaPare->nom."</b></a>";
         $resultado .= CU_07Controller::misHijos($carpetaPare->idCarpeta);
         
         return $resultado;
@@ -59,7 +59,7 @@ class CU_07Controller extends Controller {
                 foreach($arxius as $key => $arxiu){
                     $resultado .= "<li><span style='margin-right:5px;' class='glyphicon glyphicon-file'></span>".$arxiu->nom."</li>";
                 }
-                $resultado .= "<li><span style='margin-right:5px;' class='glyphicon glyphicon-folder-open'></span>".$carpeta->nom."</li>";
+                $resultado .= "<li><a class='arbol' id='".$carpeta->nom."'><span style='margin-right:5px;' class='glyphicon glyphicon-folder-open'></span>".$carpeta->nom."</a></li>";
                 $resultado .= CU_07Controller::misHijos($carpeta->idCarpeta);
         }
         $resultado .= "</ul>";
