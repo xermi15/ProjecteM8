@@ -218,7 +218,6 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44
 Route::get('/CU_44_BaixaUsuari', 'CU_44_Controller@mostraUsuari');
-//Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
 Route::put('/baixaUser', 'CU_44_Controller@baixaUsuari');
 //
 // CU45
@@ -226,7 +225,7 @@ Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
 Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
-//
+Route::get('/CU_46_ModificarPertinencaGrups', 'CU_46_Controller@mostrarGrups');
 //
 //
 // CU47
