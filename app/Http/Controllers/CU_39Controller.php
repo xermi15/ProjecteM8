@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class CU_39Controller extends Controller {
 
-    public function getCU_39(){
-            return view('CU_39_ModificarMembres');
-    
+    public function getCU_39() {
+        return view('CU_39_ModificarMembres');
     }
-    
+
     public function modificarGrup(Request $request) {
 
         $idusuari = $request->cu38_idusuari;
@@ -23,23 +22,22 @@ class CU_39Controller extends Controller {
         //$usuarigrup = DB::select("SELECT * FROM usuarigrup WHERE idUsuari = " . $$idgrup . " AND idGrup = " . $idgrup );
         $usuarigrup = UsuariGrup::find($idusuari);
         $usuarigrup->delete();
-        
-            $nlog = new Logs;
-            $nlog->idUsuari =$idusuari; 
-            $nlog->descripcio = "Modificar Grup";  
-            $nlog->dataLog = date('Y-m-d');
-            $nlog->hora = date('H:i:s');
-            $nlog->path = "";
-            $nlog->save();
-            
-            $grups = Grup::all();
+
+        $nlog = new Logs;
+        $nlog->idUsuari = $idusuari;
+        $nlog->descripcio = "Modificar Grup";
+        $nlog->dataLog = date('Y-m-d');
+        $nlog->hora = date('H:i:s');
+        $nlog->path = "";
+        $nlog->save();
+
+        $grups = Grup::all();
         $usuaris = Usuari::all();
         $usuariGrups = UsuariGrup::all();
-        
-     return view('CU_36_GestionarGrups', compact('grups','usuaris','usuariGrups'));
 
+        return view('CU_36_GestionarGrups', compact('grups', 'usuaris', 'usuariGrups'));
     }
-    
+
     public function modificarGrup2(Request $request) {
 
         $idusuari = $request->cu39_idusuari;
@@ -48,23 +46,21 @@ class CU_39Controller extends Controller {
         $user1->idUsuari = $idusuari;
         $user1->idGrup = $idgrup;
         $user1->save();
-       
-                       
+
+
         $nlog = new Logs;
-        $nlog->idUsuari =$idusuari; 
-        $nlog->descripcio = "Alta Usuari";  
+        $nlog->idUsuari = $idusuari;
+        $nlog->descripcio = "Alta Usuari";
         $nlog->dataLog = date('Y-m-d');
         $nlog->hora = date('H:i:s');
         $nlog->path = "";
         $nlog->save();
-            
+
         $grups = Grup::all();
         $usuaris = Usuari::all();
         $usuariGrups = UsuariGrup::all();
-        
-        return view('CU_36_GestionarGrups', compact('grups','usuaris','usuariGrups'));
 
+        return view('CU_36_GestionarGrups', compact('grups', 'usuaris', 'usuariGrups'));
     }
 
-    }
-
+}

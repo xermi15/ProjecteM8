@@ -15,41 +15,52 @@ class CU_40Controller extends Controller {
 
     public function afegirGrup(Request $request) {
 
-        foreach ($grups as $grup) {
-            $cont++;
-        }
-
         $grup = Grup::where('nom', $request->cu_40nomGrup)->first();
 
         if ($grup == null) {
             $grup = new Grup;
-            $grup->idGrup = date('Y-m-d');
             $grup->nom = $request->cu_40nomGrup;
             //$grup->idUsuariCreacio = $request->cu_40idUsuariCreacio;
             //$grup->idUsuariModificacio = $request->cu_40idUsuariModificacio;
             $grup->dataCreacio = date('Y-m-d');
             $grup->dataModificacio = date('Y-m-d');
             $grup->save();
+
+            return redirect('CU_36_GestionarGrups');
         }
 
-        $usuariGrup = UsuariGrup::where('idGrup', $request->cu_40nomGrup)->first();
+        /*
+          foreach ($grups as $grup) {
+          $cont++;
+          }
 
-        if ($grup == null) {
-            $grup = new Grup;
-            $grup->nom = $request->cu_40nomGrup;
-            //$grup->idUsuariCreacio = $request->cu_40idUsuariCreacio;
-            //$grup->idUsuariModificacio = $request->cu_40idUsuariModificacio;
-            $grup->dataCreacio = date('Y-m-d');
-            $grup->dataModificacio = date('Y-m-d');
-            $grup->save();
-        }
+          $grup = Grup::where('nom', $request->cu_40nomGrup)->first();
 
+          if ($grup == null) {
+          $grup = new Grup;
+          $grup->idGrup = date('Y-m-d');
+          $grup->nom = $request->cu_40nomGrup;
+          //$grup->idUsuariCreacio = $request->cu_40idUsuariCreacio;
+          //$grup->idUsuariModificacio = $request->cu_40idUsuariModificacio;
+          $grup->dataCreacio = date('Y-m-d');
+          $grup->dataModificacio = date('Y-m-d');
+          $grup->save();
+          }
 
+          $usuariGrup = UsuariGrup::where('idGrup', $request->cu_40nomGrup)->first();
 
+          if ($grup == null) {
+          $grup = new Grup;
+          $grup->nom = $request->cu_40nomGrup;
+          //$grup->idUsuariCreacio = $request->cu_40idUsuariCreacio;
+          //$grup->idUsuariModificacio = $request->cu_40idUsuariModificacio;
+          $grup->dataCreacio = date('Y-m-d');
+          $grup->dataModificacio = date('Y-m-d');
+          $grup->save();
+          }
 
-
-
-        return redirect('CU_36_GestionarGrups');
+          return redirect('CU_36_GestionarGrups');
+          }
+         */
     }
-
 }
