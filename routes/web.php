@@ -197,11 +197,13 @@ Route::get('CU_37_EliminarGrup/{id}', 'CU_37Controller@getCU_37');
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
 Route::get('CU_38_ModificarGrup', 'CU_38Controller@getCU_38');
+Route::post('/editGrup', 'CU_39Controller@modificarGrup');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
 Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
-Route::post('/modGrup', 'CU_39Controller@modificarGrup');
+Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
+
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
