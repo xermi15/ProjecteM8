@@ -234,6 +234,7 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
                     }
                 }
 
+                $('#miModalEdit').modal('hide');
                 $('#modalModificarGrups').modal('toggle');
                 $('#miModalModPerGrups').modal('show');
             })

@@ -10,7 +10,7 @@
             </div>
             <form id="formModPerGrups" name="formModPerGrups" method="POST" action="{{ url('/modPerGrups') }}">
                 <div class="controls">
-
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <div class="altaBaixa">
                         <div>

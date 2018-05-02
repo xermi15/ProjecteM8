@@ -28,25 +28,30 @@ class CU_46_Controller extends Controller {
 
     public function modificarPertinencaGrups(Request $request) {
 
-        //$id = $request->cu46_idUsuari;
-        //$usuarigrup = DB::select("SELECT * FROM usuarigrup WHERE idUsuari = " . $id);
+        $id = $request->cu46_idUsuari;
+        $usuarigrup = DB::select("SELECT * FROM usuarigrup WHERE idUsuari = " . $id);
         //$grupsTotals = DB::select("SELECT * FROM grups");
         //$user1 = Usuari::findOrFail($id);
-        //$checkGrups = $_POST["checkGrups"];
 
-        /* if ($usuarigrup != null) {
+        $checked = $_POST['provincias'];
 
-          for ($i = 0; $i < count($checkGrups); $i++) {
-          echo "<br> Grups " . $i . ": " . $checkGrups[$i];
-          }
+        if ($usuarigrup != null) {
 
-          Notification::success("L'usuari s'ha modificat correctament.");
-          return redirect('CU_42_GestionarUsuaris');
-          } else {
-          Notification::error("Error!!! Aquest usuari ja existeix.");
-          return redirect('CU_42_GestionarUsuaris');
-          } */
-        echo "blabla";
+            /* for ($i = 0; $i < count($checked); $i++) {
+              echo "<br> Grups " . $i . ": " . $checked[$i];
+              } */
+
+
+            foreach ($checked as $i) {
+                echo "Grupo: " . $i;
+            }
+
+            //Notification::success("L'usuari s'ha modificat correctament.");
+            //return redirect('CU_42_GestionarUsuaris');
+        } else {
+            //Notification::error("Error!!! Aquest usuari ja existeix.");
+            //return redirect('CU_42_GestionarUsuaris');
+        }
     }
 
 }
