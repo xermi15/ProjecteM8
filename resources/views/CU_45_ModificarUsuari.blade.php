@@ -1,6 +1,11 @@
+@include('CU_46_ModificarPertinencaGrups')
 
-<div class="modal fade" id="miModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Bootstrap and my style-->
+<link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url('/css/CU_42_GestionarUsuaris.css') }}" rel="stylesheet">
+
+<div class="modal fade" id="miModalEdit" role="dialog" style="overflow-y: scroll;">
+    <div class="modal-dialog">
         <div id="containerUser" class="modal-content">
             <div class="text-center darkColor">
                 Modificar usuari
@@ -11,7 +16,7 @@
             <form id="formEditUser" name="formEditUser" class="form-horizontal" method="POST" action="{{ url('/editUser') }}">
                 <div class="controls">
                     {{ csrf_field() }}
-                    <div><input type="text" name="cu45_idUsuari" id="cu45_idUsuari" value="" /></div>
+                    <div><input type="text" name="cu45_idUsuari" id="cu45_idUsuari" value="" hidden/></div>
                     <div class="form-group">
                         <label for="nomUsuari" class="col-sm-3 control-label">Nom Usuari:</label>
                         <div class="col-sm-9">
@@ -70,17 +75,19 @@
                         <label class="col-sm-3 control-label">Grups:</label>
                         <div id="cu45_grup" class="col-sm-5"></div>
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-primary" disabled>Modificar Grups</button>
+                            <button name="modalModificarGrups" class="btn btn-primary" value="">Modificar Grups</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-right darkColor">
-                    <button id="modificar" class="btn btn-default btn-xs active botonCrearMod" type="submit">Modificar</button>
+                    <button name="modificar" class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-pencil"></span> Modificar </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<script src="{{ url('/js/jquery.min.js') }}"></script>
+<script src="{{ url('/js/bootstrap.min.js') }}"></script>
 
