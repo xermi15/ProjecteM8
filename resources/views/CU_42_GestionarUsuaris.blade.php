@@ -41,7 +41,7 @@
 
     <div class="divBotoCrear">
         <button id="modalButtonNew" class="btn btn-primary botoAltaBaixa"><span class="glyphicon glyphicon-plus-sign"></span> Crear nou usuari </button>
-
+        <button name="modalModificarGrups" class="btn btn-primary" value="{{$usuari->idUsuari}}">Modificar Grups</button>
     </div>
 </div>
 
@@ -55,10 +55,11 @@ var urlEdit = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
 var urlDelete = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
 var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
 var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
-var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups";
+var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups?id=";
 var iduser;
 
-$("button[name='modalButtonEdit']").click(function() {
+$(document).on("click", "button[name='modalButtonEdit']", function() {
+//$("button[name='modalButtonEdit']").click(function() {
     iduser = this.value;
     $.get(urlEdit + iduser)
             .done(function(data) {
@@ -84,7 +85,7 @@ $("button[name='modalButtonEdit']").click(function() {
                     nomgrups = nomgrups + data[1][i].nom + "</div>";
                 }
                 $('#cu45_grup').html(nomgrups);
-                $('#modalButtonEdit').modal('toggle');
+                //$('#modalButtonEdit').modal('toggle');
                 $('#miModalEdit').modal('show');
             })
             .fail(function() {
@@ -136,7 +137,7 @@ $('#modalButtonNew').click(function() {
     //iduser = this.value;
     $.get(urlNew)
             .done(function(data) {
-                $('#cu52_idUsuari').val(data[0][0].idUsuari);
+                //$('#cu52_idUsuari').val(data[0][0].idUsuari);
                 $('#modalButtonNew').modal('toggle');
                 $('#miModalNew').modal('show');
             })
@@ -204,28 +205,35 @@ $("button[name='modalButtonBaixa']").click(function() {
                 //alert('Fi');
             });
 });
+$(document).on("click", "button[name='modalModificarGrups']", function() {
 
-$("button[name='modalModificarGrups']").click(function() {
-    //iduser = this.value;
-    $.get(urlModPerGrups)// + iduser)
+    //$("button[name='modalModificarGrups']").click(function() {
+    iduser = this.value;
+    $.get(urlModPerGrups + iduser)
             .done(function(data) {
-                //$('#cu45_idUsuari').val(data[0][0].idUsuari);
+                $('#cu46_idUsuari').val(data[0][0].idUsuari);
+                $('#cu46_nomUsuari').html(data[0][0].nomUsuari);
 
-                /*var radioButton = data[0][0].estat;
-                 if (radioButton == 0) {
-                 $("#cu45_estat0").prop('checked', true);
-                 $('#cu45_estat1').prop('checked', false);
-                 } else {
-                 $('#cu45_estat1').prop('checked', true);
-                 $('#cu45_estat0').prop('checked', false);
-                 }*/
+                var check = '<input type="checkbox" name="checkGrups[]"';
+                var grups = '';
+                var idgrup;
 
-                /*var nomgrups = "<div>";
-                 for (i = 0; i < data[1].length; i++) {
-                 nomgrups = nomgrups + data[1][i].nom + "</div>";
-                 }*/
-                //$('#cu45_grup').html(nomgrups);
-                $('#miModalEdit').modal('hide');
+                for (n = 0; n < data[2].length; n++) {
+                    idgrup = data[2][n].idGrup;
+                    grups = grups + check + ' id="cu46_idgrup' + idgrup + '" />' + data[2][n].nom + '</br>';
+
+                }
+                $('#cu46_grupstotals').html(grups);
+
+                for (n = 0; n < data[2].length; n++) {
+                    idgrup = data[2][n].idGrup;
+                    for (i = 0; i < data[1].length; i++) {
+                        if (data[1][i].idGrup == idgrup) {
+                            $('#cu46_idgrup' + idgrup).prop("checked", true);
+                        }
+                    }
+                }
+
                 $('#modalModificarGrups').modal('toggle');
                 $('#miModalModPerGrups').modal('show');
             })

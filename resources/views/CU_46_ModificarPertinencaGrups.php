@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="miModalModPerGrups" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="miModalModPerGrups" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div id="containerUser" class="modal-content">
             <div class="text-center darkColor">
@@ -8,25 +8,27 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formModPerGrups" name="formModPerGrups" class="form-horizontal" method="POST" action="{{ url('/modPerGrups') }}">
-                <div class="altaBaixa">
+            <form id="formModPerGrups" name="formModPerGrups" method="POST" action="{{ url('/modPerGrups') }}">
+                <div class="controls">
 
                     {{ csrf_field() }}
-                    <div>
-                        <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value=""/>
-                    </div>
-                    <div>
-                        <!--<label class="col-sm-5">Nom Usuari: </label>
-                        <label id="cu47_nomUsuari" class="col-sm-7"></label>-->
-                        <label class="radio-inline">
-                            <input type="radio" id="cu46_radio" name="cu46_radio" value="" />
-                        </label>
+                    <div class="altaBaixa">
+                        <div>
+                            <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value=""/>
+                        </div>
+                        <div>
+                            <label class="col-sm-5">Nom Usuari: </label>
+                            <label id="cu46_nomUsuari" class="col-sm-7"></label>
+                        </div>
+                        <div>
+                            <label class="col-sm-5">Grups: </label>
+                            <div id="cu46_grupstotals" class="col-sm-7"></div>
+                        </div>
                     </div>
 
-                </div>
-
-                <div class="text-right darkColor">
-                    <button id="buttonModPerGrups" class="btn btn-primary" type="submit">Modificar</button>
+                    <div class="text-right darkColor">
+                        <button id="buttonModPerGrups" class="btn btn-primary" type="submit">Modificar</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -4,8 +4,8 @@
 <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ url('/css/CU_42_GestionarUsuaris.css') }}" rel="stylesheet">
 
-<div class="modal fade" id="miModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="miModalEdit" role="dialog" style="overflow-y: scroll;">
+    <div class="modal-dialog">
         <div id="containerUser" class="modal-content">
             <div class="text-center darkColor">
                 Modificar usuari
@@ -75,7 +75,7 @@
                         <label class="col-sm-3 control-label">Grups:</label>
                         <div id="cu45_grup" class="col-sm-5"></div>
                         <div class="col-sm-4">
-                            <button name="modalModificarGrups" class="btn btn-primary">Modificar Grups</button>
+                            <button name="modalModificarGrups" class="btn btn-primary" value="">Modificar Grups</button>
                         </div>
                     </div>
                 </div>
