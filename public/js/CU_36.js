@@ -45,6 +45,30 @@ function eliminarGrup() {
     $("#myModal_3").modal("hide");
 }
 
+function addArrayUsuariGrup() {
+    var cont = 0;
+    var cont2 = 0;
+    var cont = 0;
+    var cont2 = 0;
+    var firstId;
+    var idLabel;
+
+    //crea array usuaris grup
+    if (cont === 0) {
+        $(".columnUsuarisGrup label").each(function () {
+            idLabel = this.id;
+            if (firstId === idLabel) {
+                return false;
+            }
+            arrayUsuarisGrup.push(idLabel);
+            if (cont2 === 0) {
+                firstId = idLabel;
+            }
+            cont2++;
+        });
+    }
+    cont++;
+}
 function afegirUsuari() {
 
     var i = 0;
@@ -53,33 +77,21 @@ function afegirUsuari() {
     var n;
     var cont = 0;
     var cont2;
-    var cont3 = 0;
     var cont4 = 0;
     var firstId;
-    var firstId2;
     var idLabel;
     var idLabel2;
-    var idLabel3;
     var idLabel4;
     var idUsuarisGrup = [];
     var nomUsuarisGrup = [];
     var encontrado;
 
+    addArrayUsuariGrup();
 
-    if (cont5 === 0) {
-        $(".columnUsuarisGrup label").each(function () {
-            idLabel3 = this.id;
-            if (firstId2 === idLabel3) {
-                return false;
-            }
-            arrayUsuarisGrup.push(idLabel3);
-            if (cont3 === 0) {
-                firstId2 = idLabel3;
-            }
-            cont3++;
-        });
+    for (var t in arrayUsuarisGrup) {
+        alert('antes anyadir ' + arrayUsuarisGrup[t]);
     }
-    cont5++;
+
     //recorrer los checkbox y si estan seleccionados anyade a un array
     $(".columnUsuaris label").each(function () {
         if (firstId === $(this).attr('id')) {
@@ -89,7 +101,8 @@ function afegirUsuari() {
         if ($(this).children('input').is(':checked')) {
             idLabel = this;
             cont2 = 0;
-            //recorre columna usuaris grup, si buscar objeto input, si su id o valor es igual al "this.id" no hacer nada// if this.child is cheked push, si no no
+            //recorre columna usuaris grup, si buscar objeto input, si su id o valor es igual al "this.id" no hacer nada
+            //// if this.child is cheked push, si no no
             for (j in arrayUsuarisGrup) {
                 encontrado = 0;
                 idLabel4 = this.id;
@@ -136,6 +149,11 @@ function afegirUsuari() {
         input = jQuery('<label id="' + idUsuarisGrup[i] + '"><input type="checkbox" id="' + idUsuarisGrup[i] + '" style="cursor:default;" name="usuari" value="usuari">' + nomUsuarisGrup[i] + '</label><br>');
         $(".columnUsuarisGrup").append(input);
     }
+
+    for (var t in arrayUsuarisGrup) {
+        alert('despues anyadir ' + arrayUsuarisGrup[t]);
+    }
+
 }
 
 function eliminarUsuari() {
@@ -144,6 +162,13 @@ function eliminarUsuari() {
     var cont = 0;
     var firstId;
     var idLabel;
+
+    addArrayUsuariGrup();
+
+    for (var t in arrayUsuarisGrup) {
+        alert('antes eliminar ' + arrayUsuarisGrup[t]);
+    }
+
 
     //recorrer los checkbox y si estan seleccionados anyade a un array
     $(".columnUsuarisGrup label").each(function () {
@@ -158,8 +183,12 @@ function eliminarUsuari() {
 
             //recorrer array usuaris grup, si coinciden borra arrayusuari[posicion]
             for (j in arrayUsuarisGrup) {
-                if (idLabel === arrayUsuarisGrup[j]) {
-                    arrayUsuarisGrup.splice(j, 1);
+                if (arrayUsuarisGrup.length === 1) {
+                    arrayUsuarisGrup = [];
+                } else {
+                    if (idLabel === arrayUsuarisGrup[j]) {
+                        arrayUsuarisGrup.splice(j, 1);
+                    }
                 }
             }
             $(this).next('br').remove();
@@ -171,4 +200,9 @@ function eliminarUsuari() {
         }
         cont++;
     });
+
+    for (var t in arrayUsuarisGrup) {
+        alert('despues eliminar ' + arrayUsuarisGrup[t]);
+    }
+
 }

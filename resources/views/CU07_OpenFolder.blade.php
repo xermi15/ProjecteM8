@@ -439,12 +439,12 @@
                             <input id="pujarVersioID" hidden name="id" value="">
 
                             <div class="form-group">
-                                <label for="title">Nom del arxiu</label>
+                                <label for="title">Nom del arxiu *</label>
                                 <input type="text" name="nom" id="nom" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                    <label for="title">Ruta de l'arxiu</label>
+                                    <label for="title">Ruta de l'arxiu *</label>
                                     <input type="file" name="arxiu" id="arxiu" class="form-control">
                             </div>
 
@@ -466,7 +466,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <i>*Tots els camps són opcionals</i>
+                        <i>Els camps amb * són obligatoris</i>
                     </div>
                 </div>
              </div>
@@ -664,7 +664,7 @@
                 //postPujarVersio
                 $("#pujarVersioID").val(id);
                 
-                $('#modalFormPujarVersio').attr('action', '../pujarVersio/'+id);
+                $('#modalFormPujarVersio').attr('action', '../pujarVersio');
             });
             
             //Genera Url
