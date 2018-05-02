@@ -1,8 +1,3 @@
-@include('CU_46_ModificarPertinencaGrups')
-
-<!-- Bootstrap and my style-->
-<link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ url('/css/CU_42_GestionarUsuaris.css') }}" rel="stylesheet">
 
 <div class="modal fade" id="miModalEdit" role="dialog" style="overflow-y: scroll;">
     <div class="modal-dialog">
