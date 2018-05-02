@@ -42,22 +42,24 @@
 </nav>
 <div id="mySidenav" class="sidenav">
     <a href="{{url('/abrirCarpeta/personal')}}">Personal</a>
+    <a href="{{url('/CU_42_GestionarUsuaris')}}">Gestionar Usuaris</a>
     <a href="{{url('/CU_36_GestionarGrups')}}">Gestionar Grups</a>
     <a href="{{url('/mostar_workflows')}}">Workflows</a>
     <a href="{{url('/consultarLogs')}}">Consultar Logs</a>
     <a href="#">Notificacions</a>
     <a href="#">Contact</a>
 </div>
-<script>
-        <!-- 
-            Posar funció window.width per a obrir o tancar la navbar
-                Evitar que el main es "caigui"
-                -->
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
+<script>
+    <!--
+            Posar funció window.width per a obrir o tancar la navbar
+            Evitar que el main es "caigui"
+            -- >
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
     </script>

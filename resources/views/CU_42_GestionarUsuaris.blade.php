@@ -7,6 +7,8 @@
 @include('CU_43_EliminarUsuari')
 @include('CU_47_AltaUsuari')
 @include('CU_44_BaixaUsuari')
+@include('CU_46_ModificarPertinencaGrups')
+
 
 <!-- Bootstrap and my style-->
 <link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -39,6 +41,7 @@
 
     <div class="divBotoCrear">
         <button id="modalButtonNew" class="btn btn-primary botoAltaBaixa"><span class="glyphicon glyphicon-plus-sign"></span> Crear nou usuari </button>
+        <button name="modalModificarGrups" class="btn btn-primary" value="{{$usuari->idUsuari}}">Modificar Grups</button>
     </div>
 </div>
 
@@ -48,16 +51,18 @@
 <script src="{{ url('/js/bootstrap.min.js') }}"></script>
 <script>
 var urlNew = "http://localhost/DAW2M14/public/CU_52_CrearUsuari";
-var url = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
-var url2 = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
+var urlEdit = "http://localhost/DAW2M14/public/CU_45_ModificarUsuari?id=";
+var urlDelete = "http://localhost/DAW2M14/public/CU_43_EliminarUsuari?id=";
 var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
 var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
+var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups?id=";
 var iduser;
 
-$("button[name='modalButtonEdit']").click(function () {
+$(document).on("click", "button[name='modalButtonEdit']", function() {
+//$("button[name='modalButtonEdit']").click(function() {
     iduser = this.value;
-    $.get(url + iduser)
-            .done(function (data) {
+    $.get(urlEdit + iduser)
+            .done(function(data) {
                 $('#cu45_idUsuari').val(data[0][0].idUsuari);
                 $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
                 $('#cu45_contrasenya').val(data[0][0].contrasenya);
@@ -66,10 +71,9 @@ $("button[name='modalButtonEdit']").click(function () {
                 $('#cu45_email').val(data[0][0].email);
                 $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
                 $('#cu45_tipus').val(data[0][0].tipus);
-
                 var radioButton = data[0][0].estat;
                 if (radioButton == 0) {
-                    $("#cu45_estat0").prop("checked", true);
+                    $("#cu45_estat0").prop('checked', true);
                     $('#cu45_estat1').prop('checked', false);
                 } else {
                     $('#cu45_estat1').prop('checked', true);
@@ -81,21 +85,21 @@ $("button[name='modalButtonEdit']").click(function () {
                     nomgrups = nomgrups + data[1][i].nom + "</div>";
                 }
                 $('#cu45_grup').html(nomgrups);
-                $('#modalButtonEdit').modal('toggle');
+                //$('#modalButtonEdit').modal('toggle');
                 $('#miModalEdit').modal('show');
             })
-            .fail(function () {
+            .fail(function() {
                 alert('Error.....');
             })
-            .always(function () {
+            .always(function() {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonDelete']").click(function () {
+$("button[name='modalButtonDelete']").click(function() {
     iduser = this.value;
-    $.get(url2 + iduser)
-            .done(function (data) {
+    $.get(urlDelete + iduser)
+            .done(function(data) {
                 $('#cu43_idUsuari').val(data[0][0].idUsuari);
                 $('#cu43_nomUsuari').val(data[0][0].nomUsuari);
                 $('#cu43_contrasenya').val(data[0][0].contrasenya);
@@ -103,9 +107,7 @@ $("button[name='modalButtonDelete']").click(function () {
                 $('#cu43_cognoms').val(data[0][0].cognoms);
                 $('#cu43_email').val(data[0][0].email);
                 $('#cu43_dadesPostals').val(data[0][0].dadesPostals);
-                ;
                 $('#cu43_tipus').val(data[0][0].tipus);
-
                 var radioButton = data[0][0].estat;
                 if (radioButton == 0) {
                     $("#cu43_estat0").prop("checked", true);
@@ -123,34 +125,35 @@ $("button[name='modalButtonDelete']").click(function () {
                 $('#modalButtonDelete').modal('toggle');
                 $('#miModalDelete').modal('show');
             })
-            .fail(function () {
+            .fail(function() {
                 alert('Error.....');
             })
-            .always(function () {
-                //alert('Fi');
-            });
-});
-//$('#modalButtonNew').click(function() {
-$('#modalButtonNew').click(function() {
-    iduser = this.value;
-    $.get(urlNew + iduser)
-            .done(function(data) {
-                $('#cu52_idUsuari').val(data[0][0].idUsuari);
-                $('#modalButtonNew').modal('toggle');
-                $('#miModalNew').modal('show');
-            })
-            .fail(function () {
-                alert('Error.....');
-            })
-            .always(function () {
+            .always(function() {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonAlta']").click(function () {
+$('#modalButtonNew').click(function() {
+    //iduser = this.value;
+    $.get(urlNew)
+            .done(function(data) {
+                //$('#cu52_idUsuari').val(data[0][0].idUsuari);
+                $('#modalButtonNew').modal('toggle');
+                $('#miModalNew').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$("button[name='modalButtonAlta']").click(function() {
+
     iduser = this.value;
     $.get(urlAlta + iduser)
-            .done(function (data) {
+            .done(function(data) {
                 $('#cu47_idUsuari').val(data[0][0].idUsuari);
                 $('#cu47_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu47_contrasenya').html(data[0][0].contrasenya);
@@ -159,7 +162,6 @@ $("button[name='modalButtonAlta']").click(function () {
                 $('#cu47_email').html(data[0][0].email);
                 $('#cu47_dadesPostals').html(data[0][0].dadesPostals);
                 $('#cu47_tipus').html(data[0][0].tipus);
-
                 var nomgrups = "<div>";
                 for (i = 0; i < data[1].length; i++) {
                     nomgrups = nomgrups + data[1][i].nom + "</div>";
@@ -168,18 +170,18 @@ $("button[name='modalButtonAlta']").click(function () {
                 $('#modalButtonAlta').modal('toggle');
                 $('#miModalAlta').modal('show');
             })
-            .fail(function () {
+            .fail(function() {
                 alert('Error.....');
             })
-            .always(function () {
+            .always(function() {
                 //alert('Fi');
             });
 });
 
-$("button[name='modalButtonBaixa']").click(function () {
+$("button[name='modalButtonBaixa']").click(function() {
     iduser = this.value;
     $.get(urlBaixa + iduser)
-            .done(function (data) {
+            .done(function(data) {
                 $('#cu44_idUsuari').val(data[0][0].idUsuari);
                 $('#cu44_nomUsuari').html(data[0][0].nomUsuari);
                 $('#cu44_contrasenya').html(data[0][0].contrasenya);
@@ -188,7 +190,6 @@ $("button[name='modalButtonBaixa']").click(function () {
                 $('#cu44_email').html(data[0][0].email);
                 $('#cu44_dadesPostals').html(data[0][0].dadesPostals);
                 $('#cu44_tipus').html(data[0][0].tipus);
-
                 var nomgrups = "<div>";
                 for (i = 0; i < data[1].length; i++) {
                     nomgrups = nomgrups + data[1][i].nom + "</div>";
@@ -197,10 +198,49 @@ $("button[name='modalButtonBaixa']").click(function () {
                 $('#modalButtonBaixa').modal('toggle');
                 $('#miModalBaixa').modal('show');
             })
-            .fail(function () {
+            .fail(function() {
                 alert('Error.....');
             })
-            .always(function () {
+            .always(function() {
+                //alert('Fi');
+            });
+});
+$(document).on("click", "button[name='modalModificarGrups']", function() {
+
+    //$("button[name='modalModificarGrups']").click(function() {
+    iduser = this.value;
+    $.get(urlModPerGrups + iduser)
+            .done(function(data) {
+                $('#cu46_idUsuari').val(data[0][0].idUsuari);
+                $('#cu46_nomUsuari').html(data[0][0].nomUsuari);
+
+                var check = '<input type="checkbox" name="checkGrups[]"';
+                var grups = '';
+                var idgrup;
+
+                for (n = 0; n < data[2].length; n++) {
+                    idgrup = data[2][n].idGrup;
+                    grups = grups + check + ' id="cu46_idgrup' + idgrup + '" />' + data[2][n].nom + '</br>';
+
+                }
+                $('#cu46_grupstotals').html(grups);
+
+                for (n = 0; n < data[2].length; n++) {
+                    idgrup = data[2][n].idGrup;
+                    for (i = 0; i < data[1].length; i++) {
+                        if (data[1][i].idGrup == idgrup) {
+                            $('#cu46_idgrup' + idgrup).prop("checked", true);
+                        }
+                    }
+                }
+
+                $('#modalModificarGrups').modal('toggle');
+                $('#miModalModPerGrups').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
                 //alert('Fi');
             });
 });
