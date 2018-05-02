@@ -16,7 +16,6 @@ class CU_52Controller extends Controller {
 
     public function afegirUsuari(Request $request) {
         
-        $id = $request->cu52_idUsuari;
         $usuari = Usuari::where('email', $request->cu_52email)
                         ->orwhere('nomUsuari', $request->cu_52nomUsuari)->first();
         $nlog = Logs::where('idLog', $request->cu52_idLog)->first();
@@ -38,7 +37,7 @@ class CU_52Controller extends Controller {
             //Registrar Log
             
             $nlog = new Logs;
-            $nlog->idUsuari =$id; 
+            $nlog->idUsuari =$usuari->idUsuari; 
             $nlog->descripcio = "Afegir Usuari";  
             $nlog->dataLog = date('Y-m-d');
             $nlog->hora = date('H:i:s');
