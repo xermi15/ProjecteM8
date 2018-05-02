@@ -31,14 +31,11 @@ class CU_18Controller extends Controller {
         }
         if (count($cambiarUsuari)==0) $ar["cambiarUsuari"]="<option>No s'ha trobat cap usuari amb permisos</option>";
         
-        $afegirUsuari = Usuari::leftJoin("permisusuari","usuaris.idUsuari","=","permisusuari.idUsuari")
-                        ->where('permisusuari.idCarpeta','!=',$id)
-                        ->orWhereNull('permisusuari.idCarpeta')
-                        ->get();
 
+        $afegirUsuari = DB::select("select * from usuaris where idUsuari NOT IN (select idUsuari from permisusuari where idCarpeta=$id)");
+        
         foreach ($afegirUsuari as $valor) {
-            //$ar["afegirUsuari"].="<option id=".$valor->idUsuari." value=".$valor->idUsuari.">".$valor->nom."</option>";
-            $ar["afegirUsuari"].="<option>".$valor."</option>"; 
+            $ar["afegirUsuari"].="<option id=".$valor->idUsuari." value=$valor->idUsuari>".$valor->nom."</option>";
         }
         
         $borrarUsuari = Usuari::join("permisusuari","usuaris.idUsuari","=","permisusuari.idUsuari")
@@ -58,10 +55,8 @@ class CU_18Controller extends Controller {
         }
         if (count($cambiarGrup)==0) $ar["cambiarGrup"]="<option>No s'ha trobat cap grup amb permisos</option>";
         
-        $afegirGrup = Grup::leftJoin("permisgrup","grups.idGrup","=","permisgrup.idGrup")
-                        ->where('permisgrup.idCarpeta','!=',$id)
-                        ->orWhereNull('permisgrup.idCarpeta')
-                        ->get();
+        $afegirGrup = DB::select("select * from grups where idGrup NOT IN (select idGrup from permisgrup where idCarpeta=$id)");
+        
         foreach ($afegirGrup as $valor) {
             $ar["afegirGrup"].="<option id=".$valor->idGrup." value=".$valor->idGrup.">".$valor->nom."</option>";
         }
@@ -74,7 +69,7 @@ class CU_18Controller extends Controller {
         }
         if (count($borrarGrup)==0) $ar["borrarGrup"]="<option>No s'ha trobat cap grup amb permisos</option>";
         
-        
+        $ar= json_decode( json_encode($ar), true);
         return $ar;
     }
     
@@ -95,9 +90,7 @@ class CU_18Controller extends Controller {
     public function cambiarPermisUsuari(Request $request, $id){
         //$id: de la carpeta
         $idUser=$request->listaUsuariosCambiar;
-        $permisoUsuario = PermisUsuari::where(['idUsuari' => $idUser,'idCarpeta' => $id])->first();
-        $permisoUsuario->tipusPermis=$request->permisosUsuarios;
-        $permisoUsuario->save();
+        $permisoUsuario= PermisUsuari::where('idUsuari', $idUser)->where('idCarpeta', $id)->update(['tipusPermis' => $request->permisosUsuarios]);
         return back();
     }
     
@@ -107,34 +100,36 @@ class CU_18Controller extends Controller {
         $permisoUsuario->idUsuari = $request->listaUsuariosAgregar;
         $permisoUsuario->tipusPermis=$request->permisosUsuarios;
         $permisoUsuario->save();
+        return back();
     }
     
     public function borrarPermisUsuari(Request $request, $id){
         //$id: de la carpeta
         $idUser=$request->listaUsuariosBorrar;
-        $permisoUsuario = PermisUsuari::where(['idUsuari' => $idUser,'idCarpeta' => $id])->first();
-        $permisoUsuario->delete();
+        $permisoUsuario = PermisUsuari::where('idUsuari', $idUser)->where('idCarpeta', $id) ->delete();
         return back();
     }
     
     public function cambiarPermisGrup(Request $request, $id){
         //$id: de la carpeta
         $idGrup=$request->listaGruposCambiar;
-        $permisoGrupo= PermisGrup::where(['idGrup' => $idGrup,'idCarpeta' => $id])->first();
+        $permisoGrupo= PermisGrup::where('idGrup', $idGrup)->where('idCarpeta', $id) ->update(['tipusPermis' => $request->permisosUsuarios]);
+        return back();
+    }
+    
+    public function afegirPermisGrup(Request $request, $id){
+        $permisoGrupo = new PermisGrup;
+        $permisoGrupo->idCarpeta = $id;
+        $permisoGrupo->idGrup = $request->listaGruposAgregar;
         $permisoGrupo->tipusPermis=$request->permisosUsuarios;
         $permisoGrupo->save();
         return back();
     }
     
-    public function afegirPermisGrup(Request $request, $id){
-        
-    }
-    
     public function borrarPermisGrup(Request $request, $id){
          //$id: de la carpeta
         $idGrup=$request->listaGruposBorrar;
-        $permisoGrupo= PermisGrup::where(['idGrup' => $idGrup,'idCarpeta' => $id])->first();
-        $permisoGrupo->delete();
+        $permisoGrupo= PermisGrup::where('idGrup', $idGrup)->where('idCarpeta', $id) ->delete();
         return back();
     }
 }

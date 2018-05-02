@@ -560,12 +560,12 @@
                 $('#formborrarPermisGrup').attr('action', '../borrarPermisGrup/'+id);
                 //hacemos una consulta al servidor para rellenar los datos de los formularios
                 $.get('../getDatos/'+id, function(response) {
-                    $("#listaUsuariosCambiar").append(response["cambiarUsuari"]);
-                    $("#listaUsuariosAgregar").append(response["afegirUsuari"]);
-                    $("#listaUsuariosBorrar").append(response["borrarUsuari"]);
-                    $("#listaGruposCambiar").append(response["cambiarGrup"]);
-                    $("#listaGruposAgregar").append(response["afegirGrup"]);
-                    $("#listaGruposBorrar").append(response["borrarGrup"]);
+                    $("#listaUsuariosCambiar").empty().append(response["cambiarUsuari"]);
+                    $("#listaUsuariosAgregar").empty().append(response["afegirUsuari"]);
+                    $("#listaUsuariosBorrar").empty().append(response["borrarUsuari"]);
+                    $("#listaGruposCambiar").empty().append(response["cambiarGrup"]);
+                    $("#listaGruposAgregar").empty().append(response["afegirGrup"]);
+                    $("#listaGruposBorrar").empty().append(response["borrarGrup"]);
                 })
                 
                 $("#listaUsuariosCambiar").change(function() {
