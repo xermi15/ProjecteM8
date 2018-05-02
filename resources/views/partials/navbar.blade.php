@@ -49,6 +49,7 @@
     <a href="#">Notificacions</a>
     <a href="#">Contact</a>
 </div>
+
 <script>
     <!--
             Posar funció window.width per a obrir o tancar la navbar
