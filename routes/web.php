@@ -97,7 +97,7 @@ Route::Post('/veureVersioDocument/{id}', 'CU_17Controller@veureVersioDocument');
 //
 //
 // CU17
-Route::Post('/eliminarVerio/{id}', 'CU_17Controller@eliminarVerio');
+Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
 //
 //
 // CU18
