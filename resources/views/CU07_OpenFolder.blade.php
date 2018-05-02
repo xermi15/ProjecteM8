@@ -393,7 +393,7 @@
                             <div class="" > <!--panel-body style="padding:20px"-->
                                 <div class="form-group">
                                     <label for="title">Nom del arxiu</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" required>
+                                    <input type="text" name="nom" id="nom" class="form-control" required maxlength="59">
                                 </div>
 
                                 <div class="form-group">
@@ -440,12 +440,12 @@
 
                             <div class="form-group">
                                 <label for="title">Nom del arxiu *</label>
-                                <input type="text" name="nom" id="nom" class="form-control">
+                                <input type="text" name="nom" id="nom" class="form-control" maxlength="59" required>
                             </div>
 
                             <div class="form-group">
                                     <label for="title">Ruta de l'arxiu *</label>
-                                    <input type="file" name="arxiu" id="arxiu" class="form-control">
+                                    <input type="file" name="arxiu" id="arxiu" class="form-control" required>
                             </div>
 
                             <div class="form-group">
