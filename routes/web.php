@@ -236,7 +236,7 @@ Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
 Route::get('/CU_46_ModificarPertinencaGrups', 'CU_46_Controller@mostrarGrups');
-//
+Route::put('/modPerGrups', 'CU_46_Controller@modificarPertinencaGrups');
 //
 // CU47
 Route::get('/CU_47_AltaUsuari', 'CU_47_Controller@mostraUsuari');
