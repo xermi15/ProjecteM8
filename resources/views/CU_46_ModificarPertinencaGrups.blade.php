@@ -1,6 +1,6 @@
 
-<div class="modal fade" id="miModalModPerGrups" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="miModalModPerGrups" role="dialog">
+    <div class="modal-dialog">
         <div id="containerUser" class="modal-content">
             <div class="text-center darkColor">
                 Grups usuari

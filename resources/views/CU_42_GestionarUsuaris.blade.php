@@ -214,13 +214,13 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
                 $('#cu46_idUsuari').val(data[0][0].idUsuari);
                 $('#cu46_nomUsuari').html(data[0][0].nomUsuari);
 
-                var check = '<input type="checkbox" name="checkGrups[]"';
+                var check = '<input type="checkbox" name="checkGrups[]" value=';
                 var grups = '';
                 var idgrup;
 
                 for (n = 0; n < data[2].length; n++) {
                     idgrup = data[2][n].idGrup;
-                    grups = grups + check + ' id="cu46_idgrup' + idgrup + '" />' + data[2][n].nom + '</br>';
+                    grups = grups + check + idgrup + ' id="cu46_idgrup' + idgrup + '" />' + data[2][n].nom + '</br>';
 
                 }
                 $('#cu46_grupstotals').html(grups);
@@ -234,8 +234,8 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
                     }
                 }
 
-                $('#miModalEdit').modal('hide');
-                $('#modalModificarGrups').modal('toggle');
+                //$('#miModalEdit').modal('hide');
+                //$('#modalModificarGrups').modal('toggle');
                 $('#miModalModPerGrups').modal('show');
             })
             .fail(function() {
