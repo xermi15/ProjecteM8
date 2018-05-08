@@ -74,15 +74,16 @@ Route::Post('/moureDocument/{id}', 'CU_09Controller@moverDocumento');
 // CU11
 Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 
-Route::post('/pujarVersio/{id}', 'CU_11Controller@postPujarVersio');
+Route::post('/pujarVersio', 'CU_11Controller@postPujarVersio');
 // CU12
 //
-Route::get('/CU12_URL', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL_Descarrega/{id}/{idVer}', 'CU12_urlController@descarregarURL');
 
 //
 // CU13
 //
-//
+Route::Post('/CU_13/{id}/{nombre}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
@@ -97,11 +98,13 @@ Route::Post('/veureVersioDocument/{id}', 'CU_17Controller@veureVersioDocument');
 //
 //
 // CU17
-Route::Post('/eliminarVerio/{id}', 'CU_17Controller@eliminarVerio');
+Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
 //
 //
 // CU18
 Route::get('/getDatos/{id}', 'CU_18Controller@getDatos');
+Route::Post('/permisUsuari', 'CU_18Controller@permisUsuari');
+Route::Post('/permisGrup', 'CU_18Controller@permisGrup');
 Route::Post('/cambiarPermisUsuari/{id}', 'CU_18Controller@cambiarPermisUsuari');
 Route::Post('/afegirPermisUsuari/{id}', 'CU_18Controller@afegirPermisUsuari');
 Route::Post('/borrarPermisUsuari/{id}', 'CU_18Controller@borrarPermisUsuari');
@@ -110,7 +113,7 @@ Route::Post('/afegirPermisGrup/{id}', 'CU_18Controller@afegirPermisGrup');
 Route::Post('/borrarPermisGrup/{id}', 'CU_18Controller@borrarPermisGrup');
 //
 // CU19
-Route::get('/CU_19', 'CU_19Controller@index');
+Route::Post('/CU_19/{id}/{path}/{nombre}', 'CU_19Controller@index');
 ////
 // CU20
 Route::Post('/borrarCarpeta/{id}', 'CU_20Controller@eliminarCarpeta');
@@ -181,7 +184,8 @@ Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 //
-// CU35
+// CU35 Laia
+Route::get('/mostar_workflows', 'CU_35Controller@mostrar');
 //
 //
 //
@@ -195,10 +199,13 @@ Route::get('CU_37_EliminarGrup/{id}', 'CU_37Controller@getCU_37');
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
 Route::get('CU_38_ModificarGrup', 'CU_38Controller@getCU_38');
+Route::post('/editGrup', 'CU_39Controller@modificarGrup');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
 Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
+Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
+
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
@@ -214,6 +221,8 @@ Route::post('/newGrup', 'CU_40Controller@afegirGrup');
 Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
+//prova
+Route::get('prova', 'provaController@getIndex');
 // CU42
 Route::get('/CU_42_GestionarUsuaris', 'CU_42_Controller@mostrarUsuaris');
 //
@@ -223,7 +232,6 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44
 Route::get('/CU_44_BaixaUsuari', 'CU_44_Controller@mostraUsuari');
-//Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
 Route::put('/baixaUser', 'CU_44_Controller@baixaUsuari');
 //
 // CU45
@@ -231,8 +239,8 @@ Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
 Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
-//
-//
+Route::get('/CU_46_ModificarPertinencaGrups', 'CU_46_Controller@mostrarGrups');
+Route::put('/modPerGrups', 'CU_46_Controller@modificarPertinencaGrups');
 //
 // CU47
 Route::get('/CU_47_AltaUsuari', 'CU_47_Controller@mostraUsuari');

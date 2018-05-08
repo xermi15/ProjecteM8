@@ -8,21 +8,21 @@ use App\Document;
 
 class CU12_urlController extends Controller
 {
-    public function generaURL(Request $request) {
+    public function generaURL(Request $request, $id, $idVer) {
         
-        $resultat = Document::where('idDocument', '=', $request->input('idDocument'))->where('versioInterna', '=', $request->input('versioInterna'))->get();
+        $resultat = Document::where('idDocument', '=', $id)->where('versioInterna', '=', $idVer)->first();
         
         if(count($resultat)==1){
             
         $doc = new URL_Document;
-        $doc->idDocument=$request->idDocument;
-        $doc->versioInterna=$request->versioInterna;
-        $doc->url="localhost/DAW2M14/public/document?id=".$request->idDocument."&versio=".$request->versioInterna."/";
+        $doc->idDocument=$id;
+        $doc->versioInterna=$idVer;
+        $doc->url="http://localhost/DAW2M14/public/CU12_URL_Descarrega/".$id."/".$idVer;
         $doc->actiu=true;
         $doc->save();
 
         }
-         return view($doc); 
+         return redirect('abrirCarpeta/'.$resultat->idCarpeta);
         
     }
 }

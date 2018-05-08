@@ -1,4 +1,4 @@
-<button id="deleteBtn" type="button" onclick="idGrup({{$grup->idGrup}});" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
+<button id="deleteBtn" name="deleteBtn" type="button" onclick="idGrup({{$grup->idGrup}});" value="prueba" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
     <i class="glyphicon glyphicon-trash"></i>
 </button>
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal_3">
@@ -11,8 +11,8 @@
                 </button>
             </div>
             <div class="modal-body-eliminarGrup">
-                <h4>Segur que desitja eliminar el grup?</h4>
-                <input type="text" name="cu37_nomGrup" id="cu37_nomGrup" class="form-control" placeholder="Nom Grup" value="{{$grup->nom}}" required />
+                <h4>Segur que desitja eliminar el següent grup?</h4>
+                <input type="text" name="nombre_grupo" id="nombre_grupo" style="cursor: default; border: none; background: none;" disabled >
                 <!--<label for="password">Contrasenya:</label>
                 <input type="password" name="password" id="password" size="35" placeholder="Contrasenya del administrador del grup">-->
 

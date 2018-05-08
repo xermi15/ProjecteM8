@@ -38,6 +38,8 @@
 
 .columnButons {
     min-height: 80px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .afegirBtn{
@@ -51,11 +53,6 @@
     border: 1px solid;
     margin-right: 10px;
     margin-left: 40%;
-}
-
-.afegirEliminarBtn{
-    display: table-cell;
-    vertical-align: middle;
 }
 
 .columnUsuaris {
