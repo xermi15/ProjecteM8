@@ -18,9 +18,9 @@ class CU12_urlController extends Controller
             
             $user = URL_Document::where('idDocument', '=', $id)
                                 ->where ('versioInterna', '=', $idVer)
-                                ->get();
+                                ->get()->count();
             
-            if($user==null){
+            if($user==0){
                 
                 $doc->idDocument=$id;
                 $doc->versioInterna=$idVer;
@@ -29,7 +29,7 @@ class CU12_urlController extends Controller
                 $doc->save();
             }
         }
-         return redirect('abrirCarpeta/'.$resultat->idCarpeta);
+       return redirect('abrirCarpeta/'.$resultat->idCarpeta);
         
     }
     
