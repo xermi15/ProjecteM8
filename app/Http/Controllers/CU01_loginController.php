@@ -27,12 +27,13 @@ class CU01_loginController extends Controller
            
            
            
-           $doc = new Logs;
-           $doc->idUsuari=$resultat[0]->idUsuari;
-           $doc->descripcio="L'usuari".$resultat[0]->nomUsuari."a fet login";
-           $doc->dataLog=date('Y-m-d');
+           $log = new Logs;
+           $log->idUsuari=$resultat[0]->idUsuari;
+           $log->descripcio="L'usuari ".$resultat[0]->nomUsuari." a fet login";
+           $log->dataLog=date('Y-m-d');
            $log->hora = date('H:i:s');
-           $doc->save();
+           $log->path = " ";
+           $log->save();
  
            
             return redirect(url('/abrirCarpeta/personal'));
