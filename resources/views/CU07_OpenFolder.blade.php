@@ -523,7 +523,7 @@
                 var path = $(e.relatedTarget).data('book-path');
                 $('#modalFormDescargarzip').attr('action', '../CU_19/'+id+'/'+path+'/'+nombre);
                 //alert(id+path+nombre);
-                $('#downloadzip').click(function(e){
+                /*$('#downloadzip').click(function(e){
                     var url = "http://localhost/DAW2M14/public/CU_19/a/a/a";
                     
                     $.post(url,{
@@ -535,7 +535,7 @@
                         })
                         .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
                         .always(function(x) { console.log( "Fí")});
-                });
+                });*/
                
             });
             
@@ -544,6 +544,8 @@
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
                 var formato = $(e.relatedTarget).data('book-formato');
+                var encode = encodeURIComponent(path);
+                
                 $('#modalFormDescargarpdf').attr('action', '../CU_13/'+id+'/'+nombre+'/'+path+'/'+formato);
                 
             });

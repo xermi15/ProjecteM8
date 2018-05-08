@@ -82,7 +82,7 @@ Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
 //
 // CU13
 //
-Route::Post('/CU_13/{id}/{nombre}/{path}/{formato}', 'CU_13Controller@generaPDF');
+Route::Post('/CU_13/{id}/{nombre}/{patha}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
