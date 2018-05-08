@@ -83,7 +83,7 @@ Route::Get('/CU12_URL_Descarrega/{id}/{idVer}', 'CU12_urlController@descarregarU
 //
 // CU13
 //
-Route::Post('/CU_13/{id}/{nombre}/{path}/{formato}', 'CU_13Controller@generaPDF');
+Route::Post('/CU_13/{id}/{nombre}/{patha}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
@@ -155,7 +155,8 @@ Route::post('/CU_26', 'CU_26Controller@postCreate');
 //
 //Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
 Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
-Route::post('/CU_27_EditarPlantilla/edit', 'CU_27Controller@EditarPlantilla');
+Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
+
 //
 //
 //

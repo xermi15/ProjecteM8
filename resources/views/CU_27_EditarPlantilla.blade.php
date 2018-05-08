@@ -5,7 +5,7 @@
   <div class="panel-body" style="padding:30px">
       {{-- TODO: Abrir el formulario e indicar el método POST --}}
 
-          <form action="{{url('CU_27_EditarPlantilla/')}}"method="POST">
+          <form action="{{url('CU_50')}}"method="POST">
               {{method_field('POST')}}
 
 
