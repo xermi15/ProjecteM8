@@ -506,7 +506,7 @@
                       </div>
                       <div class="modal-footer" style="text-align: center">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                        <button id="buttonCopiarURL" type="submit" class="btn btn-primary btn-success">Copiar</button>
                       </div>
                     </div>
                   </div>    
@@ -694,7 +694,21 @@
                 $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
             });
             
-   
+            $("#buttonCopiarURL").click(function(e){
+
+                        alert($('#nombreURL').val());
+                        var $temp = $("<input>");
+
+                        $("body").append($temp);
+
+                        $temp.val($('#nombreURL').val()).select();
+
+                        document.execCommand("copy");
+
+                        $temp.remove();
+                    });
+            
+            
         </script>
 @stop
 

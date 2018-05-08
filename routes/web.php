@@ -78,6 +78,7 @@ Route::post('/pujarVersio', 'CU_11Controller@postPujarVersio');
 // CU12
 //
 Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL_Descarrega/{id}/{idVer}', 'CU12_urlController@descarregarURL');
 
 //
 // CU13
