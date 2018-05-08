@@ -506,7 +506,7 @@
                       </div>
                       <div class="modal-footer" style="text-align: center">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary btn-success">Copiar</button>
+                        <button id="buttonCopiarURL" type="submit" class="btn btn-primary btn-success">Copiar</button>
                       </div>
                     </div>
                   </div>    
@@ -685,40 +685,32 @@
                 $('#modalFormPujarVersio').attr('action', '../pujarVersio');
             });
             
-            //Genera Url
-           /* $("#generaURL").click(function(e) { 
-                var idDoc = $(this).attr('data-book-id');
-                var idVer = $(this).attr('data-book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL/";
-                
-                $.get(url,
-                        {idDocument:idDoc,
-                         versioInterna:idVer
-                        }
-                      )
-                        .done(function(data) {
-                            $('#inputURL').val(data[0][0].url);
-                            $('#URL').modal('toggle');
-                        })
-                        .fail(function() {
-                           
-                        })
-                        .always(function() {
-                        });
-            });*/
-            
-            
+            //Genera Url 
             $('#generaURLModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var idVer = $(e.relatedTarget).data('book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL/"+id+"/"+idVer;
+                var url = "http://localhost/DAW2M14/public/CU12_URL_Descarrega/"+id+"/"+idVer;
                
                 $('#nombreURL').val(url);
                 
                 $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
             });
             
-   
+            $("#buttonCopiarURL").click(function(e){
+
+                        alert($('#nombreURL').val());
+                        var $temp = $("<input>");
+
+                        $("body").append($temp);
+
+                        $temp.val($('#nombreURL').val()).select();
+
+                        document.execCommand("copy");
+
+                        $temp.remove();
+                    });
+            
+            
         </script>
 @stop
 
