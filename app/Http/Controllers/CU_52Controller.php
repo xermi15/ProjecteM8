@@ -15,8 +15,7 @@ class CU_52Controller extends Controller {
     }
 
     public function afegirUsuari(Request $request) {
-        
-        $id = $request->cu52_idUsuari;
+
         $usuari = Usuari::where('email', $request->cu_52email)
                         ->orwhere('nomUsuari', $request->cu_52nomUsuari)->first();
         $nlog = Logs::where('idLog', $request->cu52_idLog)->first();
@@ -34,19 +33,18 @@ class CU_52Controller extends Controller {
             $usuari->estat = $request->cu_52estat;
             $usuari->tipus = $request->cu_52tipus;
             $usuari->save();
-            
+
             //Registrar Log
-            
+
             $nlog = new Logs;
-            $nlog->idUsuari =$id; 
-            $nlog->descripcio = "Afegir Usuari";  
+            $nlog->idUsuari = $usuari->idUsuari;
+            $nlog->descripcio = "Afegir Usuari";
             $nlog->dataLog = date('Y-m-d');
             $nlog->hora = date('H:i:s');
             $nlog->path = "";
             $nlog->save();
             Notification::success("L'usuari s'ha creat correctament.");
             return redirect('CU_42_GestionarUsuaris');
-
         } else {
             Notification::error("Error!!! Aquest usuari ja existeix.");
             return redirect('CU_42_GestionarUsuaris');

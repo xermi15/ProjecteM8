@@ -23,6 +23,7 @@ class CU_19Controller extends Controller
         $nom=$nombre;
         $zipFileName = $nom.'.zip';
         // Creamos el objeto ZipArchive
+        //echo $zip;
         $zip = new ZipArchive;
         if ($zip->open($public_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {
             echo $nombre;
@@ -30,14 +31,13 @@ class CU_19Controller extends Controller
             $zip->addFile(file_path,'file_name');
             // Cerramos ZipArchive     
             $zip->close();
-            
         }
         // Colocamos una cabecera
         $headers = array(
             'Content-Type' => 'application/octet-stream',
         );
         $filetopath=$public_dir.'/'.$zipFileName;
-        echo $filepath;
+        echo $filetopath;
         // Creamos una solicitud de descarga
         if(file_exists($filetopath)){
             echo "hola";

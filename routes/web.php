@@ -82,7 +82,7 @@ Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
 //
 // CU13
 //
-//
+Route::Post('/CU_13/{id}/{nombre}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
@@ -230,7 +230,6 @@ Route::post('/delUser', 'CU_43Controller@eliminarUsuari');
 //
 // CU44
 Route::get('/CU_44_BaixaUsuari', 'CU_44_Controller@mostraUsuari');
-//Route::post('/baixaUser', 'CU_44_Controller@baixaUsuari');
 Route::put('/baixaUser', 'CU_44_Controller@baixaUsuari');
 //
 // CU45
@@ -238,8 +237,8 @@ Route::get('/CU_45_ModificarUsuari', 'CU_45Controller@mostraUsuari');
 Route::post('/editUser', 'CU_45Controller@modificarUsuari');
 //
 // CU46
-//
-//
+Route::get('/CU_46_ModificarPertinencaGrups', 'CU_46_Controller@mostrarGrups');
+Route::put('/modPerGrups', 'CU_46_Controller@modificarPertinencaGrups');
 //
 // CU47
 Route::get('/CU_47_AltaUsuari', 'CU_47_Controller@mostraUsuari');

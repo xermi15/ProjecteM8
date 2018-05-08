@@ -32,7 +32,7 @@
       <input type="text" class="form-control" name="dadesPostals" id="dadesPostals" value="{{$usuari->dadesPostals}}">
     </div>
     <button type="submit" class="btn btn-success">Modifica</button>
-    <button class="btn btn-danger" href="{{url('/abrirCarpeta/personal')}}">Cancel·la</button>
+    <a href="{{url('/abrirCarpeta/personal')}}" class="btn btn-danger">Cancel·la</a>
   </form>
 </div>
 @stop
