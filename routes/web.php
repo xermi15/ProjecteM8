@@ -136,14 +136,17 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 //
-//
+//CU_25
+//Jorge & Issam
+Route::get('/CU_25_CrearWorkFlow', 'CU_25Controller@getIndex');
+Route::post('/newWorkflow', 'CU_25Controller@postCreate');
 //
 //
 //
 // CU26
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
-Route::post('/CU_26', 'CU_26Controller@postCreate');
+Route::post('/newPlantilla', 'CU_26Controller@postCreate');
 
 //});
 //
@@ -161,7 +164,7 @@ Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
 //
 //
 // CU28
-Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
+Route::get('/CU_28_EliminarPlantilla/{id}', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU29

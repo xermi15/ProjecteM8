@@ -5,12 +5,16 @@ use App\crearPlantilla;
 use App\plantillaRevisor;
 
 
-use Illuminate\Http\Request;
-
 class CU_28Controller extends Controller
 {
-     public function getEliminarPlatilla(){
-        $plantilla = crearPlantilla::all();
-        return view('CU_28_EliminarPlantilla', compact('plantilla'));
+     public function getEliminarPlatilla($id){
+         $plantiRevi = plantillaRevisor::findOrFail($id);
+        $plantilla = crearPlantilla::findOrFail($id);
+        $plantiRevi->delete();
+        $plantilla->delete();
+     
+
+        return redirect('/CU_50');
     }
+   
 }
