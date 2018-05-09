@@ -70,7 +70,7 @@
                         <label class="col-sm-3 control-label">Grups:</label>
                         <div id="cu45_grup" class="col-sm-5"></div>
                         <div class="col-sm-4">
-                            <button name="modalModificarGrups" class="btn btn-primary" value="">Modificar Grups</button>
+                            <button type="button" id="modalModificarGrups" class="btn btn-primary" value="">Modificar Grups</button>
                         </div>
                     </div>
                 </div>

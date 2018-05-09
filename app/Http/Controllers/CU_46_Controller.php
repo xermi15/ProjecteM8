@@ -11,8 +11,8 @@ class CU_46_Controller extends Controller {
 
     public function mostrarGrups() {
 
-        //$id = $_GET['id'];
-        $id = 2;
+        $id = $_GET['id'];
+        //$id = 2;
         //$usuari = Usuari::findOrFail($id); // no funciona este metodo aqui
         //$usuari = Usuari::where('idUsuari', $id)->first(); // tampoco funciona este metodo aqui
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);

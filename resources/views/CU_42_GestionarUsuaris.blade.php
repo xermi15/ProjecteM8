@@ -58,44 +58,6 @@ var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups?id=";
 var iduser;
 
-$(document).on("click", "button[name='modalButtonEdit']", function() {
-//$("button[name='modalButtonEdit']").click(function() {
-    iduser = this.value;
-    $.get(urlEdit + iduser)
-            .done(function(data) {
-                $('#cu45_idUsuari').val(data[0][0].idUsuari);
-                $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
-                $('#cu45_contrasenya').val(data[0][0].contrasenya);
-                $('#cu45_nom').val(data[0][0].nom);
-                $('#cu45_cognoms').val(data[0][0].cognoms);
-                $('#cu45_email').val(data[0][0].email);
-                $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
-                $('#cu45_tipus').val(data[0][0].tipus);
-                var radioButton = data[0][0].estat;
-                if (radioButton == 0) {
-                    $("#cu45_estat0").prop('checked', true);
-                    $('#cu45_estat1').prop('checked', false);
-                } else {
-                    $('#cu45_estat1').prop('checked', true);
-                    $('#cu45_estat0').prop('checked', false);
-                }
-
-                var nomgrups = "<div>";
-                for (i = 0; i < data[1].length; i++) {
-                    nomgrups = nomgrups + data[1][i].nom + "</div>";
-                }
-                $('#cu45_grup').html(nomgrups);
-                //$('#modalButtonEdit').modal('toggle');
-                $('#miModalEdit').modal('show');
-            })
-            .fail(function() {
-                alert('Error.....');
-            })
-            .always(function() {
-                //alert('Fi');
-            });
-});
-
 $("button[name='modalButtonDelete']").click(function() {
     iduser = this.value;
     $.get(urlDelete + iduser)
@@ -205,8 +167,47 @@ $("button[name='modalButtonBaixa']").click(function() {
                 //alert('Fi');
             });
 });
-$(document).on("click", "button[name='modalModificarGrups']", function() {
 
+$(document).on("click", "button[name='modalButtonEdit']", function() {
+//$("button[name='modalButtonEdit']").click(function() {
+    iduser = this.value;
+    $.get(urlEdit + iduser)
+            .done(function(data) {
+                $('#cu45_idUsuari').val(data[0][0].idUsuari);
+                $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
+                $('#cu45_contrasenya').val(data[0][0].contrasenya);
+                $('#cu45_nom').val(data[0][0].nom);
+                $('#cu45_cognoms').val(data[0][0].cognoms);
+                $('#cu45_email').val(data[0][0].email);
+                $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
+                $('#cu45_tipus').val(data[0][0].tipus);
+                var radioButton = data[0][0].estat;
+                if (radioButton == 0) {
+                    $("#cu45_estat0").prop('checked', true);
+                    $('#cu45_estat1').prop('checked', false);
+                } else {
+                    $('#cu45_estat1').prop('checked', true);
+                    $('#cu45_estat0').prop('checked', false);
+                }
+
+                var nomgrups = "<div>";
+                for (i = 0; i < data[1].length; i++) {
+                    nomgrups = nomgrups + data[1][i].nom + "</div>";
+                }
+                $('#cu45_grup').html(nomgrups);
+                $('#modalModificarGrups').attr("value", iduser);/////************************
+                $('#modalButtonEdit').modal('toggle');
+                $('#miModalEdit').modal('show');
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+$(document).on("click", "#modalModificarGrups", function() {
     //$("button[name='modalModificarGrups']").click(function() {
     iduser = this.value;
     $.get(urlModPerGrups + iduser)
@@ -234,8 +235,7 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
                     }
                 }
 
-                //$('#miModalEdit').modal('hide');
-                //$('#modalModificarGrups').modal('toggle');
+                $('#modalModificarGrups').modal('toggle');
                 $('#miModalModPerGrups').modal('show');
             })
             .fail(function() {
@@ -244,6 +244,10 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
             .always(function() {
                 //alert('Fi');
             });
+});
+
+$(document).on("click", "#buttonModPerGrups", function() {
+    $('#miModalEdit').modal('show');
 });
 
 </script>
