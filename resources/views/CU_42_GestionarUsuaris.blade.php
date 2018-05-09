@@ -41,7 +41,6 @@
 
     <div class="divBotoCrear">
         <button id="modalButtonNew" class="btn btn-primary botoAltaBaixa"><span class="glyphicon glyphicon-plus-sign"></span> Crear nou usuari </button>
-        <button name="modalModificarGrups" class="btn btn-primary" value="{{$usuari->idUsuari}}">Modificar Grups</button>
     </div>
 </div>
 

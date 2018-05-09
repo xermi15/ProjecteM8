@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="text-right darkColor">
-                    <button name="modificar" class="btn btn-default btn-xs" type="submit"><span class="glyphicon glyphicon-pencil"></span> Modificar </button>
+                    <button name="modificar" class="btn btn-primary btn-xs" type="submit"><span class="glyphicon glyphicon-pencil"></span> Modificar </button>
                 </div>
             </form>
         </div>
