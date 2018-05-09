@@ -696,19 +696,15 @@
                 $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
             });
             
-            $("#buttonCopiarURL").click(function(e){
+            $("#buttonCopiarURL").click(function(){
 
-                        alert($('#nombreURL').val());
-                        var $temp = $("<input>");
+                var copyText = document.getElementById("nombreURL");
 
-                        $("body").append($temp);
+                copyText.select();
 
-                        $temp.val($('#nombreURL').val()).select();
+                document.execCommand("Copy");
 
-                        document.execCommand("copy");
-
-                        $temp.remove();
-                    });
+            });
             
             
         </script>

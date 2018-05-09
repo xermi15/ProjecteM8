@@ -14,7 +14,7 @@
                     {{ csrf_field() }}
                     <div class="altaBaixa">
                         <div>
-                            <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value=""/>
+                            <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value="" hidden />
                         </div>
                         <div>
                             <label class="col-sm-5">Nom Usuari: </label>
