@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
+    @include('CU_26')
   <h2>Mostrar Plantilla Workflow</h2>
   <table class="table">
             <thead>
