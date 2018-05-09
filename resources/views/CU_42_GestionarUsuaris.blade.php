@@ -245,8 +245,8 @@ $(document).on("click", "#modalModificarGrups", function() {
             });
 });
 
-$(document).on("click", "#buttonModPerGrups", function() {
-    $('#miModalEdit').modal('show');
+$(document).on("click", "#buttonModPerGrups", function(e) {
+    //falta que es refresqui la informació de la modal CU_45 i faci show
 });
 
 </script>
