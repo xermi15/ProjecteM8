@@ -19,6 +19,6 @@ class CU_13Controller extends Controller
         
         $ruta=$path.'/'.$pathb;
                 
-        return response()->download($ruta);
+        return response()->download(storage_path("app/{$ruta}"));
     }
 }
