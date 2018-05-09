@@ -51,7 +51,7 @@
                 <td class="col-md-1"><span class="glyphicon glyphicon-file"></span></td>
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
-                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>
+                <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}" data-book-path="{{$document->path}}"><span class="glyphicon glyphicon-link"></button></td>
                 <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaPDF" data-book-id="{{$document->idDocument}}" data-book-nombre="{{$document->nom}}" data-book-path="{{$document->path}}" data-book-formato="{{$document->formatDocument}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
@@ -689,11 +689,12 @@
             $('#generaURLModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
                 var idVer = $(e.relatedTarget).data('book-idversio');
-                var url = "http://localhost/DAW2M14/public/CU12_URL_Descarrega/"+id+"/"+idVer;
+                var path = $(e.relatedTarget).data('book-path');
+                var url = "http://localhost/DAW2M14/public/CU12_URL_Descarrega/"+id+"/"+idVer+"/"+path;
                
                 $('#nombreURL').val(url);
                 
-                $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer);
+                $('#modalFormURL').attr('action', '../CU12_URL/'+id+"/"+idVer+"/"+path);
             });
             
             $("#buttonCopiarURL").click(function(){

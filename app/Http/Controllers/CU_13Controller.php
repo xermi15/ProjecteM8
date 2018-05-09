@@ -15,7 +15,7 @@ class CU_13Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function generaPDF(Request $request, $id, $nombre, $path, $pathb, $formato) {
-        urldecode($path);
+        //urldecode($path);
         
         $ruta=$path.'/'.$pathb;
                 
