@@ -30,7 +30,7 @@ class CU_45Controller extends Controller {
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari <> " . $id . " AND (nomUsuari = '" . $request->nomUsuari . "' OR email = '" . $request->email . "')");
         $user1 = Usuari::findOrFail($id);
         $nlog = Logs::where('idLog', $request->cu45_idLog)->first();
-        
+
         if ($usuari == null && $nlog == null) {
             $user1->nomUsuari = $request->cu45_nomUsuari;
             //$user1->contrasenya = bcrypt($request->cu45_contrasenya);
@@ -43,11 +43,11 @@ class CU_45Controller extends Controller {
             $user1->estat = $request->cu45_estat;
             $user1->tipus = $request->cu45_tipus;
             $user1->save();
-            
-             //Registrar Log
+
+            //Registrar Log
             $nlog = new Logs;
-            $nlog->idUsuari =$id; 
-            $nlog->descripcio = "Modificar Usuari";  
+            $nlog->idUsuari = $id;
+            $nlog->descripcio = "Modificar Usuari";
             $nlog->dataLog = date('Y-m-d');
             $nlog->hora = date('H:i:s');
             $nlog->path = "";

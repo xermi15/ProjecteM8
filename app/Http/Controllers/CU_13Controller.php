@@ -9,17 +9,16 @@ use App\Http\Requests;
 
 class CU_13Controller extends Controller
 {
-    public function generaPDF($id, $path, $nombre, $formato) {
-        echo "hola gorila";
-        echo $id;
-        echo $path;
-        echo $nombre;
-        if(is_file($path)){
-            if($formato == 'pdf'){
-            
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generaPDF(Request $request, $id, $nombre, $path, $pathb, $formato) {
+        //urldecode($path);
+        
+        $ruta=$path.'/'.$pathb;
                 
-            }
-        }
-        return redirect('abrirCarpeta/3');
+        return response()->download(storage_path("app/{$ruta}"));
     }
 }

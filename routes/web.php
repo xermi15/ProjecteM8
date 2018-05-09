@@ -77,13 +77,13 @@ Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 Route::post('/pujarVersio', 'CU_11Controller@postPujarVersio');
 // CU12
 //
-Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
-Route::Post('/CU12_URL_Descarrega/{id}/{idVer}', 'CU12_urlController@descarregarURL');
+Route::Post('/CU12_URL/{id}/{idVer}/{patha}/{path}', 'CU12_urlController@generaURL');
+Route::Get('/CU12_URL_Descarrega/{id}/{idVer}/{patha}/{path}', 'CU12_urlController@descarregarURL');
 
 //
 // CU13
 //
-Route::Post('/CU_13/{id}/{nombre}/{path}/{formato}', 'CU_13Controller@generaPDF');
+Route::Post('/CU_13/{id}/{nombre}/{patha}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
