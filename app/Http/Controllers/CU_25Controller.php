@@ -40,7 +40,7 @@ class CU_25Controller extends Controller
         endforeach;
     
       
-       return redirect ('/CU_25_CrearWorkFlow');
+       return redirect ('/CU_35_Mostrar');
 
     }
     /*public function postCreate2(Request $request) {

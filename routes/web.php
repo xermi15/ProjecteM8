@@ -147,12 +147,6 @@ Route::post('/newWorkflow', 'CU_25Controller@postCreate');
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
 Route::post('/newPlantilla', 'CU_26Controller@postCreate');
-
-//});
-//
-//
-//
-//
 //
 // CU27
 //

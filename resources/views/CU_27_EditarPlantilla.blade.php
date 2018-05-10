@@ -16,26 +16,37 @@
                         <label for="title">Nombre</label>
                         <input type="text" name="nomPlantilla" id="nomPlantilla" value="{{$plantillas->nomPlantilla}}">
                     </div>
-
+<label for="Aprovador">Aprovador/es</label>
                     <div class="form-group">
-                        {{-- TODO: Completa el input para el año --}}
-                        <label for="Aprovador">Aprovador/es</label>
-                        <input type="text" name="aprov" id="aprov">
-                      
+                        
+                        
+                         @foreach($userAprov as $user)
+                        @if ($plantillas->idUsuariAprovador == $user->idUsuari)
+                        <input type="text" name="aprov" id="aprov" value="{{ $user->nomUsuari }}">
+                        @endif
+                        @endforeach
+
                         <select class="form-control col-sm-10" name="aprov">
-                            @foreach($userAprov as $user)
+                             @foreach($userAprov as $user)
                                
                             <option value="{{ $user->idUsuari }}"> {{ $user->nomUsuari }}</option>
-                            @endforeach
+                            @endforeach  
                         </select>
+                        
                     </div>
-              
-                    <div class="form-group">                      
-                        {{-- TODO: Completa el input para el año --}}
-                        <label for="año">Revisor</label>   
-                        <input type="text" name="nomRevi" id="nomRevi">
-                        
-                        
+<label for="Aprovador">Aprovador actual</label>
+
+               <div class="form-group">                      
+                       @foreach($usersRev as $revi) 
+                        @foreach($userAprov as $user)
+                        @if ($plantillas->idPlantilla == $revi->idPlantilla)
+                            @if($revi->idUsuariRevisor == $user->idUsuari)
+                            <input type="text" name="revi" id="revi" value="{{ $user->nomUsuari }}"><br><label for="re">Revisor</label>
+                        @endif
+                        @endif
+                        @endforeach           
+                        @endforeach
+                    
                         <select class="form-control col-sm-10" multiple size="3" name="revi[]">
                             @foreach($userAprov as $user)
                                
@@ -49,8 +60,7 @@
                             Guardar Plantilla
                         </button>
                     </div>
-                    
-                    {{-- TODO: Cerrar formulario --}}
+  
                 </form>
 
             </div>

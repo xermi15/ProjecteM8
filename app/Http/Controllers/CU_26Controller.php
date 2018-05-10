@@ -34,7 +34,7 @@ class CU_26Controller extends Controller
         endforeach;
     
       
-       return redirect ('/CU_26');
+       return redirect ('/CU_50');
 
     }
     /*public function postCreate2(Request $request) {
