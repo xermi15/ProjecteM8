@@ -94,11 +94,11 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU16
-Route::Post('/veureVersioDocument/{id}', 'CU_17Controller@veureVersioDocument');
+Route::get('/veureVersioDocument', 'CU_16Controller@veureVersioDocument');
 //
 //
 // CU17
-Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
+Route::get('/EliminarDocument', 'CU_17_Controller@EliminarDocument');
 //
 //
 // CU18

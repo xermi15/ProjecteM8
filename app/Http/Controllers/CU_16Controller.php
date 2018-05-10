@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Logs;
 
-class CU_16_Controller extends Controller {
+class CU_16Controller extends Controller {
 
     public function getCU_16(){
-        return view('CU_16_VeureVersioDocument');
+        return view('CU_41_MostrarGrups');
     }
 
 }
