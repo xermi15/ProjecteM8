@@ -18,15 +18,19 @@ public function getIndex(){
 
 public function editarPlantilla(Request $request, $id) {
     //var_dump($id);
-       $plantilla = crearPlantilla::findOrFail($id);
+       $plantillas = crearPlantilla::findOrFail($id);
+       //$plantillas->nomPlantilla = $request->nomPlantilla;
        //var_dump($plantilla->idUsuariAprovador);
-       $userAprov = Usuari::findOrFail($plantilla->idUsuariAprovador);
+       $plantillas->save();
+       
+       $userAprov = Usuari::all();
+       //$userAprov = Usuari::findOrFail($plantilla->idUsuariAprovador);
        //var_dump($userAprov);
        $usersRev = plantillaRevisor::findOrFail($id);
       // var_dump($usersRev);
-
 //       session_start();
-       return view('CU_27_EditarPlantilla', compact('plantilla', 'userAprov', 'usersRev'));
+       
+       return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev'));
        //
 //       $plantilla->nomPlantilla= $request->nomPlantilla;
 //       $plantilla->idUsuariAprovador= $request->aprov;

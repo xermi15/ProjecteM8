@@ -1,10 +1,27 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
-  <h2>Crear Plantilla Workflow</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#miModal">
+	Crear Plantilla Workflow
+</button>
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Crear Plantilla</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+  
+                                    <h2>Crear Plantilla Workflow</h2>
  <div class="panel-body" style="padding:30px">
                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
-                <form method="POST">
+                <form method="POST" action="{{ url('/newPlantilla') }}">
 
                     
                     {{-- TODO: Protección contra CSRF --}}
@@ -39,19 +56,21 @@
                         </select>
                     </div>
 
+                    
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
+                        <button type="submit" class="btn btn-primary " style="padding:8px 100px;margin-top:25px;">
                             Guardar Plantilla
                         </button>
                     </div>
-                    
-                    
-                    
-
                     {{-- TODO: Cerrar formulario --}}
                 </form>
 
             </div>
 </div>
 
+
+			</div>
+		</div>
+	</div>
+</div>
 @stop

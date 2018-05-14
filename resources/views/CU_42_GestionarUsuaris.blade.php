@@ -41,7 +41,6 @@
 
     <div class="divBotoCrear">
         <button id="modalButtonNew" class="btn btn-primary botoAltaBaixa"><span class="glyphicon glyphicon-plus-sign"></span> Crear nou usuari </button>
-        <button name="modalModificarGrups" class="btn btn-primary" value="{{$usuari->idUsuari}}">Modificar Grups</button>
     </div>
 </div>
 
@@ -57,44 +56,8 @@ var urlAlta = "http://localhost/DAW2M14/public/CU_47_AltaUsuari?id=";
 var urlBaixa = "http://localhost/DAW2M14/public/CU_44_BaixaUsuari?id=";
 var urlModPerGrups = "http://localhost/DAW2M14/public/CU_46_ModificarPertinencaGrups?id=";
 var iduser;
+var mostrar;
 
-$(document).on("click", "button[name='modalButtonEdit']", function() {
-//$("button[name='modalButtonEdit']").click(function() {
-    iduser = this.value;
-    $.get(urlEdit + iduser)
-            .done(function(data) {
-                $('#cu45_idUsuari').val(data[0][0].idUsuari);
-                $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
-                $('#cu45_contrasenya').val(data[0][0].contrasenya);
-                $('#cu45_nom').val(data[0][0].nom);
-                $('#cu45_cognoms').val(data[0][0].cognoms);
-                $('#cu45_email').val(data[0][0].email);
-                $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
-                $('#cu45_tipus').val(data[0][0].tipus);
-                var radioButton = data[0][0].estat;
-                if (radioButton == 0) {
-                    $("#cu45_estat0").prop('checked', true);
-                    $('#cu45_estat1').prop('checked', false);
-                } else {
-                    $('#cu45_estat1').prop('checked', true);
-                    $('#cu45_estat0').prop('checked', false);
-                }
-
-                var nomgrups = "<div>";
-                for (i = 0; i < data[1].length; i++) {
-                    nomgrups = nomgrups + data[1][i].nom + "</div>";
-                }
-                $('#cu45_grup').html(nomgrups);
-                //$('#modalButtonEdit').modal('toggle');
-                $('#miModalEdit').modal('show');
-            })
-            .fail(function() {
-                alert('Error.....');
-            })
-            .always(function() {
-                //alert('Fi');
-            });
-});
 
 $("button[name='modalButtonDelete']").click(function() {
     iduser = this.value;
@@ -134,7 +97,6 @@ $("button[name='modalButtonDelete']").click(function() {
 });
 
 $('#modalButtonNew').click(function() {
-    //iduser = this.value;
     $.get(urlNew)
             .done(function(data) {
                 //$('#cu52_idUsuari').val(data[0][0].idUsuari);
@@ -150,7 +112,6 @@ $('#modalButtonNew').click(function() {
 });
 
 $("button[name='modalButtonAlta']").click(function() {
-
     iduser = this.value;
     $.get(urlAlta + iduser)
             .done(function(data) {
@@ -205,26 +166,68 @@ $("button[name='modalButtonBaixa']").click(function() {
                 //alert('Fi');
             });
 });
-$(document).on("click", "button[name='modalModificarGrups']", function() {
 
-    //$("button[name='modalModificarGrups']").click(function() {
+$(document).on("click", "button[name='modalButtonEdit']", function() {
+    iduser = this.value;
+    $.get(urlEdit + iduser)
+            .done(function(data) {
+                editModal(data);
+            })
+            .fail(function() {
+                alert('Error.....');
+            })
+            .always(function() {
+                //alert('Fi');
+            });
+});
+
+function editModal(data) {
+    $('#cu45_idUsuari').val(data[0][0].idUsuari);
+    $('#cu45_nomUsuari').val(data[0][0].nomUsuari);
+    $('#cu45_contrasenya').val(data[0][0].contrasenya);
+    $('#cu45_nom').val(data[0][0].nom);
+    $('#cu45_cognoms').val(data[0][0].cognoms);
+    $('#cu45_email').val(data[0][0].email);
+    $('#cu45_dadesPostals').val(data[0][0].dadesPostals);
+    $('#cu45_tipus').val(data[0][0].tipus);
+    var radioButton = data[0][0].estat;
+    if (radioButton == 0) {
+        $("#cu45_estat0").prop('checked', true);
+        $('#cu45_estat1').prop('checked', false);
+    } else {
+        $('#cu45_estat1').prop('checked', true);
+        $('#cu45_estat0').prop('checked', false);
+    }
+
+    var nomgrups = "<div>";
+    for (i = 0; i < data[1].length; i++) {
+        nomgrups = nomgrups + data[1][i].nom + "</div>";
+    }
+    $('#cu45_grup').html(nomgrups);
+    $('#modalModificarGrups').attr("value", iduser);
+    $('#buttonModPerGrups').attr("value", iduser);
+
+    mostrar = false;
+
+    $('#modalButtonEdit').modal('toggle');
+    $('#miModalEdit').modal('show');
+}
+;
+
+$(document).on("click", "#modalModificarGrups", function() {
     iduser = this.value;
     $.get(urlModPerGrups + iduser)
             .done(function(data) {
                 $('#cu46_idUsuari').val(data[0][0].idUsuari);
                 $('#cu46_nomUsuari').html(data[0][0].nomUsuari);
-
                 var check = '<input type="checkbox" name="checkGrups[]" value=';
                 var grups = '';
                 var idgrup;
-
                 for (n = 0; n < data[2].length; n++) {
                     idgrup = data[2][n].idGrup;
                     grups = grups + check + idgrup + ' id="cu46_idgrup' + idgrup + '" />' + data[2][n].nom + '</br>';
-
                 }
                 $('#cu46_grupstotals').html(grups);
-
                 for (n = 0; n < data[2].length; n++) {
                     idgrup = data[2][n].idGrup;
                     for (i = 0; i < data[1].length; i++) {
@@ -234,8 +237,7 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
                     }
                 }
 
-                //$('#miModalEdit').modal('hide');
-                //$('#modalModificarGrups').modal('toggle');
+                $('#modalModificarGrups').modal('toggle');
                 $('#miModalModPerGrups').modal('show');
             })
             .fail(function() {
@@ -244,6 +246,20 @@ $(document).on("click", "button[name='modalModificarGrups']", function() {
             .always(function() {
                 //alert('Fi');
             });
+});
+
+$(document).on("click", "#buttonModPerGrups", function() {
+//falta que es refresqui la informació de la modal CU_45 i faci show
+    iduser = this.value;
+    mostrar = true;
+    return mostrar;
+});
+
+$(document).ready(function() {
+    /*if (!mostrar) {
+     alert("muestra modal edit");
+     $("button[name='modalButtonEdit']").click();
+     }*/
 });
 
 </script>

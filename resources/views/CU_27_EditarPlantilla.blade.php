@@ -5,40 +5,41 @@
   <div class="panel-body" style="padding:30px">
       {{-- TODO: Abrir el formulario e indicar el método POST --}}
 
-          <form action="{{url('CU_50')}}"method="POST">
+          <form action="{{url('/CU_27_EditarPlantilla/{id}'  )}}"method="POST">
               {{method_field('POST')}}
 
 
               {{-- TODO: Protección contra CSRF --}}
               {{ csrf_field() }}
 
-
                     <div class="form-group">
                         <label for="title">Nombre</label>
-                        <input type="text" name="nomPlantilla" id="nom">
+                        <input type="text" name="nomPlantilla" id="nomPlantilla" value="{{$plantillas->nomPlantilla}}">
                     </div>
 
                     <div class="form-group">
                         {{-- TODO: Completa el input para el año --}}
                         <label for="Aprovador">Aprovador/es</label>
+                        <input type="text" name="aprov" id="aprov">
                       
                         <select class="form-control col-sm-10" name="aprov">
-                            @foreach($users as $user)
+                            @foreach($userAprov as $user)
                                
                             <option value="{{ $user->idUsuari }}"> {{ $user->nomUsuari }}</option>
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="form-group">
+              
+                    <div class="form-group">                      
                         {{-- TODO: Completa el input para el año --}}
-                        <label for="año">Revisor</label>
+                        <label for="año">Revisor</label>   
+                        <input type="text" name="nomRevi" id="nomRevi">
                         
                         
-                        <select class="form-control col-sm-10" multiple size="3" name="revi">
-                            @foreach($users as $user)
+                        <select class="form-control col-sm-10" multiple size="3" name="revi[]">
+                            @foreach($userAprov as $user)
                                
-                                <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari }}</option>
+                                <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -49,9 +50,6 @@
                         </button>
                     </div>
                     
-                    
-                    
-
                     {{-- TODO: Cerrar formulario --}}
                 </form>
 

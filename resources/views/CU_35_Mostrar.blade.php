@@ -6,7 +6,7 @@
     
 	<div class="col-md-11">
            <h1 class="h2">Workflows</h1>   
-           <a class="btn btn-success" href="{{url('/crearWorkflow')}}">Crear Workflow</a>
+           <a class="btn btn-success" href="{{url('/CU_25_CrearWorkFlow')}}">Crear Workflow</a>
            <a class="btn btn-info" href="{{url('/historialWorkflow')}}">Ver historial</a>
             <div class="table-responsive">
                 <?php 
