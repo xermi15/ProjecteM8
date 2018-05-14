@@ -8,35 +8,15 @@
                     <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th style="text-align: center;">Versiones del documento</th> 
+                            <th style="text-align: center;">Eliminar versió document</th> 
                         </tr>
                         </thead>
                     </table>
                 </div>
                 <div>
-                    <h5>Documento:</h5>
-                    <input type="documento" name="documento" id="documento" placeholder=""> 
+                    <h5 style="text-align: center;">Segur que vol eliminar la versió del document</h5>
+                   
                 </div>
-
-                <div class="table-responsive">
-                <table border="1">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Versión</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($logs as $log)
-                      <tr>
-                        <td>{{ $log->nomdocument }}</td>
-                        <td>{{ $log->versio }}</td>
-
-                      </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-          </div>
                     <div style="width: 50%; display: flex; justify-content: center; float: left;">
                         <input type="submit" data-inline="true" value="Aceptar">
                     </div>
@@ -47,4 +27,3 @@
             </div>
         </form>
     </div>
-
