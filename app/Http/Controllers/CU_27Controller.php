@@ -9,34 +9,34 @@ use App\plantillaRevisor;
 
 class CU_27Controller extends Controller {
 
-public function getIndex(){
-    $plantilla = crearPlantilla::all();
-      $users = Usuari::all();
-       return view('CU_27_EditarPlantilla', compact('plantilla', 'users'));
+public function getIndex($id){
+       $plantillas = crearPlantilla::findOrFail($id);
+       $userAprov = Usuari::all();
+       $usersRev = plantillaRevisor::all();
+       return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev','id'));
 }
 
 
 public function editarPlantilla(Request $request, $id) {
     //var_dump($id);
+        session_start();
        $plantillas = crearPlantilla::findOrFail($id);
-       //$plantillas->nomPlantilla= $request->nomPlantilla;
-       //var_dump($plantilla->idUsuariAprovador);
-       $userAprov = Usuari::all();
-       //$userAprov = Usuari::findOrFail($plantilla->idUsuariAprovador);
-       //var_dump($userAprov);
-       $usersRev = plantillaRevisor::all();
-      // var_dump($usersRev);
-      session_start();
+       
+       $plantillas->nomPlantilla= $request->nomPlantilla;
        $plantillas->idUsuariAprovador= $request->aprov;
        $plantillas->idUsuariCreador= $_SESSION['idUsuari'];
-       
-      $usersRev->idUsuariRevisor= $request->revi;
-      $usersRev->idPlantilla=$plantillas->idPlantilla;
+       $plantillas->save();
+        
+        $plantirevisors = plantillaRevisor::findOrFail($id);
+
+//        print_r(Usuari::where('nomUsuari','=',)->first()->idUsuari);
+        $plantirevisors->idUsuariRevisor = $request->revi[0];
+        $plantirevisors->save();
         
  
-            
       
-       return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev'));
+        return redirect ('/CU_50');
+       //return view('/CU_50');
        //
 //       $plantilla->nomPlantilla= $request->nomPlantilla;
 //       $plantilla->idUsuariAprovador= $request->aprov;
@@ -48,7 +48,7 @@ public function editarPlantilla(Request $request, $id) {
 //       $plantirevisors->save();
        
       
-      // return redirect ('/CU_50');
+      //return redirect ('/CU_50');
 
     }
     

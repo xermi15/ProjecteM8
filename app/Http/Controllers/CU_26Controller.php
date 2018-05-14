@@ -22,9 +22,6 @@ class CU_26Controller extends Controller
        $plantilla->idUsuariAprovador= $request->aprov;
        $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
        $plantilla->save();
-          
-//       $plantirevisors = new plantillaRevisor;
-//       $plantirevisors->idUsuariRevisor= $request->revi;
      
         foreach ($request->revi as $revi):
             $plantirevisors = new plantillaRevisor;

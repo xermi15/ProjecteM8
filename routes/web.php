@@ -152,8 +152,8 @@ Route::post('/newPlantilla', 'CU_26Controller@postCreate');
 //
 //Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
 Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
-Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
-
+Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
 //
 //
 //
