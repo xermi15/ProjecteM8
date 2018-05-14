@@ -11,8 +11,7 @@ class CU_46_Controller extends Controller {
 
     public function mostrarGrups() {
 
-        //$id = $_GET['id'];
-        $id = 2;
+        $id = $_GET['id'];
         //$usuari = Usuari::findOrFail($id); // no funciona este metodo aqui
         //$usuari = Usuari::where('idUsuari', $id)->first(); // tampoco funciona este metodo aqui
         $usuari = DB::select("SELECT * FROM usuaris WHERE idUsuari = " . $id);
@@ -30,28 +29,19 @@ class CU_46_Controller extends Controller {
 
         $id = $request->cu46_idUsuari;
         $usuarigrup = DB::select("SELECT * FROM usuarigrup WHERE idUsuari = " . $id);
-        //$grupsTotals = DB::select("SELECT * FROM grups");
-        //$user1 = Usuari::findOrFail($id);
-
-        $checked = $_POST['provincias'];
 
         if ($usuarigrup != null) {
-
-            /* for ($i = 0; $i < count($checked); $i++) {
-              echo "<br> Grups " . $i . ": " . $checked[$i];
-              } */
-
-
-            foreach ($checked as $i) {
-                echo "Grupo: " . $i;
-            }
-
-            //Notification::success("L'usuari s'ha modificat correctament.");
-            //return redirect('CU_42_GestionarUsuaris');
-        } else {
-            //Notification::error("Error!!! Aquest usuari ja existeix.");
-            //return redirect('CU_42_GestionarUsuaris');
+            DB::delete("DELETE FROM usuarigrup WHERE idUsuari = " . $id);
         }
+
+        if (isset($_POST['checkGrups'])) {
+            $checkGrups = $_POST['checkGrups'];
+            foreach ($checkGrups as $g) {
+                DB::insert("INSERT INTO usuarigrup VALUES(" . $id . "," . $g . ")");
+            }
+        }
+
+        return redirect('CU_42_GestionarUsuaris');
     }
 
 }

@@ -1,6 +1,6 @@
 
-<div class="modal fade" id="miModalModPerGrups" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="miModalModPerGrups" role="dialog">
+    <div class="modal-dialog">
         <div id="containerUser" class="modal-content">
             <div class="text-center darkColor">
                 Grups usuari
@@ -14,7 +14,7 @@
                     {{ csrf_field() }}
                     <div class="altaBaixa">
                         <div>
-                            <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value=""/>
+                            <input type="text" name="cu46_idUsuari" id="cu46_idUsuari" value="" hidden />
                         </div>
                         <div>
                             <label class="col-sm-5">Nom Usuari: </label>

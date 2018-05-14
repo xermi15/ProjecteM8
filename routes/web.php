@@ -77,12 +77,13 @@ Route::get('/pujarVersio/{id}', 'CU_11Controller@getPujarVersio');
 Route::post('/pujarVersio', 'CU_11Controller@postPujarVersio');
 // CU12
 //
-Route::Post('/CU12_URL/{id}/{idVer}', 'CU12_urlController@generaURL');
+Route::Post('/CU12_URL/{id}/{idVer}/{patha}/{path}', 'CU12_urlController@generaURL');
+Route::Get('/CU12_URL_Descarrega/{id}/{idVer}/{patha}/{path}', 'CU12_urlController@descarregarURL');
 
 //
 // CU13
 //
-//
+Route::Post('/CU_13/{id}/{nombre}/{patha}/{path}/{formato}', 'CU_13Controller@generaPDF');
 //
 // CU14
 //
@@ -93,11 +94,11 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU16
-Route::Post('/veureVersioDocument/{id}', 'CU_17Controller@veureVersioDocument');
+Route::get('/veureVersioDocument', 'CU_16Controller@veureVersioDocument');
 //
 //
 // CU17
-Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
+Route::get('/EliminarDocument', 'CU_17_Controller@EliminarDocument');
 //
 //
 // CU18
@@ -135,14 +136,17 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //
 //
 //
-//
+//CU_25
+//Jorge & Issam
+Route::get('/CU_25_CrearWorkFlow', 'CU_25Controller@getIndex');
+Route::post('/newWorkflow', 'CU_25Controller@postCreate');
 //
 //
 //
 // CU26
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
-Route::post('/CU_26', 'CU_26Controller@postCreate');
+Route::post('/newPlantilla', 'CU_26Controller@postCreate');
 
 //});
 //
@@ -154,12 +158,13 @@ Route::post('/CU_26', 'CU_26Controller@postCreate');
 //
 //Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
 Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
-Route::post('/CU_27_EditarPlantilla/edit', 'CU_27Controller@EditarPlantilla');
+Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
+
 //
 //
 //
 // CU28
-Route::get('/CU_28_EliminarPlantilla', 'CU_28Controller@getEliminarPlatilla');
+Route::get('/CU_28_EliminarPlantilla/{id}', 'CU_28Controller@getEliminarPlatilla');
 //
 //
 // CU29

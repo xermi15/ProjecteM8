@@ -7,8 +7,7 @@ use App\Usuari;
 use \App\crearPlantilla;
 use App\plantillaRevisor;
 
-class CU_27Controller extends Controller
-{
+class CU_27Controller extends Controller {
 
 public function getIndex(){
     $plantilla = crearPlantilla::all();
@@ -17,24 +16,35 @@ public function getIndex(){
 }
 
 
-public function EditarPlantilla(Request $request ) {
-       session_start();
-       $plantilla->nomPlantilla= $request->nomPlantilla;
-       $plantilla->idUsuariAprovador= $request->aprov;
-       $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
-       $plantilla->save();
+public function editarPlantilla(Request $request, $id) {
+    //var_dump($id);
+       $plantillas = crearPlantilla::findOrFail($id);
+       //$plantillas->nomPlantilla = $request->nomPlantilla;
+       //var_dump($plantilla->idUsuariAprovador);
+       $plantillas->save();
        
-       $plantirevisors->idUsuariRevisor= $request->revi;
-       $plantirevisors->idPlantilla=$plantilla->idPlantilla;
-       $plantirevisors->save();
+       $userAprov = Usuari::all();
+       //$userAprov = Usuari::findOrFail($plantilla->idUsuariAprovador);
+       //var_dump($userAprov);
+       $usersRev = plantillaRevisor::findOrFail($id);
+      // var_dump($usersRev);
+//       session_start();
+       
+       return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev'));
+       //
+//       $plantilla->nomPlantilla= $request->nomPlantilla;
+//       $plantilla->idUsuariAprovador= $request->aprov;
+//       $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
+//       $plantilla->save();
+//       
+//       $plantirevisors->idUsuariRevisor= $request->revi;
+//       $plantirevisors->idPlantilla=$plantilla->idPlantilla;
+//       $plantirevisors->save();
        
       
-       return redirect ('/CU_50');
+      // return redirect ('/CU_50');
 
     }
-
-
-
-
+    
 
 }

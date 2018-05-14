@@ -1,29 +1,28 @@
-    <div data-role="main" class="ui-content">
-    <a href="#myPopup3" data-rel="popup" class="glyphicon glyphicon-trash"></a>
-    
-    <div data-role="popup" id="myPopup3" class="ui-content" style="position:fixed; top:50%; left:50%; width:30em; min-height:19em; margin-top:-9em; margin-left:-15em; border: 1px solid #ccc; background-color: #f3f3f3;">
-        <form method="post" action="/action_page_post.php">
-            <div>
-                <div class="form-group">
-                    <table style="text-align: center; background: #455A64; color: white;" class="table table-condensed table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th style="text-align: center;">Eliminar Plantilla</th> 
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div>
-                    <h5 style="text-align: center;">¿Estas seguro de que desea eliminar la Plantilla</h5>
-                   
-                </div>
-                    <div style="width: 50%; display: flex; justify-content: center; float: left;">
-                        <input type="submit" data-inline="true" value="Aceptar">
-                    </div>
-                    <div style="width: 50%; display: flex; justify-content: center; float: right;">
-                        <input type="submit" data-inline="true" value="Cancelar">
-                    </div>
-                </div>    
+<button id="deleteBtn" name="deleteBtn" type="button" onclick="idPlantilla({{$plantilla->idPlantilla}});" value="prueba" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
+    <i class="glyphicon glyphicon-trash"></i>
+</button>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal_3">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align: center; background: #455A64; color: white; border-radius: 5px 5px 0px 0px;">
+                <h4 class="modal-title" style="text-align: center; display:inline; cursor:default;">Eliminar grup</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="display:inline;">
+                    <span aria-hidden="true" style="font-size: 30px;">&times;</span>
+                </button>
             </div>
-        </form>
+            <div class="modal-body-eliminarGrup">
+                <h4>Segur que desitja eliminar la següent plantilla?</h4>
+                <input type="text" name="nombre_grupo" id="nombre_grupo" style="cursor: default; border: none; background: none;" disabled >
+                
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+                <button type="button" onclick="eliminarPlantilla();" class="btn btn-danger" id="modalEliminar" style="margin-right: 25%;">
+                    Eliminar
+                </button>
+
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
+</div>
