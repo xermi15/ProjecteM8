@@ -100,6 +100,10 @@ function afegirUsuari(t) {
 }
 
 function eliminarUsuari(t) {
+    var stringIdUsuarisGrup = '';
+    
+    $('#stringUsuarisGrup').remove();
+    
     $(t).parent().next().children('label').each(function () {
         if ($(this).children('input').is(':checked')) {
             $(this).next('br').remove();
@@ -107,4 +111,15 @@ function eliminarUsuari(t) {
             $(this).remove();
         }
     });
+    
+    $(t).parent().next().children('label').each(function () {
+        idLabel = this.id;
+        idUsuari = idLabel.replace('usuari', '');
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+    });
+    //quita coma final
+    stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+
+    input_idStringUsuaris = jQuery('<input type="hidden" id="stringUsuarisGrup" name="stringUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+    $(t).parent().next().append(input_idStringUsuaris);
 }
