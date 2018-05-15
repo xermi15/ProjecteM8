@@ -45,6 +45,10 @@ function afegirUsuari(t) {
     var valLabel;
     var idLabel2;
     var arrayUsuarisGrup = [];
+    var stringIdUsuarisGrup = '';
+
+    //si existe input hidden ID stringIdUsuarisGrup la ELIMINA
+    $('#stringUsuarisGrup').remove();
 
     //RECORRE COLUMNA USUARIS GRUP (recull id)
     $(t).parent().next().children('label').each(function () {
@@ -62,7 +66,8 @@ function afegirUsuari(t) {
             //SI NO HAY USUARIO SEN LA COLUMNA DE USUARIOS GRUPO LOS AÑADE
             if (arrayUsuarisGrup.length === 0) {
                 input = jQuery('<label id="' + idLabel + '"><input type="checkbox" id="' + idLabel + '" style="cursor:default;" name="usuari" value="' + valLabel + '">' + valLabel + '</label><br>');
-                $(".columnUsuarisGrup").append(input);
+                $(t).parent().next().append(input);
+
             } else {
                 //COMPRUEBA SI ESTA EN LA COLUMNA DE USUARIOS GRUPO
                 for (var i in arrayUsuarisGrup) {
@@ -73,12 +78,25 @@ function afegirUsuari(t) {
                     var s = parseInt(i) + 1;
                     if ((idLabel !== idLabel2) && (arrayUsuarisGrup.length === s)) {
                         input = jQuery('<label id="' + idLabel + '"><input type="checkbox" id="' + idLabel + '" style="cursor:default;" name="usuari" value="' + valLabel + '">' + valLabel + '</label><br>');
-                        $(".columnUsuarisGrup").append(input);
+                        $(t).parent().next().append(input);
                     }
                 }
             }
         }
     });
+
+    $(t).parent().next().children('label').each(function () {
+        idLabel = this.id;
+        idUsuari = idLabel.replace('usuari', '');
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+
+    });
+
+    //quita coma final
+    stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+
+    input_idStringUsuaris = jQuery('<input type="hidden" id="stringUsuarisGrup" name="stringUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+    $(t).parent().next().append(input_idStringUsuaris);
 }
 
 function eliminarUsuari(t) {
