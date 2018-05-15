@@ -35,6 +35,7 @@ class CU_44_Controller extends Controller {
         //Registrar Log
         $nlog = Logs::where('idLog', $request->cu44_idLog)->first();
         
+        
         if ($nlog == null) {                
         $nlog = new Logs;
         $nlog->idUsuari =$id; 

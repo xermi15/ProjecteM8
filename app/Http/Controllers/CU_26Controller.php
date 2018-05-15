@@ -22,9 +22,6 @@ class CU_26Controller extends Controller
        $plantilla->idUsuariAprovador= $request->aprov;
        $plantilla->idUsuariCreador= $_SESSION['idUsuari'];
        $plantilla->save();
-          
-//       $plantirevisors = new plantillaRevisor;
-//       $plantirevisors->idUsuariRevisor= $request->revi;
      
         foreach ($request->revi as $revi):
             $plantirevisors = new plantillaRevisor;
@@ -34,7 +31,7 @@ class CU_26Controller extends Controller
         endforeach;
     
       
-       return redirect ('/CU_26');
+       return redirect ('/CU_50');
 
     }
     /*public function postCreate2(Request $request) {

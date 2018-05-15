@@ -147,19 +147,13 @@ Route::post('/newWorkflow', 'CU_25Controller@postCreate');
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
 Route::post('/newPlantilla', 'CU_26Controller@postCreate');
-
-//});
-//
-//
-//
-//
 //
 // CU27
 //
 //Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
 Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
-Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
-
+Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
 //
 //
 //
