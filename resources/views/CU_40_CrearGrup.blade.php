@@ -1,14 +1,9 @@
-<?php $cont = 0; ?>
-
-@foreach( $grups as $grup )
-<?php $cont++; ?>
-@endforeach
-
-<button id="editBtn" type="button" class="btn" onclick="nouGrup({{ $cont }});" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; width: 25%; border: solid #000000 2px;">
+<button id="editBtn" type="button" class="btn" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; width: 25%; border: solid #000000 2px;">
     Crear grup
 </button>
 <form id="formNewUser" name="formNewUser" class="form-horizontal" method="POST" action="{{ url('/newGrup') }}">
     <div class="controls">
+        {{ method_field('PUT') }}
         {{ csrf_field() }}
         <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog" role="document">

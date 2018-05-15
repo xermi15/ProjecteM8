@@ -215,8 +215,8 @@ Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
 Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 
-Route::get('CU_40_CrearGrup', 'CU_40Controller@getCU_40');
-Route::post('/newGrup', 'CU_40Controller@afegirGrup');
+Route::get('/CU_40_CrearGrup', 'CU_40Controller@getCU_40');    // add /{idGrup}
+Route::put('/newGrup', 'CU_40Controller@afegirGrup');
 //Route::post('grupo/create', 'CU_37Controller@postCreate');
 //
 //
