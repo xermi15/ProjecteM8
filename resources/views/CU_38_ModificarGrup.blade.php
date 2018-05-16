@@ -1,13 +1,14 @@
 <button id="editBtn" type="button" onclick="getNomGrup(this); guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
     <i class="glyphicon glyphicon-pencil"></i> 
 </button>
-<form id="formEditGrup" name="formEditGrup" class="form-horizontal" method="POST" action="{{ url('/editGrup') }}">
-    <div class="controls">
-        {{ method_field('PUT') }}
-        {{ csrf_field()  }}
-        <div class="modal fade" tabindex="-1" role="dialog" id="myModal_2">
-            <div id="modal_modificar" class="modal-dialog" role="document">
-                <div class="modal-content">
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal_2">
+    <div id="modal_modificar" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="formEditGrup" name="formEditGrup" class="form-horizontal" method="POST" action="{{ url('/editGrup') }}">
+                <div class="controls">
+                    {{ method_field('PUT') }}
+                    {{ csrf_field()  }}
                     <div class="modal-header" style="text-align: center; background: #455A64; color: white; border-radius: 5px 5px 0px 0px;">
                         <h4 class="modal-title" style="text-align: center; display:inline; cursor:default;">Modificar grup</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="display:inline;">
@@ -24,7 +25,7 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</form>
+</div>
