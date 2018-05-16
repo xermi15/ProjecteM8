@@ -2,7 +2,7 @@ var idGrup;
 var stringIdUsuarisGrup = '';
 
 $(document).ready(function () {
-    $("#password").click(function (event) {
+    $("#password").keyup(function (event) {
         $('#idGrupEliminar').remove();
 
         $('#stringIdUsuarisGrup').remove();
@@ -15,8 +15,21 @@ $(document).ready(function () {
         stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
 
         input_idStringUsuaris = jQuery('<input type="hidden" id="stringIdUsuarisGrup" name="stringIdUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
-        $(event.target).parent().append(input_idStringUsuaris);
+        $(event.target).append(input_idStringUsuaris);
     });
+    
+    $("#modal_modificar").click(function (event) {
+        $('#idGrupEliminar').remove();
+
+        $('#stringIdUsuarisGrup').remove();
+
+        input = jQuery('<input type="hidden" id="idGrupEliminar" name="idGrupEliminar" value="' + idGrup + '">');
+        $(event.target).parent().append(input);
+
+        console.log('ola');
+
+    });
+    
 });
 
 function guardaidGrup_idUsuarisGrup(t) {
@@ -26,13 +39,18 @@ function guardaidGrup_idUsuarisGrup(t) {
     var id = $(t).parent().parent().children('#nombreGrupo').children('#idGrup').val();
     idGrup = id;
 
-    $(t).parent().parent().children('#nombreMiembros').children('input').each(function () {
+    $(t).parent().parent().children('#nombreMiembros').children('#idGrup').each(function () {
         var idUsuari = $(this).val();
         stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
     });
 
 }
 
+function getNomGrup(t) {
+
+    var nomGrup = $(t).parent().parent().children('#nombreGrupo').children('#nomGrup').val();
+    $('#nom_Grup_Modificar').val(nomGrup);
+}
 
 
 function afegirUsuari(t) {

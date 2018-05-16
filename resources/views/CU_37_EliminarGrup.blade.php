@@ -1,4 +1,4 @@
-<button id="deleteBtn" name="deleteBtn" type="button" onclick="guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
+<button id="deleteBtn" type="button" onclick="guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
     <i class="glyphicon glyphicon-trash"></i>
 </button>
 <form id="formDelGrup" name="formDelGrup" class="form-horizontal" method="POST" action="{{ url('/delGrup') }}">
@@ -6,7 +6,7 @@
         {{ method_field('PUT') }}
         {{ csrf_field() }}
         <div class="modal fade" tabindex="-1" role="dialog" id="myModal_3">
-            <div class="modal-dialog" role="document">
+            <div id="modal_eliminar" class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header" style="text-align: center; background: #455A64; color: white; border-radius: 5px 5px 0px 0px;">
                         <h4 class="modal-title" style="text-align: center; display:inline; cursor:default;">Eliminar grup</h4>

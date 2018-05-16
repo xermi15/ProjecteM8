@@ -1,7 +1,7 @@
 <div class="containerModificaMembres">
     <div class="columnUsuaris">
         <p type="text" id="usuaris">Usuaris</p>
-        <input type="text" id="buscaUsuari" placeholder="Buscar usuari" onkeyup="buscaUsuari()">
+        <input type="text" id="buscaUsuari" placeholder="Buscar usuari">
         @foreach( $usuaris as $usuari )   
         <label id="idusuari{{$usuari->idUsuari}}"><input type="checkbox" id="idusuari{{$usuari->idUsuari}}" style="cursor:default;" name="usuari" value="usuari">{{ $usuari->nomUsuari }}</label><br>
         @endforeach
