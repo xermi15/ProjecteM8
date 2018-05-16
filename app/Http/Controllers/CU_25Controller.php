@@ -25,6 +25,8 @@ class CU_25Controller extends Controller
        $worklows->idUsuariAprovador= $request->aprov;
        $worklows->idUsuariCreacio= $_SESSION['idUsuari'];
        $worklows->dataCreacio= date('Y-m-d H:i:s');
+       $worklows->dataLimitRevisio= $request->dataRevi;
+       $worklows->dataLimitAprovacio= $request->dataAprov;
        
        
        $worklows->save();
