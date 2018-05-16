@@ -31,11 +31,7 @@ class CU_39Controller extends Controller {
         $nlog->path = "";
         $nlog->save();
 
-        $grups = Grup::all();
-        $usuaris = Usuari::all();
-        $usuariGrups = UsuariGrup::all();
-
-        return view('CU_36_GestionarGrups', compact('grups', 'usuaris', 'usuariGrups'));
+        return redirect('CU_36_GestionarGrups');
     }
 
     public function modificarGrup2(Request $request) {
@@ -56,11 +52,7 @@ class CU_39Controller extends Controller {
         $nlog->path = "";
         $nlog->save();
 
-        $grups = Grup::all();
-        $usuaris = Usuari::all();
-        $usuariGrups = UsuariGrup::all();
-
-        return view('CU_36_GestionarGrups', compact('grups', 'usuaris', 'usuariGrups'));
+        return redirect('CU_36_GestionarGrups');
     }
 
 }

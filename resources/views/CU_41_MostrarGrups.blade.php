@@ -7,21 +7,21 @@
         </tr>
     </thead>
     <tbody>
-        <!--recorre grupos-->
         @foreach( $grups as $grup )
         <tr>
-            <td id="nombreGrupo">{{ $grup->nom }}</td>
-            <!-- recorre usuarisGrup -->
-            <td>
+            <td id="nombreGrupo" value="{{ $grup->nom }}">{{ $grup->nom }}
+                <input type="hidden" name="idGrup" id="idGrup" value="{{ $grup->idGrup }}">
+            
+            </td>
+            <td id="nombreMiembros">
                 @foreach( $usuariGrups as $usuariGrup )
-                <!-- recorre usuaris -->
 
                 @foreach( $usuaris as $usuari )
-                <!-- si idGrups = idGrups(usuariGrups) y idUsuari = idUsuari(usuariGrups) imprime el id de ese usuario-->
                 @if( $grup->idGrup === $usuariGrup->idGrup )
 
                 @if( $usuari->idUsuari === $usuariGrup->idUsuari )
                 {{ $usuari->nomUsuari }}
+                <input type="hidden" name="idUsuariGrup" value="{{ $usuari->idUsuari }}">
                 @endif
                 @endif
                 @endforeach
