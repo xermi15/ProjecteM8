@@ -1,43 +1,38 @@
 var idGrup;
-var nomGrup;
+var stringIdUsuarisGrup = '';
 
-//docuemnte ready 
-//si inpout grupo value es diferente de "Buscar usuari"
-//coger valor de input y busca
+$(document).ready(function () {
+    $("#password").click(function (event) {
+        $('#idGrupEliminar').remove();
 
+        $('#stringIdUsuarisGrup').remove();
 
+        input = jQuery('<input type="hidden" id="idGrupEliminar" name="idGrupEliminar" value="' + idGrup + '">');
+        $(event.target).parent().append(input);
 
-//modificar y eliminar grupo
-function id_NomGrup(id, nom) {
+        //console.log($(event.target).parent());
+
+        stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+
+        input_idStringUsuaris = jQuery('<input type="hidden" id="stringIdUsuarisGrup" name="stringIdUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+        $(event.target).parent().append(input_idStringUsuaris);
+    });
+});
+
+function guardaidGrup_idUsuarisGrup(t) {
+
+    stringIdUsuarisGrup = '';
+
+    var id = $(t).parent().parent().children('#nombreGrupo').children('#idGrup').val();
     idGrup = id;
-    nomGrup = nom;
-    alert(idGrup + ' y ' + nomGrup);
+
+    $(t).parent().parent().children('#nombreMiembros').children('input').each(function () {
+        var idUsuari = $(this).val();
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+    });
+
 }
 
-function nouGrup() {
-
-    //var stringUsuaris = stringUsuarisGrup.replace(/ /g, '');
-    //var url = "/newGrup/" + stringUsuaris;
-    //document.getElementById("formNewUser").setAttribute('action', url);
-    //var stringUsuarisGrup = stringUsuaris.replace("usuari", "");
-
-    //var usuarisGrup = jQuery('<input id="stringUsuarisGrup" type="text" value="' + stringUsuarisGrup + '" hidden>');
-    //$('#grup_body').append(usuarisGrup);
-}
-
-//modificar grupo
-function guardar() {
-    //guarda datos grupo
-    alert('guardar ' + idGrup);
-}
-
-//eliminar grupo (FUNCIONA)
-function eliminarGrup() {
-    //eliminar grupo
-    window.location.replace("http://localhost/DAW2M14/public/CU_37_EliminarGrup/" + idGrup);
-
-    $("#myModal_3").modal("hide");
-}
 
 
 function afegirUsuari(t) {
@@ -101,9 +96,9 @@ function afegirUsuari(t) {
 
 function eliminarUsuari(t) {
     var stringIdUsuarisGrup = '';
-    
+
     $('#stringUsuarisGrup').remove();
-    
+
     $(t).parent().next().children('label').each(function () {
         if ($(this).children('input').is(':checked')) {
             $(this).next('br').remove();
@@ -111,7 +106,7 @@ function eliminarUsuari(t) {
             $(this).remove();
         }
     });
-    
+
     $(t).parent().next().children('label').each(function () {
         idLabel = this.id;
         idUsuari = idLabel.replace('usuari', '');

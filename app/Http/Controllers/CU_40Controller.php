@@ -9,11 +9,6 @@ use App\UsuariGrup;
 
 class CU_40Controller extends Controller {
 
-    public function getCU_40() {
-
-        return redirect('CU_36_GestionarGrups');
-    }
-
     public function afegirGrup(Request $request) {
         $grup = Grup::where('nom', $request->cu_40nomGrup)->first();
         if ($grup == null) {
@@ -22,13 +17,14 @@ class CU_40Controller extends Controller {
             $grup->dataCreacio = date('Y-m-d');
             $grup->dataModificacio = date('Y-m-d');
             $grup->save();
-
-
-            //recoger string de id de usuaris y hacer array para hacer 
-            //varios insert en la tabla usuarisGrup
+            
+            
+            //comprobar si le pasamos usuaris a guardar
+            
+            
+            //recoger string de id de usuaris y hacer array para hacer varios insert en la tabla usuarisGrup
             $stringIdUsuarisGrup = $request->stringUsuarisGrup;
             $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
-
             foreach ($arrayidUsuarigrup as $idUsuariGrup) {
                 $usuariGrup = new UsuariGrup;
                 $usuariGrup->idUsuari = $idUsuariGrup;

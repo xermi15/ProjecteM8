@@ -9,8 +9,11 @@
     <tbody>
         @foreach( $grups as $grup )
         <tr>
-            <td id="nombreGrupo">{{ $grup->nom }}</td>
-            <td>
+            <td id="nombreGrupo" value="{{ $grup->nom }}">{{ $grup->nom }}
+                <input type="hidden" name="idGrup" id="idGrup" value="{{ $grup->idGrup }}">
+            
+            </td>
+            <td id="nombreMiembros">
                 @foreach( $usuariGrups as $usuariGrup )
 
                 @foreach( $usuaris as $usuari )
@@ -18,6 +21,7 @@
 
                 @if( $usuari->idUsuari === $usuariGrup->idUsuari )
                 {{ $usuari->nomUsuari }}
+                <input type="hidden" name="idUsuariGrup" value="{{ $usuari->idUsuari }}">
                 @endif
                 @endif
                 @endforeach

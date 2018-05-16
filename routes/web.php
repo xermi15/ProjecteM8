@@ -191,7 +191,7 @@ Route::get('CU_36_GestionarGrups', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrup/{id}', 'CU_37Controller@getCU_37');
+Route::put('/delGrup', 'CU_37Controller@eliminarGrup');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
@@ -209,9 +209,7 @@ Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
 Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
 Route::post('/newUser', 'CU_52Controller@afegirUsuari');
 
-Route::get('/CU_40_CrearGrup', 'CU_40Controller@getCU_40');    // add /{idGrup}
 Route::put('/newGrup', 'CU_40Controller@afegirGrup');
-//Route::post('grupo/create', 'CU_37Controller@postCreate');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
