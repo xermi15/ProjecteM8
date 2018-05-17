@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Carpeta;
+use App\Document;
 use Illuminate\Http\Request;
 use ZipArchive;
 
@@ -16,34 +17,67 @@ class CU_19Controller extends Controller
      */
     public function index(Request $request, $id, $path, $nombre)
     {
-        //echo $id."-".$path."-".$nombre;
-        // Definimos la ruta
-        $public_dir=$path;
-        // Le damos el nombre al archivo
-        $nom=$nombre;
-        $zipFileName = $nom.'.zip';
-        // Creamos el objeto ZipArchive
-        //echo $zip;
-        $zip = new ZipArchive;
-        if ($zip->open($public_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {
-            echo $nombre;
-            // Añadimos el archivo en ZipArchive
-            $zip->addFile(file_path,'file_name');
-            // Cerramos ZipArchive     
-            $zip->close();
-        }
-        // Colocamos una cabecera
-        $headers = array(
-            'Content-Type' => 'application/octet-stream',
-        );
-        $filetopath=$public_dir.'/'.$zipFileName;
-        echo $filetopath;
-        // Creamos una solicitud de descarga
-        if(file_exists($filetopath)){
-            echo "hola";
-            return response()->download($filetopath,$zipFileName,$headers);
-        }
-        //return view("a");
+//        //echo $id."-".$path."-".$nombre;
+//        // Definimos la ruta
+//        $public_dir=$path;
+//        // Le damos el nombre al archivo
+//        $nom=$nombre;
+//        $zipFileName = $nom.'.zip';
+//        // Creamos el objeto ZipArchive
+//        //echo $zip;
+//        $zip = new ZipArchive;
+//        if ($zip->open($public_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {
+//            echo $nombre;
+//            // Añadimos el archivo en ZipArchive
+//            $zip->addFile(file_path,'file_name');
+//            // Cerramos ZipArchive     
+//            $zip->close();
+//        }
+//        // Colocamos una cabecera
+//        $headers = array(
+//            'Content-Type' => 'application/octet-stream',
+//        );
+//        $filetopath=$public_dir.'/'.$zipFileName;
+//        echo $filetopath;
+//        // Creamos una solicitud de descarga
+//        if(file_exists($filetopath)){
+//            echo "hola";
+//            return response()->download($filetopath,$zipFileName,$headers);
+//        }
+//        //return view("a");
         
+        $zip = new ZipArchive();
+        $zip->open( $nombre.".zip",ZipArchive::CREATE);
+        $zip->addEmptyDir($nombre);
+        $zipFinal= $this->fills($id,$zip);
+        echo $zipFinal;
+        $zip->close();
+        
+        header("Content-type: application/octet-stream");
+        header("Content-disposition: attachment; filename=".$nombre.".zip");
+        // leemos el archivo creado
+        readfile($nombre.".zip");
+        
+        unlink($nombre.".zip");//Destruye el archivo temporal
+        
+        return redirect(url('/abrirCarpeta/'.$id));
+    }
+    
+    
+    public static function fills($id, $zip){
+        
+        $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
+        $arxius = Document::where('idCarpeta', '=', $id)->get(); 
+        
+        
+        foreach($carpetes as $key => $carpeta){
+                foreach($arxius as $key => $arxiu){
+                    $zip->addFile($arxiu->nom,$carpeta->nom."/".$arxiu->nom);
+                }
+                CU_19Controller::fills($carpeta->idCarpeta, $zip);
+        }
+        
+        
+        return "Zip";
     }
 }
