@@ -53,14 +53,18 @@ class CU_19Controller extends Controller
         echo $zipFinal;
         $zip->close();
         
-        header("Content-type: application/octet-stream");
-        header("Content-disposition: attachment; filename=".$nombre.".zip");
-        // leemos el archivo creado
-        readfile($nombre.".zip");
+        $size = filesize($nombre.".zip"); 
+        header("Content-Transfer-Encoding: binary"); 
+        header("Content-type: application/force-download"); 
+        header("Content-Disposition: attachment; filename=".$nombre.".zip"); 
+        header("Content-Length: $size"); 
+        readfile($nombre.".zip"); 
         
         unlink($nombre.".zip");//Destruye el archivo temporal
         
-        return redirect(url('/abrirCarpeta/'.$id));
+        $CarpetaPare = Carpeta::where('idCarpeta', '=', $id)->get();
+        
+        return redirect(url('/abrirCarpeta/'.$CarpetaPare[0]->idCarpetaPare));
     }
     
     
