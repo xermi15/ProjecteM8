@@ -10,10 +10,10 @@ use App\UsuariGrup;
 class CU_40Controller extends Controller {
 
     public function afegirGrup(Request $request) {
-        $grup = Grup::where('nom', $request->cu_40nomGrup)->first();
+        $grup = Grup::where('nom', $request->nom_Grup)->first();
         if ($grup == null) {
             $grup = new Grup;
-            $grup->nom = $request->cu_40nomGrup;
+            $grup->nom = $request->nom_Grup;
             $grup->dataCreacio = date('Y-m-d');
             $grup->dataModificacio = date('Y-m-d');
             $grup->save();

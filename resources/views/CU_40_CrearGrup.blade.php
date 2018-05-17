@@ -1,4 +1,4 @@
-<button id="createBtn" name="createBtn" type="button" class="btn" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; width: 25%; border: solid #000000 2px;">
+<button id="createBtn" type="button" class="btn" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; width: 25%; border: solid #000000 2px;">
     Crear grup
 </button>
 <form id="formNewGrup" name="formNewGrup" class="form-horizontal" method="POST" action="{{ url('/newGrup') }}">
@@ -15,8 +15,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label for="cu_40nomGrup">Nom: </label>
-                        <input type="text" name="cu_40nomGrup" id="cu_40nomGrup" class="form-control" placeholder="Nom del grup" value="" required>
+                        <label for="nom_Grup">Nom: </label>
+                        <input type="text" name="nom_Grup" id="nom_Grup" class="form-control" placeholder="Nom del grup" value="" required>
 
                         @include('CU_39_ModificarMembres')
 

@@ -11,6 +11,7 @@
         <tr>
             <td id="nombreGrupo" value="{{ $grup->nom }}">{{ $grup->nom }}
                 <input type="hidden" name="idGrup" id="idGrup" value="{{ $grup->idGrup }}">
+                <input type="hidden" name="nomGrup" id="nomGrup" value="{{ $grup->nom }}">
             
             </td>
             <td id="nombreMiembros">
