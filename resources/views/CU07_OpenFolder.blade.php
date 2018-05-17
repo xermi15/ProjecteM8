@@ -521,49 +521,22 @@
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
+                
                 $('#modalFormDescargarzip').attr('action', '../CU_19/'+id+'/'+path+'/'+nombre);
-                //alert(id+path+nombre);
-                /*$('#downloadzip').click(function(e){
-                    var url = "http://localhost/DAW2M14/public/CU_19/a/a/a";
-                    
-                    $.post(url,{
-                            id: id,
-                            nombre: nombre,
-                            path: path})
-                        .done(function(data) {  
-                            alert(data);
-                        })
-                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                        .always(function(x) { console.log( "Fí")});
-                });*/
                
             });
             
             $('#generaPDF').on('show.bs.modal', function (e) {
+                //Recollim la id, el nom, el path i el format del archiu on hem fet click
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
                 var formato = $(e.relatedTarget).data('book-formato');
                 var encode = encodeURIComponent(path);
-                
+                //Al fer click sobre "Descargar PDF" activem el controlador del CU13
                 $('#modalFormDescargarpdf').attr('action', '../CU_13/'+id+'/'+nombre+'/'+path+'/'+formato);
                 
             });
-            /*var url = "http://localhost/DAW2M14/public/CU_13";
-            $('#downloadpdf').click(function(e){
-                    alert("hello");
-                    $.post(url,{
-                            id: id,
-                            nombre: nombre,
-                            path: path,
-                            formato: formato})
-                        .done(function(data) {  
-                            alert(data);
-                        })
-                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                        .always(function(x) { console.log( "Fí")});
-                });
-            /**/
             
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
