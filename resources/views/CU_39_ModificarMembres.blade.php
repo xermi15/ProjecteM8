@@ -20,7 +20,5 @@
         {{ csrf_field() }}
         <p type="text" id="usuaris">Usuaris del Grup</p>
         <input type="text" id="buscaUsuariGrup" placeholder="Buscar usuari">
-
-        
     </div>
 </div> 

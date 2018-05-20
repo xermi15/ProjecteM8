@@ -10,19 +10,16 @@ use App\UsuariGrup;
 class CU_40Controller extends Controller {
 
     public function afegirGrup(Request $request) {
+
         $grup = Grup::where('nom', $request->nom_Grup)->first();
+
         if ($grup == null) {
             $grup = new Grup;
             $grup->nom = $request->nom_Grup;
             $grup->dataCreacio = date('Y-m-d');
             $grup->dataModificacio = date('Y-m-d');
             $grup->save();
-            
-            
-            //comprobar si le pasamos usuaris a guardar
-            
-            
-            //recoger string de id de usuaris y hacer array para hacer varios insert en la tabla usuarisGrup
+
             $stringIdUsuarisGrup = $request->stringUsuarisGrup;
             $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
             foreach ($arrayidUsuarigrup as $idUsuariGrup) {
@@ -34,7 +31,7 @@ class CU_40Controller extends Controller {
             Notification::success("Grup creat correctament.");
             return redirect('CU_36_GestionarGrups');
         } else {
-            Notification::error("Error al crear grup");
+            Notification::error("Ja existeix un grup amb aquest nom");
             return redirect('CU_36_GestionarGrups');
         }
     }

@@ -1,4 +1,4 @@
-<button id="deleteBtn" type="button" onclick="guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
+<button id="deleteBtn" type="button" onclick="eliminaGrup(this);" data-toggle="modal" data-target="#myModal_3" style="padding: 0; border: none; background: none; margin-left: 20px; margin-right: 20px;">
     <i class="glyphicon glyphicon-trash"></i>
 </button>
 
@@ -17,7 +17,7 @@
                     </div>
                     <div class="modal-body-eliminarGrup">
                         <h4>Segur que desitja eliminar el següent grup?</h4>
-                        <!--<input type="text" name="nombre_grupo" id="nombre_grupo" style="cursor: default; border: none; background: none;" disabled >-->
+                        <h5 id="nombre_grupo"></h5>
                         <label for="password">Contrasenya:</label>
                         <input type="password" name="password" id="password" size="35" placeholder="Contrasenya administrador grup" required>
                         <h6>(funcio control confirmacio per contrasenya per desenvolupar)</h6>

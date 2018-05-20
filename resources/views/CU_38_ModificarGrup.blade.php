@@ -1,4 +1,4 @@
-<button id="editBtn" type="button" onclick="getNomGrup(this); guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
+<button id="editBtn" type="button" onclick="modificaGrup(this);" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
     <i class="glyphicon glyphicon-pencil"></i> 
 </button>
 

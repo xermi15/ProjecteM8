@@ -16,13 +16,14 @@
             </td>
             <td id="nombreMiembros">
                 @foreach( $usuariGrups as $usuariGrup )
-
+                
                 @foreach( $usuaris as $usuari )
                 @if( $grup->idGrup === $usuariGrup->idGrup )
 
                 @if( $usuari->idUsuari === $usuariGrup->idUsuari )
                 {{ $usuari->nomUsuari }}
-                <input type="hidden" name="idUsuariGrup" value="{{ $usuari->idUsuari }}">
+                <input type="hidden" name="idUsuariGrup" id="idUsuariGrup" value="{{ $usuari->idUsuari }}">
+                <input type="hidden" name="nomUsuariGrup" id="nomUsuariGrup" value="{{ $usuari->nomUsuari }}">
                 @endif
                 @endif
                 @endforeach
@@ -30,6 +31,7 @@
                 @endforeach
             </td>
             <td>
+                
                 @include('CU_38_ModificarGrup')
                 @include('CU_37_EliminarGrup')
                 <a class="glyphicon glyphicon-circle-arrow-right" href=""></a>

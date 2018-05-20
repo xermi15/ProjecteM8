@@ -12,67 +12,58 @@ class CU_39Controller extends Controller {
 
     public function modificarGrup(Request $request) {
 
-        //BORRA GRUP ANTERIOR
         $grup = Grup::where('idGrup', $request->idGrupEliminar)->first();
         $usuariGrup = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
 
-        //Guarda dades per tornar a crear el grup
         $dataCreacioGrup = $grup->dataCreacio;
         $idGrup = $grup->idGrup;
         $nomGrup = $grup->nom;
 
+        if ($grup !== null) {
 
-        if ($usuariGrup !== null) {
+            if ($usuariGrup !== null) {
 
-            //busca usuari grup 
-            //si hay borra y vuelve a buscar
-            //si no hay sale
+                $arrayUsuarisGrup = UsuariGrup::where('idGrup', $idGrup)->get();
 
-            $arrayUsuarisGrup = UsuariGrup::where('idGrup', $idGrup)->get();
-            // var_dump($arrayUsuarisGrup);
-            foreach ($arrayUsuarisGrup as $idUsuariGrup) {
-                $usuariGrup2 = UsuariGrup::where('idGrup', $idUsuariGrup->idGrup)->first();
-                $usuariGrup2->delete();
+                foreach ($arrayUsuarisGrup as $idUsuariGrup) {
+                    $usuariGrup2 = UsuariGrup::where('idGrup', $idUsuariGrup->idGrup)->first();
+                    $usuariGrup2->delete();
+                }
+            }
+            $grup->delete();
+
+            $grupMod = new Grup;
+            $grupMod->idGrup = $idGrup;
+            $grupMod->nom = $nomGrup;
+            $grupMod->dataCreacio = $dataCreacioGrup;
+            $grupMod->dataModificacio = date('Y-m-d');
+            $grupMod->save();
+
+            $stringIdUsuarisGrup = $request->stringUsuarisGrup;
+            $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
+            foreach ($arrayidUsuarigrup as $idUsuariGrup) {
+                $usuariGrup = new UsuariGrup;
+                $usuariGrup->idUsuari = $idUsuariGrup;
+                $usuariGrup->idGrup = $grup->idGrup;
+                $usuariGrup->save();
             }
 
             /*
-              $stringIdUsuarisGrup = $request->stringIdUsuarisGrup;
-              $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
-              foreach ($arrayidUsuarigrup as $idUsuariGrup) {
-              $usuariGrup2 = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
-              $usuariGrup2->delete();
-              }
+              $nlog = new Logs;
+              $nlog->idUsuari = $idusuari;
+              $nlog->descripcio = "Modificar Grup";
+              $nlog->dataLog = date('Y-m-d');
+              $nlog->hora = date('H:i:s');
+              $nlog->path = "";
+              $nlog->save();
              */
-        }
-        $grup->delete();
 
-        //CREA NOU
-        $grupMod = new Grup;
-        $grupMod->idGrup = $idGrup;
-        $grupMod->nom = $nomGrup;
-        $grupMod->dataCreacio = $dataCreacioGrup;
-        $grupMod->dataModificacio = date('Y-m-d');
-        $grupMod->save();
-
-        $stringIdUsuarisGrup = $request->stringUsuarisGrup;
-        $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
-        foreach ($arrayidUsuarigrup as $idUsuariGrup) {
-            $usuariGrup = new UsuariGrup;
-            $usuariGrup->idUsuari = $idUsuariGrup;
-            $usuariGrup->idGrup = $grup->idGrup;
-            $usuariGrup->save();
+            Notification::success("Grup modificat correctament");
+            return redirect('CU_36_GestionarGrups');
+        } else {
+            Notification::success("No s'ha pogut modificar el grup");
+            return redirect('CU_36_GestionarGrups');
         }
-        /*
-          $nlog = new Logs;
-          $nlog->idUsuari = $idusuari;
-          $nlog->descripcio = "Modificar Grup";
-          $nlog->dataLog = date('Y-m-d');
-          $nlog->hora = date('H:i:s');
-          $nlog->path = "";
-          $nlog->save();
-         */
-        Notification::success("Grup modificat correctament");
-        return redirect('CU_36_GestionarGrups');
     }
 
 }

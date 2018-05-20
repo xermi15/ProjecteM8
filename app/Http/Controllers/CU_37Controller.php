@@ -10,25 +10,28 @@ use App\UsuariGrup;
 class CU_37Controller extends Controller {
 
     public function eliminarGrup(Request $request) {
-
+        
         $grup = Grup::where('idGrup', $request->idGrupEliminar)->first();
         $usuariGrup = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
+        
+        if ($grup !== null) {
+            
+            if ($usuariGrup !== null) {
 
-        if ($usuariGrup !== null) {
-
-            $stringIdUsuarisGrup = $request->stringIdUsuarisGrup;
-            $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
-            foreach ($arrayidUsuarigrup as $idUsuariGrup) {
-
-                $usuariGrup2 = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
-                $usuariGrup2->delete();
+                $arrayUsuarisGrup = UsuariGrup::where('idGrup', $request->idGrupEliminar)->get();
+                
+                foreach ($arrayUsuarisGrup as $idUsuariGrup) {
+                    $usuariGrup2 = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
+                    $usuariGrup2->delete();
+                }
             }
-            Notification::success("Elimina grup amb usuaris");
+            $grup->delete();
+            Notification::success("Grup eliminat correctament");
+            return redirect('CU_36_GestionarGrups');
         } else {
-            Notification::success("Elimina grup sense usuaris");
+            Notification::success("No s'ha pogut eliminar el grup");
+            return redirect('CU_36_GestionarGrups');
         }
-        $grup->delete();
-        return redirect('CU_36_GestionarGrups');
     }
 
 }
