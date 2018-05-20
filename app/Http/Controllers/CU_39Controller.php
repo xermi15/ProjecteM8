@@ -48,15 +48,13 @@ class CU_39Controller extends Controller {
                 $usuariGrup->save();
             }
 
-            /*
-              $nlog = new Logs;
-              $nlog->idUsuari = $idusuari;
-              $nlog->descripcio = "Modificar Grup";
-              $nlog->dataLog = date('Y-m-d');
-              $nlog->hora = date('H:i:s');
-              $nlog->path = "";
-              $nlog->save();
-             */
+            $nlog = new Logs;
+            $nlog->idUsuari = 1; //usuari admin. CORREGIR POR USUARIO QUE HA INICIADO SESION
+            $nlog->descripcio = "Grup modificat: '" + $nomGrup + "'";
+            $nlog->dataLog = date('Y-m-d');
+            $nlog->hora = date('H:i:s');
+            $nlog->path = "";
+            $nlog->save();
 
             Notification::success("Grup modificat correctament");
             return redirect('CU_36_GestionarGrups');
