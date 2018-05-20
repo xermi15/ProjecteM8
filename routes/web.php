@@ -199,7 +199,6 @@ Route::put('/editGrup', 'CU_38Controller@modificarGrup');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
-
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
@@ -207,7 +206,6 @@ Route::put('/newGrup', 'CU_40Controller@afegirGrup');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
-Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 //prova

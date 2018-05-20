@@ -4,17 +4,20 @@ function eliminaGrup(t) {
     var id = $(t).parent().parent().children('#nombreGrupo').children('#idGrup').val();
     idGrup = id;
 
+    //si existe input hidden idGrupEliminar lo elimina
     $('#idGrupEliminar').remove();
 
+    //coge nombre grupo y añade a modal-body de eliminar
     var nomGrup = $(t).parent().parent().children('#nombreGrupo').children('#nomGrup').val();
-    $('#nom_Grup_Modificar').val(nomGrup);
-
-    var idModal = $(t).attr("data-target");
-
+    
+    //asigna nombre
     $('#nombre_grupo').text('"' + nomGrup + '"');
-
+    
+    //marca el modal objectivo del boton donde hacemos click
+    var idModal = $(t).attr("data-target");
+    
+    //creamos y añadimos id del grup modificat a un input oculto para recogerlo en el controlador
     var modal_body_eliminarGrup = $(idModal).children([0]).children([0]).children([0]).children([0]);
-
     input_grupEliminar = jQuery('<input type="hidden" id="idGrupEliminar" name="idGrupEliminar" value="' + idGrup + '">');
     modal_body_eliminarGrup.append(input_grupEliminar);
 }
