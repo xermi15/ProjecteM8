@@ -11,19 +11,23 @@ use App\Logs;
 class CU_40Controller extends Controller {
 
     public function afegirGrup(Request $request) {
-
+        
+        //Buscamos grupo con ese nombre
         $grup = Grup::where('nom', $request->nom_Grup)->first();
         $nomGrup = $request->nom_Grup;
 
+        //Si no existe grupo con ese nombre entra y crea grupo
         if ($grup == null) {
             $grup = new Grup;
             $grup->nom = $request->nom_Grup;
             $grup->dataCreacio = date('Y-m-d');
             $grup->dataModificacio = date('Y-m-d');
             $grup->save();
-
+            
+            //Recoger string de id de usuaris y hacer array para hacer varios insert en la tabla usuarisGrup
             $stringIdUsuarisGrup = $request->stringUsuarisGrup;
-
+            
+            //Si existe string de usuaris entra (si has añadido algun usuario al grupo estara creado, si no no)
             if ($stringIdUsuarisGrup !== null) {
                 $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
                 foreach ($arrayidUsuarigrup as $idUsuariGrup) {
@@ -33,9 +37,8 @@ class CU_40Controller extends Controller {
                     $usuariGrup->save();
                 }
             }
-
             
-            
+            //Crea log
             $nlog = new Logs;
             $nlog->idUsuari = 1; 
             $nlog->descripcio = "Grup creat: '" . $nomGrup . "'";
