@@ -6,6 +6,7 @@ use Krucas\Notification\Facades\Notification;
 use Illuminate\Http\Request;
 use App\Grup;
 use App\UsuariGrup;
+use App\Logs;
 
 class CU_37Controller extends Controller {
 
@@ -29,7 +30,7 @@ class CU_37Controller extends Controller {
             
             $nlog = new Logs;
             $nlog->idUsuari = 1; //usuari admin. CORREGIR POR USUARIO QUE HA INICIADO SESION
-            $nlog->descripcio = "Grup eliminat: '" + $nomGrup + "'";
+            $nlog->descripcio = "Grup eliminat: '" . $nomGrup . "'";
             $nlog->dataLog = date('Y-m-d');
             $nlog->hora = date('H:i:s');
             $nlog->path = "";

@@ -6,14 +6,15 @@ use Krucas\Notification\Facades\Notification;
 use Illuminate\Http\Request;
 use App\Grup;
 use App\UsuariGrup;
+use App\Logs;
 
 class CU_40Controller extends Controller {
 
     public function afegirGrup(Request $request) {
 
         $grup = Grup::where('nom', $request->nom_Grup)->first();
-        $nomGrup = $grup->nom;
-        
+        $nomGrup = $request->nom_Grup;
+
         if ($grup == null) {
             $grup = new Grup;
             $grup->nom = $request->nom_Grup;
@@ -32,10 +33,12 @@ class CU_40Controller extends Controller {
                     $usuariGrup->save();
                 }
             }
+
+            
             
             $nlog = new Logs;
-            $nlog->idUsuari = 1; //usuari admin. CORREGIR POR USUARIO QUE HA INICIADO SESION
-            $nlog->descripcio = "Grup creat: '" + $nomGrup + "'";
+            $nlog->idUsuari = 1; 
+            $nlog->descripcio = "Grup creat: '" . $nomGrup . "'";
             $nlog->dataLog = date('Y-m-d');
             $nlog->hora = date('H:i:s');
             $nlog->path = "";
