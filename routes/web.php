@@ -98,7 +98,7 @@ Route::get('/veureVersioDocument', 'CU_16Controller@veureVersioDocument');
 //
 //
 // CU17
-Route::get('/EliminarDocument', 'CU_17_Controller@EliminarDocument');
+Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
 //
 //
 // CU18
@@ -195,25 +195,17 @@ Route::put('/delGrup', 'CU_37Controller@eliminarGrup');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
-Route::get('CU_38_ModificarGrup', 'CU_38Controller@getCU_38');
-Route::post('/editGrup', 'CU_39Controller@modificarGrup');
+Route::put('/editGrup', 'CU_38Controller@modificarGrup');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
-Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
-Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
-
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
-Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
-Route::post('/newUser', 'CU_52Controller@afegirUsuari');
-
 Route::put('/newGrup', 'CU_40Controller@afegirGrup');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
-Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 //prova

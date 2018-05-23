@@ -10,7 +10,9 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^1.22",
-        "edvinaskrucas/notification": "5.*"
+        "edvinaskrucas/notification": "5.*",
+        "phpoffice/phpword": "v0.14.*",
+        "dompdf/dompdf": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
