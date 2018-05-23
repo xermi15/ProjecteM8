@@ -34,9 +34,10 @@ class CU01_loginController extends Controller
            $log->hora = date('H:i:s');
            $log->path = " ";
            $log->save();
- 
            
-            return redirect(url('/abrirCarpeta/personal'));
+           $idCarpetaPersonal = Carpeta::where('descripcio', '=', 'Personal'.$resultat[0]->nomUsuari)->get();
+           
+            return redirect(url('/abrirCarpeta/'.$idCarpetaPersonal[0]->idCarpeta));
         }else return view('CU01_login',['invalido'=>'Los datos no son validos']);
         
     }

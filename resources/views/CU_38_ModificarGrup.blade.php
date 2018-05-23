@@ -1,4 +1,4 @@
-<button id="editBtn" type="button" onclick="getNomGrup(this); guardaidGrup_idUsuarisGrup(this);" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
+<button id="editBtn" type="button" onclick="modificaGrup(this);" data-toggle="modal" data-target="#myModal_2" style="padding: 0; border: none; background: none;">
     <i class="glyphicon glyphicon-pencil"></i> 
 </button>
 
@@ -17,7 +17,7 @@
                     </div>
                     <div class="modal-body">
                         <label for="nom_Grup_Modificar" class="ui-hidden-accessible">Nom: </label>
-                        <input type="text" name="nom_Grup_Modificar" id="nom_Grup_Modificar" class="form-control" placeholder="Nom del grup" value="" style="cursor: default;" disabled>
+                        <input type="text" name="nom_Grup_Modificar" id="nom_Grup_Modificar" class="form-control" placeholder="Nom del grup" value="">
                         @include('CU_39_ModificarMembres')
                     </div>
                     <div class="modal-footer" style="text-align: center;">

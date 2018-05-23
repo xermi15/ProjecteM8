@@ -52,7 +52,6 @@
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}" data-book-path="{{$document->path}}"><span class="glyphicon glyphicon-link"></button></td>
-                <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaPDF" data-book-id="{{$document->idDocument}}" data-book-nombre="{{$document->nom}}" data-book-path="{{$document->path}}" data-book-formato="{{$document->formatDocument}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
@@ -473,27 +472,7 @@
         </div>
         
         
-        <!-- Modal GeneraURL-->
-  
-            <!--<div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">URL</h4>
-                  </div>
-                  <div class="modal-body">
-                      <input id="inputURL" name="URL" type="text" class="form-control"> </br>
-                  </div>
-                  <div class="modal-footer" style="text-align: center">
-                  <form id="copiarURL" action="" method="POST" style="display:inline">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary btn-success">Copiar</button>
-                   </form> 
-                  </div>
-                </div>
-              </div>    
-            </div>-->
-        
+        <!-- Modal GeneraURL-->      
             <form id="modalFormURL" action="" method="POST" style="display:inline">
                 <div class="modal fade" id="generaURLModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
