@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-<!-- al poner el include de @ include('CU_26')  se muestra el boton para la ventana modal pero no muestra la tabla de cU50 -->  <h2>Mostrar Plantilla Workflow</h2>
+<!-- al poner el include de @include('CU_26')  se muestra el boton para la ventana modal pero no muestra la tabla de cU50 -->  <h2>Mostrar Plantilla Workflow</h2>
   <table class="table">
             <thead>
                 <tr> 

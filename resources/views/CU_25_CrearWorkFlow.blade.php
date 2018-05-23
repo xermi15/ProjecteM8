@@ -108,13 +108,15 @@ $(document).ready(function() {
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group text-left">
                                         <label> Data Limit Revisió:</label>
 
                                         <input type="text" name="dataRevi" id="datepicker" readonly="readonly" size="12" />
 
                                         </div>
                                         </br>
+                                        </br>
+                                         </br>
                                         </br>
                                         <div class="form-group">
                                         <label> Data Limit Aprovació:</label>
@@ -124,6 +126,18 @@ $(document).ready(function() {
                                         </div>
                                         </br>
                                         </br>
+                                        
+                                        <div class="form-group">
+                                            {{-- TODO: Completa el input para el año --}}
+                                            <label for="año">Eligir Plantilla</label>
+
+                                            <select class="form-control col-sm-10"  name="plantilla">
+                                                @foreach($plantilla as $plantillas)
+
+                                                    <option value="{{ $plantillas->idPlantilla }}">{{ $plantillas->nomPlantilla }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
 
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary " style="padding:8px 100px;margin-top:25px;">
