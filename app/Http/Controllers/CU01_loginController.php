@@ -37,7 +37,7 @@ class CU01_loginController extends Controller
            
            //print_r($resultat[0]);
            //echo "<br/>";
-           $idCarpetaPersonal = Carpeta::where('path', '=','privades/'.$resultat[0]->nomUsuari)->get(); 
+           $idCarpetaPersonal = Carpeta::where('path', '=','privadas/'.$resultat[0]->nomUsuari)->get(); 
            //echo $idCarpetaPersonal;
            return redirect(url('/abrirCarpeta/'.$idCarpetaPersonal[0]->idCarpeta));
         }else {
