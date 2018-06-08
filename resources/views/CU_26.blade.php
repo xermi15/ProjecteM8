@@ -18,7 +18,7 @@
 			<div class="modal-body">
 				<div class="container">
   
-                                    <h2>Crear Plantilla Workflow</h2>
+                                   
  <div class="panel-body" style="padding:30px">
                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
                 <form method="POST" action="{{ url('/newPlantilla') }}">
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         {{-- TODO: Completa el input para el año --}}
                         <label for="Aprovador">Aprovador/es</label>
-                        <select class="form-control col-sm-10" name="aprov">
+                        <select class="selectpicker btn-lg" name="aprov">
                             @foreach($users as $user)
                                
                             <option value="{{ $user->idUsuari }}"> {{ $user->nomUsuari }}</option>
@@ -48,7 +48,7 @@
                         {{-- TODO: Completa el input para el año --}}
                         <label for="año">Revisor</label>
                         
-                        <select class="form-control col-sm-10" multiple size="3" name="revi[]">
+                        <select class="selectpicker btn-lg" multiple size="3" name="revi[]">
                             @foreach($users as $user)
                                
                                 <option value="{{ $user->idUsuari }}">{{ $user->nomUsuari }}</option>
@@ -57,7 +57,7 @@
                     </div>
 
                     
-                    <div class="form-group text-center">
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary " style="padding:8px 100px;margin-top:25px;">
                             Guardar Plantilla
                         </button>

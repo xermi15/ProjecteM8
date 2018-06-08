@@ -12,7 +12,7 @@ class CU12_urlController extends Controller
         
         $ruta=$path.'/'.$pathb;
         
-        $resultat = Document::where('idDocument', '=', $id)->where('versioInterna', '=', $idVer)->where('path','=',$ruta)->first();
+        $resultat = Document::where('idDocument', '=', $id)->where('versioInterna', '=', $idVer)->first();
         
         $doc = new URL_Document;
         
@@ -26,8 +26,7 @@ class CU12_urlController extends Controller
                 
                 $doc->idDocument=$id;
                 $doc->versioInterna=$idVer;
-                $doc->path=$ruta;
-                $doc->url="http://localhost/DAW2M14/public/CU12_URL_Descarrega/".$id."/".$idVer."/".$path."/".pathb;
+                $doc->url="http://localhost/DAW2M14/public/CU12_URL_Descarrega/".$id."/".$idVer."/".$path."/".$pathb;
                 $doc->actiu=true;
                 $doc->save();
             }

@@ -1,208 +1,167 @@
-var idGrup;
-var nomGrup;
-var arrayUsuarisGrup = [];
-var cont5 = 0;
 
+function eliminaGrup(t) {
 
-//modificar y eliminar grupo
-function idGrup(id) {
+    var id = $(t).parent().parent().children('#nombreGrupo').children('#idGrup').val();
     idGrup = id;
-    /*
-     var nom = $('#nombreGrupo td').html();
-     alert(nom);
-     //$('#nombre_grupo').val(nom);
-     
-     
-     // nomGrup = $(this).parent().parent().children(':first-child').html();
-     //nom = 'oasdsdvs';
-     */
+
+    //si existe input hidden idGrupEliminar lo elimina
+    $('#idGrupEliminar').remove();
+
+    //coge nombre grupo y añade a modal-body de eliminar
+    var nomGrup = $(t).parent().parent().children('#nombreGrupo').children('#nomGrup').val();
+    
+    //asigna nombre
+    $('#nombre_grupo').text('"' + nomGrup + '"');
+    
+    //marca el modal objectivo del boton donde hacemos click
+    var idModal = $(t).attr("data-target");
+    
+    //creamos y añadimos id del grup modificat a un input oculto para recogerlo en el controlador
+    var modal_body_eliminarGrup = $(idModal).children([0]).children([0]).children([0]).children([0]);
+    input_grupEliminar = jQuery('<input type="hidden" id="idGrupEliminar" name="idGrupEliminar" value="' + idGrup + '">');
+    modal_body_eliminarGrup.append(input_grupEliminar);
 }
 
-$("button[name='deleteBtn']").click(function () {
-    idGrup = this.value;
-    alert('sa');
-});
+function modificaGrup(t) {
 
-
-//crear grupo
-function nouGrup(id) {
-    //recorre bbdd y asigna id a nuevo grupo
-    id++;
+    var stringIdUsuarisGrup = '';
+    var id = $(t).parent().parent().children('#nombreGrupo').children('#idGrup').val();
     idGrup = id;
-}
-
-//modificar grupo
-function guardar() {
-    //guarda datos grupo
-    alert('guardar ' + idGrup);
-}
-
-//eliminar grupo (FUNCIONA)
-function eliminarGrup() {
-    //eliminar grupo
-    window.location.replace("http://localhost/DAW2M14/public/CU_37_EliminarGrup/" + idGrup);
-
-    $("#myModal_3").modal("hide");
-}
-
-function addArrayUsuariGrup() {
-    var cont = 0;
-    var cont2 = 0;
-    var cont = 0;
-    var cont2 = 0;
-    var firstId;
-    var idLabel;
-
-    //crea array usuaris grup
-    if (cont === 0) {
-        $(".columnUsuarisGrup label").each(function () {
-            idLabel = this.id;
-            if (firstId === idLabel) {
-                return false;
-            }
-            arrayUsuarisGrup.push(idLabel);
-            if (cont2 === 0) {
-                firstId = idLabel;
-            }
-            cont2++;
-        });
-    }
-    cont++;
-}
-function afegirUsuari() {
-
-    var i = 0;
-    var j;
-    var s;
-    var n;
-    var cont = 0;
-    var cont2;
-    var cont4 = 0;
-    var firstId;
-    var idLabel;
-    var idLabel2;
-    var idLabel4;
-    var idUsuarisGrup = [];
-    var nomUsuarisGrup = [];
-    var encontrado;
-
-    addArrayUsuariGrup();
-
-    for (var t in arrayUsuarisGrup) {
-        alert('antes anyadir ' + arrayUsuarisGrup[t]);
-    }
-
-    //recorrer los checkbox y si estan seleccionados anyade a un array
-    $(".columnUsuaris label").each(function () {
-        if (firstId === $(this).attr('id')) {
-            return false;
-        }
-        // if this.child is cheked push, si no no
-        if ($(this).children('input').is(':checked')) {
-            idLabel = this;
-            cont2 = 0;
-            //recorre columna usuaris grup, si buscar objeto input, si su id o valor es igual al "this.id" no hacer nada
-            //// if this.child is cheked push, si no no
-            for (j in arrayUsuarisGrup) {
-                encontrado = 0;
-                idLabel4 = this.id;
-                if (idLabel.id === arrayUsuarisGrup[j]) {
-                    cont2 = 1;
-                } else {
-                    if (cont2 !== 1) {
-                        if (idLabel2 !== idLabel.id) {
-                            for (s in arrayUsuarisGrup) {
-                                if (arrayUsuarisGrup[s] === idLabel.id) {
-                                    encontrado = 1;
-                                }
-                            }
-                            if (encontrado !== 1) {
-                                cont4 = 0;
-                                for (n in arrayUsuarisGrup) {
-
-                                    cont4++;
-                                    if (idLabel.id !== arrayUsuarisGrup[n]) {
-                                        if (cont4 === arrayUsuarisGrup.length) {
-                                            idUsuarisGrup.push(idLabel.id);
-                                            nomUsuarisGrup.push(idLabel.textContent);
-                                            arrayUsuarisGrup.push(idLabel.id);
-
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        idLabel2 = idLabel.id;
-                    }
-                }
-            }
-        }
-        if (cont === 0) {
-            firstId = $(this).attr('id');
-        }
-        cont++;
+    
+    //Si existe input hidden ID stringIdUsuarisGrup o idGrupEliminar los elimina
+    $('#stringUsuarisGrup').remove();
+    $('#idGrupEliminar').remove();
+    
+    //Asigna nombre grupo en input
+    var nomGrup = $(t).parent().parent().children('#nombreGrupo').children('#nomGrup').val();
+    $('#nom_Grup_Modificar').val(nomGrup);
+    
+    //Marca el modal objectivo del boton donde hacemos click
+    var idModal = $(t).attr("data-target");
+    var column_UsuarisGrup = $(idModal).children([0]).children([0]).children([0]).children([0]).children('.modal-body').children('.containerModificaMembres').children('.columnUsuarisGrup');
+    
+    //Elimina 'label' de los usuarios de grup si existen
+    $(idModal).children([0]).children([0]).children([0]).children([0]).children('.modal-body').children('.containerModificaMembres').children('.columnUsuarisGrup').children('label').each(function () {
+        $(this).remove();
     });
+    
+    //Elimina 'br' de los usuarios de grup si existen
+    $(idModal).children([0]).children([0]).children([0]).children([0]).children('.modal-body').children('.containerModificaMembres').children('.columnUsuarisGrup').children('br').each(function () {
+        $(this).remove();
+    });
+    
+    //Recorre miembros del grupo creados en 'mostrar grupos' y los añade a la columna usuarios de grupos de 'modificar miembros'
+    $(t).parent().parent().children('#nombreMiembros').children('#idUsuariGrup').each(function () {
+        var idUsuari = $(this).val();
+        var nomUsuari = $(this).next('input').val();
 
-    //recorre array y va anyadiendo input por cada uno
-    for (i = 0; i < idUsuarisGrup.length; i++) {
-        input = jQuery('<label id="' + idUsuarisGrup[i] + '"><input type="checkbox" id="' + idUsuarisGrup[i] + '" style="cursor:default;" name="usuari" value="usuari">' + nomUsuarisGrup[i] + '</label><br>');
-        $(".columnUsuarisGrup").append(input);
-    }
+        var grupUsuari = jQuery('<label id="usuari' + idUsuari + '"><input type="checkbox" id="usuari' + idUsuari + '" style="cursor:default;" name="usuari" value="' + nomUsuari + '">' + nomUsuari + '</label><br>');
+        column_UsuarisGrup.append(grupUsuari);
 
-    for (var t in arrayUsuarisGrup) {
-        alert('despues anyadir ' + arrayUsuarisGrup[t]);
-    }
-
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+    });
+    
+    //Quita coma final de string de usuarios del grupo
+    stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+    
+    //Añade string con id de todos los usuarios nuevos del grupo modificado
+    input_idStringUsuarisGrup = jQuery('<input type="hidden" id="stringUsuarisGrup" name="stringUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+    column_UsuarisGrup.append(input_idStringUsuarisGrup);
+    
+    //Añade id del grupo modificado
+    input_grupEliminar = jQuery('<input type="hidden" id="idGrupEliminar" name="idGrupEliminar" value="' + idGrup + '">');
+    column_UsuarisGrup.append(input_grupEliminar);
 }
 
-function eliminarUsuari() {
 
-    var j;
-    var cont = 0;
-    var firstId;
+function afegirUsuari(t) {
     var idLabel;
-
-    addArrayUsuariGrup();
-
-    for (var t in arrayUsuarisGrup) {
-        alert('antes eliminar ' + arrayUsuarisGrup[t]);
-    }
-
-
-    //recorrer los checkbox y si estan seleccionados anyade a un array
-    $(".columnUsuarisGrup label").each(function () {
-        if (firstId === $(this).attr('id')) {
-            return false;
-        }
-        // if this.child is cheked push, si no no
+    var valLabel;
+    var idLabel2;
+    var arrayUsuarisGrup = [];
+    var stringIdUsuarisGrup = '';
+    
+    //Si existe input hidden ID stringIdUsuarisGrup la elimina
+    $('#stringUsuarisGrup').remove();
+    
+    //Recorre columna usuarios grupo (recoge id)
+    $(t).parent().next().children('label').each(function () {
+        idLabel = this.id;
+        arrayUsuarisGrup.push(idLabel);
+    });
+    
+    //Recorre columna usuarios
+    $(t).parent().prev().children('label').each(function () {
         if ($(this).children('input').is(':checked')) {
-
-            //coger nombre input
             idLabel = this.id;
+            valLabel = this.innerText;
+            idLabel = idLabel.replace('id', '');
+            
+            //Si no hay usuarios en la columna de usuaios grupo los añade
+            if (arrayUsuarisGrup.length === 0) {
+                input = jQuery('<label id="' + idLabel + '"><input type="checkbox" id="' + idLabel + '" style="cursor:default;" name="usuari" value="' + valLabel + '">' + valLabel + '</label><br>');
+                $(t).parent().next().append(input);
 
-            //recorrer array usuaris grup, si coinciden borra arrayusuari[posicion]
-            for (j in arrayUsuarisGrup) {
-                if (arrayUsuarisGrup.length === 1) {
-                    arrayUsuarisGrup = [];
-                } else {
-                    if (idLabel === arrayUsuarisGrup[j]) {
-                        arrayUsuarisGrup.splice(j, 1);
+            } else {
+                //Comprueba si esta en la columna de usuarios grupo
+                for (var i in arrayUsuarisGrup) {
+                    idLabel2 = arrayUsuarisGrup[i];
+                    if (idLabel === idLabel2) {
+                        return false;
+                    }
+                    //Si no esta añade el usuario a la columna de usuarios del grupo
+                    var s = parseInt(i) + 1;
+                    if ((idLabel !== idLabel2) && (arrayUsuarisGrup.length === s)) {
+                        input = jQuery('<label id="' + idLabel + '"><input type="checkbox" id="' + idLabel + '" style="cursor:default;" name="usuari" value="' + valLabel + '">' + valLabel + '</label><br>');
+                        $(t).parent().next().append(input);
                     }
                 }
             }
+        }
+    });
+    
+    //Recorre usuarios grupo y los añade a string de usuarios grupo
+    $(t).parent().next().children('label').each(function () {
+        idLabel = this.id;
+        idUsuari = idLabel.replace('usuari', '');
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+
+    });
+    
+    //Quita coma final del strinf de usuarios grupo
+    stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+    
+    //Añade string de usuarios grupo en input hidden a columna usuarios
+    input_idStringUsuarisGrup = jQuery('<input type="hidden" id="stringUsuarisGrup" name="stringUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+    $(t).parent().next().append(input_idStringUsuarisGrup);
+}
+
+function eliminarUsuari(t) {
+    var stringIdUsuarisGrup = '';
+    
+    //elimina string de usuarios grupo si esta creado
+    $('#stringUsuarisGrup').remove();
+    
+    //recorre usuarios grupo y los si estan marcados los elimina
+    $(t).parent().next().children('label').each(function () {
+        if ($(this).children('input').is(':checked')) {
             $(this).next('br').remove();
             $(this).remove('input');
             $(this).remove();
         }
-        if (cont === 0) {
-            firstId = $(this).attr('id');
-        }
-        cont++;
     });
-
-    for (var t in arrayUsuarisGrup) {
-        alert('despues eliminar ' + arrayUsuarisGrup[t]);
-    }
-
+    
+    //recorre usuarios grupo y los añade a string de usuarios grupo
+    $(t).parent().next().children('label').each(function () {
+        idLabel = this.id;
+        idUsuari = idLabel.replace('usuari', '');
+        stringIdUsuarisGrup = stringIdUsuarisGrup + idUsuari + ',';
+    });
+    
+    //quita coma final
+    stringIdUsuarisGrup = stringIdUsuarisGrup.substring(0, stringIdUsuarisGrup.length - 1);
+    
+    //añade string de usuarios grupo en input hidden a columna usuarios 
+    input_idStringUsuaris = jQuery('<input type="hidden" id="stringUsuarisGrup" name="stringUsuarisGrup" value="' + stringIdUsuarisGrup + '">');
+    $(t).parent().next().append(input_idStringUsuaris);
 }

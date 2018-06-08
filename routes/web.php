@@ -147,19 +147,13 @@ Route::post('/newWorkflow', 'CU_25Controller@postCreate');
 //Jorge & Issam
 Route::get('/CU_26', 'CU_26Controller@getIndex');
 Route::post('/newPlantilla', 'CU_26Controller@postCreate');
-
-//});
-//
-//
-//
-//
 //
 // CU27
 //
 //Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getEdit');
 Route::get('/CU_27_EditarPlantilla/', 'CU_27Controller@getIndex');
-Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
-
+Route::get('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@getIndex');
+Route::post('/CU_27_EditarPlantilla/{id}', 'CU_27Controller@editarPlantilla');
 //
 //
 //
@@ -197,31 +191,21 @@ Route::get('CU_36_GestionarGrups', 'CU_36Controller@getCU_36');
 //
 //
 // CU37 Eliminar Grupo (Oscar y Carlos)
-Route::get('CU_37_EliminarGrup/{id}', 'CU_37Controller@getCU_37');
+Route::put('/delGrup', 'CU_37Controller@eliminarGrup');
 //
 //
 // CU38 Modificar Grupo (Oscar y Carlos)
-Route::get('CU_38_ModificarGrup', 'CU_38Controller@getCU_38');
-Route::post('/editGrup', 'CU_39Controller@modificarGrup');
+Route::put('/editGrup', 'CU_38Controller@modificarGrup');
 //
 //
 // CU39 Modificar Membres (Oscar y Carlos)
-Route::get('CU_39_ModificarMembres', 'CU_39Controller@getCU_39');
-Route::post('/editGrup2', 'CU_39Controller@modificarGrup2');
-
 //
 //
 // CU40 Crear Grupo (Oscar y Carlos)
-Route::get('/CU_52_CrearUsuari', 'CU_52Controller@getIndex');
-Route::post('/newUser', 'CU_52Controller@afegirUsuari');
-
-Route::get('CU_40_CrearGrup', 'CU_40Controller@getCU_40');
-Route::post('/newGrup', 'CU_40Controller@afegirGrup');
-//Route::post('grupo/create', 'CU_37Controller@postCreate');
+Route::put('/newGrup', 'CU_40Controller@afegirGrup');
 //
 //
 // CU41 Motrar Grups (Oscar y Carlos)
-Route::get('CU_41_MostrarGrups', 'CU_41Controller@getCU_41');
 //
 //
 //prova

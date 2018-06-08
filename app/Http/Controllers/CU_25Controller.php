@@ -6,6 +6,7 @@ use App\Usuari;
 use App\Document;
 use App\workflowRevisor;
 use App\crearWorkFlow;
+use App\crearPlantilla;
 
 
 class CU_25Controller extends Controller
@@ -14,7 +15,8 @@ class CU_25Controller extends Controller
        //return view('CU_26');
        $documents = Document::all();
        $users = Usuari::all();
-       return view('CU_25_CrearWorkFlow', compact('users', 'documents'));
+       $plantilla = crearPlantilla::all();
+       return view('CU_25_CrearWorkFlow', compact('users', 'documents', 'plantilla'));
     }
     
     
@@ -25,7 +27,9 @@ class CU_25Controller extends Controller
        $worklows->idUsuariAprovador= $request->aprov;
        $worklows->idUsuariCreacio= $_SESSION['idUsuari'];
        $worklows->dataCreacio= date('Y-m-d H:i:s');
-       
+       $worklows->dataLimitRevisio= $request->dataRevi;
+       $worklows->dataLimitAprovacio= $request->dataAprov;
+       $worklows->estat= 'Nou';
        
        $worklows->save();
           
@@ -40,7 +44,7 @@ class CU_25Controller extends Controller
         endforeach;
     
       
-       return redirect ('/CU_25_CrearWorkFlow');
+       return redirect ('/mostar_workflows');
 
     }
     /*public function postCreate2(Request $request) {
