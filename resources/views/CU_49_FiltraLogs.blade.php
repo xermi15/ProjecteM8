@@ -1,4 +1,4 @@
-@extends('layouts.master')
+    @extends('layouts.master')
 
 @section('content')
 <link href="{{ url('css/CU_04.css')}}" rel="stylesheet" type="text/css"/>

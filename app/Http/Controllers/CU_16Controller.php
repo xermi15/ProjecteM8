@@ -1,13 +1,25 @@
 <?php
 
+
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\document;
 
-class CU_16Controller extends Controller {
+class CU_16Controller extends Controller
+{
+   public function veureVersions( $id ){
+      $tmp = Document::where('idDocument','=',$id)  
+                      ->get();
+      
+      
+      
+        return view("CU_16veureVersions",array("versions"=>$tmp));
+        
+        
 
-    public function getCU_16(){
-        return view('CU_41_MostrarGrups');
+
+
     }
-
+     
+    
 }

@@ -52,10 +52,9 @@
                 <td class="col-md-3"><b>{{$document->nom}}</b><br>{{$document->dataModificacio}}</td>
                 <td class="col-md-1"><span class="glyphicon glyphicon-info-sign"></span></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaURLModal" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}" data-book-path="{{$document->path}}"><span class="glyphicon glyphicon-link"></button></td>
-                <!--<td class="col-md-1"><button id="generaURL" type="button" class="btn btn-primary" data-target="#generaURL" data-book-id="{{$document->idDocument}}" data-book-idversio="{{$document->versioInterna}}"><span class="glyphicon glyphicon-link"></button></td>-->
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generaPDF" data-book-id="{{$document->idDocument}}" data-book-nombre="{{$document->nom}}" data-book-path="{{$document->path}}" data-book-formato="{{$document->formatDocument}}"><span class="glyphicon glyphicon-cloud-download"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pujarVersioModal" data-book-id="{{$document->idDocument}}"><span class="glyphicon glyphicon-paperclip"></span></button></button></td>
-                <td class="col-md-1"><span class="glyphicon glyphicon-list-alt"></td>
+                <td class="col-md-1"><a href="{{url('veureVersions/'.$document->idDocument)}}"><button type="button" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-list-alt"></span></button></a></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moureDocumentModal" data-book-id="{{$document->idDocument}}" data-book-name="{{$totesCarpetes}}"><span class="glyphicon glyphicon-new-window"></button></td>
                 <td class="col-md-1"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#borrarModal" data-book-id="{{$document->idDocument." documento"}}" data-book-name="{{$document->nom}}"><span class="glyphicon glyphicon-trash"></button></td>
             </tr>
@@ -473,27 +472,7 @@
         </div>
         
         
-        <!-- Modal GeneraURL-->
-  
-            <!--<div class="modal fade" id="URL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">URL</h4>
-                  </div>
-                  <div class="modal-body">
-                      <input id="inputURL" name="URL" type="text" class="form-control"> </br>
-                  </div>
-                  <div class="modal-footer" style="text-align: center">
-                  <form id="copiarURL" action="" method="POST" style="display:inline">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-primary btn-success">Copiar</button>
-                   </form> 
-                  </div>
-                </div>
-              </div>    
-            </div>-->
-        
+        <!-- Modal GeneraURL-->      
             <form id="modalFormURL" action="" method="POST" style="display:inline">
                 <div class="modal fade" id="generaURLModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -521,49 +500,22 @@
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
+                
                 $('#modalFormDescargarzip').attr('action', '../CU_19/'+id+'/'+path+'/'+nombre);
-                //alert(id+path+nombre);
-                /*$('#downloadzip').click(function(e){
-                    var url = "http://localhost/DAW2M14/public/CU_19/a/a/a";
-                    
-                    $.post(url,{
-                            id: id,
-                            nombre: nombre,
-                            path: path})
-                        .done(function(data) {  
-                            alert(data);
-                        })
-                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                        .always(function(x) { console.log( "Fí")});
-                });*/
                
             });
             
             $('#generaPDF').on('show.bs.modal', function (e) {
+                //Recollim la id, el nom, el path i el format del archiu on hem fet click
                 var id = $(e.relatedTarget).data('book-id');
                 var nombre = $(e.relatedTarget).data('book-nombre');
                 var path = $(e.relatedTarget).data('book-path');
                 var formato = $(e.relatedTarget).data('book-formato');
                 var encode = encodeURIComponent(path);
-                
+                //Al fer click sobre "Descargar PDF" activem el controlador del CU13
                 $('#modalFormDescargarpdf').attr('action', '../CU_13/'+id+'/'+nombre+'/'+path+'/'+formato);
                 
             });
-            /*var url = "http://localhost/DAW2M14/public/CU_13";
-            $('#downloadpdf').click(function(e){
-                    alert("hello");
-                    $.post(url,{
-                            id: id,
-                            nombre: nombre,
-                            path: path,
-                            formato: formato})
-                        .done(function(data) {  
-                            alert(data);
-                        })
-                        .fail(function (jqXHR, text, errorThrown) { console.log(jqXHR + "---" + text + "---" + errorThrown); console.log(jqXHR);})
-                        .always(function(x) { console.log( "Fí")});
-                });
-            /**/
             
             $('#gestionarPermisosModal').on('show.bs.modal', function(e) {
                 var id = $(e.relatedTarget).data('book-id');
@@ -698,16 +650,11 @@
             });
             
             $("#buttonCopiarURL").click(function(){
-
                 var copyText = document.getElementById("nombreURL");
-
                 copyText.select();
-
                 document.execCommand("Copy");
-
             });
             
             
         </script>
 @stop
-
