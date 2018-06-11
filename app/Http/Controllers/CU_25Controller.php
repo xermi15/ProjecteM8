@@ -57,7 +57,12 @@ class CU_25Controller extends Controller
 
     }*/
     
-    
+    public function descarregarDocument($idDocument) {
+
+      $resultat = Document::where('idDocument', '=', $idDocument)->get();
+
+      return response()->download(storage_path("app/{$resultat[0]->path}"));
+    }
     
     
 }

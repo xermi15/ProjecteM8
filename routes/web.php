@@ -140,6 +140,8 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //Jorge & Issam
 Route::get('/CU_25_CrearWorkFlow', 'CU_25Controller@getIndex');
 Route::post('/newWorkflow', 'CU_25Controller@postCreate');
+
+Route::get('/descarregaWorkflow/{idDocument}', 'CU_25Controller@descarregarDocument');
 //
 //
 //
