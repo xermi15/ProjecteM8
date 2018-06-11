@@ -18,7 +18,7 @@ class CU_17_Controller extends Controller {
       
       
       
-        return view("CU_16veureVersions",array("versions"=>$tmp));
+        return view("CU_16_veureVersions",array("versions"=>$tmp));
         
        
    
