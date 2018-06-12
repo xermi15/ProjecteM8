@@ -243,7 +243,7 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 // CU49
 //Route::get('/filtraLogs', 'CU_49Controller@filtraLogs'); Se ha juntado con el CU_04 Consultar Logs
-//
+Route::get('/filtraNom', 'CU_49Controller@filtraNom');
 //
 // CU50
 //Jorge & Issam
