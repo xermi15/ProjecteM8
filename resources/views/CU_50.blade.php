@@ -1,16 +1,17 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-<!-- al poner el include de @include('CU_26')  se muestra el boton para la ventana modal pero no muestra la tabla de cU50 -->  <h2>Mostrar Plantilla Workflow</h2>
-  <table class="table">
+<h2>Mostrar Plantilla Workflow</h2>
+<div class="table-responsive">
+  <table class="table table-hover">
             <thead>
                 <tr> 
                     <th>ID Plantilla</th>
                     <th>Nom Plantilla</th>
                     <th>UsuariCreador</th>
                     <th>UsuariAprovador</th> 
-                    <th>UsuariRevisor </th>
-                    <th>Opcions</th>
+                    <th colspan="4">UsuariRevisor </th>
+                    <th colspan="4"></th>
                 </tr>
             </thead>
             <tbody>
@@ -39,13 +40,16 @@
                         @foreach($users as $user)
                         @if ($plantillas->idPlantilla == $revi->idPlantilla)
                             @if($revi->idUsuariRevisor==$user->idUsuari)
+                            
                         <td >{{ $user->nomUsuari }}</td>
                         @endif
                         @endif
                         @endforeach
                         @endforeach
                         
-           <td>
+                        <td></td>
+                        <td colspan="4" style="text-align: right">
+            @include('CU_27_EditarPlantilla_PRUEBA', ['id' => $plantillas->idPlantilla, 'userAprov' => $users, 'usersRev' => $plantillarevisors ])
             <a href="{{url('/CU_27_EditarPlantilla/'.$plantillas->idPlantilla)}}" class="btn btn-warning btn-lg active" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
             
             <a href="{{url('/CU_28_EliminarPlantilla/' .$plantillas->idPlantilla )}}" class="btn btn-danger btn-lg active" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
@@ -57,5 +61,7 @@
             </tbody>
 
         </table>
+</div>
+@include('CU_26')
 </div>
 @stop

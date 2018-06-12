@@ -1,22 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Usuari;
 use \App\crearPlantilla;
 use App\plantillaRevisor;
-
 class CU_27Controller extends Controller {
-
 public function getIndex($id){
        $plantillas = crearPlantilla::findOrFail($id);
        $userAprov = Usuari::all();
        $usersRev = plantillaRevisor::all();
        return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev','id'));
 }
-
-
 public function editarPlantilla(Request $request, $id) {
     //var_dump($id);
         session_start();
@@ -28,9 +22,17 @@ public function editarPlantilla(Request $request, $id) {
        $plantillas->save();
         
         $plantirevisors = plantillaRevisor::findOrFail($id);
-
-//        print_r(Usuari::where('nomUsuari','=',)->first()->idUsuari);
+//      print_r(Usuari::where('nomUsuari','=',)->first()->idUsuari);
+        
         $plantirevisors->idUsuariRevisor = $request->revi[0];
+        //$plantirevisors->idUsuariRevisor=$request->revi4;
+        
+        /*if (revi[0] == null){
+            $plantirevisors->idUsuariRevisor = $request->revi4[0];
+        } else{
+            $plantirevisors->idUsuariRevisor=$request->revi[0];
+        }*/
+        
         $plantirevisors->save();
         
  
@@ -49,9 +51,7 @@ public function editarPlantilla(Request $request, $id) {
        
       
       //return redirect ('/CU_50');
-
     }
     
-
 }
 
