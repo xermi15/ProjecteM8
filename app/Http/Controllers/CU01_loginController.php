@@ -12,10 +12,12 @@ class CU01_loginController extends Controller
 {
     //
     function login(Request $request){
+        //inici de sessiò
         session_start();
-        //return $request->input('user') . "----" . $request->input('password');
+        //consulta a la BBDD per veure si el usuari i la password existeixen
         $resultat = Usuari::where('nomUsuari', '=', $request->input('user'))->where('contrasenya', '=', $request->input('password'))->get();
-        //return $resultat;
+        //comprovem si la consutla retorna algo si es aixi guardem a la sessiò la informació del usuari i en la taula logs de la base de dades guradem l'acció el usuari 
+        //que la dut a terme, el dia i l'hora
         if (count($resultat)==1){
             
            $_SESSION['idUsuari']=$resultat[0]->idUsuari;
@@ -35,12 +37,13 @@ class CU01_loginController extends Controller
            $log->path = " ";
            $log->save();
            
-           //print_r($resultat[0]);
-           //echo "<br/>";
+          
+           //consultem a la taula carpeta la ruta de la carpeta principa de l'usuari
            $idCarpetaPersonal = Carpeta::where('path', '=','privades/'.$resultat[0]->nomUsuari)->get(); 
-           //echo $idCarpetaPersonal;
+           //redirigim a la carpeta principal del usuari;
            return redirect(url('/abrirCarpeta/'.$idCarpetaPersonal[0]->idCarpeta));
         }else {
+            //en cas de que l'usuari o la contrasenya no siguin correctes s'envia un error
             return view('CU01_login',['invalido'=>'Los datos no son validos']);
         }
         
