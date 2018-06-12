@@ -9,22 +9,25 @@ public function getIndex($id){
        $plantillas = crearPlantilla::findOrFail($id);
        $userAprov = Usuari::all();
        $usersRev = plantillaRevisor::all();
-       return view('CU_27_EditarPlantilla', compact('plantillas', 'userAprov', 'usersRev','id'));
+       return view('CU_27_EditarPlantilla_modal', compact('plantillas', 'userAprov', 'usersRev','id'));
 }
 public function editarPlantilla(Request $request, $id) {
-    //var_dump($id);
+        var_dump($id);
         session_start();
        $plantillas = crearPlantilla::findOrFail($id);
        
+       
        $plantillas->nomPlantilla= $request->nomPlantilla;
-       $plantillas->idUsuariAprovador= $request->aprov;
+        $plantillas->idUsuariAprovador= $request->aprov;
+       
        $plantillas->idUsuariCreador= $_SESSION['idUsuari'];
        $plantillas->save();
         
         $plantirevisors = plantillaRevisor::findOrFail($id);
-//      print_r(Usuari::where('nomUsuari','=',)->first()->idUsuari);
         
-        $plantirevisors->idUsuariRevisor = $request->revi[0];
+//      print_r(Usuari::where('nomUsuari','=',)->first()->idUsuari);
+         $plantirevisors->idUsuariRevisor = $request->revi[0];
+        
         //$plantirevisors->idUsuariRevisor=$request->revi4;
         
         /*if (revi[0] == null){
