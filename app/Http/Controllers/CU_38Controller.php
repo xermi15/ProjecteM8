@@ -11,7 +11,7 @@ use App\Logs;
 class CU_38Controller extends Controller {
 
     public function modificarGrup(Request $request) {
-        
+
         //Recogemos grupo a eliminar y el primer usuario de grupo (si existe)
         $grup = Grup::where('idGrup', $request->idGrupEliminar)->first();
         $usuariGrup = UsuariGrup::where('idGrup', $request->idGrupEliminar)->first();
@@ -20,16 +20,16 @@ class CU_38Controller extends Controller {
         $dataCreacioGrup = $grup->dataCreacio;
         $idGrup = $grup->idGrup;
         $nomGrup = $grup->nom;
-        
+
         //Si existe grupo con ese id entra
         if ($grup !== null) {
-            
+
             //Si existe algun usuario de grupo entra
             if ($usuariGrup !== null) {
-                
+
                 //Crea array con usuarios del grupo
                 $arrayUsuarisGrup = UsuariGrup::where('idGrup', $idGrup)->get();
-                
+
                 //Recorre usuarios grupo y los elimina
                 foreach ($arrayUsuarisGrup as $idUsuariGrup) {
                     $usuariGrup2 = UsuariGrup::where('idGrup', $idUsuariGrup->idGrup)->first();
@@ -37,25 +37,27 @@ class CU_38Controller extends Controller {
                 }
             }
             $grup->delete();
-            
+
             //Crea nuevo grupo
             $grupMod = new Grup;
             $grupMod->idGrup = $idGrup;
-            $grupMod->nom = $nomGrup;
+            $grupMod->nom = $request->nom_Grup_Modificar;
             $grupMod->dataCreacio = $dataCreacioGrup;
             $grupMod->dataModificacio = date('Y-m-d');
             $grupMod->save();
-            
+
             //Crea usuaris del grup
             $stringIdUsuarisGrup = $request->stringUsuarisGrup;
             $arrayidUsuarigrup = explode(",", $stringIdUsuarisGrup);
             foreach ($arrayidUsuarigrup as $idUsuariGrup) {
-                $usuariGrup = new UsuariGrup;
-                $usuariGrup->idUsuari = $idUsuariGrup;
-                $usuariGrup->idGrup = $grup->idGrup;
-                $usuariGrup->save();
+                if ($idUsuariGrup !== '') {
+                    $usuariGrup = new UsuariGrup;
+                    $usuariGrup->idUsuari = $idUsuariGrup;
+                    $usuariGrup->idGrup = $grup->idGrup;
+                    $usuariGrup->save();
+                }
             }
-            
+
             //Crea log
             $nlog = new Logs;
             $nlog->idUsuari = 1; // 1 = usuari admin. CORREGIR POR USUARIO QUE HA INICIADO SESION

@@ -8,8 +8,8 @@ class CU_42_Controller extends Controller {
 
     public function mostrarUsuaris() {
 
-        $usuaris = Usuari::all();
-        return view('CU_42_GestionarUsuaris')->with('usuaris', $usuaris);
+        $user = Usuari::all();
+        return view('CU_42_GestionarUsuaris')->with('user', $user);
     }
 
 }
