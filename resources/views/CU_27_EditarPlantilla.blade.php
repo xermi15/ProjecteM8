@@ -16,13 +16,13 @@
                         <label for="title">Nombre</label>
                         <input type="text" name="nomPlantilla" id="nomPlantilla" value="{{$plantillas->nomPlantilla}}">
                     </div>
-<label for="Aprovador">Aprovador/es</label>
+<label for="Aprovador">Aprovador Actual</label>
                     <div class="form-group">
                         
                         
                          @foreach($userAprov as $user)
                         @if ($plantillas->idUsuariAprovador == $user->idUsuari)
-                        <input type="text" name="aprov" id="aprov" value="{{ $user->nomUsuari }}">
+                        <input type="text" readonly="readonly" name="aprov" id="aprov" value="{{ $user->nomUsuari }}"><br><label for="re">Aprovador</label>
                         @endif
                         @endforeach
 
@@ -34,19 +34,19 @@
                         </select>
                         
                     </div>
-<label for="Aprovador">Aprovador actual</label>
+<label for="Aprovador">Revisor/es Actual</label>
 
                <div class="form-group">                      
                        @foreach($usersRev as $revi) 
                         @foreach($userAprov as $user)
                         @if ($plantillas->idPlantilla == $revi->idPlantilla)
                             @if($revi->idUsuariRevisor == $user->idUsuari)
-                            <input type="text" name="revi" id="revi" value="{{ $user->nomUsuari }}"><br><label for="re">Revisor</label>
+                            <input type="text" readonly="readonly" id="revi" name="revi4[]" value="{{ $user->nomUsuari }}">
                         @endif
                         @endif
                         @endforeach           
                         @endforeach
-                    
+                    <br><label for="re">Revisor/es</label>
                         <select class="form-control col-sm-10" multiple size="3" name="revi[]">
                             @foreach($userAprov as $user)
                                

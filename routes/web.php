@@ -94,11 +94,11 @@ Route::get('/promocionarVersio/{id}/{versioInterna}', 'CU_15Controller@getPromoc
 //
 //
 // CU16
-Route::get('/veureVersioDocument', 'CU_16Controller@veureVersioDocument');
+Route::get('/veureVersions/{id}', 'CU_16Controller@veureVersions');
 //
 //
 // CU17
-Route::Post('/EliminarVersio/{id}', 'CU_17_Controller@eliminarVersio');
+Route::get('/eliminarVersio/{id}/{versioInterna}', 'CU_17_Controller@eliminarVersio');
 //
 //
 // CU18
@@ -140,6 +140,8 @@ Route::Post('/crearCarpeta/{id}', 'CU_23Controller@crearCarpeta');
 //Jorge & Issam
 Route::get('/CU_25_CrearWorkFlow', 'CU_25Controller@getIndex');
 Route::post('/newWorkflow', 'CU_25Controller@postCreate');
+
+Route::get('/descarregaWorkflow/{idDocument}', 'CU_25Controller@descarregarDocument');
 //
 //
 //
@@ -241,7 +243,7 @@ Route::get('/CU_48_MostrarUsuaris', 'CU_48Controller@getIndex');
 //
 // CU49
 //Route::get('/filtraLogs', 'CU_49Controller@filtraLogs'); Se ha juntado con el CU_04 Consultar Logs
-//
+Route::get('/filtraNom', 'CU_49Controller@filtraNom');
 //
 // CU50
 //Jorge & Issam

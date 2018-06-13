@@ -57,7 +57,12 @@ class CU_25Controller extends Controller
 
     }*/
     
-    
+    public function descarregarDocument($idDocument) {
+        //Al pitja el boto de descarrega es fa una consulta per obtenir el path del document i amb la ruta es descarrega el document 
+      $resultat = Document::where('idDocument', '=', $idDocument)->get();
+
+      return response()->download(storage_path("app/{$resultat[0]->path}"));
+    }
     
     
 }

@@ -32,7 +32,7 @@ class CU_07Controller extends Controller {
         }
         
         $carpetes = Carpeta::where('idCarpetaPare', '=', $id)->get();
-        $arxius = Document::where('idCarpeta', '=', $id)->get();
+        $arxius = Document::where('idCarpeta', '=', $id)->where('vigent','=',1)->get();
         $totesCarpetes = $this->arbolCarpetas();
 
         return view('CU07_OpenFolder', compact('carpetes','arxius','totesCarpetes'))->withTitle($id);

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Workflow;
+use App\workflowRevisor;
 session_start();
 class CU_35Controller extends Controller
 {
@@ -30,9 +31,10 @@ class CU_35Controller extends Controller
             ->orWhere( 'workflows.idUsuariAprovador', '=', $id_Usuario)
             ->get();
             //->toSql(); 
-           
-        return view('CU_35_Mostrar')->with('workflows', $workflows);
-       
+            
+            $user = workflowRevisor::where('idUsuariRevisor', '=', $id_Usuario)->get();
+              
+        return view('CU_35_Mostrar')->with('workflows', $workflows)->with('idUsuari',$id_Usuario)->with('idRevisor',$user); 
     }
      
     
