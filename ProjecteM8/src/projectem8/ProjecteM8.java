@@ -28,6 +28,5 @@ public class ProjecteM8 {
     }
     public void fantasma(){
         System.out.println("SOC UN FANTASMA");
-        System.out.println("BUUUUUUH");
     }
 }
