@@ -26,7 +26,5 @@ public class ProjecteM8 {
     public int multi(int m1, int m2){
         return m1*m2;
     }
-    public void fantasma(){
-        System.out.println("SOC UN FANTASMA");
-    }
+    
 }
