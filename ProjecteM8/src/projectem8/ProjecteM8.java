@@ -23,5 +23,8 @@ public class ProjecteM8 {
     public int resta(int r1, int r2){
         
     }
+    public int multi(int m1, int m2){
+        
+    }
     
 }
