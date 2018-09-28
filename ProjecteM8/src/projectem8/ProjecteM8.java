@@ -27,6 +27,7 @@ public class ProjecteM8 {
         return m1*m2;
     }
     public void fantasma(){
-        System.out.println("SOC UN FANTASMA BUUHH");
+        System.out.println("SOC UN FANTASMA");
+        System.out.println("BUUUUUUH");
     }
 }
