@@ -20,6 +20,8 @@ public class ProjecteM8 {
     public int suma(int s1, int s2){
         
     }
-    
+    public int resta(int r1, int r2){
+        
+    }
     
 }
