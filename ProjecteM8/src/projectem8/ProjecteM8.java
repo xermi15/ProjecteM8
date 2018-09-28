@@ -18,13 +18,13 @@ public class ProjecteM8 {
         // TODO code application logic here
     }
     public int suma(int s1, int s2){
-        
+        return s1 + s2;
     }
     public int resta(int r1, int r2){
-        
+        return r1 - r2;
     }
     public int multi(int m1, int m2){
-        
+        return m1*m2;
     }
     
 }
